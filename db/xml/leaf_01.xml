@@ -1,0 +1,552 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="1">
+  <desc>CPU FMS (Family/Model/Stepping) + standard feature flags</desc>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="4"  id="stepping"                desc="Stepping ID">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit0>
+      <bit4  len="4"  id="base_model"              desc="Base CPU model ID">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit4>
+      <bit8  len="4"  id="base_family_id"          desc="Base CPU family ID">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit8>
+      <bit12 len="2"  id="cpu_type"                desc="CPU type">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit12>
+      <bit16 len="4"  id="ext_model"               desc="Extended CPU model ID">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit16>
+      <bit20 len="8"  id="ext_family"              desc="Extended CPU family ID">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit20>
+    </eax>
+    <ebx>
+      <bit0  len="8"  id="brand_id"                desc="Brand index">
+        <text>
+          For AMD CPUs, this is to be used with leaf 0x80000001's 16-bit @brand_id field.
+        </text>
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit0>
+      <bit8  len="8"  id="clflush_size"            desc="CLFLUSH instruction cache line size">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit8>
+      <bit16 len="8"  id="n_logical_cpu"           desc="Logical CPU (HW threads) count">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit16>
+      <bit24 len="8"  id="local_apic_id"           desc="Initial local APIC physical ID">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit24>
+    </ebx>
+    <ecx>
+      <bit0  len="1"  id="sse3"                    desc="Streaming SIMD Extensions 3 (SSE3)">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="xmm3"       procid="pni" />
+        <xen          feature="true"               attrs="A" />
+      </bit0>
+      <bit1  len="1"  id="pclmulqdq"               desc="PCLMULQDQ instruction support">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit1>
+      <bit2  len="1"  id="dtes64"                  desc="64-bit DS save area">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="" />
+      </bit2>
+      <bit3  len="1"  id="monitor"                 desc="MONITOR/MWAIT support">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="mwait"      procid="monitor" />
+        <xen          feature="true"               attrs="" />
+      </bit3>
+      <bit4  len="1"  id="dscpl"                   desc="CPL Qualified Debug Store">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            procid="ds_cpl" />
+        <xen          feature="true"               attrs="" />
+      </bit4>
+      <bit5  len="1"  id="vmx"                     desc="Virtual Machine Extensions">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="h" />
+      </bit5>
+      <bit6  len="1"  id="smx"                     desc="Safer Mode Extensions">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="" />
+      </bit6>
+      <bit7  len="1"  id="est"                     desc="Enhanced Intel SpeedStep">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs=""               altid="eist" />
+      </bit7>
+      <bit8  len="1"  id="tm2"                     desc="Thermal Monitor 2">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="" />
+      </bit8>
+      <bit9  len="1"  id="ssse3"                   desc="Supplemental SSE3">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit9>
+      <bit10 len="1"  id="cntxt_id"                desc="L1 Context ID">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="cid" />
+      </bit10>
+      <bit11 len="1"  id="sdbg"                    desc="Sillicon Debug">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit11>
+      <bit12 len="1"  id="fma"                     desc="FMA extensions using YMM state">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit12>
+      <bit13 len="1"  id="cx16"                    desc="CMPXCHG16B instruction support">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit13>
+      <bit14 len="1"  id="xtpr_update"             desc="xTPR Update Control">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="xtpr" />
+        <xen          feature="true"               attrs=""               altid="xtpr" />
+      </bit14>
+      <bit15 len="1"  id="pdcm"                    desc="Perfmon and Debug Capability">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="" />
+      </bit15>
+      <bit17 len="1"  id="pcid"                    desc="Process-context identifiers">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="H" />
+      </bit17>
+      <bit18 len="1"  id="dca"                     desc="Direct Cache Access">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="" />
+      </bit18>
+      <bit19 len="1"  id="sse4_1"                  desc="SSE4.1">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="xmm4_1"     procid="sse4_1" />
+        <xen          feature="true"               attrs="A" />
+      </bit19>
+      <bit20 len="1"  id="sse4_2"                  desc="SSE4.2">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="xmm4_2"     procid="sse4_2" />
+        <xen          feature="true"               attrs="A" />
+      </bit20>
+      <bit21 len="1"  id="x2apic"                  desc="X2APIC support">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="!A" />
+      </bit21>
+      <bit22 len="1"  id="movbe"                   desc="MOVBE instruction support">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit22>
+      <bit23 len="1"  id="popcnt"                  desc="POPCNT instruction support">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit23>
+      <bit24 len="1"  id="tsc_deadline_timer"      desc="APIC timer one-shot operation">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="S"              altid="tsc_deadline" />
+      </bit24>
+      <bit25 len="1"  id="aes"                     desc="AES instructions">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A"              altid="aesni" />
+      </bit25>
+      <bit26 len="1"  id="xsave"                   desc="XSAVE (and related instructions) support">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit26>
+      <bit27 len="1"  id="osxsave"                 desc="XSAVE (and related instructions) are enabled by OS">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="!" />
+      </bit27>
+      <bit28 len="1"  id="avx"                     desc="AVX instructions support">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit28>
+      <bit29 len="1"  id="f16c"                    desc="Half-precision floating-point conversion support">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit29>
+      <bit30 len="1"  id="rdrand"                  desc="RDRAND instruction support">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="!A" />
+      </bit30>
+      <bit31 len="1"  id="guest_status"            desc="System is running as guest; (para-)virtualized system">
+        <text>
+          Note: for a guest running within an Intel Trusted-Domain run-time environment,
+          this bit is also set. If cpuid leaf 0 @max_std_leaf ≥ 0x21, then cpuid 0x21 can
+          be used by such a guest to further enumerate the trusted-dom runtime envionment.
+          Reference: Architecture Specification: Intel Trust Domain Extensions (Intel TDX)
+          Module, February 2023.
+        </text>
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <hypervisors>
+          <hypervisor>Xen</hypervisor>
+          <hypervisor>KVM</hypervisor>
+        </hypervisors>
+        <xen          feature="true"               attrs="!A"             altid="hypervisor" />
+      </bit31>
+    </ecx>
+    <edx>
+      <bit0  len="1"  id="fpu"                     desc="Floating-Point Unit on-chip (x87)">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit0>
+      <bit1  len="1"  id="vme"                     desc="Virtual-8086 Mode Extensions">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="S" />
+      </bit1>
+      <bit2  len="1"  id="de"                      desc="Debugging Extensions">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit2>
+      <bit3  len="1"  id="pse"                     desc="Page Size Extension">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="S" />
+      </bit3>
+      <bit4  len="1"  id="tsc"                     desc="Time Stamp Counter">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit4>
+      <bit5  len="1"  id="msr"                     desc="Model-Specific Registers (RDMSR and WRMSR support)">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit5>
+      <bit6  len="1"  id="pae"                     desc="Physical Address Extensions">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit6>
+      <bit7  len="1"  id="mce"                     desc="Machine Check Exception">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit7>
+      <bit8  len="1"  id="cx8"                     desc="CMPXCHG8B instruction">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit8>
+      <bit9  len="1"  id="apic"                    desc="APIC on-chip">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="!A" />
+      </bit9>
+      <bit11 len="1"  id="sep"                     desc="SYSENTER, SYSEXIT, and associated MSRs">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit11>
+      <bit12 len="1"  id="mtrr"                    desc="Memory Type Range Registers">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="S" />
+      </bit12>
+      <bit13 len="1"  id="pge"                     desc="Page Global Extensions">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="S" />
+      </bit13>
+      <bit14 len="1"  id="mca"                     desc="Machine Check Architecture">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit14>
+      <bit15 len="1"  id="cmov"                    desc="Conditional Move Instruction">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit15>
+      <bit16 len="1"  id="pat"                     desc="Page Attribute Table">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit16>
+      <bit17 len="1"  id="pse36"                   desc="Page Size Extension (36-bit)">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="S" />
+      </bit17>
+      <bit18 len="1"  id="psn"                     desc="Processor Serial Number">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="pn" />
+      </bit18>
+      <bit19 len="1"  id="clflush"                 desc="CLFLUSH instruction">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit19>
+      <bit21 len="1"  id="ds"                      desc="Debug Store">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            procid="dts" />
+        <xen          feature="true"               attrs="" />
+      </bit21>
+      <bit22 len="1"  id="acpi"                    desc="Thermal monitor and clock control">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit22>
+      <bit23 len="1"  id="mmx"                     desc="MMX instructions">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit23>
+      <bit24 len="1"  id="fxsr"                    desc="FXSAVE and FXRSTOR instructions">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit24>
+      <bit25 len="1"  id="sse"                     desc="SSE instructions">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="xmm"        procid="sse" />
+        <xen          feature="true"               attrs="A" />
+      </bit25>
+      <bit26 len="1"  id="sse2"                    desc="SSE2 instructions">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="xmm2"       procid="sse2" />
+        <xen          feature="true"               attrs="A" />
+      </bit26>
+      <bit27 len="1"  id="selfsnoop"               desc="Self Snoop">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            procid="ss" />
+        <xen          feature="true"               attrs="A"              altid="ss" />
+      </bit27>
+      <bit28 len="1"  id="htt"                     desc="Hyper-threading">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="ht" />
+        <xen          feature="true"               attrs="!A" />
+      </bit28>
+      <bit29 len="1"  id="tm"                      desc="Thermal Monitor">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="acc"        procid="tm" />
+        <xen          feature="true"               attrs=""               altid="tm1" />
+      </bit29>
+      <bit30 len="1"  id="ia64"                    desc="Legacy IA-64 (Itanium) support bit, now resreved">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit30>
+      <bit31 len="1"  id="pbe"                     desc="Pending Break Enable">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="" />
+      </bit31>
+    </edx>
+  </subleaf>
+</leaf>
