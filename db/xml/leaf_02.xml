@@ -1,0 +1,55 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="2">
+  <desc>Intel cache and TLB information one-byte descriptors</desc>
+  <text>
+    This CPUID leaf returns a stream of 1-byte descriptors describing CPU's internal
+    caches and TLB translation.
+
+    If one of the output descriptors is "0xff", then this CPUID leaf 2 does not report any
+    cache data and CPUID leaf 0x4 should be used for querying cache parameters.
+
+    If one of the output descriptors is "0xfe", then this CPUID leaf 2 does not report any
+    TLB data and CPUID leaf 0x18 should be used to enumerate the TLB and other address
+    translation parameters.
+  </text>
+  <vendors>
+    <vendor>Intel</vendor>
+  </vendors>
+  <subleaf id="0">
+    <text>
+      Query subleaf 0 @iteration_count times to extract all the 1-byte descriptors.
+      On all standard Intel CPUs, @iteration_count is always set to 1.
+    </text>
+    <eax>
+      <bit0  len="8"  id="iteration_count"         desc="Number of times this CPUD leaf must be queried" />
+      <bit8  len="8"  id="desc1"                   desc="Descriptor #1" />
+      <bit16 len="8"  id="desc2"                   desc="Descriptor #2" />
+      <bit24 len="7"  id="desc3"                   desc="Descriptor #3" />
+      <bit31 len="1"  id="eax_invalid"             desc="Descriptors 1-3 are invalid if set" />
+    </eax>
+    <ebx>
+      <bit0  len="8"  id="desc4"                   desc="Descriptor #4" />
+      <bit8  len="8"  id="desc5"                   desc="Descriptor #5" />
+      <bit16 len="8"  id="desc6"                   desc="Descriptor #6" />
+      <bit24 len="7"  id="desc7"                   desc="Descriptor #7" />
+      <bit31 len="1"  id="ebx_invalid"             desc="Descriptors 4-7 are invalid if set" />
+    </ebx>
+    <ecx>
+      <bit0  len="8"  id="desc8"                   desc="Descriptor #8" />
+      <bit8  len="8"  id="desc9"                   desc="Descriptor #9" />
+      <bit16 len="8"  id="desc10"                  desc="Descriptor #10" />
+      <bit24 len="7"  id="desc11"                  desc="Descriptor #11" />
+      <bit31 len="1"  id="ecx_invalid"             desc="Descriptors 8-11 are invalid if set" />
+    </ecx>
+    <edx>
+      <bit0  len="8"  id="desc12"                  desc="Descriptor #12" />
+      <bit8  len="8"  id="desc13"                  desc="Descriptor #13" />
+      <bit16 len="8"  id="desc14"                  desc="Descriptor #14" />
+      <bit24 len="7"  id="desc15"                  desc="Descriptor #15" />
+      <bit31 len="1"  id="edx_invalid"             desc="Descriptors 12-15 are invalid if set" />
+    </edx>
+  </subleaf>
+</leaf>
