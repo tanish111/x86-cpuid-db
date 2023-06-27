@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" >
+
+  <!-- shortString: For one-line short descriptions -->
+  <xs:simpleType name="shortStringType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[^&#xA;]*" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="hexadecimal">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(0x)?[0-9a-f]+" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="linuxType">
+    <xs:attribute type="xs:boolean"      name="feature"     use="required" />
+    <xs:attribute type="xs:boolean"      name="proc"        use="required" />
+    <xs:attribute type="xs:string"       name="altid"       use="optional" />
+    <xs:attribute type="xs:string"       name="procid"      use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="xenType">
+    <xs:attribute type="xs:boolean"      name="feature"     use="required" />
+    <xs:attribute type="xs:string"       name="attrs"       use="required" />
+    <xs:attribute type="xs:string"       name="altid"       use="optional" />
+  </xs:complexType>
+
+  <xs:simpleType name="vendorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Intel"     />
+      <xs:enumeration value="Cyrix"     />
+      <xs:enumeration value="AMD"       />
+      <xs:enumeration value="UMC"       />
+      <xs:enumeration value="Centaur"   />
+      <xs:enumeration value="Transmeta" />
+      <xs:enumeration value="NSC"       />
+      <xs:enumeration value="Hygon"     />
+      <xs:enumeration value="Zhaoxin"   />
+      <xs:enumeration value="Vortex"    />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="vendorsType">
+    <xs:sequence>
+      <xs:element type="vendorType"      name="vendor"      minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="hypervisorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="VMware"    />
+      <xs:enumeration value="Hyperv"    />
+      <xs:enumeration value="Xen"       />
+      <xs:enumeration value="KVM"       />
+      <xs:enumeration value="Jailhouse" />
+      <xs:enumeration value="ACRN"      />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="hypervisorsType">
+    <xs:sequence>
+      <xs:element type="hypervisorType"  name="hypervisor"  minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType  name="valueType">
+    <xs:sequence>
+      <xs:element type="shortStringType" name="desc"        minOccurs="0" />
+      <xs:element type="xs:string"       name="text"        minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute type="hexadecimal"     name="id"          use="required" />
+    <xs:attribute type="xs:string"       name="desc"        use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="valuesType">
+    <xs:sequence>
+      <xs:element type="valueType"       name="value"       minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bitType">
+    <xs:sequence>
+      <xs:element type="xs:string"       name="text"        minOccurs="0" />
+      <xs:element type="vendorsType"     name="vendors"     minOccurs="0" />
+      <xs:element type="hypervisorsType" name="hypervisors" minOccurs="0" />
+      <xs:element type="valuesType"      name="values"      minOccurs="0" />
+      <xs:element type="linuxType"       name="linux"       minOccurs="0" />
+      <xs:element type="xenType"         name="xen"         minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute type="xs:string"       name="id"          use="required" />
+    <xs:attribute type="xs:unsignedByte" name="len"         use="required" />
+    <xs:attribute type="xs:string"       name="desc"        use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="regType">
+    <xs:sequence>
+      <xs:element type="shortStringType" name="desc"        minOccurs="0" />
+      <xs:element type="xs:string"       name="text"        minOccurs="0" />
+      <xs:element type="vendorsType"     name="vendors"     minOccurs="0" />
+      <xs:element type="hypervisorsType" name="hypervisors" minOccurs="0" />
+      <xs:element type="bitType"         name="bit0"        minOccurs="0" />
+      <xs:element type="bitType"         name="bit1"        minOccurs="0" />
+      <xs:element type="bitType"         name="bit2"        minOccurs="0" />
+      <xs:element type="bitType"         name="bit3"        minOccurs="0" />
+      <xs:element type="bitType"         name="bit4"        minOccurs="0" />
+      <xs:element type="bitType"         name="bit5"        minOccurs="0" />
+      <xs:element type="bitType"         name="bit6"        minOccurs="0" />
+      <xs:element type="bitType"         name="bit7"        minOccurs="0" />
+      <xs:element type="bitType"         name="bit8"        minOccurs="0" />
+      <xs:element type="bitType"         name="bit9"        minOccurs="0" />
+      <xs:element type="bitType"         name="bit10"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit11"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit12"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit13"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit14"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit15"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit16"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit17"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit18"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit19"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit20"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit21"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit22"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit23"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit24"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit25"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit26"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit27"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit28"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit29"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit30"       minOccurs="0" />
+      <xs:element type="bitType"         name="bit31"       minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute type="xs:string"       name="id"          use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="subleafType">
+    <xs:sequence>
+      <xs:element type="shortStringType" name="desc"        minOccurs="0" />
+      <xs:element type="xs:string"       name="text"        minOccurs="0" />
+      <xs:element type="vendorsType"     name="vendors"     minOccurs="0" />
+      <xs:element type="hypervisorsType" name="hypervisors" minOccurs="0" />
+      <xs:element type="regType"         name="eax"         minOccurs="0" />
+      <xs:element type="regType"         name="ebx"         minOccurs="0" />
+      <xs:element type="regType"         name="ecx"         minOccurs="0" />
+      <xs:element type="regType"         name="edx"         minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute type="xs:nonNegativeInteger" name="id"    use="required" />
+    <xs:attribute type="xs:positiveInteger"    name="array" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="leafType">
+    <xs:sequence>
+      <!-- TODO: Make short description mandatory after full conversion -->
+      <xs:element type="shortStringType" name="desc"        minOccurs="0" />
+      <xs:element type="xs:string"       name="text"        minOccurs="0" />
+      <xs:element type="vendorsType"     name="vendors"     minOccurs="0" />
+      <xs:element type="hypervisorsType" name="hypervisors" minOccurs="0" />
+      <xs:element type="subleafType"     name="subleaf"     maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute type="hexadecimal"     name="id"          use="required" />
+    <xs:attribute type="xs:unsignedByte" name="subleaves"   use="optional" />
+  </xs:complexType>
+
+  <xs:element name="leaf" type="leafType" />
+
+</xs:schema>
