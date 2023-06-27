@@ -1,0 +1,25 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<cpuvendors>
+  <vendor id="Intel"     vendorid="GenuineIntel" x64="true"/>
+  <vendor id="Cyrix"     vendorid="CyrixInstead"           />
+  <vendor id="AMD"       vendorid="AuthenticAMD" x64="true"/>
+
+  <!-- TODO: Send PQ @ lxcvs:customers/intel/upstream/linux :: devel/darwi/fix-umc-vendorid -->
+  <vendor id="UMC"       vendorid="UMC UMC UMC "           />
+
+  <vendor id="Centaur"   vendorid="CentaurHauls" x64="true"/>
+
+  <!--
+       TODO: Send PQ @ lxcvs:customers/intel/upstream/linux :: devel/darwi/remove-transmeta
+       Transmeta has two alternate vendor IDs. No need to complicate XML schema with it.
+   -->
+  <vendor id="Transmeta" vendorid="GenuineTMx86"           />
+
+  <vendor id="NSC"       vendorid="Geode by NSC"           />
+  <vendor id="Hygon"     vendorid="HygonGenuine" x64="true"/>
+  <vendor id="Zhaoxin"   vendorid="  Shanghai  " x64="true"/>
+  <vendor id="Vortex"    vendorid="Vortex86 SoC"           />
+</cpuvendors>
