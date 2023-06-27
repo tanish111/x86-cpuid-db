@@ -1,0 +1,12 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<hypervisors>
+  <hypervisor id="VMware"    hvid="VMwareVMware"   />
+  <hypervisor id="Hyperv"    hvid="Microsoft Hv"   />
+  <hypervisor id="Xen"       hvid="XenVMMXenVMM"   />
+  <hypervisor id="KVM"       hvid="KVMKVMKVM\0\0\0"/>
+  <hypervisor id="Jailhouse" hvid="Jailhouse\0\0\0"/>
+  <hypervisor id="ACRN"      hvid="ACRNACRNACRN"   />
+</hypervisors>
