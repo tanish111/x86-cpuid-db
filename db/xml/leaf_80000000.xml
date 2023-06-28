@@ -1,0 +1,38 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x80000000">
+  <desc>Maximum extended leaf number + CPU vendor string (AMD)</desc>
+  <subleaf id="0">
+    <text>
+      For AMD CPUs, the E[BCD]X registers are a redundant copy of leaf 0's vendor ID
+      registers.
+    </text>
+    <eax>
+      <vendors>
+	<vendor>Intel</vendor>
+	<vendor>AMD</vendor>
+      </vendors>
+      <bit0  len="32" id="max_ext_leaf"            desc="Maximum extended cpuid leaf supported" />
+    </eax>
+    <ebx>
+      <vendors>
+	<vendor>AMD</vendor>
+      </vendors>
+      <bit0  len="32" id="cpu_vendorid_0"          desc="Vendor ID string bytes 0 - 3" />
+    </ebx>
+    <ecx>
+      <vendors>
+	<vendor>AMD</vendor>
+      </vendors>
+      <bit0  len="32" id="cpu_vendorid_2"          desc="Vendor ID string bytes 8 - 11" />
+    </ecx>
+    <edx>
+      <vendors>
+	<vendor>AMD</vendor>
+      </vendors>
+      <bit0  len="32" id="cpu_vendorid_1"          desc="Vendor ID string bytes 4 - 7" />
+    </edx>
+  </subleaf>
+</leaf>
