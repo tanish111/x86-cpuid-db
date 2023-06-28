@@ -1,0 +1,142 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x80000007">
+  <desc>CPU power management (mostly AMD) and AMD RAS enumeration</desc>
+  <subleaf id="0">
+    <ebx>
+      <desc>AMD RAS (Reliability, Availability, and Serviceability) enumeration</desc>
+      <vendors>
+        <vendor>AMD</vendor>
+      </vendors>
+      <bit0  len="1"  id="mca_overflow_recovery"   desc="MCA overflow conditions not fatal">
+        <linux        feature="true"               proc="true"            altid="overflow_recov" />
+      </bit0>
+      <bit1  len="1"  id="succor"                  desc="Software containment of UnCORRectable errors">
+        <linux        feature="true"               proc="true" />
+      </bit1>
+      <bit2  len="1"  id="hw_assert"               desc="Hardware assert MSRs" />
+      <bit3  len="1"  id="scalable_mca"            desc="Scalable MCA (MCAX MSRs)">
+        <linux        feature="true"               proc="true"            altid="smca" />
+      </bit3>
+    </ebx>
+    <ecx>
+      <desc>Advanced power management features</desc>
+      <vendors>
+        <vendor>AMD</vendor>
+      </vendors>
+      <bit0  len="32" id="cpu_pwr_sample_ratio"    desc="CPU power sample time ratio">
+        <text>
+          Ratio of the compute unit power accumulator sample period to the TSC counter
+          period.  The returned value can be zero (not applicable.)
+        </text>
+      </bit0>
+    </ecx>
+    <edx>
+      <desc>Advanced power management features</desc>
+      <bit0  len="1"  id="digital_temp"            desc="Digital temprature sensor">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit0>
+      <bit1  len="1"  id="powernow_freq_id"        desc="PowerNOW! frequency scaling">
+        <text>
+          On modern CPUs, this is replaced by Hardware P-state control (@hw_pstate).
+        </text>
+      </bit1>
+      <bit2  len="1"  id="powernow_volt_id"        desc="PowerNOW! voltage scaling">
+        <text>
+          On modern CPUs, this is replaced by Hardware P-state control (@hw_pstate).
+        </text>
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit2>
+      <bit3  len="1"  id="thermal_trip"            desc="THERMTRIP (Thermal Trip)">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit3>
+      <bit4  len="1"  id="hw_thermal_control"      desc="Hardware thermal control">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit4>
+      <bit5  len="1"  id="sw_thermal_control"      desc="Software thermal control">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit5>
+      <bit6  len="1"  id="100mhz_steps"            desc="100 MHz multiplier control">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit6>
+      <bit7  len="1"  id="hw_pstate"               desc="Hardware P-state control">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="" />
+      </bit7>
+      <bit8  len="1"  id="constant_tsc"            desc="TSC ticks at constant rate across all P and C states">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+          <vendor>Centaur</vendor>
+          <vendor>Hygon</vendor>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="a"              altid="itsc" />
+      </bit8>
+      <bit9  len="1"  id="core_perf_boost"         desc="Core performance boost">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="cpb" />
+        <xen          feature="true"               attrs="cpb" />
+      </bit9>
+      <bit10 len="1"  id="eff_freq_ro"             desc="Read-only effective frequency interface">
+        <text>
+          Effective frequency interface is the MSRs 0xc00000e7 (read-only max frequency
+          clock count) and 0xc00000e8 (read-only effective frequency clock count).
+        </text>
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <xen          feature="true"               attrs=""               altid="efro" />
+      </bit10>
+      <bit11 len="1"  id="proc_feedback"           desc="Processor feedback interface (deprecated)">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit11>
+      <bit12 len="1"  id="proc_power_reporting"    desc="Processor power reporting interface">
+        <text>
+          Linux calls this feature AMD accumulated power mechanism (ACC_POWER), as the
+          average power consumed by a core is calculated by reading a "core power
+          accumulator" register at the beginning and end of a measurement time interval
+          and then dividing the difference by the length of that interval.
+        </text>
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="acc_power" />
+      </bit12>
+      <bit13 len="1"  id="connected_standby"       desc="CPU Connected Standby support">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit13>
+      <bit14 len="1"  id="rapl_interface"          desc="Runtime Average Power Limit interface">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="rapl" />
+      </bit14>
+    </edx>
+  </subleaf>
+</leaf>
