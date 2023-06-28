@@ -1,0 +1,248 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x80000008">
+  <desc>CPU capacity parameters and extended feature flags (mostly AMD)</desc>
+  <subleaf id="0">
+    <eax>
+      <desc>Long-mode address sizes</desc>
+      <bit0  len="8"  id="phys_addr_bits"          desc="Max physical address bits">
+        <vendors>
+          <vendor>AMD</vendor>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit0>
+      <bit8  len="8"  id="virt_addr_bits"          desc="Max virtual address bits">
+        <vendors>
+          <vendor>AMD</vendor>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit8>
+      <bit16 len="8"  id="guest_phys_addr_bits"    desc="Max nested-paging guest physical address bits">
+        <text>
+          If 0 is returned, then @guest_phys_addr_bits = CPU @phys_addr_bits.
+        </text>
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit16>
+    </eax>
+    <ebx>
+      <desc>Extended feature flags</desc>
+      <bit0  len="1"  id="clzero"                  desc="CLZERO supported">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit0>
+      <bit1  len="1"  id="insn_retired_perf"       desc="Instruction retired counter MSR" >
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="irperf" />
+      </bit1>
+      <bit2  len="1"  id="xsave_err_ptr"           desc="XSAVE/XRSTOR always saves/restores FPU error pointers">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="xsaveerptr" />
+        <xen          feature="true"               attrs="A"              altid="rstr_fp_err_ptrs" />
+      </bit2>
+      <bit3  len="1"  id="invlpgb"                 desc="INVLPGB broadcasts a TLB invalidate to all threads">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit3>
+      <bit4  len="1"  id="rdpru"                   desc="RDPRU (Read Processor Register at User level) supported">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit4>
+      <bit6  len="1"  id="mba"                     desc="Memory Bandwidth Allocation (AMD bit)">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit6>
+      <bit8  len="1"  id="mcommit"                 desc="MCOMMIT (Memory commit) supported">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit8>
+      <bit9  len="1"  id="wbnoinvd"                desc="WBNOINVD supported">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="" />
+      </bit9>
+      <bit12 len="1"  id="ibpb"                    desc="Indirect Branch Prediction Barrier">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="false"           altid="amd_ibpb" />
+        <xen          feature="true"               attrs="A" />
+      </bit12>
+      <bit13 len="1"  id="wbinvd_int"              desc="Interruptible WBINVD/WBNOINVD">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit13>
+      <bit14 len="1"  id="ibrs"                    desc="Indirect Branch Restricted Speculation">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="false"           altid="amd_ibrs" />
+        <xen          feature="true"               attrs="S" />
+      </bit14>
+      <bit15 len="1"  id="stibp"                   desc="Single Thread Indirect Branch Prediction mode">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="false"           altid="amd_stibp" />
+        <xen          feature="true"               attrs="S" />
+      </bit15>
+      <bit16 len="1"  id="ibrs_always_on"          desc="IBRS always-on preferred">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <xen          feature="true"               attrs="S" />
+      </bit16>
+      <bit17 len="1"  id="stibp_always_on"         desc="STIBP always-on preferred">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="false"           altid="amd_stibp_always_on" />
+        <xen          feature="true"               attrs="S" />
+      </bit17>
+      <bit18 len="1"  id="ibrs_fast"               desc="IBRS is preferred over software solution">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <xen          feature="true"               attrs="S" />
+      </bit18>
+      <bit19 len="1"  id="ibrs_same_mode"          desc="IBRS provides same mode protection">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <xen          feature="true"               attrs="S" />
+      </bit19>
+      <bit20 len="1"  id="no_efer_lmsle"           desc="EFER[LMSLE] bit (Long-Mode Segment Limit Enable) unsupported">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <xen          feature="true"               attrs="S"              altid="no_lmsl" />
+      </bit20>
+      <bit21 len="1"  id="tlb_flush_nested"        desc="INVLPGB RAX[5] bit can be set (nested translations)">
+        <text>
+          When INVLPGB RAX[5] is set, TLB flushing includes all the nested translations
+          for guest translations.
+        </text>
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit21>
+      <bit23 len="1"  id="amd_ppin"                desc="Protected Processor Inventory Number">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="" />
+      </bit23>
+      <bit24 len="1"  id="amd_ssbd"                desc="Speculative Store Bypass Disable">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="S" />
+      </bit24>
+      <bit25 len="1"  id="virt_ssbd"               desc="virtualized SSBD (Speculative Store Bypass Disable)">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="!" />
+      </bit25>
+      <bit26 len="1"  id="amd_ssb_no"              desc="SSBD not needed (fixed in HW)">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="A"              altid="ssb_no" />
+      </bit26>
+      <bit27 len="1"  id="cppc"                    desc="Collaborative Processor Performance Control">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit27>
+      <bit28 len="1"  id="amd_psfd"                desc="Predictive Store Forward Disable">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="S"              altid="psfd" />
+      </bit28>
+      <bit29 len="1"  id="btc_no"                  desc="CPU not affected by Branch Type Confusion">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="A" />
+      </bit29>
+      <bit30 len="1"  id="ibpb_ret"                desc="IBPB clears RSB/RAS too">
+        <text>
+          CVE-2022-23824, AMD-SB-1040.
+        </text>
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <xen          feature="true"               attrs="A" />
+      </bit30>
+      <bit31 len="1"  id="branch_sampling"         desc="Branch Sampling supported">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="brs" />
+      </bit31>
+    </ebx>
+    <ecx>
+      <desc>CPU size identifiers</desc>
+      <vendors>
+        <vendor>AMD</vendor>
+      </vendors>
+      <bit0  len="8"  id="cpu_nthreads"            desc="Number of physical threads - 1" />
+      <bit12 len="4"  id="apicid_coreid_len"       desc="Number of thread core ID bits (shift) in APIC ID">
+        <text>
+          Maximum possible number of logical processors (threads) that the package could
+          theoretically support = 2 ** @apic_coreid_len.  Legacy dual-core/single-core
+          CPUs have this field set to zero.
+        </text>
+      </bit12>
+      <bit16 len="2"  id="perf_tsc_len"            desc="Performance time-stamp counter size">
+        <text>
+          Leaf 0x80000001's @perf_tsc field indicates whether the PTSC counter (MSR
+          0xc0010280) is supported.
+        </text>
+        <values>
+          <value      id="0"                       desc="40 bits" />
+          <value      id="1"                       desc="48 bits" />
+          <value      id="2"                       desc="56 bits" />
+          <value      id="3"                       desc="64 bits" />
+        </values>
+      </bit16>
+    </ecx>
+    <edx>
+      <desc>Extended features size identifiers</desc>
+      <vendors>
+        <vendor>AMD</vendor>
+      </vendors>
+      <bit0  len="16" id="invlpgb_max_pages"       desc="INVLPGB maximum page count" />
+      <bit16 len="16" id="rdpru_max_reg_id"        desc="RDPRU max register ID (ECX input)" />
+    </edx>
+  </subleaf>
+</leaf>
