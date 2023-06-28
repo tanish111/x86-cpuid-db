@@ -1,0 +1,25 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x80000002">
+  <desc>CPU brand ID string, bytes 0 - 15</desc>
+  <vendors>
+    <vendor>Intel</vendor>
+    <vendor>AMD</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="32" id="cpu_brandid_0"           desc="CPU brand ID string, bytes 0 - 3" />
+    </eax>
+    <ebx>
+      <bit0  len="32" id="cpu_brandid_1"           desc="CPU brand ID string, bytes 4 - 7" />
+    </ebx>
+    <ecx>
+      <bit0  len="32" id="cpu_brandid_2"           desc="CPU brand ID string, bytes 8 - 11" />
+    </ecx>
+    <edx>
+      <bit0  len="32" id="cpu_brandid_3"           desc="CPU brand ID string, bytes 12 - 15" />
+    </edx>
+  </subleaf>
+</leaf>
