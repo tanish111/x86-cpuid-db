@@ -1,0 +1,74 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x80000006">
+  <desc>(Mostly AMD) L2 TLB, L2 cache, and L3 cache enumeration</desc>
+  <text>
+    This leaf is almost AMD-exclusive, except some of the L2 cache enumeration bits at
+    subleaf 0 ECX register.  For Intel CPUs though, clients code should favor leaf 0x4
+    (deterministic cache parameters) and leaf 0x18 (deterministic TLB parameters).
+  </text>
+  <subleaf id="0">
+    <eax>
+      <desc>AMD L2 TLB 2M/4M pages enumeration</desc>
+      <vendors>
+        <vendor>AMD</vendor>
+      </vendors>
+      <bit0  len="12" id="l2_itlb_2m_4m_nentries"  desc="L2 iTLB #entries, 2M and 4M pages" />
+      <bit12 len="4"  id="l2_itlb_2m_4m_assoc"     desc="L2 iTLB associativity, 2M and 4M pages" />
+      <bit16 len="12" id="l2_dtlb_2m_4m_nentries"  desc="L2 dTLB #entries, 2M and 4M pages" />
+      <bit28 len="4"  id="l2_dtlb_2m_4m_assoc"     desc="L2 dTLB associativity, 2M and 4M pages" />
+    </eax>
+    <ebx>
+      <desc>AMD L2 TLB 4K pages enumeration</desc>
+      <vendors>
+        <vendor>AMD</vendor>
+      </vendors>
+      <bit0  len="12" id="l2_itlb_4k_nentries"     desc="L2 iTLB #entries, 4K pages" />
+      <bit12 len="4"  id="l2_itlb_4k_assoc"        desc="L2 iTLB associativity, 4K pages" />
+      <bit16 len="12" id="l2_dtlb_4k_nentries"     desc="L2 dTLB #entries, 4K pages" />
+      <bit28 len="4"  id="l2_dtlb_4k_assoc"        desc="L2 dTLB associativity, 4K pages" />
+    </ebx>
+    <ecx>
+      <desc>L2 cache enumeration</desc>
+      <bit0  len="8"  id="l2_line_size"            desc="L2 cache line size, in bytes">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit0>
+      <bit8  len="4"  id="l2_nlines"               desc="L2 cache number of lines per tag">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit8>
+      <bit12 len="4"  id="l2_assoc"                desc="L2 cache associativity">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit12>
+      <bit16 len="16" id="l2_size_kb"              desc="L2 cache size, in KB">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit16>
+    </ecx>
+    <edx>
+      <desc>AMD L3 cache enumeration</desc>
+      <vendors>
+        <vendor>AMD</vendor>
+      </vendors>
+      <bit0  len="8"  id="l3_line_size"            desc="L3 cache line size, in bytes" />
+      <bit8  len="4"  id="l3_nlines"               desc="L3 cache number of lines per tag" />
+      <bit12 len="4"  id="l3_assoc"                desc="L3 cache associativity" />
+      <bit18 len="14" id="l3_size_range"           desc="L3 cache size range">
+        <text><![CDATA[
+          (@l3_size_range * 512KB) < L3 cache size < ((@l3_size_range + 1) * 512KB).
+        ]]></text>
+      </bit18>
+    </edx>
+  </subleaf>
+</leaf>
