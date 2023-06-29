@@ -1,0 +1,18 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x8000001a">
+  <desc>AMD instruction optimizations enumeration</desc>
+  <vendors>
+    <vendor>AMD</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <desc>Performance optimizations</desc>
+      <bit0  len="1"  id="fp_128"                  desc="Internal FP/SIMD exec data path is 128-bits wide" />
+      <bit1  len="1"  id="movu_preferred"          desc="SSE: MOVU* better than MOVL*/MOVH*" />
+      <bit2  len="1"  id="fp_256"                  desc="internal FP/SSE exec data path is 256-bits wide" />
+    </eax>
+  </subleaf>
+</leaf>
