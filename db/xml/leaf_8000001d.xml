@@ -1,0 +1,58 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x8000001d">
+  <desc>AMD deterministic cache parameters</desc>
+  <text>
+    This leaf is valid if cpuid leaf 0x80000001 @topoext (AMD topology extensions) is set
+    and cpuid leaf 0x80000000 @max_ext_leaf ≥ 0x8000001d.
+
+    Intel CPUs support deterministic cache parameters enumeration through cpuid leaf 0x4
+    instead.
+  </text>
+  <vendors>
+    <vendor>AMD</vendor>
+  </vendors>
+  <subleaf id="0" array="32">
+    <text>
+      Enumerate the subleaves, starting from subleaf 0, until @cache_type is Null.
+
+      Note that a subleaf index is only an ID for the cache object currently enumerated:
+      it is orthogonal to @cache_level. For example, due to the i/d cache split, L1 cache
+      is typically described by 2 subleaves.
+    </text>
+    <eax>
+      <bit0  len="5"  id="cache_type"              desc="Cache type field">
+        <values>
+          <value      id="0"                       desc="Null; no more caches" />
+          <value      id="1"                       desc="Data cache" />
+          <value      id="2"                       desc="Instruction cache" />
+          <value      id="3"                       desc="Unified cache" />
+        </values>
+      </bit0>
+      <bit5  len="3"  id="cache_level"             desc="Cache level (1-based)">
+        <values>
+          <value      id="1"                       desc="L1 cache" />
+          <value      id="1"                       desc="L2 cache" />
+          <value      id="1"                       desc="L3 cache" />
+        </values>
+      </bit5>
+      <bit8  len="1"  id="cache_self_init"         desc="Self-initializing cache level" />
+      <bit9  len="1"  id="fully_associative"       desc="Fully-associative cache" />
+      <bit14 len="12" id="num_threads_sharing"     desc="Number of logical CPUs sharing cache" />
+    </eax>
+    <ebx>
+      <bit0  len="12" id="cache_linesize"          desc="System coherency line size (0-based)" />
+      <bit12 len="10" id="cache_npartitions"       desc="Physical line partitions (0-based)" />
+      <bit22 len="10" id="cache_nways"             desc="Ways of associativity (0-based)" />
+    </ebx>
+    <ecx>
+      <bit0  len="31" id="cache_nsets"             desc="Cache number of sets (0-based)" />
+    </ecx>
+    <edx>
+      <bit0  len="1"  id="wbinvd_rll_no_guarantee" desc="WBINVD/INVD not guaranteed for Remote Lower-Level caches" />
+      <bit1  len="1"  id="ll_inclusive"            desc="Cache is inclusive of Lower-Level caches" />
+    </edx>
+  </subleaf>
+</leaf>
