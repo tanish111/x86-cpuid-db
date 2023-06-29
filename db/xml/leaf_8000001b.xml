@@ -1,0 +1,32 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x8000001b">
+  <desc>AMD IBS (Instruction-Based Sampling) enumeration</desc>
+  <text>
+    This leaf is valid if cpuid leaf 0x80000001's @ibs field is set.
+  </text>
+  <vendors>
+    <vendor>AMD</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <text>
+        If @ibs_flags_valid is clear, this register is reserved.
+      </text>
+      <bit0  len="1"  id="ibs_flags_valid"         desc="IBS feature flags valid" />
+      <bit1  len="1"  id="ibs_fetch_sampling"      desc="IBS fetch sampling supported" />
+      <bit2  len="1"  id="ibs_op_sampling"         desc="IBS execution sampling supported" />
+      <bit3  len="1"  id="ibs_rdwr_op_counter"     desc="IBS read/write of op counter supported" />
+      <bit4  len="1"  id="ibs_op_count"            desc="IBS OP counting mode supported" />
+      <bit5  len="1"  id="ibs_branch_target"       desc="IBS branch target address reporting supported" />
+      <bit6  len="1"  id="ibs_op_counters_ext"     desc="IBS IbsOpCurCnt/IbsOpMaxCnt extend by 7 bits" />
+      <bit7  len="1"  id="ibs_rip_invalid_chk"     desc="IBS invalid RIP indication supported" />
+      <bit8  len="1"  id="ibs_op_branch_fuse"      desc="IBS fused branch micro-op indication supported" />
+      <bit9  len="1"  id="ibs_fetch_ctl_ext"       desc="IBS Fetch Control Extended MSR (0xc001103c) supported" />
+      <bit10 len="1"  id="ibs_op_data_4"           desc="IBS op data 4 MSR supported" />
+      <bit11 len="1"  id="ibs_l3_miss_filter"      desc="IBS L3-miss filtering supported (Zen4+)" />
+    </eax>
+  </subleaf>
+</leaf>
