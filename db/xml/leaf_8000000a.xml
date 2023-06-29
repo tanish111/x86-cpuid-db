@@ -1,0 +1,79 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x8000000a">
+  <desc>AMD SVM (Secure Virtual Machine) enumeration</desc>
+  <vendors>
+    <vendor>AMD</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="8"  id="svm_version"             desc="SVM revision number" />
+    </eax>
+    <ebx>
+      <bit0  len="32" id="svm_nasid"               desc="Number of address space identifiers (ASID)" />
+    </ebx>
+    <edx>
+      <desc>SVM feature flags</desc>
+      <bit0  len="1"  id="nested_pt"               desc="Nested paging">
+        <linux        feature="true"               proc="true"            altid="npt" />
+      </bit0>
+      <bit1  len="1"  id="lbr_virt"                desc="LBR virtualization">
+        <linux        feature="true"               proc="true"            altid="lbrv" />
+      </bit1>
+      <bit2  len="1"  id="svm_lock"                desc="SVM lock">
+        <linux        feature="true"               proc="true"            altid="svml"       procid="svm_lock" />
+      </bit2>
+      <bit3  len="1"  id="nrip_save"               desc="NRIP save support on #VMEXIT">
+        <linux        feature="true"               proc="true"            altid="nrips"      procid="nrip_save" />
+      </bit3>
+      <bit4  len="1"  id="tsc_rate_msr"            desc="MSR based TSC rate control">
+        <linux        feature="true"               proc="true"            altid="tscratemsr" procid="tsc_scale" />
+      </bit4>
+      <bit5  len="1"  id="vmcb_clean"              desc="VMCB clean bits support">
+        <linux        feature="true"               proc="true"            altid="vmcbclean"  procid="vmcb_clean" />
+      </bit5>
+      <bit6  len="1"  id="flush_by_asid"           desc="Flush by ASID + Extended VMCB TLB_Control">
+        <linux        feature="true"               proc="true"            altid="flushbyasid" />
+      </bit6>
+      <bit7  len="1"  id="decode_assists"          desc="Decode Assists support">
+        <linux        feature="true"               proc="true"            altid="decodeassists" />
+      </bit7>
+      <bit10 len="1"  id="pause_filter"            desc="Pause intercept filter">
+        <linux        feature="true"               proc="true"            altid="pausefilter" />
+      </bit10>
+      <bit12 len="1"  id="pf_threshold"            desc="Pause filter threshold">
+        <linux        feature="true"               proc="true"            altid="pfthreshold" />
+      </bit12>
+      <bit13 len="1"  id="avic"                    desc="Advanced virtual interrupt controller">
+        <linux        feature="true"               proc="true" />
+      </bit13>
+      <bit15 len="1"  id="v_vmsave_vmload"         desc="Virtual VMSAVE/VMLOAD (nested virt)">
+        <linux        feature="true"               proc="true" />
+      </bit15>
+      <bit16 len="1"  id="v_gif"                   desc="Virtualize the Global Interrupt Flag">
+        <linux        feature="true"               proc="true"            altid="vgif" />
+      </bit16>
+      <bit17 len="1"  id="gmet"                    desc="Guest mode execution trap" />
+      <bit18 len="1"  id="x2avic"                  desc="Virtual x2APIC">
+        <linux        feature="true"               proc="true" />
+      </bit18>
+      <bit19 len="1"  id="sss_check"               desc="Supervisor Shadow Stack restrictions" />
+      <bit20 len="1"  id="v_spec_ctrl"             desc="Virtual SPEC_CTRL">
+        <linux        feature="true"               proc="true" />
+      </bit20>
+      <bit21 len="1"  id="ro_gpt"                  desc="Read-Only guest page table support" />
+      <bit23 len="1"  id="h_mce_override"          desc="Host MCE override" />
+      <bit24 len="1"  id="tlbsync_int"             desc="TLBSYNC intercept + INVLPGB/TLBSYNC in VMCB" />
+      <bit25 len="1"  id="nmi_virt"                desc="NMI virtualization">
+        <linux        feature="true"               proc="true"            altid="vnmi" />
+      </bit25>
+      <bit26 len="1"  id="ibs_virt"                desc="IBS Virtualization" />
+      <bit27 len="1"  id="ext_lvt_off_chg"         desc="Extended LVT offset fault change" />
+      <bit28 len="1"  id="svme_addr_chk"           desc="Guest SVME addr check">
+        <linux        feature="true"               proc="false" />
+      </bit28>
+    </edx>
+  </subleaf>
+</leaf>
