@@ -1,0 +1,26 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x80000019">
+  <desc>AMD TLB 1G-pages enumeration</desc>
+  <vendors>
+    <vendor>AMD</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <desc>L1 TLB 1G-pages enumeration</desc>
+      <bit0  len="12" id="l1_itlb_1g_nentries"     desc="L1 iTLB #entries, 1G pages" />
+      <bit12 len="4"  id="l1_itlb_1g_assoc"        desc="L1 iTLB associativity, 1G pages" />
+      <bit16 len="12" id="l1_dtlb_1g_nentries"     desc="L1 dTLB #entries, 1G pages" />
+      <bit28 len="4"  id="l1_dtlb_1g_assoc"        desc="L1 dTLB associativity, 1G pages" />
+    </eax>
+    <ebx>
+      <desc>L2 TLB 1G-pages enumeration</desc>
+      <bit0  len="12" id="l2_itlb_1g_nentries"     desc="L2 iTLB #entries, 1G pages" />
+      <bit12 len="4"  id="l2_itlb_1g_assoc"        desc="L2 iTLB associativity, 1G pages" />
+      <bit16 len="12" id="l2_dtlb_1g_nentries"     desc="L2 dTLB #entries, 1G pages" />
+      <bit28 len="4"  id="l2_dtlb_1g_assoc"        desc="L2 dTLB associativity, 1G pages" />
+    </ebx>
+  </subleaf>
+</leaf>
