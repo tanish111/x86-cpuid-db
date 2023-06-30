@@ -1,0 +1,30 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x8000001e">
+  <desc>AMD CPU topology enumeration</desc>
+  <vendors>
+    <vendor>AMD</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="32" id="ext_apic_id"             desc="Extended APIC ID">
+        <text>
+          This field is reserved if APIC base address MSR (0x0000001b), local APIC is
+          enabled in xAPIC mode bit #11, is clear.
+        </text>
+      </bit0>
+    </eax>
+    <ebx>
+      <desc>Core identifiers</desc>
+      <bit0  len="8"  id="core_id"                 desc="Unique per-socket logical core unit ID" />
+      <bit8  len="8"  id="core_nthreas"            desc="#Threads per core (zero-based)" />
+    </ebx>
+    <ecx>
+      <desc>Node identifiers</desc>
+      <bit0  len="8"  id="node_id"                 desc="Node (die) ID of invoking logical CPU" />
+      <bit8  len="3"  id="nnodes_per_socket"       desc="#nodes in invoking logical CPU's package/socket" />
+    </ecx>
+  </subleaf>
+</leaf>
