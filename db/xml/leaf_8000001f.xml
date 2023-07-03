@@ -1,0 +1,93 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x8000001f">
+  <desc>AMD encrypted memory capabilities enumeration (SME/SEV)</desc>
+  <vendors>
+    <vendor>AMD</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <desc>Secure Encryption flags</desc>
+      <bit0  len="1"  id="sme"                     desc="Secure Memory Encryption supported">
+        <linux        feature="true"               proc="true" />
+      </bit0>
+      <bit1  len="1"  id="sev"                     desc="Secure Encrypted Virtualization supported">
+        <linux        feature="true"               proc="true" />
+      </bit1>
+      <bit2  len="1"  id="vm_page_flush"           desc="VM Page Flush MSR (0xc001011e) available">
+        <linux        feature="true"               proc="false" />
+      </bit2>
+      <bit3  len="1"  id="sev_encrypted_state"     desc="SEV Encrypted State supported">
+        <linux        feature="true"               proc="true"            altid="sev_es" />
+      </bit3>
+      <bit4  len="1"  id="sev_nested_paging"       desc="SEV secure nested paging supported">
+        <text>
+          RMP table can be enabled to protect memory even from hypervisor.
+        </text>
+      </bit4>
+      <bit5  len="1"  id="vm_permission_levels"    desc="VMPL supported">
+        <text>
+          Multiple SNP guests can share memory using differing permissions.
+        </text>
+      </bit5>
+      <bit6  len="1"  id="rpmquery"                desc="RPMQUERY instruction supported" />
+      <bit7  len="1"  id="vmpl_sss"                desc="VMPL supervisor shadwo stack supported">
+        <text>
+          The Supervisor Shadow Stack bit is supported in the VMPL permission set.
+        </text>
+      </bit7>
+      <bit8  len="1"  id="secure_tsc"              desc="Secure TSC supported" />
+      <bit9  len="1"  id="virt_tsc_aux"            desc="Hardware virtualizes TSC_AUX">
+        <linux        feature="true"               proc="false"           altid="v_tsc_aux" />
+      </bit9>
+      <bit10 len="1"  id="sme_coherent"            desc="HW enforces cache coherency across encryption domains">
+        <linux        feature="true"               proc="false" />
+      </bit10>
+      <bit11 len="1"  id="req_64bit_hypervisor"    desc="SEV guest mandates 64-bit hypervisor" />
+      <bit12 len="1"  id="restricted_injection"    desc="Restricted Injection supported">
+        <text>
+          SEV-ES guests can refuse all event-injections except #HV.
+        </text>
+      </bit12>
+      <bit13 len="1"  id="alternate_injection"     desc="Alternate Injection supported">
+        <text>
+          SEV-ES guests can use an encrypted vmcb field for event injection.
+        </text>
+      </bit13>
+      <bit14 len="1"  id="debug_swap"              desc="SEV-ES: full debug state swap is supported" />
+      <bit15 len="1"  id="disallow_host_ibs"       desc="SEV-ES: Disallowing IBS use by the host is supported" />
+      <bit16 len="1"  id="virt_transparent_enc"    desc="Virtual Transparent Encryption">
+        <text>
+          Forcing all memory accesses within an SEV guest to be encrypted with the guest's
+          key is supported.
+        </text>
+      </bit16>
+      <bit17 len="1"  id="vmgexit_paremeter"       desc="VmgexitParameter is supported in SEV_FEATURES" />
+      <bit18 len="1"  id="virt_tom_msr"            desc="Virtual TOM MSR is supported" />
+      <bit19 len="1"  id="virt_ibs"                desc="IBS state virtualization is supported for SEV-ES guests" />
+      <bit24 len="1"  id="vmsa_reg_protection"     desc="VMSA register protection is supported" />
+      <bit25 len="1"  id="smt_protection"          desc="SMT protection is supported" />
+      <bit28 len="1"  id="svsm_page_msr"           desc="SVSM communication page MSR (0xc001f000h) is supported" />
+      <bit29 len="1"  id="nested_virt_snp_msr"     desc="VIRT_RMPUPDATE/VIRT_PSMASH MSRs are supported" />
+    </eax>
+    <ebx>
+      <desc>Secure Encryption flags (cont.)</desc>
+      <bit0  len="6"  id="pte_cbit_pos"            desc="PTE bit number used to enable memory encryption" />
+      <bit6  len="6"  id="phys_addr_reduction_nbits"
+                                                   desc="Reduction of phys address space when encryption is enabled, in bits" />
+      <bit12 len="4"  id="vmpl_count"              desc="Number of VM permission levels (VMPL) supported" />
+    </ebx>
+    <ecx>
+      <bit0  len="32" id="enc_guests_max"          desc="Max supported number of simultaneous encrypted guests">
+        <text>
+          That is, maximum ASID value that may be used for an SEV-enabled guest.
+        </text>
+      </bit0>
+    </ecx>
+    <edx>
+      <bit0  len="32" id="min_sev_asid_no_sev_es"  desc="Mininum ASID for SEV-enabled SEV-ES-disabled guest" />
+    </edx>
+  </subleaf>
+</leaf>
