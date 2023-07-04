@@ -1,0 +1,51 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x80000021">
+  <desc>AMD extended features enumeration 2</desc>
+  <vendors>
+    <vendor>AMD</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="1"  id="no_nested_data_bp"       desc="No nested data breakpoints">
+        <linux        feature="true"               proc="false" />
+      </bit0>
+      <bit1  len="1"  id="fsgs_non_serializing"    desc="WRMSR to {FS,GS,KERNEL_GS}_BASE is non-serializing" />
+      <bit2  len="1"  id="lfence_serializing"      desc="LFENCE always serializing / synchronizes RDTSC">
+        <linux        feature="true"               proc="false"           altid="lfence_rdtsc" />
+      </bit2>
+      <bit3  len="1"  id="smm_page_cfg_lock"       desc="SMM paging configuration lock is supported" />
+      <bit6  len="1"  id="null_sel_clr_base"       desc="Null selector clears base">
+        <text>
+          A null segment load clears the segment base.
+        </text>
+        <linux        feature="true"               proc="false" />
+      </bit6>
+      <bit7  len="1"  id="upper_addr_ignore"       desc="EFER MSR Upper Address Ignore Enable bit supported" />
+      <bit8  len="1"  id="auto_ibrs"               desc="EFER MSR Automatic IBRS enable bit supported">
+        <text>
+          EFER[AutomaticIBRSEn] bit can be set to automatically toggle IBRS protection
+          when CPL changes.
+        </text>
+        <linux        feature="true"               proc="false"           altid="autoibrs" />
+      </bit8>
+      <bit9  len="1"  id="no_smm_ctl_msr"          desc="SMM_CTL MSR (0xc0010116) is not present">
+        <linux        feature="true"               proc="false" />
+      </bit9>
+      <bit10 len="1"  id="fsrs_supported"          desc="Fast Short Rep Stosb (FSRS) is supported" />
+      <bit11 len="1"  id="fsrc_supported"          desc="Fast Short Repe Cmpsb (FSRC) is supported" />
+      <bit13 len="1"  id="prefetch_ctl_msr"        desc="Prefetch control MSR is supported" />
+      <bit17 len="1"  id="user_cpuid_disable"      desc="#GP when executing CPUID at CPL > 0 is supported" />
+      <bit18 len="1"  id="epsf_supported"          desc="Enhanced Predictive Store Forwarding (EPSF) is supported" />
+    </eax>
+    <ebx>
+      <bit0  len="12" id="microcode_patch_size"    desc="Size of microcode patch, in 16-byte units">
+        <text>
+          If 0 is returned, then the size of the microcode patch is ≤ 5568 (0x15c0) bytes.
+        </text>
+      </bit0>
+    </ebx>
+  </subleaf>
+</leaf>
