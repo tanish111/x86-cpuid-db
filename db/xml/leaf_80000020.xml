@@ -1,0 +1,66 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x80000020">
+  <desc>AMD Platform QoS extended feature IDs</desc>
+  <text>
+    AMD's Platform QoS (PQoS) is equivalent to Intel's Resource Director Technology (RDT).
+    For CAT L2/L3, AMD maintains enumeration compatibility with Intel through CPUID 0x10.
+    For MBA/SMBA, AMD CPUs declare this extended leaf instead.
+    AMD's Memory Bandwidth Enforcement (MBE) closely aligns with Intel's MBA. Thus, for
+    simplification, this document defaults to Intel's naming conventions.
+  </text>
+  <vendors>
+    <vendor>AMD</vendor>
+  </vendors>
+  <subleaf id="0">
+    <desc>Platform QoS extended feature flags</desc>
+    <ebx>
+      <bit1  len="1"  id="mba"                     desc="Memory Bandwidth Allocation support">
+        <linux        feature="true"               proc="true" />
+      </bit1>
+      <bit2  len="1"  id="smba"                    desc="Slow Memory Bandwidth Allocation support">
+        <linux        feature="true"               proc="false" />
+      </bit2>
+      <bit3  len="1"  id="bmec"                    desc="Bandwidth Monitoring Event Configuration support">
+        <linux        feature="true"               proc="false" />
+      </bit3>
+      <bit4  len="1"  id="l3rr"                    desc="L3 Range Reservation support" />
+    </ebx>
+  </subleaf>
+  <subleaf id="1">
+    <desc>Memory Bandwidth Allocation (MBA) flags</desc>
+    <eax>
+      <bit0  len="32" id="mba_limit_len"           desc="MBA enforcement limit size" />
+    </eax>
+    <edx>
+      <bit0  len="32" id="mba_cos_max"             desc="MBA max Class of Service number (zero-based)" />
+    </edx>
+  </subleaf>
+  <subleaf id="2">
+    <desc>Slow Memory Bandwidth Allocation (SMBA) flags</desc>
+    <eax>
+      <bit0  len="32" id="smba_limit_len"          desc="SMBA enforcement limit size" />
+    </eax>
+    <edx>
+      <bit0  len="32" id="smba_cos_max"            desc="SMBA max Class of Service number (zero-based)" />
+    </edx>
+  </subleaf>
+  <subleaf id="3">
+    <desc>Bandwidth Monitoring Event Configuration (BMEC) flags</desc>
+    <ebx>
+      <bit0  len="8"  id="bmec_num_events"         desc="BMEC number of bandwidth events available" />
+    </ebx>
+    <ecx>
+      <desc>BMEC bandwidth sources that can be tracked</desc>
+      <bit0  len="1"  id="bmec_local_reads"        desc="Local NUMA reads can be tracked" />
+      <bit1  len="1"  id="bmec_remote_reads"       desc="Remote NUMA reads can be tracked" />
+      <bit2  len="1"  id="bmec_local_nontemp_wr"   desc="Local NUMA non-temporal writes can be tracked" />
+      <bit3  len="1"  id="bmec_remote_nontemp_wr"  desc="Remote NUMA non-temporal writes can be tracked" />
+      <bit4  len="1"  id="bmec_local_slow_mem_rd"  desc="Local NUMA slow-memory reads can be tracked" />
+      <bit5  len="1"  id="bmec_remote_slow_mem_rd" desc="Remote NUMA slow-memory reads can be tracked" />
+      <bit6  len="1"  id="bmec_all_dirty_victims"  desc="Dirty QoS victims to all types of memory can be tracked" />
+    </ecx>
+  </subleaf>
+</leaf>
