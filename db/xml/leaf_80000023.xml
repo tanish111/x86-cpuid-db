@@ -1,0 +1,18 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x80000023">
+  <desc>AMD Secure Multi-key Encryption enumeration</desc>
+  <vendors>
+    <vendor>AMD</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="1"  id="mem_hmk_mode"            desc="MEM-HMK encryption mode is supported" />
+    </eax>
+    <ebx>
+      <bit0  len="16" id="mem_hmk_avail_keys"      desc="MEM-HMK mode: total num of available encryption keys" />
+    </ebx>
+  </subleaf>
+</leaf>
