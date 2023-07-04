@@ -1,0 +1,35 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x80000022">
+  <desc>AMD Performance Monitoring v2 enumeration</desc>
+  <vendors>
+    <vendor>AMD</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="1"  id="perfmon_v2"              desc="Performance monitoring v2 supported">
+        <linux        feature="true"               proc="true" />
+      </bit0>
+      <bit1  len="1"  id="lbr_v2"                  desc="Last Branch Record v2 extensions (LBR Stack)">
+        <linux        feature="true"               proc="true" />
+      </bit1>
+      <bit2  len="1"  id="lbr_pmc_freeze"          desc="Freezing core performance counters / LBR Stack supported" />
+    </eax>
+    <ebx>
+      <bit0  len="4"  id="n_pmc_core"              desc="Number of core perfomance counters" />
+      <bit4  len="6"  id="lbr_v2_stack_size"       desc="Number of available LBR stack entries" />
+      <bit10 len="6"  id="n_pmc_northbridge"       desc="Number of available northbridge (data fabric) performance counters" />
+      <bit16 len="6"  id="n_pmc_umc"               desc="Number of available UMC performance counters" />
+    </ebx>
+    <ecx>
+      <bit0  len="32" id="active_umc_bitmask"      desc="Active UMCs bitmask">
+        <text>
+          Number of PMCs (Performance Monitoring Counters) per UMC (Unified Memory
+          Controller) = @n_pmc_umc / POPCNT(@active_umc_bitmask).
+        </text>
+      </bit0>
+    </ecx>
+  </subleaf>
+</leaf>
