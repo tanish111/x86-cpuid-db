@@ -1,0 +1,46 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="5">
+  <desc>MONITOR/MWAIT instructions enumeration</desc>
+  <subleaf id="0">
+    <eax>
+      <vendors>
+        <vendor>Intel</vendor>
+        <vendor>AMD</vendor>
+      </vendors>
+      <bit0  len="16" id="min_mon_size"            desc="Smallest monitor-line size, in bytes" />
+    </eax>
+    <ebx>
+      <vendors>
+        <vendor>Intel</vendor>
+        <vendor>AMD</vendor>
+      </vendors>
+      <bit0  len="16" id="max_mon_size"            desc="Largest monitor-line size, in bytes" />
+    </ebx>
+    <ecx>
+      <desc>MONITOR/MWAIT feature flags</desc>
+      <vendors>
+        <vendor>Intel</vendor>
+        <vendor>AMD</vendor>
+      </vendors>
+      <bit0  len="1"  id="mwait_ext"               desc="Enumeration of MONITOR/MWAIT extensions is supported" />
+      <bit1  len="1"  id="mwait_irq_break"         desc="Interrupts as a break-event for MWAIT is supported" />
+    </ecx>
+    <edx>
+      <desc>Processor-specific C-states (not ACPI C-states) for MWAIT extension</desc>
+      <vendors>
+	<vendor>Intel</vendor>
+      </vendors>
+      <bit0  len="4"  id="n_c0_substates"          desc="Number of C0 sub C-states supported using MWAIT" />
+      <bit4  len="4"  id="n_c1_substates"          desc="Number of C1 sub C-states supported using MWAIT" />
+      <bit8  len="4"  id="n_c2_substates"          desc="Number of C2 sub C-states supported using MWAIT" />
+      <bit12 len="4"  id="n_c3_substates"          desc="Number of C3 sub C-states supported using MWAIT" />
+      <bit16 len="4"  id="n_c4_substates"          desc="Number of C4 sub C-states supported using MWAIT" />
+      <bit20 len="4"  id="n_c5_substates"          desc="Number of C5 sub C-states supported using MWAIT" />
+      <bit24 len="4"  id="n_c6_substates"          desc="Number of C6 sub C-states supported using MWAIT" />
+      <bit28 len="4"  id="n_c7_substates"          desc="Number of C7 sub C-states supported using MWAIT" />
+    </edx>
+  </subleaf>
+</leaf>
