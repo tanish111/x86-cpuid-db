@@ -1,0 +1,165 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="6">
+  <desc>Thermal and Power Management enumeration</desc>
+  <subleaf id="0">
+    <eax>
+      <desc>Thermal and Power Management feature flags</desc>
+      <bit0  len="1"  id="digital_temp"            desc="Digital temprature sensor">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="dtherm" />
+      </bit0>
+      <bit1  len="1"  id="turbo_boost"             desc="Intel Turbo Boost">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit1>
+      <bit2  len="1"  id="lapic_timer_always_on"   desc="Always-Running APIC Timer (not affected by p-state)">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="arat" />
+      </bit2>
+      <bit4  len="1"  id="power_limit_event"       desc="Power Limit Notification (PLN) event">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="pln" />
+      </bit4>
+      <bit5  len="1"  id="ecmd"                    desc="Clock modulation duty cycle extension">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit5>
+      <bit6  len="1"  id="package_thermal"         desc="Package thermal management">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="pts" />
+      </bit6>
+      <bit7  len="1"  id="hwp_base_regs"           desc="HWP (Hardware P-states) base registers are supported">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="hwp" />
+      </bit7>
+      <bit8  len="1"  id="hwp_notify"              desc="HWP notification (IA32_HWP_INTERRUPT MSR)">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit8>
+      <bit9  len="1"  id="hwp_activity_window"     desc="HWP activity window (IA32_HWP_REQUEST[bits 41:32]) supported">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="hwp_act_window" />
+      </bit9>
+      <bit10 len="1"  id="hwp_energy_perf_pr"      desc="HWP Energy Performance Preference">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="hwp_epp" />
+      </bit10>
+      <bit11 len="1"  id="hwp_package_req"         desc="HWP Package Level Request">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="hwp_pkg_req" />
+      </bit11>
+      <bit13 len="1"  id="hdc_base_regs"           desc="HDC base registers are supported">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit13>
+      <bit14 len="1"  id="turbo_boost_3_0"         desc="Intel Turbo Boost Max 3.0">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit14>
+      <bit15 len="1"  id="hwp_capabilities"        desc="HWP Highest Performance change">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit15>
+      <bit16 len="1"  id="hwp_peci_override"       desc="HWP PECI override">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit16>
+      <bit17 len="1"  id="hwp_flexible"            desc="Flexible HWP">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit17>
+      <bit18 len="1"  id="hwp_fast"                desc="IA32_HWP_REQUEST MSR fast access mode">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit18>
+      <bit19 len="1"  id="hw_feedback"             desc="HW_FEEDBACK MSRs supported">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="hfi" />
+      </bit19>
+      <bit20 len="1"  id="hwp_ignore_idle"         desc="Ignoring idle logical CPU HWP req is supported">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit20>
+      <bit23 len="1"  id="thread_director"         desc="Intel thread director support">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit23>
+      <bit24 len="1"  id="therm_interrupt_bit25"   desc="IA32_THERM_INTERRUPT MSR bit 25 is supported">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit24>
+    </eax>
+    <ebx>
+      <desc>Intel-specific digital temprature sensor flags</desc>
+      <vendors>
+        <vendor>Intel</vendor>
+      </vendors>
+      <bit0  len="4"  id="n_therm_thresholds"      desc="Digital thermometer thresholds" />
+    </ebx>
+    <ecx>
+      <bit0  len="1"  id="aperf_mperf"             desc="MPERF/APERF MSRs (effective frequency interface)">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="aperfmperf" />
+      </bit0>
+      <bit3  len="1"  id="energy_perf_bias"        desc="IA32_ENERGY_PERF_BIAS MSR support">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="epb" />
+      </bit3>
+      <bit8  len="8"  id="thrd_director_nclasses"  desc="Number of classes, Intel thread director">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit8>
+    </ecx>
+    <edx>
+      <desc>Intel hardware feedback interface capabilities enumeration</desc>
+      <vendors>
+        <vendor>Intel</vendor>
+      </vendors>
+      <bit0  len="1"  id="perfcap_reporting"       desc="Performance capability reporting" />
+      <bit1  len="1"  id="encap_reporting"         desc="Energy efficiency capability reporting" />
+      <bit8  len="4"  id="feedback_sz"             desc="HW feedback interface struct size, in 4K pages" />
+      <bit16 len="16" id="this_lcpu_hwfdbk_idx"    desc="This logical CPU index @ HW feedback struct, 0-based" />
+    </edx>
+  </subleaf>
+</leaf>
