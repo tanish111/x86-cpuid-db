@@ -1,0 +1,631 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="7">
+  <desc>Extended CPU features enumeration</desc>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="32" id="leaf7_n_subleaves"       desc="Number of cpuid 0x7 subleaves">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit0>
+    </eax>
+    <ebx>
+      <bit0  len="1"  id="fsgsbase"                desc="FSBASE/GSBASE read/write support">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit0>
+      <bit1  len="1"  id="tsc_adjust"              desc="IA32_TSC_ADJUST MSR supported">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="S" />
+      </bit1>
+      <bit2  len="1"  id="sgx"                     desc="Intel SGX (Software Guard Extensions)">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="" />
+      </bit2>
+      <bit3  len="1"  id="bmi1"                    desc="Bit manipulation extensions group 1">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit3>
+      <bit4  len="1"  id="hle"                     desc="Hardware Lock Elision">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="!a" />
+      </bit4>
+      <bit5  len="1"  id="avx2"                    desc="AVX2 instruction set">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit5>
+      <bit6  len="1"  id="fdp_excptn_only"         desc="FPU Data Pointer updated only on x87 exceptions">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="!" />
+      </bit6>
+      <bit7  len="1"  id="smep"                    desc="Supervisor Mode Execution Protection">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="S" />
+      </bit7>
+      <bit8  len="1"  id="bmi2"                    desc="Bit manipulation extensions group 2">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit8>
+      <bit9  len="1"  id="erms"                    desc="Enhanced REP MOVSB/STOSB">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit9>
+      <bit10 len="1"  id="invpcid"                 desc="INVPCID instruction (Invalidate Processor Context ID)">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="H" />
+      </bit10>
+      <bit11 len="1"  id="rtm"                     desc="Intel restricted transactional memory">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="!A" />
+      </bit11>
+      <bit12 len="1"  id="pqm"                     desc="Intel RDT-CMT / AMD Platform-QoS cache monitoring">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="cqm" />
+        <xen          feature="true"               attrs="" />
+      </bit12>
+      <bit13 len="1"  id="zero_fcs_fds"            desc="Deprecated FPU CS/DS (stored as zero)">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="!"              altid="no_fpu_sel" />
+      </bit13>
+      <bit14 len="1"  id="mpx"                     desc="Intel memory protection extensions">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="s" />
+      </bit14>
+      <bit15 len="1"  id="rdt_a"                   desc="Intel RDT / AMD Platform-QoS Enforcemeent">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs=""               altid="pqe" />
+      </bit15>
+      <bit16 len="1"  id="avx512f"                 desc="AVX-512 foundation instructions">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit16>
+      <bit17 len="1"  id="avx512dq"                desc="AVX-512 double/quadword instructions">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit17>
+      <bit18 len="1"  id="rdseed"                  desc="RDSEED instruction">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit18>
+      <bit19 len="1"  id="adx"                     desc="ADCX/ADOX instructions">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit19>
+      <bit20 len="1"  id="smap"                    desc="Supervisor mode access prevention">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="S" />
+      </bit20>
+      <bit21 len="1"  id="avx512ifma"              desc="AVX-512 integer fused multiply add">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit21>
+      <bit23 len="1"  id="clflushopt"              desc="CLFLUSHOPT instruction">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit23>
+      <bit24 len="1"  id="clwb"                    desc="CLWB instruction">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit24>
+      <bit25 len="1"  id="intel_pt"                desc="Intel processor trace">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs=""               altid="proc_trace" />
+      </bit25>
+      <bit26 len="1"  id="avx512pf"                desc="AVX-512 prefetch instructions">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit26>
+      <bit27 len="1"  id="avx512er"                desc="AVX-512 exponent/reciprocal instrs">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit27>
+      <bit28 len="1"  id="avx512cd"                desc="AVX-512 conflict detection instrs">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit28>
+      <bit29 len="1"  id="sha"                     desc="SHA/SHA256 instructions">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="sha_ni" />
+        <xen          feature="true"               attrs="A" />
+      </bit29>
+      <bit30 len="1"  id="avx512bw"                desc="AVX-512 BW (byte/word granular) instructions">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit30>
+      <bit31 len="1"  id="avx512vl"                desc="AVX-512 VL (128/256 vector length) extensions">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit31>
+    </ebx>
+    <ecx>
+      <bit0  len="1"  id="prefetchwt1"             desc="PREFETCHWT1 (Intel Xeon Phi only)">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <xen          feature="true"               attrs="A" />
+      </bit0>
+      <bit1  len="1"  id="avx512vbmi"              desc="AVX-512 Vector byte manipulation instrs">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit1>
+      <bit2  len="1"  id="umip"                    desc="User mode instruction protection">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="S" />
+      </bit2>
+      <bit3  len="1"  id="pku"                     desc="Protection keys for user-space">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="H" />
+      </bit3>
+      <bit4  len="1"  id="ospke"                   desc="OS protection keys enable">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="!" />
+      </bit4>
+      <bit5  len="1"  id="waitpkg"                 desc="WAITPKG instructions">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit5>
+      <bit6  len="1"  id="avx512_vbmi2"            desc="AVX-512 vector byte manipulation instrs group 2">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit6>
+      <bit7  len="1"  id="cet_ss"                  desc="CET shadow stack features">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <xen          feature="true"               attrs="" />
+      </bit7>
+      <bit8  len="1"  id="gfni"                    desc="Galois field new instructions">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit8>
+      <bit9  len="1"  id="vaes"                    desc="Vector AES instrs">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit9>
+      <bit10 len="1"  id="vpclmulqdq"              desc="VPCLMULQDQ 256-bit instruction support">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit10>
+      <bit11 len="1"  id="avx512_vnni"             desc="Vector neural network instructions">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit11>
+      <bit12 len="1"  id="avx512_bitalg"           desc="AVX-512 bit count/shiffle">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit12>
+      <bit13 len="1"  id="tme"                     desc="Intel total memory encryption">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit13>
+      <bit14 len="1"  id="avx512_vpopcntdq"        desc="AVX-512: POPCNT for vectors of DW/QW">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit14>
+      <bit16 len="1"  id="la57"                    desc="57-bit linear addreses (five-level paging)">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit16>
+      <bit17 len="5"  id="mawau_val_lm"            desc="BNDLDX/BNDSTX MAWAU value in 64-bit mode">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit17>
+      <bit22 len="1"  id="rdpid"                   desc="RDPID instruction">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit22>
+      <bit23 len="1"  id="key_locker"              desc="Intel key locker support">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit23>
+      <bit24 len="1"  id="bus_lock_detect"         desc="OS bus-lock detection">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit24>
+      <bit25 len="1"  id="cldemote"                desc="CLDEMOTE instruction">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit25>
+      <bit27 len="1"  id="movdiri"                 desc="MOVDIRI instruction">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="a" />
+      </bit27>
+      <bit28 len="1"  id="movdir64b"               desc="MOVDIR64B instruction">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="a" />
+      </bit28>
+      <bit29 len="1"  id="enqcmd"                  desc="Enqueue stores supported (ENQCMD{,S})">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="" />
+      </bit29>
+      <bit30 len="1"  id="sgx_lc"                  desc="Intel SGX launch configuration">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit30>
+      <bit31 len="1"  id="pks"                     desc="Protection keys for supervisor-mode pages">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <xen          feature="true"               attrs="H" />
+      </bit31>
+    </ecx>
+    <edx>
+      <desc>Intel-specific extended feature flags</desc>
+      <vendors>
+        <vendor>Intel</vendor>
+      </vendors>
+      <bit1  len="1"  id="sgx_keys"                desc="Intel SGX attestation services" />
+      <bit2  len="1"  id="avx512_4vnniw"           desc="AVX-512 neural network instructions">
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit2>
+      <bit3  len="1"  id="avx512_4fmaps"           desc="AVX-512 multiply accumulation single precision">
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit3>
+      <bit4  len="1"  id="fsrm"                    desc="Fast short REP MOV">
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit4>
+      <bit5  len="1"  id="uintr"                   desc="CPU supports user interrupts" />
+      <bit8  len="1"  id="avx512_vp2intersect"     desc="VP2INTERSECT{D,Q} instructions">
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="a" />
+      </bit8>
+      <bit9  len="1"  id="srdbs_ctrl"              desc="SRBDS mitigation MSR available">
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="" />
+      </bit9>
+      <bit10 len="1"  id="md_clear"                desc="VERW MD_CLEAR microcode support">
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit10>
+      <bit11 len="1"  id="rtm_always_abort"        desc="XBEGIN (RTM transaction) always aborts">
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="!" />
+      </bit11>
+      <bit13 len="1"  id="tsx_force_abort"         desc="MSR TSX_FORCE_ABORT, RTM_ABORT bit, supported">
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="" />
+      </bit13>
+      <bit14 len="1"  id="serialize"               desc="SERIALIZE instruction">
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit14>
+      <bit15 len="1"  id="hybrid_cpu"              desc="The CPU is identified as a 'hybrid part'">
+        <linux        feature="true"               proc="false" />
+      </bit15>
+      <bit16 len="1"  id="tsxldtrk"                desc="TSX suspend/resume load address tracking">
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="a" />
+      </bit16>
+      <bit18 len="1"  id="pconfig"                 desc="PCONFIG instruction">
+        <linux        feature="true"               proc="true" />
+      </bit18>
+      <bit19 len="1"  id="arch_lbr"                desc="Intel architectural LBRs">
+        <linux        feature="true"               proc="true" />
+      </bit19>
+      <bit20 len="1"  id="cet_ibt"                 desc="CET indirect branch tracking">
+        <linux        feature="true"               proc="true"            altid="ibt" />
+        <xen          feature="true"               attrs="" />
+      </bit20>
+      <bit22 len="1"  id="amx_bf16"                desc="AMX-BF16: tile bfloat16 support">
+        <linux        feature="true"               proc="true" />
+      </bit22>
+      <bit23 len="1"  id="avx512_fp16"             desc="AVX-512 FP16 instructions">
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit23>
+      <bit24 len="1"  id="amx_tile"                desc="AMX-TILE: tile architecture support">
+        <linux        feature="true"               proc="true" />
+      </bit24>
+      <bit25 len="1"  id="amx_int8"                desc="AMX-INT8: tile 8-bit integer support">
+        <linux        feature="true"               proc="true" />
+      </bit25>
+      <bit26 len="1"  id="spec_ctrl"               desc="Speculation Control (IBRS/IBPB: indirect branch restrictions)">
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="A"              altid="ibrsb" />
+      </bit26>
+      <bit27 len="1"  id="intel_stibp"             desc="Single thread indirect branch predictors">
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="A"              altid="stibp" />
+      </bit27>
+      <bit28 len="1"  id="flush_l1d"               desc="FLUSH L1D cache: IA32_FLUSH_CMD MSR">
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="S"              altid="l1d_flush" />
+      </bit28>
+      <bit29 len="1"  id="arch_capabilities"       desc="Intel IA32_ARCH_CAPABILITIES MSR">
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="!a"             altid="arch_caps" />
+      </bit29>
+      <bit30 len="1"  id="core_capabilities"       desc="IA32_CORE_CAPABILITIES MSR">
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs=""               altid="core_caps" />
+      </bit30>
+      <bit31 len="1"  id="spec_ctrl_ssbd"          desc="Speculative store bypass disable">
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="A" />
+      </bit31>
+    </edx>
+  </subleaf>
+  <subleaf id="1">
+    <desc>Intel-specific extended feature flags</desc>
+    <text>Subleaf 1 is valid iff @leaf7_n_subleaves ≥ 2</text>
+    <vendors>
+      <vendor>Intel</vendor>
+    </vendors>
+    <eax>
+      <bit4  len="1"  id="avx_vnni"                desc="AVX-VNNI instructions">
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit4>
+      <bit5  len="1"  id="avx512_bf16"             desc="AVX-512 bFloat16 instructions">
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit5>
+      <bit6  len="1"  id="lass"                    desc="Linear address space separation" />
+      <bit7  len="1"  id="cmpccxadd"               desc="CMPccXADD instructions">
+        <linux        feature="true"               proc="false" />
+      </bit7>
+      <bit8  len="1"  id="arch_perfmon_ext"        desc="ArchPerfmonExt: CPUID leaf 0x23 is supported">
+        <linux        feature="true"               proc="false" />
+      </bit8>
+      <bit10 len="1"  id="fzrm"                    desc="Fast zero-length REP MOVSB">
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="A" />
+      </bit10>
+      <bit11 len="1"  id="fsrs"                    desc="Fast short REP STOSB">
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="A" />
+      </bit11>
+      <bit12 len="1"  id="fsrc"                    desc="Fast Short REP CMPSB/SCASB">
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="A" />
+      </bit12>
+      <bit17 len="1"  id="fred"                    desc="FRED: Flexible return and event delivery transitions" />
+      <bit18 len="1"  id="lkgs"                    desc="LKGS: Load 'kernel' (userspace) GS">
+        <linux        feature="true"               proc="false" />
+      </bit18>
+      <bit19 len="1"  id="wrmsrns"                 desc="WRMSRNS instr (WRMSR-non-serializing)">
+        <xen          feature="true"               attrs="S" />
+      </bit19>
+      <bit21 len="1"  id="amx_fp16"                desc="AMX-FP16: FP16 tile operations">
+        <linux        feature="true"               proc="false" />
+      </bit21>
+      <bit22 len="1"  id="hreset "                 desc="History reset support" />
+      <bit23 len="1"  id="avx_ifma"                desc="Integer fused multiply add">
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="A" />
+      </bit23>
+      <bit26 len="1"  id="lam"                     desc="Linear address masking">
+        <linux        feature="true"               proc="true" />
+      </bit26>
+      <bit27 len="1"  id="rd_wr_msrlist"           desc="RDMSRLIST/WRMSRLIST instructions" />
+    </eax>
+    <ebx>
+      <bit0  len="1"  id="intel_ppin"              desc="Protected processor inventory number (PPIN{,_CTL} MSRs)">
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="" />
+      </bit0>
+    </ebx>
+    <edx>
+      <bit4  len="1"  id="avx_vnni_int8"           desc="AVX-VNNI-INT8 instructions">
+        <xen          feature="true"               attrs="A" />
+      </bit4>
+      <bit5  len="1"  id="avx_ne_convert"          desc="AVX-NE-CONVERT instructions">
+        <xen          feature="true"               attrs="A" />
+      </bit5>
+      <bit8  len="1"  id="amx_complex"             desc="AMX-COMPLEX instructions (starting from Granite Rapids)" />
+      <bit14 len="1"  id="prefetchit_0_1"          desc="PREFETCHIT0/1 instructions" />
+      <bit18 len="1"  id="cet_sss"                 desc="CET supervisor shadow stacks safe to use">
+        <xen          feature="true"               attrs="" />
+      </bit18>
+    </edx>
+  </subleaf>
+  <subleaf id="2">
+    <desc>Intel speculation control flags</desc>
+    <text>Subleaf 2 is valid iff @leaf7_n_subleaves ≥ 3</text>
+    <vendors>
+      <vendor>Intel</vendor>
+    </vendors>
+    <edx>
+      <bit0  len="1"  id="intel_psfd"              desc="Intel predictive store forward disable">
+        <xen          feature="true"               attrs="A" />
+      </bit0>
+      <bit1  len="1"  id="ipred_ctrl"              desc="MSR bits IA32_SPEC_CTRL.IPRED_DIS_{U,S}">
+        <xen          feature="true"               attrs="" />
+      </bit1>
+      <bit2  len="1"  id="rrsba_ctrl"              desc="MSR bits IA32_SPEC_CTRL.RRSBA_DIS_{U,S}">
+        <linux        feature="true"               proc="false" />
+        <xen          feature="true"               attrs="" />
+      </bit2>
+      <bit3  len="1"  id="ddp_ctrl"                desc="MSR bit  IA32_SPEC_CTRL.DDPD_U">
+        <xen          feature="true"               attrs="" />
+      </bit3>
+      <bit4  len="1"  id="bhi_ctrl"                desc="MSR bit  IA32_SPEC_CTRL.BHI_DIS_S">
+        <xen          feature="true"               attrs="" />
+      </bit4>
+      <bit5  len="1"  id="mcdt_no"                 desc="MCDT mitigation not needed">
+        <xen          feature="true"               attrs="A" />
+      </bit5>
+      <bit6  len="1"  id="uclock_disable"          desc="UC-lock disable is supported" />
+    </edx>
+  </subleaf>
+</leaf>
