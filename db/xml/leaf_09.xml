@@ -1,0 +1,25 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="9">
+  <desc>Intel DCA (Direct Cache Access) enumeration</desc>
+  <text>
+    This leaf is available iff cpuid leaf 0x1 ECX[18] @dca bit is set.
+  </text>
+  <vendors>
+    <vendor>Intel</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <desc>IA32_PLATFORM_DCA_CAP MSR (0x1f8h), bits[0:31] values</desc>
+      <text>
+        Unlike other CPUID output registers, this register does not declare whether a
+        certain MSR bit or bitfield "is supported". Rather, client code which is
+        interested in "reading the DCA capabilities MSR" is expected to do so by reading
+        this CPUID register.
+      </text>
+      <bit0  len="1"  id="dca_enabled_in_bios"     desc="DCA is enabled in BIOS" />
+    </eax>
+  </subleaf>
+</leaf>
