@@ -1,0 +1,60 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0xb">
+  <desc>CPUs v1 extended topology enumeration</desc>
+  <text>
+    This leaf is valid iff subleaf 0's @domain_lcpus_count > 0.
+
+    For Intel CPUs, if leaf 0's @max_std_leaf ≥ 0x1f, then CPU topology should be
+    enumerated through leaf 0x1f instead, which is a superset of this leaf.
+
+    For AMD CPUs, if leaf 0x80000000's @max_std_leaf ≥ 0x80000026, then CPU topology
+    should be enumerated through leaf 0x80000026 instead.
+
+    In both Intel and AMD CPUs, if this leaf is valid while the newer leaves are still
+    declared, this leaf's enumeration within topology level 1 and 2 is still correct.
+  </text>
+  <vendors>
+    <vendor>Intel</vendor>
+    <vendor>AMD</vendor>
+  </vendors>
+  <subleaf id="0" array="2">
+    <text>
+      Subleaf ID acts as the topology-level domain specifier.  Clients should iterate on
+      all available subleaves until hitting a @domain_type = 0 (invalid).
+    </text>
+    <eax>
+      <bit0  len="5"  id="x2apic_id_shift"         desc="Bit width of this level (previous levels inclusive)">
+        <text>
+          Next-level topology ID = @x2apic_id >> @x2apic_id_shift.
+        </text>
+      </bit0>
+    </eax>
+    <ebx>
+      <bit0  len="16" id="domain_lcpus_count"      desc="Logical CPUs count across all instances of this domain">
+        <text>
+          This CPU count is lower-domains inclusive.
+        </text>
+      </bit0>
+    </ebx>
+    <ecx>
+      <bit0  len="8"  id="domain_nr"               desc="This domain level (subleaf ID)" />
+      <bit8  len="8"  id="domain_type"             desc="This domain type">
+        <values>
+          <value      id="0"                       desc="Invalid" />
+          <value      id="1"                       desc="Logical CPU; smallest-scoped domain" />
+          <value      id="2"                       desc="Core" />
+        </values>
+      </bit8>
+    </ecx>
+    <edx>
+      <bit0  len="32" id="x2apic_id"               desc="x2APIC ID of current logical CPU">
+        <text>
+          The x2APIC ID is always valid and does not vary along with subleaf index.
+        </text>
+      </bit0>
+    </edx>
+  </subleaf>
+</leaf>
