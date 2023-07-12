@@ -1,0 +1,52 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0xa">
+  <desc>Intel PMU (Performance Monitoring Unit) enumeration</desc>
+  <text>
+    This leaf is valid if @pmu_version > 0. It only enumerates the PMU resources available
+    system-wide.
+
+    Modern Intel CPUs also provide leaf 0x23, which provides a "true-view" enumeration of
+    PMU resources per logical CPU, where such resources can thus differ across HW threads.
+  </text>
+  <vendors>
+    <vendor>Intel</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="8"  id="pmu_version"             desc="Performance monitoring unit version ID" />
+      <bit8  len="8"  id="pmu_n_gcounters"         desc="Number of general PMU counters per logical CPU" />
+      <bit16 len="8"  id="pmu_gcounters_nbits"     desc="Bitwidth of PMU general counters" />
+      <bit24 len="8"  id="pmu_cpuid_ebx_bits"      desc="Length of cpuid leaf 0xa EBX bit vector" />
+    </eax>
+    <ebx>
+      <desc>Supported PMU events, negative bitmap</desc>
+      <text>
+        PMU event #x is supported if EBX bit x is 0 and @pmu_cpuid_ebx_bits > x.
+      </text>
+      <bit0  len="1"  id="no_core_cycle_evt"       desc="Core cycle event not available" />
+      <bit1  len="1"  id="no_insn_retired_evt"     desc="Instruction retired event not available" />
+      <bit2  len="1"  id="no_refcycle_evt"         desc="Reference cycles event not available" />
+      <bit3  len="1"  id="no_llc_ref_evt"          desc="LLC-reference event not available" />
+      <bit4  len="1"  id="no_llc_miss_evt"         desc="LLC-misses event not available" />
+      <bit5  len="1"  id="no_br_insn_ret_evt"      desc="Branch instruction retired event not available" />
+      <bit6  len="1"  id="no_br_mispredict_evt"    desc="Branch mispredict retired event not available" />
+      <bit7  len="1"  id="no_td_slots_evt"         desc="Topdown slots event not available" />
+    </ebx>
+    <ecx>
+      <desc>Supported PMU fixed-function counters, bitmap</desc>
+      <text>
+        Fixed counter #x is supported if: @pmu_fcounters_bitmap[x] is 1 or
+        @pmu_n_fcounters > x.
+      </text>
+      <bit0  len="32" id="pmu_fcounters_bitmap"    desc="Fixed-function PMU counters support bitmap" />
+    </ecx>
+    <edx>
+      <bit0  len="5"  id="pmu_n_fcounters"         desc="Number of fixed PMU counters" />
+      <bit5  len="8"  id="pmu_fcounters_nbits"     desc="Bitwidth of PMU fixed counters" />
+      <bit15 len="1"  id="anythread_depr"          desc="AnyThread deprecation" />
+    </edx>
+  </subleaf>
+</leaf>
