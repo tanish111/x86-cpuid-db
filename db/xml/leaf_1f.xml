@@ -1,0 +1,56 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x1f">
+  <desc>Intel extended topology enumeration v2</desc>
+  <text>
+    This is a superset of leaf 0xb, with more topology levels and domain types.  For Intel
+    CPUs, always use this leaf if available.  That is, if leaf 0's @max_std_leaf ≥ 0x1f.
+
+    For AMD CPUs, v2 topology enumeration is provided at leaf 0x80000026.
+  </text>
+  <vendors>
+    <vendor>Intel</vendor>
+  </vendors>
+  <subleaf id="0" array="6">
+    <text>
+      Subleaf ID acts as the domain level specifier.  Clients should keep iterating on all
+      subleaves until hitting @domain_type = 0 (invalid).
+    </text>
+    <eax>
+      <bit0  len="5"  id="x2apic_id_shift"         desc="Bit width of this level (previous levels inclusive)">
+        <text>
+          Next-level topology ID = @x2apic_id >> @x2apic_id_shift.
+        </text>
+      </bit0>
+    </eax>
+    <ebx>
+      <bit0  len="16" id="domain_lcpus_count"      desc="Logical CPUs count across all instances of this domain">
+        <text>
+          The CPUs count is lower-domains inclusive.
+        </text>
+      </bit0>
+    </ebx>
+    <ecx>
+      <bit0  len="8"  id="domain_level"            desc="This domain level (subleaf ID)" />
+      <bit8  len="8"  id="domain_type"             desc="This domain type">
+        <values>
+          <value      id="1"                       desc="Logical CPU; smallest-scoped domain" />
+          <value      id="2"                       desc="Core" />
+          <value      id="3"                       desc="Module" />
+          <value      id="4"                       desc="Tile" />
+          <value      id="5"                       desc="Die" />
+          <value      id="6"                       desc="Die group" />
+        </values>
+      </bit8>
+    </ecx>
+    <edx>
+      <bit0  len="32" id="x2apic_id"               desc="x2APIC ID of current logical CPU">
+        <text>
+          The APIC ID is always valid and does not vary along with subleaf index.
+        </text>
+      </bit0>
+    </edx>
+  </subleaf>
+</leaf>
