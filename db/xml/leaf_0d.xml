@@ -1,0 +1,250 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0xd">
+  <desc>Processor extended state enumeration</desc>
+  <subleaf id="0">
+    <eax>
+      <desc>XSAVE/XRSTR XCR0 supported bits, lower dword (0:31)</desc>
+      <text>
+         Development note: if new Intel bits are to be added, please update SGX
+         leaf_12.xml ECX.1 as well.
+      </text>
+      <bit0  len="1"  id="xcr0_x87"                desc="XCR0.X87 (bit 0) supported">
+	<vendors>
+	  <vendor>Intel</vendor>
+	  <vendor>AMD</vendor>
+	</vendors>
+      </bit0>
+      <bit1  len="1"  id="xcr0_sse"                desc="XCR0.SEE (bit 1) supported">
+	<vendors>
+	  <vendor>Intel</vendor>
+	  <vendor>AMD</vendor>
+	</vendors>
+      </bit1>
+      <bit2  len="1"  id="xcr0_avx"                desc="XCR0.AVX (bit 2) supported">
+	<vendors>
+	  <vendor>Intel</vendor>
+	  <vendor>AMD</vendor>
+	</vendors>
+      </bit2>
+      <bit3  len="1"  id="xcr0_mpx_bndregs"        desc="XCR0.BNDREGS (bit 3) supported (MPX BND0-BND3 regs)">
+	<vendors>
+	  <vendor>Intel</vendor>
+	</vendors>
+      </bit3>
+      <bit4  len="1"  id="xcr0_mpx_bndcsr"         desc="XCR0.BNDCSR (bit 4) supported (MPX BNDCFGU/BNDSTATUS regs)">
+	<vendors>
+	  <vendor>Intel</vendor>
+	</vendors>
+      </bit4>
+      <bit5  len="1"  id="xcr0_avx512_opmask"      desc="XCR0.OPMASK (bit 5) supported (AVX-512 k0-k7 regs)">
+	<vendors>
+	  <vendor>Intel</vendor>
+	</vendors>
+      </bit5>
+      <bit6  len="1"  id="xcr0_avx512_zmm_hi256"   desc="XCR0.ZMM_Hi256 (bit 6) supported (AVX-512 ZMM0->ZMM7/15 regs)">
+	<vendors>
+	  <vendor>Intel</vendor>
+	</vendors>
+      </bit6>
+      <bit7  len="1"  id="xcr0_avx512_hi16_zmm"    desc="XCR0.HI16_ZMM (bit 7) supported (AVX-512 ZMM16->ZMM31 regs)">
+	<vendors>
+	  <vendor>Intel</vendor>
+	</vendors>
+      </bit7>
+      <bit9  len="1"  id="xcr0_pkru"               desc="XCR0.PKRU (bit 9) supported (XSAVE PKRU reg)">
+	<vendors>
+	  <vendor>Intel</vendor>
+	  <vendor>AMD</vendor>
+	</vendors>
+      </bit9>
+      <bit11 len="1"  id="xcr0_cet_u"              desc="AMD XCR0.CET_U (bit 11) supported (CET supervisor state)">
+	<vendors>
+	  <vendor>AMD</vendor>
+	</vendors>
+      </bit11>
+      <bit12 len="1"  id="xcr0_cet_s"              desc="AMD XCR0.CET_S (bit 12) support (CET user state)">
+	<vendors>
+	  <vendor>AMD</vendor>
+	</vendors>
+      </bit12>
+      <bit17 len="1"  id="xcr0_tileconfig"         desc="XCR0.TILECONFIG (bit 17) supported (AMX can manage TILECONFIG)">
+	<vendors>
+	  <vendor>Intel</vendor>
+	</vendors>
+      </bit17>
+      <bit18 len="1"  id="xcr0_tiledata"           desc="XCR0.TILEDATA (bit 18) supported (AMX can manage TILEDATA)">
+	<vendors>
+	  <vendor>Intel</vendor>
+	</vendors>
+      </bit18>
+    </eax>
+    <ebx>
+      <desc>XSAVE area size calculations</desc>
+      <bit0  len="32" id="xsave_sz_xcr0_enabled"   desc="XSAVE/XRSTR area byte size, for XCR0 enabled features">
+	<vendors>
+	  <vendor>Intel</vendor>
+	  <vendor>AMD</vendor>
+	</vendors>
+      </bit0>
+    </ebx>
+    <ecx>
+      <desc>XSAVE area size calculations</desc>
+      <bit0  len="32" id="xsave_sz_max"            desc="XSAVE/XRSTR area max byte size, all CPU features">
+	<vendors>
+	  <vendor>Intel</vendor>
+	  <vendor>AMD</vendor>
+	</vendors>
+      </bit0>
+    </ecx>
+    <edx>
+      <desc>XSAVE/XRSTR XCR0 supported bits, upper dword (32:63)</desc>
+      <text>
+	Development note: if new Intel bits are to be added, please update SGX leaf_12.xml
+	ECX.1 as well.
+      </text>
+      <bit30 len="1"  id="xcr0_lwp"                desc="AMD XCR0.LWP (bit 62) supported (Light-weight Profiling)">
+	<vendors>
+	  <vendor>AMD</vendor>
+	</vendors>
+      </bit30>
+    </edx>
+  </subleaf>
+  <subleaf id="1">
+    <eax>
+      <desc>XSAVE/XRSTR feature flags</desc>
+      <bit0  len="1"  id="xsaveopt"                desc="XSAVEOPT instruction">
+	<vendors>
+	  <vendor>Intel</vendor>
+	  <vendor>AMD</vendor>
+	</vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit0>
+      <bit1  len="1"  id="xsavec"                  desc="XSAVEC instruction">
+	<vendors>
+	  <vendor>Intel</vendor>
+	  <vendor>AMD</vendor>
+	</vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit1>
+      <bit2  len="1"  id="xgetbv1"                 desc="XGETBV instruction with ECX = 1">
+	<vendors>
+	  <vendor>Intel</vendor>
+	  <vendor>AMD</vendor>
+	</vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="A" />
+      </bit2>
+      <bit3  len="1"  id="xsaves"                  desc="XSAVES/XRSTORS instructions (and XSS MSR)">
+	<vendors>
+	  <vendor>Intel</vendor>
+	  <vendor>AMD</vendor>
+	</vendors>
+        <linux        feature="true"               proc="true" />
+        <xen          feature="true"               attrs="S" />
+      </bit3>
+      <bit4  len="1"  id="xfd"                     desc="Extended feature disable support">
+	<vendors>
+	  <vendor>Intel</vendor>
+	</vendors>
+        <linux        feature="true"               proc="false" />
+      </bit4>
+    </eax>
+    <ebx>
+      <desc>XSAVE area size calculations</desc>
+      <bit0  len="32" id="xsave_sz_xcr0_xmms_enabled"
+                                                   desc="XSAVE area size, all XCR0 and XMMS features enabled">
+	<vendors>
+	  <vendor>Intel</vendor>
+	  <vendor>AMD</vendor>
+	</vendors>
+      </bit0>
+    </ebx>
+    <ecx>
+      <desc>XSS supported bits, lower dword (0:31)</desc>
+      <bit8  len="1"  id="xss_pt"                  desc="PT state, supported">
+	<vendors>
+	  <vendor>Intel</vendor>
+	</vendors>
+      </bit8>
+      <bit10 len="1"  id="xss_pasid"               desc="PASID state, supported">
+	<vendors>
+	  <vendor>Intel</vendor>
+	</vendors>
+      </bit10>
+      <bit11 len="1"  id="xss_cet_u"               desc="CET user state, supported">
+	<vendors>
+	  <vendor>Intel</vendor>
+	  <vendor>AMD</vendor>
+	</vendors>
+      </bit11>
+      <bit12 len="1"  id="xss_cet_p"               desc="CET supervisor state, supported">
+	<vendors>
+	  <vendor>Intel</vendor>
+	  <vendor>AMD</vendor>
+	</vendors>
+      </bit12>
+      <bit13 len="1"  id="xss_hdc"                 desc="HDC state, supported">
+	<vendors>
+	  <vendor>Intel</vendor>
+	</vendors>
+      </bit13>
+      <bit14 len="1"  id="xss_uintr"               desc="UINTR state, supported">
+	<vendors>
+	  <vendor>Intel</vendor>
+	</vendors>
+      </bit14>
+      <bit15 len="1"  id="xss_lbr"                 desc="LBR state, supported">
+	<vendors>
+	  <vendor>Intel</vendor>
+	</vendors>
+      </bit15>
+      <bit16 len="1"  id="xss_hwp"                 desc="HWP state, supported">
+	<vendors>
+	  <vendor>Intel</vendor>
+	</vendors>
+      </bit16>
+    </ecx>
+    <edx>
+      <desc>XSS supported bits, upper dword (32:63)</desc>
+      <text>All bits are reserved</text>
+    </edx>
+  </subleaf>
+  <subleaf id="2" array="62">
+    <text>
+      Iterate over the remaining subleaves with the following condition:
+
+      Subleaves n,  2 ≤ n ≤ 31: valid iff EAX.0[n] (XCR0 lower dword bits) or ECX.1[n] (XSS
+      lower dword bits) is set.
+
+      Subleaves n, 32 ≤ n ≤ 63: valid iff EDX.0[n-32] (XCR0 upper dword bits) or
+      EDX.1[n-32] (XSS upper dword bits) is set.
+    </text>
+    <eax>
+      <vendors>
+	<vendor>Intel</vendor>
+	<vendor>AMD</vendor>
+      </vendors>
+      <bit0  len="32" id="xsave_sz"                desc="Size of save area for subleaf-N feature, in bytes" />
+    </eax>
+    <ebx>
+      <vendors>
+	<vendor>Intel</vendor>
+	<vendor>AMD</vendor>
+      </vendors>
+      <bit0  len="32" id="xsave_offset"            desc="Offset of save area for subleaf-N feature, in bytes" />
+    </ebx>
+    <ecx>
+      <vendors>
+	<vendor>Intel</vendor>
+      </vendors>
+      <bit0  len="1"  id="is_xss_bit"              desc="Subleaf N describes an XSS bit, otherwise XCR0 bit" />
+      <bit1  len="1"  id="compacted_xsave_64byte_aligned"
+                                                   desc="When compacted, subleaf-N feature xsave area is 64-byte aligned" />
+    </ecx>
+  </subleaf>
+</leaf>
