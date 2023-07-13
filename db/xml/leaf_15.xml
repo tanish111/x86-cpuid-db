@@ -1,0 +1,36 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x15">
+  <desc>Intel TSC (Time Stamp Counter) enumeration</desc>
+  <vendors>
+    <vendor>Intel</vendor>
+  </vendors>
+  <subleaf id="0">
+    <text>
+      TSC kHZ frequency = (@cpu_crystal_hz / 1000) * (@tsc_numerator / @tsc_denominator).
+    </text>
+    <eax>
+      <bit0  len="32" id="tsc_denominator"         desc="Denominator of the TSC/'core crystal clock' ratio">
+        <text>
+          If 0, then the TSC and "core crystal clock" ratio are not enumerated.
+        </text>
+      </bit0>
+    </eax>
+    <ebx>
+      <bit0  len="32" id="tsc_numerator"           desc="Numerator of the TSC/'core crystal clock' ratio">
+        <text>
+          If 0, then the TSC and "core crystal clock" ratio are not enumerated.
+        </text>
+      </bit0>
+    </ebx>
+    <ecx>
+      <bit0  len="32" id="cpu_crystal_hz"          desc="Core crystal clock nominal frequency, in Hz">
+        <text>
+          If 0, then the core crystal clock frequency is not enumerated.
+        </text>
+      </bit0>
+    </ecx>
+  </subleaf>
+</leaf>
