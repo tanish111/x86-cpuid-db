@@ -1,0 +1,40 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x17">
+  <desc>Intel SoC vendor attributes enumeration</desc>
+  <vendors>
+    <vendor>Intel</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="32" id="soc_max_subleaf"         desc="Max cpuid leaf 0x17 subleaf" />
+    </eax>
+    <ebx>
+      <bit0  len="16" id="soc_vendor_id"           desc="SoC vendor ID" />
+      <bit16 len="1"  id="is_vendor_scheme"        desc="Assigned by industry enumaeratoion scheme (not Intel)" />
+    </ebx>
+    <ecx>
+      <bit0  len="32" id="soc_proj_id"             desc="SoC project ID, assigned by vendor" />
+    </ecx>
+    <edx>
+      <bit0  len="32" id="soc_stepping_id"         desc="Soc project stepping ID, assigned by vendor" />
+    </edx>
+  </subleaf>
+  <subleaf id="1" array="3">
+    <text>Vendor Brand String = EAX.n:EBX.n:ECX.n:EDX.n, subleaves n, 1 ≤ n ≤ 3</text>
+    <eax>
+      <bit0  len="32" id="vendor_brand_a"          desc="Vendor Brand ID string, bytes subleaf_nr * (0 -> 3)" />
+    </eax>
+    <ebx>
+      <bit0  len="32" id="vendor_brand_b"          desc="Vendor Brand ID string, bytes subleaf_nr * (4 -> 7)" />
+    </ebx>
+    <ecx>
+      <bit0  len="32" id="vendor_brand_c"          desc="Vendor Brand ID string, bytes subleaf_nr * (8 -> 11)" />
+    </ecx>
+    <edx>
+      <bit0  len="32" id="vendor_brand_d"          desc="Vendor Brand ID string, bytes subleaf_nr * (12 -> 15)" />
+    </edx>
+  </subleaf>
+</leaf>
