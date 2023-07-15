@@ -1,0 +1,29 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x16">
+  <desc>Intel processor fequency enumeration</desc>
+  <text>
+    The frequency data obtained from this leaf is merely in accordance with the
+    processor's official specification and does not reflect actual values.
+  </text>
+  <vendors>
+    <vendor>Intel</vendor>
+  </vendors>
+  <subleaf id="0">
+    <text>
+      Even if this leaf is marked as supported (leaf 0 EAX[@max_level] ≥ 0x16), some or
+      all of the fields below can return 0.  Clients code should guard against that.
+    </text>
+    <eax>
+      <bit0  len="16" id="cpu_base_mhz"            desc="Processor base frequency, in MHz" />
+    </eax>
+    <ebx>
+      <bit0  len="16" id="cpu_max_mhz"             desc="Processor max frequency, in MHz" />
+    </ebx>
+    <ecx>
+      <bit0  len="16" id="bus_mhz"                 desc="Bus reference frequency, in MHz" />
+    </ecx>
+  </subleaf>
+</leaf>
