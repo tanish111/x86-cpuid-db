@@ -1,0 +1,24 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x1a">
+  <desc>Intel hybrid CPUs identification (e.g. Atom, Core)</desc>
+  <text>
+    This leaf is valid iff leaf 0's EAX[@max_std_leaf] ≥ 0x1a and subleaf-0's EAX != 0.
+  </text>
+  <vendors>
+    <vendor>Intel</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="24" id="core_native_model"       desc="This core's native model ID" />
+      <bit24 len="8"  id="core_type"               desc="This core's type">
+        <values>
+          <value      id="0x20"                    desc="Atom" />
+          <value      id="0x40"                    desc="Core" />
+        </values>
+      </bit24>
+    </eax>
+  </subleaf>
+</leaf>
