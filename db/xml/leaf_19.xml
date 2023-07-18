@@ -1,0 +1,29 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x19">
+  <desc>Intel Key Locker enumeration</desc>
+  <vendors>
+    <vendor>Intel</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <desc>Key Locker supported restrictions</desc>
+      <bit0  len="1"  id="kl_cpl0_only"            desc="CPL0-only key Locker restriction supported" />
+      <bit1  len="1"  id="kl_no_encrypt"           desc="No-encrypt key locker restriction supported" />
+      <bit2  len="1"  id="kl_no_decrypt"           desc="No-decrypt key locker restriction supported" />
+    </eax>
+    <ebx>
+      <desc>Key Locker supported instructions/MSRs</desc>
+      <bit0  len="1"  id="aes_keylocker"           desc="AES key locker instructions supported" />
+      <bit2  len="1"  id="aes_keylocker_wide"      desc="AES wide key locker instructions supported" />
+      <bit4  len="1"  id="kl_msr_iwkey"            desc="Key locker MSRs and IWKEY backups supported" />
+    </ebx>
+    <ecx>
+      <desc>Key Locker feature flags</desc>
+      <bit0  len="1"  id="loadiwkey_no_backup"     desc="LOADIWKEY NoBackup parameter supported" />
+      <bit1  len="1"  id="iwkey_rand"              desc="IWKEY randomization (KeySource encoding 1) supported" />
+    </ecx>
+  </subleaf>
+</leaf>
