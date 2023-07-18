@@ -1,0 +1,56 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x1b">
+  <desc>Intel PCONFIG (Platform configuration) enumeration</desc>
+  <vendors>
+    <vendor>Intel</vendor>
+  </vendors>
+  <subleaf id="0" array="32">
+    <text>
+      Client code should query subleaf IDs until reaching the first invalid subleaf,
+      @pconfig_subleaf_type = 0. A specific subleaf type can appear multiple times and
+      need not to be consecutive.
+
+      Subleaves' EBX, ECX, and EDX bitfield layout depends on the subleaf type. Since only
+      one subleaf type is supported so far, the E[BCD]X bitfields layout below assumes a
+      @pconfig_subleaf_type = 1 (PCONFIG Target Identifier).
+    </text>
+    <eax>
+      <bit0  len="12" id="pconfig_subleaf_type"    desc="CPUID 0x1b subleaf type">
+        <values>
+          <value      id="0"                       desc="Invalid" />
+          <value      id="1"                       desc="Target Identifier subleaf">
+            <desc>Subleaf enumerates supported PCONFIG target IDs</desc>
+            <text>
+              A "PCONFIG target" is defined as any hardware block on the platform which
+              can be configured using the PCONFIG opcode. The PCONFIG opcode supports
+              multiple leaf functions, selected through input EAX register, where each
+              PCONFIG leaf function applies to a PCONFIG target.
+
+              So far, only one PCONFIG target is defined: MKTME, the Multikey Total Memory
+              Encryption engine, denoted by target ID 1. Target ID 0 is invalid.
+
+              Thus, PCONFIG leaf function EAX=0x0, MKTME_KEY_PROGRAM, is supported and
+              will not result in a #GP(0) iff one of this CPUID 0x1b leaf "Target
+              Identier" subleaves marks PCONFIG target ID 1 (MKTME engine) as supported.
+
+              Reference: Intel Architecture Memory Encryption Technologies Specification,
+              Revision 1.4 (Auguest 2022), Section 6.2.1 "PCONFIG Description".
+            </text>
+          </value>
+        </values>
+      </bit0>
+    </eax>
+    <ebx>
+      <bit0  len="32" id="pconfig_target_id_x"     desc="A supported PCONFIG target ID" />
+    </ebx>
+    <ecx>
+      <bit0  len="32" id="pconfig_target_id_y"     desc="A supported PCONFIG target ID" />
+    </ecx>
+    <edx>
+      <bit0  len="32" id="pconfig_target_id_z"     desc="A supported PCONFIG target ID" />
+    </edx>
+  </subleaf>
+</leaf>
