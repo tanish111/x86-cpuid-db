@@ -1,0 +1,41 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x1c">
+  <desc>Intel LBR (Last Branch Record) enumeration</desc>
+  <vendors>
+    <vendor>Intel</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <desc>Supported LBR stack depth values</desc>
+      <text>
+        For EAX bits n, 0 ≤ n ≤ 7, max stack depth = 8 * (n + 1).
+      </text>
+      <bit0  len="1"  id="lbr_depth_8"             desc="Max stack depth (number of LBR entries) = 8" />
+      <bit1  len="1"  id="lbr_depth_16"            desc="Max stack depth (number of LBR entries) = 16" />
+      <bit2  len="1"  id="lbr_depth_24"            desc="Max stack depth (number of LBR entries) = 24" />
+      <bit3  len="1"  id="lbr_depth_32"            desc="Max stack depth (number of LBR entries) = 32" />
+      <bit4  len="1"  id="lbr_depth_40"            desc="Max stack depth (number of LBR entries) = 40" />
+      <bit5  len="1"  id="lbr_depth_48"            desc="Max stack depth (number of LBR entries) = 48" />
+      <bit6  len="1"  id="lbr_depth_56"            desc="Max stack depth (number of LBR entries) = 56" />
+      <bit7  len="1"  id="lbr_depth_64"            desc="Max stack depth (number of LBR entries) = 64" />
+      <bit30 len="1"  id="lbr_deep_c_reset"        desc="LBRs maybe cleared on MWAIT C-state > C1" />
+      <bit31 len="1"  id="lbr_ip_is_lip"           desc="LBR IP contain Last IP, otherwise effective IP" />
+    </eax>
+    <ebx>
+      <desc>LBR feature flags</desc>
+      <bit0  len="1"  id="lbr_cpl"                 desc="CPL filtering (non-zero IA32_LBR_CTL[2:1]) supported" />
+      <bit1  len="1"  id="lbr_branch_filter"       desc="Branch filtering (non-zero IA32_LBR_CTL[22:16]) supported" />
+      <bit2  len="1"  id="lbr_call_stack"          desc="Call-stack mode (IA32_LBR_CTL[3] = 1) supported" />
+    </ebx>
+    <ecx>
+      <desc>LBR feature flags (cont.)</desc>
+      <bit0  len="1"  id="lbr_mispredict"          desc="Branch misprediction bit supported (IA32_LBR_x_INFO[63])" />
+      <bit1  len="1"  id="lbr_timed_lbr"           desc="Timed LBRs (CPU cycles since last LBR entry) supported" />
+      <bit2  len="1"  id="lbr_branch_type"         desc="Branch type field (IA32_LBR_INFO_x[59:56]) supported" />
+      <bit16 len="4"  id="lbr_events_gpc_bmp"      desc="LBR PMU-events logging support; bitmap for first 4 GP (general-purpose) Counters" />
+    </ecx>
+  </subleaf>
+</leaf>
