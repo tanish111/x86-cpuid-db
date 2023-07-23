@@ -1,0 +1,40 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x1d">
+  <desc>Intel AMX (Advanced Matrix Extensions) tile information</desc>
+  <vendors>
+    <vendor>Intel</vendor>
+  </vendors>
+  <subleaf id="0">
+    <desc>Tile information main leaf</desc>
+    <eax>
+      <bit0  len="32" id="amx_max_palette"         desc="Highest palette ID / subleaf ID">
+        <text>Palette IDs / Subleaf IDs ≥ 2 are reserved</text>
+      </bit0>
+    </eax>
+  </subleaf>
+  <subleaf id="1">
+    <desc>Tile Palette 1 enumeration</desc>
+    <text>
+      * Palette 1 register file:
+      - amx_palette_nr_tiles   = 8 tiles
+      - amx_tile_nr_rows       = 16 rows
+      - amx_tile_row_size      = 64 bytes
+      - amx_tile_size          = amx_tile_nr_rows * amx_tile_row_size = 16 * 64  = 1KiB
+      - amx_palette_size       = amx_palette_nr_tiles * amx_tile_size = 8 * 1024 = 8KiB
+    </text>
+    <eax>
+      <bit0  len="16" id="amx_palette_size"        desc="AMX palette total tiles size, in bytes" />
+      <bit16 len="16" id="amx_tile_size"           desc="AMX single tile's size, in bytes" />
+    </eax>
+    <ebx>
+      <bit0  len="16" id="amx_tile_row_size"       desc="AMX tile single row's size, in bytes" />
+      <bit16 len="16" id="amx_palette_nr_tiles"    desc="AMX palette number of tiles" />
+    </ebx>
+    <ecx>
+      <bit0  len="16" id="amx_tile_nr_rows"        desc="AMX tile max number of rows" />
+    </ecx>
+  </subleaf>
+</leaf>
