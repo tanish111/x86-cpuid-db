@@ -1,0 +1,26 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x1e">
+  <desc>Intel AMX, TMUL (Tile-matrix MULtiply) accelerator unit enumeration</desc>
+  <vendors>
+    <vendor>Intel</vendor>
+  </vendors>
+  <subleaf id="0">
+    <ebx>
+      <desc>TMUL accelerator unit grid dimensions (K, N)</desc>
+      <text>
+        The matrix multiplications in the TMUL instruction set compute:
+        <![CDATA[
+          for m < M:                 # Time steps
+            for k < @tmul_maxk:      # Grid height
+              for n < @tmul_maxn:    # SIMD dimension
+                C[m][n] += VNNI_MUL(A[m][k], B[k][n])
+        ]]>
+      </text>
+      <bit0  len="8"  id="tmul_maxk"               desc="TMUL unit maximum height, K (rows or columns)" />
+      <bit8  len="16" id="tmul_maxn"               desc="TMUL unit maxiumum SIMD dimension, N (column bytes)" />
+    </ebx>
+  </subleaf>
+</leaf>
