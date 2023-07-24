@@ -1,0 +1,61 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x23">
+  <desc>Intel Architectural Performance Monitoring Extended (ArchPerfmonExt)</desc>
+  <text>
+    This leaf is valid iff cpuid leaf 0x7 @arch_perfmon_ext = 1.
+
+    The older PMU cpuid leaf 0xa only enumerates PMU resources available system-wide.
+    Conversely, this leaf provides a per-logical-CPU "true-view" enumeration of PMU
+    resources.  Hence, client code should invoke it on each logical CPU as the values can
+    differ between cores on hybrid Intel CPUs like Alder Lake.  Check leaf 0x1a for
+    Intel's hybrid CPUs identification.
+
+    Source: Intel Architecture Instruction Set Extensions and Future Features, March 2023.
+  </text>
+  <vendors>
+    <vendor>Intel</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <desc>Bitmap of valid cpuid leaf 0x23 subleaves</desc>
+      <bit1  len="1"  id="subleaf_1_counters"      desc="Subleaf 1, PMU counters bitmaps, is valid" />
+      <bit3  len="1"  id="subleaf_3_events"        desc="Subleaf 3, PMU events bitmaps, is valid" />
+    </eax>
+    <ebx>
+      <bit0  len="1"  id="unitmask2"               desc="IA32_PERFEVTSELx MSRs UnitMask2 is supported" />
+      <bit1  len="1"  id="zbit"                    desc="IA32_PERFEVTSELx MSRs Z-bit is supported" />
+    </ebx>
+  </subleaf>
+  <subleaf id="1">
+    <eax>
+      <bit0  len="32" id="pmu_gp_counters_bitmap"  desc="General-purpose PMU counters bitmap" />
+    </eax>
+    <ebx>
+      <bit0  len="32" id="pmu_f_counters_bitmap"   desc="Fixed PMU counters bitmap" />
+    </ebx>
+  </subleaf>
+  <subleaf id="3">
+    <eax>
+      <desc>True-view per logical-CPU PMU events bitmap</desc>
+      <text>
+        Compare this against leaf 0x10 EBX, which provides a supported PMU events bitmap,
+        but against all system cores instead.
+      </text>
+      <bit0  len="1"  id="core_cycles_evt"         desc="Core cycles event supported" />
+      <bit1  len="1"  id="insn_retired_evt"        desc="Instructions retired event supported" />
+      <bit2  len="1"  id="ref_cycles_evt"          desc="Reference cycles event supported" />
+      <bit3  len="1"  id="llc_refs_evt"            desc="Last-level cache references event supported" />
+      <bit4  len="1"  id="llc_misses_evt"          desc="Last-level cache misses event supported" />
+      <bit5  len="1"  id="br_insn_ret_evt"         desc="Branch instruction retired event supported" />
+      <bit6  len="1"  id="br_mispr_evt"            desc="Branch mispredict retired event supported" />
+      <bit7  len="1"  id="td_slots_evt"            desc="Topdown slots event supported" />
+      <bit8  len="1"  id="td_backend_bound_evt"    desc="Topdown backend bound event supported" />
+      <bit9  len="1"  id="td_bad_spec_evt"         desc="Topdown bad speculation event supported" />
+      <bit10 len="1"  id="td_frontend_bound_evt"   desc="Topdown frontend bound event supported" />
+      <bit11 len="1"  id="td_retiring_evt"         desc="Topdown retiring event support" />
+    </eax>
+  </subleaf>
+</leaf>
