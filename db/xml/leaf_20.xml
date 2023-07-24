@@ -1,0 +1,40 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x20">
+  <desc>Intel HRESET (History Reset) enumeration</desc>
+  <text>
+    HRESET selectively resets the prediction history of current logical CPU. This CPUID
+    leaf enumerates the hardware components which supports selective prediction history
+    reset.
+  </text>
+  <vendors>
+    <vendor>Intel</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="32" id="hreset_nr_subleaves"     desc="CPUID 0x20 max subleaf + 1" />
+    </eax>
+    <ebx>
+      <desc>Supported HRESET EAX bits / IA32_HRESET_ENABLE MSR bits</desc>
+      <text>
+        Enumerate the bits that can be set at the IA32_HRESET_ENABLE MSR to permit
+        selective resetting of a specific hardware component's hardware-kept (prediction)
+        history using the HRESET instruction.
+
+        This CPUID register also implicitly enumerates the supported HRESET EAX bits,
+        since HRESET emits a #GP if that register has any set bit that is not also set at
+        the IA32_HRESET_ENABLE MSR.
+      </text>
+      <bit0  len="1"  id="hreset_thread_director"  desc="HRESET of Intel thread director is supported">
+        <text>
+          Intel thread director was originally called EHFI, Enhanced Hardware Feedback
+          Interface; e.g., at the Intel Architecture Instruction Set Extensions and Future
+          Features May 2021 version. Intel marketing later called it "Thread Director."
+          Thus, some open-source tools still refer to this bit as "ehfi".
+        </text>
+      </bit0>
+    </ebx>
+  </subleaf>
+</leaf>
