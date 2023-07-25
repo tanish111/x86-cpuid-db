@@ -1,0 +1,112 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x10">
+  <desc>Intel RDT / AMD PQoS allocation enumeration</desc>
+  <text>
+    AMD compatability: as of July 2023, latest version of the AMD64 Architecture
+    Programmer's Manual declare this leaf 0x10 as reserved.  Nonetheless, AMD's Processor
+    Programming Reference for the relevant AMD CPU families detail this leaf's fields in a
+    compatible way with Intel RDT, but only for CAT L2/L3; i.e. no MBA.  MBA enumeration
+    is done through extended leaf 0x80000020 instead.
+  </text>
+  <subleaf id="0">
+    <ebx>
+      <desc>Intel RDT / AMD PQoS feature flags</desc>
+      <text>
+        If bit n is set, then both ResID n and subleaf n are valid.
+      </text>
+      <bit1  len="1"  id="cat_l3"                  desc="L3 Cache Allocation Technology supported">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit1>
+      <bit2  len="1"  id="cat_l2"                  desc="L2 Cache Allocation Technology supported">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit2>
+      <bit3  len="1"  id="mba"                     desc="Memory Bandwidth Allocation supported">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit3>
+    </ebx>
+  </subleaf>
+  <subleaf id="1" array="2">
+    <desc>RDT enumeration for ResID 1 and 2 (L3 and L2 CAT)</desc>
+    <text>
+      Subleaf n is valid iff EBX bit n is set.
+      Exclusive L3 or L2 bitfields are prefixed with l3_cat or l2_cat accordingly.
+    </text>
+    <eax>
+      <bit0  len="5"  id="cat_cbm_len"             desc="L3/L2_CAT capacity bitmask length, minus-one notation">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit0>
+    </eax>
+    <ebx>
+      <bit0  len="32" id="cat_units_bitmap"        desc="L3/L2_CAT bitmap of allocation units">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit0>
+    </ebx>
+    <ecx>
+      <bit1  len="1"  id="l3_cat_cos_infreq_updates"
+                                                   desc="L3_CAT COS updates should be infrequent">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit1>
+      <bit2  len="1"  id="cat_cdp_supported"       desc="L3/L2_CAT CDP (Code and Data Prioritization)">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+        <!-- TODO: X86_FEATURE_CDP_L2: either extend the schema or unroll "array=2" -->
+        <linux        feature="true"               proc="true"            altid="cdp_l3" />
+      </bit2>
+      <bit3  len="1"  id="cat_sparse_1s"           desc="L3/L2_CAT non-contiguous 1s value supported">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit3>
+    </ecx>
+    <edx>
+      <bit0  len="16" id="cat_cos_max"             desc="L3/L2_CAT max COS (Class of Service) supported">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit0>
+    </edx>
+  </subleaf>
+  <subleaf id="3">
+    <desc>Intel RDT enumeration for ResID 3 (MBA)</desc>
+    <vendors>
+      <vendor>Intel</vendor>
+    </vendors>
+    <eax>
+      <bit0  len="12" id="mba_max_delay"           desc="Max MBA throttling value; minus-one notation" />
+    </eax>
+    <ecx>
+      <bit0  len="1"  id="mba_per_thread"          desc="Per-thread MBA controls are supported">
+        <linux        feature="true"               proc="false"           altid="per_thread_mba" />
+      </bit0>
+      <bit2  len="1"  id="mba_delay_linear"        desc="Delay values are linear" />
+    </ecx>
+    <edx>
+      <bit0  len="16" id="mba_cos_max"             desc="MBA max Class of Service supported" />
+    </edx>
+  </subleaf>
+</leaf>
