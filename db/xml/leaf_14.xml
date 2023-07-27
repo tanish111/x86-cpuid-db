@@ -1,0 +1,43 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x14">
+  <desc>Intel Processor Trace enumeration</desc>
+  <vendors>
+    <vendor>Intel</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="32" id="pt_max_subleaf"          desc="Max cpuid 0x14 subleaf" />
+    </eax>
+    <ebx>
+      <bit0  len="1"  id="cr3_filtering"           desc="IA32_RTIT_CR3_MATCH is accessible" />
+      <bit1  len="1"  id="psb_cyc"                 desc="Configurable PSB and cycle-accurate mode" />
+      <bit2  len="1"  id="ip_filtering"            desc="IP/TraceStop filtering; Warm-reset PT MSRs preservation" />
+      <bit3  len="1"  id="mtc_timing"              desc="MTC timing packet; COFI-based packets suppression" />
+      <bit4  len="1"  id="ptwrite"                 desc="PTWRITE support" />
+      <bit5  len="1"  id="power_event_trace"       desc="Power Event Trace support" />
+      <bit6  len="1"  id="psb_pmi_preserve"        desc="PSB and PMI preservation support" />
+      <bit7  len="1"  id="event_trace"             desc="Event Trace packet generation through IA32_RTIT_CTL.EventEn" />
+      <bit8  len="1"  id="tnt_disable"             desc="TNT packet generation disable through IA32_RTIT_CTL.DisTNT" />
+    </ebx>
+    <ecx>
+      <bit0  len="1"  id="topa_output"             desc="ToPA output scheme support" />
+      <bit1  len="1"  id="topa_multiple_entries"   desc="ToPA tables can hold multiple entries" />
+      <bit2  len="1"  id="single_range_output"     desc="Single-range output scheme supported" />
+      <bit3  len="1"  id="trance_transport_output" desc="Trace Transport subsystem output support" />
+      <bit31 len="1"  id="ip_payloads_lip"         desc="IP payloads have LIP values (CS base included)" />
+    </ecx>
+  </subleaf>
+  <subleaf id="1">
+    <eax>
+      <bit0  len="3"  id="num_address_ranges"      desc="Filtering number of configurable Address Ranges" />
+      <bit16 len="16" id="mtc_periods_bmp"         desc="Bitmap of supported MTC period encodings" />
+    </eax>
+    <ebx>
+      <bit0  len="16" id="cycle_thresholds_bmp"    desc="Bitmap of supported Cycle Threshold encodings" />
+      <bit16 len="16" id="psb_periods_bmp"         desc="Bitmap of supported Configurable PSB frequency encodings" />
+    </ebx>
+  </subleaf>
+</leaf>
