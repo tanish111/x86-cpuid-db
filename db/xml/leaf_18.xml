@@ -1,0 +1,52 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x18">
+  <desc>Intel determenestic address translation (TLB) parameters</desc>
+  <text>
+    If one of the leaf 2 output descriptors is "0xfe", then leaf 2 does not report any TLB
+    data and this leaf should be used for enumerating TLB and other address translation
+    parameters.
+  </text>
+  <vendors>
+    <vendor>Intel</vendor>
+  </vendors>
+  <subleaf id="0" array="32">
+    <desc>Deterministic address translation parameters info structure #n, n = subleaf index</desc>
+    <text>
+      Client code should iterate from subleaf 0 until @tlb_max_subleaf is reached. One or
+      more of the subleaves m, m ≤ @tlb_max_subleaf, can still be invalid (@tlb_type = 0).
+      For subleaves n, n > 0, @tlb_max_subleaf field is reserved.
+    </text>
+    <eax>
+      <bit0  len="32" id="tlb_max_subleaf"         desc="Max cpuid 0x18 subleaf" />
+    </eax>
+    <ebx>
+      <bit0  len="1"  id="tlb_4k_page"             desc="TLB 4KB-page entries supported" />
+      <bit1  len="1"  id="tlb_2m_page"             desc="TLB 2MB-page entries supported" />
+      <bit2  len="1"  id="tlb_4m_page"             desc="TLB 4MB-page entries supported" />
+      <bit3  len="1"  id="tlb_1g_page"             desc="TLB 1GB-page entries supported" />
+      <bit8  len="3"  id="hard_partitioning"       desc="(Hard/Soft) partitioning between logical CPUs sharing this struct" />
+      <bit16 len="16" id="n_way_associative"       desc="Ways of associativity" />
+    </ebx>
+    <ecx>
+      <bit0  len="32" id="n_sets"                  desc="Number of sets" />
+    </ecx>
+    <edx>
+      <bit0  len="5"  id="tlb_type"                desc="Translation cache type (TLB type)">
+        <values>
+          <value      id="0"                       desc="Invalid" />
+          <value      id="1"                       desc="Data TLB" />
+          <value      id="2"                       desc="Instruction TLB" />
+          <value      id="3"                       desc="Unified TLB" />
+          <value      id="4"                       desc="Load-only TLB (hit on loads; fill on loads/stores)" />
+          <value      id="5"                       desc="Store-only TLB (hit on stores; fill on stores)" />
+        </values>
+      </bit0>
+      <bit5  len="3"  id="tlb_cache_level"         desc="Translation cache level (1-based)" />
+      <bit8  len="1"  id="is_fully_associative"    desc="Fully-associative structure" />
+      <bit14 len="12" id="tlb_max_addressible_ids" desc="Max num of addressible IDs for logical CPUs sharing this TLB - 1" />
+    </edx>
+  </subleaf>
+</leaf>
