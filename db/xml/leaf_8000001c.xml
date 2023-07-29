@@ -1,0 +1,62 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x8000001c">
+  <desc>AMD LWP (Lightweight Profiling)</desc>
+  <text>
+    LWP is obsolete. It is not supported in Zen and is now removed from AMD Fam15/16 CPUs
+    through security-mitigations microcode updates.  On the Xen development mailing list,
+    AMD engineers confirmed that it will not be supported in the future:
+    https://lore.kernel.org/all/20190520184306.GC23047@amd.com
+
+    Fill the LWP entries for completeness, and for legacy CPUs, as it is still documented
+    in the AMD programmer's manual.
+  </text>
+  <vendors>
+    <vendor>AMD</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="1"  id="os_lwp_avail"            desc="LWP is available to application programs (supported by OS)" />
+      <bit1  len="1"  id="os_lpwval"               desc="LWPVAL instruction (EventId=1) is supported by OS" />
+      <bit2  len="1"  id="os_lwp_ire"              desc="Instructions Retired Event (EventId=2) is supported by OS" />
+      <bit3  len="1"  id="os_lwp_bre"              desc="Branch Retired Event (EventId=3) is supported by OS" />
+      <bit4  len="1"  id="os_lwp_dme"              desc="DCache Miss Event (EventId=4) is supported by OS" />
+      <bit5  len="1"  id="os_lwp_cnh"              desc="CPU Clocks Not Halted event (EventId=5) is supported by OS" />
+      <bit6  len="1"  id="os_lwp_rnh"              desc="CPU Reference clocks Not Halted event (EventId=6) is supported by OS" />
+      <bit29 len="1"  id="os_lwp_cont"             desc="LWP sampling in continuous mode is supported by OS" />
+      <bit30 len="1"  id="os_lwp_ptsc"             desc="Performance Time Stamp Counter in event records is supported by OS" />
+      <bit31 len="1"  id="os_lwp_int"              desc="Interrupt on threshold overflow is supported by OS" />
+    </eax>
+    <ebx>
+      <bit0  len="8"  id="lwp_lwpcb_sz"            desc="LWP Control Block size, in quadwords" />
+      <bit8  len="8"  id="lwp_event_sz"            desc="LWP event record size, in bytes" />
+      <bit16 len="8"  id="lwp_max_events"          desc="LWP max supported EventId value (EventID 255 not included)" />
+      <bit24 len="8"  id="lwp_event_offset"        desc="LWP events area offset in the LWP Control Block" />
+    </ebx>
+    <ecx>
+      <bit0  len="5"  id="lwp_latency_max"         desc="Num of bits in cache latency counters (10 to 31)" />
+      <bit5  len="1"  id="lwp_data_adddr"          desc="Cache miss events report the data address of the reference" />
+      <bit6  len="3"  id="lwp_latency_rnd"         desc="Amount by which cache latency is rounded" />
+      <bit9  len="7"  id="lwp_version"             desc="LWP implementation version" />
+      <bit16 len="8"  id="lwp_buf_min_sz"          desc="LWP event ring buffer min size, in units of 32 event records" />
+      <bit28 len="1"  id="lwp_branch_predict"      desc="Branches Retired events can be filtered" />
+      <bit29 len="1"  id="lwp_ip_filtering"        desc="IP filtering (IPI, IPF, BaseIP, and LimitIP @ LWPCP) supported" />
+      <bit30 len="1"  id="lwp_cache_levels"        desc="Cache-related events can be filtered by cache level" />
+      <bit31 len="1"  id="lwp_cache_latency"       desc="Cache-related events can be filtered by latency" />
+    </ecx>
+    <edx>
+      <bit0  len="1"  id="hw_lwp_avail"            desc="LWP is available in Hardware" />
+      <bit1  len="1"  id="hw_lpwval"               desc="LWPVAL instruction (EventId=1) is available in HW" />
+      <bit2  len="1"  id="hw_lwp_ire"              desc="Instructions Retired Event (EventId=2) is available in HW" />
+      <bit3  len="1"  id="hw_lwp_bre"              desc="Branch Retired Event (EventId=3) is available in HW" />
+      <bit4  len="1"  id="hw_lwp_dme"              desc="DCache Miss Event (EventId=4) is available in HW" />
+      <bit5  len="1"  id="hw_lwp_cnh"              desc="CPU Clocks Not Halted event (EventId=5) is available in HW" />
+      <bit6  len="1"  id="hw_lwp_rnh"              desc="CPU Reference clocks Not Halted event (EventId=6) is available in HW" />
+      <bit29 len="1"  id="hw_lwp_cont"             desc="LWP sampling in continuous mode is available in HW" />
+      <bit30 len="1"  id="hw_lwp_ptsc"             desc="Performance Time Stamp Counter in event records is available in HW" />
+      <bit31 len="1"  id="hw_lwp_int"              desc="Interrupt on threshold overflow is available in HW" />
+    </edx>
+  </subleaf>
+</leaf>
