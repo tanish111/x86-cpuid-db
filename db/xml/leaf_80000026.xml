@@ -1,0 +1,87 @@
+<!--
+*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x80000026">
+  <desc>AMD extended topology enumeration v2</desc>
+  <text>
+    This leaf is valid if subleaf 0's @domain_lcpus_count > 0.
+
+    AMD CPUs client code should use this leaf, instead of leaf 0xb, if available.  That
+    is, if leaf 0x80000000's @max_ext_leaf ≥ 0x80000026.
+  </text>
+  <vendors>
+    <vendor>AMD</vendor>
+  </vendors>
+  <subleaf id="0" array="4">
+    <text>
+      Subleaf ID acts as the domain level specifier.  Clients should keep iterating on all
+      subleaves until hitting a level with @domain_lcpus_count = 0.
+    </text>
+    <eax>
+      <bit0  len="5"  id="x2apic_id_shift"         desc="Bit width of this level (previous levels inclusive)">
+        <text>
+          Next-level topology ID = @x2apic_id >> @x2apic_id_shift.
+        </text>
+      </bit0>
+      <bit29 len="1"  id="core_has_pwreff_ranking" desc="This core has a power efficiency ranking">
+        <text>
+          If set, power efficiency varies across cores.  This core's power efficiency
+          ranking is provided at @core_pwreff_ranking.
+        </text>
+      </bit29>
+      <bit30 len="1"  id="domain_has_hybrid_cores" desc="This domain level has hybrid (E, P) cores" />
+      <bit31 len="1"  id="domain_core_count_asymm" desc="The 'Core' domain has asymmetric cores count" />
+    </eax>
+    <ebx>
+      <bit0  len="16" id="domain_lcpus_count"      desc="Number of logical CPUs at this domain instance">
+        <text>
+          If @domain_type = 1 (Core domain) and @domain_core_count_asymm is set, this
+          logical CPUs count will differ across different instances of the domain level
+          specified at @domain_level.
+        </text>
+      </bit0>
+      <bit16 len="8"  id="core_pwreff_ranking"     desc="This core's static power efficiency ranking">
+        <text>
+          This field is valid iff @core_has_eff_ranking is set.  Lower values indicate
+          better power consumption (and a potentially lower performance potential).
+        </text>
+      </bit16>
+      <bit24 len="4"  id="core_native_model_id"    desc="This core's native model ID">
+        <text>
+          Thid field is valid iff @domain_type = 1 (Core domain).
+        </text>
+        <values>
+          <value      id="0"                       desc="Zen4 Core" />
+        </values>
+      </bit24>
+      <bit28 len="4"  id="core_type"               desc="This core's type">
+        <text>
+          Thid field is valid iff @domain_type = 1 (Core domain).
+        </text>
+        <values>
+          <value      id="0"                       desc="Performance (P) core" />
+          <value      id="1"                       desc="Efficiency (E) core" />
+        </values>
+      </bit28>
+    </ebx>
+    <ecx>
+      <bit0  len="8"  id="domain_level"            desc="This domain level (subleaf ID)" />
+      <bit8  len="8"  id="domain_type"             desc="This domain type">
+        <values>
+          <value      id="1"                       desc="Core domain" />
+          <value      id="2"                       desc="Complex domain" />
+          <value      id="3"                       desc="CCD (Die) domain" />
+          <value      id="4"                       desc="Socket domain" />
+        </values>
+      </bit8>
+    </ecx>
+    <edx>
+      <bit0  len="32" id="x2apic_id"               desc="x2APIC ID of current logical CPU">
+        <text>
+          The APIC ID is always valid and does not vary along with subleaf index.
+        </text>
+      </bit0>
+    </edx>
+  </subleaf>
+</leaf>
