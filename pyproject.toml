@@ -1,0 +1,48 @@
+# SPDX-FileCopyrightText: 2023 Linutronix GmbH
+# SPDX-License-Identifier: GPL-2.0-only
+
+[build-system]
+requires = ["poetry-core>=1.5.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "x86-cpuid-db"
+license = "GPL-2.0-only AND CC0-1.0"
+homepage = "https://x86-cpuid.org"
+repository = "https://gitlab.com/x86-cpuid.org/x86-cpuid-db"
+documentation = "https://x86-cpuid.org"
+description = "CPUID data generator"
+version = "0.0"
+readme = "README.rst"
+authors = [
+    "Ahmed S. Darwish <darwi@linutronix.de>",
+    "Thomas Gleixner <tglx@linutronix.de>",
+]
+maintainers = [
+    "Ahmed S. Darwish <darwi@linutronix.de>",
+]
+packages = [
+    { include = "tools/xmlgen.py" },
+    { include = "tools/cpuidgen.py" },
+]
+classifiers = [
+    "Operating System :: Unix",
+    "Topic :: Software Development :: Code Generators",
+    "Topic :: Text Processing :: Markup :: XML",
+    "Topic :: Text Processing :: Markup :: reStructuredText",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.9"
+saxonche = "12.4.0"
+
+[tool.poetry.scripts]
+xmlgen = "tools.xmlgen:main"
+cpuidgen = "tools.cpuidgen:main"
+
+[tool.mypy]
+strict = true
+
+[[tool.mypy.overrides]]
+module = "saxonche"
+ignore_missing_imports = true
