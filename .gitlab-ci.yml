@@ -1,0 +1,66 @@
+# SPDX-FileCopyrightText: 2024 Linutronix GmbH
+# SPDX-License-Identifier: CC0-1.0
+default:
+  image: python:3.11-bookworm
+
+# GitLab's predefined variables are defined at:
+# https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
+variables:
+  OUTPUT_DIR: output
+  KCPUID_CSV_FILE: ${OUTPUT_DIR}/kcpuid.csv
+  CPUID_C_HEADER: ${OUTPUT_DIR}/cpuid-headers.h
+
+before_script:
+  - apt-get -y update
+  - mkdir -p ${OUTPUT_DIR}/
+
+validate_REUSE_v3_compliance:
+  stage: .pre
+  script:
+    - apt-get -y install reuse
+    - reuse lint
+
+validate_xml_schema:
+  stage: .pre
+  script:
+    - apt-get -y install libxml2-utils
+    - ./scripts/validate_xml.sh
+
+check_xml_codingstyle:
+  stage: .pre
+  script:
+    - apt-get -y install gawk
+    - ./scripts/check_xml_style.awk
+
+compile_generated_kernel_headers:
+  stage: test
+  script:
+    - apt-get -y install gcc python3-poetry
+    - poetry install
+    - ./scripts/generate_kernel_headers.sh
+    - >
+      for header in ${OUTPUT_DIR}/leaf_*.h; do
+        sed -i 's/u32/__u32/g' $header
+        echo "Compile-testing header file ${header}"
+        gcc -Wall $header
+      done
+
+deploy_kcpuid_csv_file:
+  stage: deploy
+  script:
+    - apt-get -y install python3-poetry
+    - poetry install
+    - poetry run cpuidgen --kcpuid > ${KCPUID_CSV_FILE}
+  artifacts:
+    paths:
+      - ${KCPUID_CSV_FILE}
+
+deploy_kernel_headers:
+  stage: deploy
+  script:
+    - apt-get -y install python3-poetry
+    - poetry install
+    - ./scripts/generate_kernel_headers.sh
+  artifacts:
+    paths:
+      - ${OUTPUT_DIR}/leaf_*.h
