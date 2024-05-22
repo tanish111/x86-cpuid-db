@@ -93,7 +93,12 @@
         <xsl:variable name="startBit"           select="xs:integer(substring-after(name(), 'bit'))" />
         <xsl:variable name="endBit"             select="$startBit + xs:integer(@len) - 1" />
         <xsl:variable name="bitrange"           select="lx:intel-notation-range($startBit, $endBit)" />
-        <xsl:variable name="shortName"          select="@id" />
+
+        <!-- /proc/cpuinfo flag names ›› X86_FEATURE_* ›› x86-cpuid.org -->
+        <xsl:variable name="shortName"          select="if (linux[@procid]) then linux/@procid else
+                                                        if (linux[@altid]) then linux/@altid else
+                                                        @id" />
+
         <xsl:variable name="description"        select="@desc" />
 
         <xsl:value-of select="concat(lx:left-pad($leafID,       $leafPadding)      , ','  ,
