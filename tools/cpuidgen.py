@@ -121,6 +121,10 @@ def main() -> None:
     except CPUIDError as error:
         print(f'Error: {error}', file=sys.stderr)
         sys.exit(1)
+    except BrokenPipeError:
+        devnull = os.open(os.devnull, os.O_WRONLY)
+        os.dup2(devnull, sys.stdout.fileno())
+        sys.exit(1)
     except Exception as unexpected_error:
         print(f'Unexpected error: {unexpected_error}', file=sys.stderr)
         traceback.print_exc()
