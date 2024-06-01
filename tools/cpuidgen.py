@@ -2,23 +2,33 @@
 #
 # cpuidgen.py — Generate formatted CPUID leaves bitfields
 #
-# SPDX-FileCopyrightText: 2023 Linutronix GmbH
+# SPDX-FileCopyrightText: 2023-2024 Linutronix GmbH
 # SPDX-License-Identifier: GPL-2.0-only
 
 import argparse, os, sys, traceback
 
 from dataclasses import dataclass
 from pathlib     import Path, PurePath
+from pygit2      import Commit, GitError, Reference, Repository
 from saxonche    import PySaxonProcessor, PySaxonApiError
-from typing      import Optional
+from typing      import NoReturn, Optional, Union
 
 #
 # Project configuration globals
 #
 
-TOOL_NAME: str = Path(__file__).stem
-KCPUID_XSLT  = 'kcpuid.xslt'
-KHEADER_XSLT = 'kheader.xslt'
+GENERATED_FILES_LICENSE = 'CC0-1.0'
+
+RELEASE_TAGS_GLOB       = 'v[[:digit:]].[[:digit:]]*'
+PROJECT_NAME            = 'x86-cpuid-db'
+TOOL_NAME: str          = Path(__file__).stem
+
+PROJECT_DIRECTORY: Path = Path(__file__).resolve().parents[1]
+XSLT_DIRECTORY          = PROJECT_DIRECTORY / 'db' / 'xslt'
+XML_DIRECTORY           = PROJECT_DIRECTORY / 'db' / 'xml'
+
+KCPUID_XSLT: Path       = XSLT_DIRECTORY / 'kcpuid.xslt'
+KHEADER_XSLT            = XSLT_DIRECTORY / 'kheader.xslt'
 
 #
 # Help strings
@@ -42,12 +52,55 @@ class CPUIDError(RuntimeError):
     pass
 
 @dataclass
-class SaxonCTransformer:
-    '''Perform XSLT transformations through SaxonC.'''
-    xslt_dir: Path
+class GitRepository:
+    '''Higher-level libgit2 operations.'''
+    project_dir: Path
+    git_tags_glob: str
+    tool_name: str
+
+    def _handle_git_error(self, e: GitError, msg: str) -> NoReturn:
+        msg += f'\n       {str(e)}'
+        raise CPUIDError(msg)
 
     def __post_init__(self) -> None:
-        self.processor = PySaxonProcessor().new_xslt30_processor()
+        '''Prepare for libgit2 operations on this repository'''
+        try:
+            self.repo = Repository(self.project_dir)
+        except GitError as e:
+            msg  = f'For now, {self.tool_name} must run from its Git repository'
+            self._handle_git_error(e, msg)
+        self._verify_repo_release_tags()
+
+    def _verify_repo_release_tags(self) -> None:
+        '''Verify that the repo has the expected release tags'''
+        try:
+            self.repo.describe(pattern=self.git_tags_glob)
+        except (GitError, KeyError) as e:
+            msg  = 'Git repo has no annotated tags, reachable from HEAD, '
+            msg += f'which matches the glob(7) pattern "{self.git_tags_glob}"'
+            self._handle_git_error(e, msg)
+
+    def describe_working_tree(self) -> Union[str, NoReturn]:
+        '''git describe --match=<glob(7)-pattern> --dirty=<suffix>'''
+        try:
+            return str(self.repo.describe(committish=None,
+                                          pattern=self.git_tags_glob,
+                                          dirty_suffix='-dirty'))
+        except GitError as e:
+            msg  = 'Unknown git error while describing project\'s repository'
+            self._handle_git_error(e, msg)
+
+@dataclass
+class SaxonCTransformer:
+    '''Perform XSLT transformations through SaxonC.'''
+    project_dir: Path
+    xslt_dir: Path
+    project_name: str
+    project_version: str
+
+    def __post_init__(self) -> None:
+        self.saxonproc = PySaxonProcessor()
+        self.processor = self.saxonproc.new_xslt30_processor()
 
     @staticmethod
     def indent_saxonc_error_messages(text: str) -> str:
@@ -63,29 +116,38 @@ class SaxonCTransformer:
         except IOError as e:
             raise CPUIDError(f'Failed to read XSLT file: {e}')
 
-    def transform(self, xslt_name: str, xml_file: Optional[Path] = None) -> str:
-        xslt_path = self.xslt_dir / xslt_name
+    def transform(self, xslt_path: Path, xml_file: Optional[Path] = None) -> str:
+        generator: str = self.project_name + ' ' + self.project_version
         xslt_data = SaxonCTransformer.read_xslt_file(xslt_path)
+        xslt_params = { 'generatedFilesLicense': self.saxonproc.make_string_value(GENERATED_FILES_LICENSE),
+                        'generator': self.saxonproc.make_string_value(generator) }
+
         try:
             executable = self.processor.compile_stylesheet(stylesheet_text=xslt_data)
+            executable.set_initial_template_parameters(False, xslt_params)
             if xml_file:
                 executable.set_global_context_item(file_name=str(xml_file))
-            if output := str(executable.call_template_returning_string()):
-                return output
-            raise CPUIDError(f'{xslt_name} produced no output')
+            output = str(executable.call_template_returning_string())
         except PySaxonApiError as e:
             raise CPUIDError('XSLT processing failed:\n' +
                              f'{SaxonCTransformer.indent_saxonc_error_messages(str(e))}')
 
+        if not output:
+            raise CPUIDError(f'{xslt_path.name} produced no output')
+        return output
+
 @dataclass
 class CPUIDGen:
     '''CPUID leaf/leaves bitfield generator (different formats).'''
-    db_path: Path
+    project_dir: Path
+    xslt_dir: Path
+    xml_dir: Path
+    tool_name: str
+    tool_version: str
 
     def __post_init__(self) -> None:
-        self.xml_dir = self.db_path / 'xml'
-        self.xslt_dir = self.db_path / 'xslt'
-        self.transformer = SaxonCTransformer(self.xslt_dir)
+        self.transformer = SaxonCTransformer(self.project_dir, self.xslt_dir,
+                                             self.tool_name, self.tool_version)
 
     def generate_kcpuid_csv(self) -> str:
         return self.transformer.transform(KCPUID_XSLT)
@@ -97,8 +159,11 @@ class CPUIDGen:
             raise CPUIDError(f'CPUID leaf "{leaf:#x}" is not described in the XML database')
         return self.transformer.transform(KHEADER_XSLT, xml_file_path)
 
-def run_cpuid_generation(parsed_args: argparse.Namespace, db_directory: Path) -> str:
-    generator = CPUIDGen(db_directory)
+def run_cpuid_generation(parsed_args: argparse.Namespace) -> str:
+    gitrepo = GitRepository(PROJECT_DIRECTORY, RELEASE_TAGS_GLOB, TOOL_NAME)
+    version = gitrepo.describe_working_tree()
+    generator = CPUIDGen(PROJECT_DIRECTORY,XSLT_DIRECTORY, XML_DIRECTORY,
+                         PROJECT_NAME, version)
 
     if parsed_args.kcpuid:
         return generator.generate_kcpuid_csv()
@@ -126,10 +191,9 @@ def parse_script_arguments() -> argparse.Namespace:
 
 def main() -> None:
     parsed_args = parse_script_arguments()
-    db_directory = Path(__file__).resolve().parents[1] / 'db'
 
     try:
-        output = run_cpuid_generation(parsed_args, db_directory)
+        output = run_cpuid_generation(parsed_args)
         print(output, end='')
     except CPUIDError as error:
         print(f'Error: {error}', file=sys.stderr)
