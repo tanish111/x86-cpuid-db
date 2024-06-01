@@ -41,11 +41,16 @@
     <xsl:variable name="shortnamePadding"       select="23" />
 
     <xsl:template name="xsl:initial-template">
-        <xsl:value-of select="concat('# SPDX-License-Identifier', ': ', 'CC0-1.0'                           , $nl,
-                                     ''                                                                     , $nl,
+        <xsl:param    name="generatedFilesLicense" />
+        <xsl:param    name="generator" />
+
+        <!-- Break the SPDX tag, or REUSE will think it's for this file -->
+        <xsl:value-of select="concat('# SPDX-License-Identifier', ': '  , $generatedFilesLicense            , $nl,
+                                     '# Generator: '                    , $generator                        , $nl, $nl,
+                                     '#'                                                                    , $nl,
                                      '# Auto-generated file.'                                               , $nl,
                                      '# Please submit all updates and bugfixes to https://x86-cpuid.org'    , $nl,
-                                     '#'                                                                    , $nl,
+                                     '#'                                                                    , $nl, $nl,
                                      '# The basic row format is:'                                           , $nl,
                                      '#'                                                                    ,
                                       lx:left-pad('LEAF,'       , $leafPadding)                             ,

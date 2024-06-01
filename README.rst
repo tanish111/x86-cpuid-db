@@ -191,6 +191,9 @@ For example, to generate a Linux-kernel kcpuid CSV file, do:
 
     $ cpuidgen --kcpuid
 
+    # SPDX-License-Identifier: CC0-1.0
+    # Generator: x86-cpuid-db v1.0
+
     # The basic row format is:
     #     LEAF, SUBLEAVES,  reg,    bits,    short_name             , long_description
 
