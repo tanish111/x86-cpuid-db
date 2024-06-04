@@ -233,6 +233,9 @@ bitfield listings, do:
 
     $ cpuidgen --kheader 7
 
+    /* SPDX-License-Identifier: CC0-1.0 */
+    /* Generator: x86-cpuid-db v1.0 */
+
     struct {
      	// eax
      	u32	leaf7_n_subleaves	: 32; // Number of cpuid 0x7 subleaves

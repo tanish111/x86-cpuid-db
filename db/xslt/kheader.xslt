@@ -98,13 +98,19 @@
 
     <!-- Initial template -->
     <xsl:template name="xsl:initial-template">
+      <xsl:param    name="generatedFilesLicense" />
+      <xsl:param    name="generator" />
       <xsl:variable name="leafID"                            select="/leaf/@id" />
-      <xsl:value-of select="concat('/* SPDX-License-Identifier: CC0-1.0 */',                             $nl,
+
+      <!-- Break the SPDX tag, or REUSE will think it's for this file -->
+      <xsl:value-of select="concat('/* SPDX-License-Identifier', ': '  , $generatedFilesLicense, ' */',  $nl,
+                                   '/* Generator: '                    , $generator            , ' */',  $nl, $nl,
                                    '/*',                                                                 $nl,
-                                   ' * CPUID leaf ', $leafID, ' bitfields description',                  $nl,
-                                   ' *',                                                                 $nl,
                                    ' * Auto-generated file.',                                            $nl,
                                    ' * Please submit all updates and bugfixes to https://x86-cpuid.org', $nl,
+                                   ' */',                                                                $nl, $nl,
+                                   '/*',                                                                 $nl,
+                                   ' * CPUID leaf ', $leafID, ' bitfields description',                  $nl,
                                    ' */',                                                                $nl, $nl,
                                    '#ifndef _ASM_X86_CPUID_LEAF_', lx:sanitize-hex-id($leafID),          $nl,
                                    '#define _ASM_X86_CPUID_LEAF_', lx:sanitize-hex-id($leafID),          $nl, $nl,
