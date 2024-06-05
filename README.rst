@@ -321,6 +321,42 @@ more information, do:
 
     xmlgen --help
 
+Tagging Conventions for Generated Files
+=======================================
+
+All of this project's generated files include at least two tags on top:
+
+#. **SPDX Creative Commons Zero 1.0 Universal License** tag.
+#. **Project version string** as output by ``git describe`` for the
+   current working tree.
+
+An example of the generated files' tags, from a pristine git tree,
+checked out at the ``v1.0-rc1`` annotated tag:
+
+.. code-block::
+
+   $ cpuidgen --kcpuid | head -2
+
+   # SPDX-License-Identifier: CC0-1.0
+   # Generator: x86-cpuid-db v1.0-rc1
+
+Another example, with 12 commits above the ``v1.0-rc1`` annotated tag,
+and with local uncommitted changes to the git tree:
+
+.. code-block::
+
+   $ cpuidgen --kheader 7 | head -2
+
+   /* SPDX-License-Identifier: CC0-1.0 */
+   /* Generator: x86-cpuid-db v1.0-rc1-12-3b40afa2-dirty */
+
+For more information on the license tag, refer to the `LICENSE`_ file.
+
+The generated ``git describe`` version string is intended to aid
+projects like `KernelCI`_ in verifying that the generated header files
+in the Linux kernel's x86 tree have not been manually modified by the
+kernel developer after the ``cpuidgen`` automatic generation.
+
 CPUID Data Coverage
 ===================
 
@@ -425,4 +461,5 @@ helpful:
 .. _`CHANGELOG`: CHANGELOG.rst
 .. _`LICENSE`: LICENSE.rst
 .. _`gitlab-ci.yml`: .gitlab-ci.yml
+.. _`KernelCI`: https://kernelci.org/
 .. _`x86-cpuid.org`: https://x86-cpuid.org
