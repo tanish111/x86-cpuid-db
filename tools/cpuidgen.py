@@ -12,14 +12,16 @@ from pathlib  import Path, PurePath
 from saxonche import PyXslt30Processor, PySaxonApiError
 from typing   import Optional
 
-DESCRIPTION = 'Generate CPUID data structures in different output formats'
-KCPUID_HELP = 'Generate a linux-kernel "kcpuid" CSV file'
+TOOL_NAME: str = Path(__file__).stem
+
+DESCRIPTION  = 'Generate CPUID data structures in different output formats'
+KCPUID_HELP  = 'Generate a linux-kernel "kcpuid" CSV file'
 KHEADER_HELP = 'Generate a linux-kernel C header for the given CPUID_LEAF'
-EPILOG = '''example invocations:
-  cpuidgen --kcpuid
-  cpuidgen --kheader 7
-  cpuidgen --kheader 0x12
-  cpuidgen --kheader 0x80000001
+EPILOG  =   f'''example invocations:
+  {TOOL_NAME} --kcpuid
+  {TOOL_NAME} --kheader 7
+  {TOOL_NAME} --kheader 0x12
+  {TOOL_NAME} --kheader 0x80000001
 '''
 
 KCPUID_XSLT = 'kcpuid.xslt'
@@ -102,7 +104,7 @@ def parse_script_arguments() -> argparse.Namespace:
             raise argparse.ArgumentTypeError(f'Invalid CPUID_LEAF hex number: "{arg}"')
 
     parser = argparse.ArgumentParser(
-        prog=Path(__file__).name,
+        prog=TOOL_NAME,
         description=DESCRIPTION,
         epilog=EPILOG,
         formatter_class=argparse.RawDescriptionHelpFormatter
