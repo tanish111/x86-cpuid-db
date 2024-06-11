@@ -12,7 +12,17 @@ from pathlib     import Path, PurePath
 from saxonche    import PySaxonProcessor, PySaxonApiError
 from typing      import Optional
 
+#
+# Project configuration globals
+#
+
 TOOL_NAME: str = Path(__file__).stem
+KCPUID_XSLT  = 'kcpuid.xslt'
+KHEADER_XSLT = 'kheader.xslt'
+
+#
+# Help strings
+#
 
 DESCRIPTION  = 'Generate CPUID data structures in different output formats'
 KCPUID_HELP  = 'Generate a linux-kernel "kcpuid" CSV file'
@@ -23,9 +33,6 @@ EPILOG  =   f'''example invocations:
   {TOOL_NAME} --kheader 0x12
   {TOOL_NAME} --kheader 0x80000001
 '''
-
-KCPUID_XSLT = 'kcpuid.xslt'
-KHEADER_XSLT = 'kheader.xslt'
 
 class CPUIDError(RuntimeError):
     '''Custom exception for CPUID generation errors.  This exception is
