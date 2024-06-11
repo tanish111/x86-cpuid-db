@@ -7,9 +7,10 @@
 
 import argparse, os, sys, traceback
 
-from pathlib  import Path, PurePath
-from saxonche import PySaxonProcessor, PySaxonApiError
-from typing   import Optional
+from dataclasses import dataclass
+from pathlib     import Path, PurePath
+from saxonche    import PySaxonProcessor, PySaxonApiError
+from typing      import Optional
 
 TOOL_NAME: str = Path(__file__).stem
 
@@ -33,11 +34,12 @@ class CPUIDError(RuntimeError):
     '''
     pass
 
+@dataclass
 class SaxonCTransformer:
     '''Perform XSLT transformations through SaxonC.'''
+    xslt_dir: Path
 
-    def __init__(self, xslt_dir: Path) -> None:
-        self.xslt_dir = xslt_dir
+    def __post_init__(self) -> None:
         self.processor = PySaxonProcessor().new_xslt30_processor()
 
     @staticmethod
@@ -68,12 +70,15 @@ class SaxonCTransformer:
             raise CPUIDError('XSLT processing failed:\n' +
                              f'{SaxonCTransformer.indent_saxonc_error_messages(str(e))}')
 
+@dataclass
 class CPUIDGen:
     '''CPUID leaf/leaves bitfield generator (different formats).'''
+    db_path: Path
 
-    def __init__(self, db_path: Path) -> None:
-        self.xml_dir = db_path / 'xml'
-        self.transformer = SaxonCTransformer(db_path / 'xslt')
+    def __post_init__(self) -> None:
+        self.xml_dir = self.db_path / 'xml'
+        self.xslt_dir = self.db_path / 'xslt'
+        self.transformer = SaxonCTransformer(self.xslt_dir)
 
     def generate_kcpuid_csv(self) -> str:
         return self.transformer.transform(KCPUID_XSLT)
