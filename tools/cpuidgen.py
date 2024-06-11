@@ -5,11 +5,10 @@
 # SPDX-FileCopyrightText: 2023 Linutronix GmbH
 # SPDX-License-Identifier: GPL-2.0-only
 
-import argparse, os, saxonche, sys
-import traceback
+import argparse, os, sys, traceback
 
 from pathlib  import Path, PurePath
-from saxonche import PyXslt30Processor, PySaxonApiError
+from saxonche import PySaxonProcessor, PySaxonApiError
 from typing   import Optional
 
 TOOL_NAME: str = Path(__file__).stem
@@ -39,7 +38,7 @@ class SaxonCTransformer:
 
     def __init__(self, xslt_dir: Path) -> None:
         self.xslt_dir = xslt_dir
-        self.processor = saxonche.PySaxonProcessor().new_xslt30_processor()
+        self.processor = PySaxonProcessor().new_xslt30_processor()
 
     @staticmethod
     def indent_saxonc_error_messages(text: str) -> str:
@@ -65,7 +64,7 @@ class SaxonCTransformer:
             if output := str(executable.call_template_returning_string()):
                 return output
             raise CPUIDError(f'{xslt_name} produced no output')
-        except saxonche.PySaxonApiError as e:
+        except PySaxonApiError as e:
             raise CPUIDError('XSLT processing failed:\n' +
                              f'{SaxonCTransformer.indent_saxonc_error_messages(str(e))}')
 
