@@ -180,7 +180,7 @@ Then, you can use this project's available tooling:
     options:
       -h, --help            show this help message and exit
       --kcpuid, -k          Generate a linux-kernel "kcpuid" CSV file
-      --kheader CPUID_LEAF, -r CPUID_LEAF
+      --kheader CPUID_LEAF, -l CPUID_LEAF
                             Generate a linux-kernel C header for the given CPUID LEAF
 
     Generate CPUID data structures in different output formats

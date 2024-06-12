@@ -108,7 +108,7 @@ def parse_script_arguments() -> argparse.Namespace:
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
     parser.add_argument('--kcpuid', '-k', action='store_true', help=KCPUID_HELP)
-    parser.add_argument('--kheader', '-r', type=parse_kheader_argument, metavar='CPUID_LEAF', help=KHEADER_HELP)
+    parser.add_argument('--kheader', '-l', type=parse_kheader_argument, metavar='CPUID_LEAF', help=KHEADER_HELP)
     return parser.parse_args()
 
 def main() -> None:
