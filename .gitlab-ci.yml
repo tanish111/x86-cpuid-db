@@ -45,6 +45,13 @@ check_xml_codingstyle:
     - apt-get -y install gawk
     - ./scripts/check_xml_style.awk
 
+# pyproject.toml already sets 'tool.mypy.strict'
+run_mypy_strict_typing_checks:
+  stage: test
+  script:
+    - apt-get -y install mypy
+    - mypy tools/xmlgen.py tools/cpuidgen.py
+
 compile_generated_kernel_headers:
   stage: test
   script:
