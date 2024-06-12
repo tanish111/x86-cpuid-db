@@ -1,8 +1,28 @@
-.. SPDX-FileCopyrightText: 2023 Linutronix GmbH
+.. SPDX-FileCopyrightText: 2023-2024 Linutronix GmbH
 .. SPDX-License-Identifier: CC0-1.0
 
 Changelog
 =========
+
+Release v1.0
+------------
+
+- Prepend the workspace's ``git describe`` string, as a tag, to all
+  generated output.
+
+- Document generated files' tagging conventions; i.e., the SPDX license
+  tag and the aforementioned workspace git describe tag.
+
+- Add minor Python refactorings and type annotations fixes.
+
+- Add a GitLab CI file which:
+
+  - Validates, schema-wise, all of the project's XML files
+  - Runs coding style checks over such XML files
+  - Runs FSFE REUSE licensing compliance checks for the whole project
+  - Compile-tests all generated kernel headers
+  - Runs ``mypy`` strict static typing checks on all Python code
+  - Deploys the project's generated files into GitLab's "downloads" area
 
 PRE-Release v1.0-rc1
 --------------------
