@@ -2,7 +2,7 @@
 #
 # xmlgen.py — Automate generating Cpuid bitfields XML description
 #
-# SPDX-FileCopyrightText: 2023 Linutronix GmbH
+# SPDX-FileCopyrightText: 2023-2024 Linutronix GmbH
 # SPDX-License-Identifier: GPL-2.0-only
 #
 # Data Model relationships ("<--" is inheritance, "<══" is composition):
@@ -286,6 +286,7 @@ class RegisterOps:
             for t in target_ranges:
                 if not r.overlaps(t):
                     continue
+                f: CpuidOSFeatureFlag
                 if os == OS.Linux:
                     f = CpuidLinuxFeature(BitRange(r.start, r.end))
                 elif os == OS.Xen:
