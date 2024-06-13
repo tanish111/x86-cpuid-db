@@ -3,8 +3,10 @@
 default:
   image: python:3.11-bookworm
 
+#
 # GitLab's predefined variables are defined at:
 # https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
+#
 variables:
   OUTPUT_DIR: output
   KCPUID_CSV_FILE: ${OUTPUT_DIR}/kcpuid.csv
@@ -13,6 +15,17 @@ variables:
 before_script:
   - apt-get -y update
   - mkdir -p ${OUTPUT_DIR}/
+
+#
+# Don't waste computing resources: Run this pipeline only if it's the
+# main branch, the tip branch, or if the branch's name ends with "-ci".
+# https://docs.gitlab.com/ee/ci/yaml/workflow.html
+#
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH =~ /^(main|tip|.*-ci)$/
+      when: always
+    - when: never
 
 validate_REUSE_v3_compliance:
   stage: .pre
@@ -65,8 +78,10 @@ deploy_kernel_headers:
     paths:
       - ${OUTPUT_DIR}/leaf_*.h
 
+#
 # Create a GitLab release when an annotated tag is pushed
 # See https://docs.gitlab.com/ee/ci/yaml/#release
+#
 do_gitlab_release:
   stage: .post
   image: registry.gitlab.com/gitlab-org/release-cli:latest
