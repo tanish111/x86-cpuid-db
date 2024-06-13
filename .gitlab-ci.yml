@@ -64,3 +64,20 @@ deploy_kernel_headers:
   artifacts:
     paths:
       - ${OUTPUT_DIR}/leaf_*.h
+
+# Create a GitLab release when an annotated tag is pushed
+# See https://docs.gitlab.com/ee/ci/yaml/#release
+do_gitlab_release:
+  stage: .post
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  rules:
+    - if: $CI_COMMIT_TAG
+  # Override global before_script
+  before_script: []
+  script:
+    - echo "Creating a GitLab release for $CI_COMMIT_TAG"
+  release:
+    name: "Release $CI_COMMIT_TAG"
+    description: '$DESCRIPTION'
+    tag_name: '$CI_COMMIT_TAG'
+    ref: '$CI_COMMIT_TAG'
