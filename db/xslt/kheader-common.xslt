@@ -28,6 +28,16 @@
                               ' */',                                                                $nl, $nl)" />
     </xsl:function>
 
+    <!-- Generate leaf description, as a multi-line C comment. -->
+    <xsl:function name="lx:c-describe-leaf"     as="xs:string">
+        <xsl:param name="leafID"                as="xs:string" />
+
+        <xsl:value-of select="concat(
+                              '/*',                                                                 $nl,
+                              ' * CPUID leaf ', $leafID,                                            $nl,
+                              ' */',                                                                $nl, $nl)" />
+    </xsl:function>
+
     <!--
         *** Helper Functions
     -->
