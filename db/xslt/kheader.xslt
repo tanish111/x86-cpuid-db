@@ -15,14 +15,9 @@
         <xsl:param           name="generator" />
         <xsl:variable        name="leafID"  select="/leaf/@id" />
 
-        <!-- Break the SPDX tag, or REUSE will think it's for this file -->
+        <xsl:value-of        select="lx:c-generate-blurb($generatedFilesLicense, $generator)" />
+
         <xsl:value-of        select="concat(
-                                     '/* SPDX-License-Identifier', ': '  , $generatedFilesLicense, ' */',  $nl,
-                                     '/* Generator: '                    , $generator            , ' */',  $nl, $nl,
-                                     '/*',                                                                 $nl,
-                                     ' * Auto-generated file.',                                            $nl,
-                                     ' * Please submit all updates and bugfixes to https://x86-cpuid.org', $nl,
-                                     ' */',                                                                $nl, $nl,
                                      '/*',                                                                 $nl,
                                      ' * CPUID leaf ', $leafID, ' bitfields description',                  $nl,
                                      ' */',                                                                $nl, $nl,

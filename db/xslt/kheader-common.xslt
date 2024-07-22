@@ -14,6 +14,20 @@
     <xsl:variable name="nl"                     select="'&#10;'"/>
     <xsl:variable name="leafBiggestNameLen"     select="max(//*[starts-with(local-name(), 'bit')]/string-length(@id))"/>
 
+    <!-- Generate C headers top blurb. -->
+    <xsl:function name="lx:c-generate-blurb"    as="xs:string">
+        <xsl:param name="license"               as="xs:string" />
+        <xsl:param name="generator"             as="xs:string" />
+
+        <xsl:value-of select="concat(
+                              '/* SPDX-License-Identifier', ': '  , $license, ' */',                $nl,
+                              '/* Generator: '                    , $generator            , ' */',  $nl, $nl,
+                              '/*',                                                                 $nl,
+                              ' * Auto-generated file.',                                            $nl,
+                              ' * Please submit all updates and bugfixes to https://x86-cpuid.org', $nl,
+                              ' */',                                                                $nl, $nl)" />
+    </xsl:function>
+
     <!--
         *** Helper Functions
     -->
