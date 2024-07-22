@@ -108,22 +108,14 @@ class SaxonCTransformer:
         indented_lines = ['    ' + line for line in lines]
         return '\n'.join(indented_lines)
 
-    @staticmethod
-    def read_xslt_file(xslt_file: Path) -> str:
-        try:
-            with xslt_file.open('r') as file:
-                return file.read()
-        except IOError as e:
-            raise CPUIDError(f'Failed to read XSLT file: {e}')
-
     def transform(self, xslt_path: Path, xml_file: Optional[Path] = None) -> str:
+        xslt_file: str = xslt_path.as_posix()
         generator: str = self.project_name + ' ' + self.project_version
-        xslt_data = SaxonCTransformer.read_xslt_file(xslt_path)
         xslt_params = { 'generatedFilesLicense': self.saxonproc.make_string_value(GENERATED_FILES_LICENSE),
                         'generator': self.saxonproc.make_string_value(generator) }
 
         try:
-            executable = self.processor.compile_stylesheet(stylesheet_text=xslt_data)
+            executable = self.processor.compile_stylesheet(stylesheet_file=xslt_file)
             executable.set_initial_template_parameters(False, xslt_params)
             if xml_file:
                 executable.set_global_context_item(file_name=str(xml_file))

@@ -60,7 +60,7 @@
                                       lx:right-pad('short_name' , $shortnamePadding)                        ,
                                      ', long_description'                                                   , $nl)" />
 
-        <xsl:apply-templates select="sort(collection('db/xml/?select=leaf_*.xml'), (),
+        <xsl:apply-templates select="sort(collection('../xml/?select=leaf_*.xml'), (),
                                      function($doc) { tokenize(base-uri($doc), '/')[last()] })" />
     </xsl:template>
 
