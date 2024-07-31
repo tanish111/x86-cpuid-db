@@ -29,6 +29,7 @@ XML_DIRECTORY           = PROJECT_DIRECTORY / 'db' / 'xml'
 
 KCPUID_XSLT: Path       = XSLT_DIRECTORY / 'kcpuid.xslt'
 KHEADER_XSLT            = XSLT_DIRECTORY / 'kheader.xslt'
+KHEADERS_XSLT           = XSLT_DIRECTORY / 'kheaders.xslt'
 
 #
 # Help strings
@@ -144,6 +145,9 @@ class CPUIDGen:
     def generate_kcpuid_csv(self) -> str:
         return self.transformer.transform(KCPUID_XSLT)
 
+    def generate_leaves_kheaders(self) -> str:
+        return self.transformer.transform(KHEADERS_XSLT)
+
     def generate_leaf_kheader(self, leaf: int) -> str:
         xml_file_name = f'leaf_{leaf:02x}.xml'
         xml_file_path = self.xml_dir / xml_file_name
@@ -159,6 +163,8 @@ def run_cpuid_generation(parsed_args: argparse.Namespace) -> str:
 
     if parsed_args.kcpuid:
         return generator.generate_kcpuid_csv()
+    elif parsed_args.kheaders:
+        return generator.generate_leaves_kheaders()
     elif parsed_args.kheader is not None:
         return generator.generate_leaf_kheader(parsed_args.kheader)
     else:
@@ -177,8 +183,9 @@ def parse_script_arguments() -> argparse.Namespace:
         epilog=EPILOG,
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
-    parser.add_argument('--kcpuid', '-k', action='store_true', help=KCPUID_HELP)
-    parser.add_argument('--kheader', '-l', type=parse_kheader_argument, metavar='CPUID_LEAF', help=KHEADER_HELP)
+    parser.add_argument('--kcpuid',   '-k', action='store_true', help=KCPUID_HELP)
+    parser.add_argument('--kheaders', '-s', action='store_true', help=KCPUID_HELP)
+    parser.add_argument('--kheader',  '-l', type=parse_kheader_argument, metavar='CPUID_LEAF', help=KHEADER_HELP)
     return parser.parse_args()
 
 def main() -> None:
