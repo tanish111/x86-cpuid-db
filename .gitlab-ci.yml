@@ -9,12 +9,14 @@ default:
 #
 variables:
   OUTPUT_DIR: output
+  HEADERS_DIR: ${OUTPUT_DIR}/individual-headers
   KCPUID_CSV_FILE: ${OUTPUT_DIR}/kcpuid.csv
-  CPUID_C_HEADER: ${OUTPUT_DIR}/cpuid-headers.h
+  KERNEL_C_HEADER: ${OUTPUT_DIR}/cpuid-bitfields.h
 
 before_script:
   - apt-get -y update
   - mkdir -p ${OUTPUT_DIR}/
+  - mkdir -p ${HEADERS_DIR}/
 
 #
 # Don't waste computing resources: Run this pipeline only if it's the
@@ -52,18 +54,31 @@ run_mypy_strict_typing_checks:
     - apt-get -y install mypy
     - mypy tools/xmlgen.py tools/cpuidgen.py
 
-compile_generated_kernel_headers:
+compile_individual_kernel_headers:
   stage: test
   script:
     - apt-get -y install gcc python3-poetry
     - poetry install
-    - ./scripts/generate_kernel_headers.sh
+    - OUTPUT_DIR=${HEADERS_DIR} ./scripts/generate_kernel_headers.sh
     - >
-      for header in ${OUTPUT_DIR}/leaf_*.h; do
+      for header in ${HEADERS_DIR}/leaf_*.h; do
         sed -i 's/u32/__u32/g' $header
         echo "Compile-testing header file ${header}"
         gcc -Wall $header
       done
+
+compile_jumbo_kernel_header:
+  stage: test
+  script:
+    - apt-get -y install gcc python3-poetry
+    - poetry install
+    - poetry run cpuidgen --kheaders > ${KERNEL_C_HEADER}
+    - sed -i 's/u32/__u32/g' ${KERNEL_C_HEADER}
+    - echo "Compile-testing header file ${KERNEL_C_HEADER}"
+    - gcc -Wall ${KERNEL_C_HEADER}
+  artifacts:
+    paths:
+      - ${KERNEL_C_HEADER}
 
 deploy_kcpuid_csv_file:
   stage: deploy
@@ -75,15 +90,25 @@ deploy_kcpuid_csv_file:
     paths:
       - ${KCPUID_CSV_FILE}
 
-deploy_kernel_headers:
+deploy_individual_kernel_headers:
   stage: deploy
   script:
     - apt-get -y install python3-poetry
     - poetry install
-    - ./scripts/generate_kernel_headers.sh
+    - OUTPUT_DIR=${HEADERS_DIR} ./scripts/generate_kernel_headers.sh
   artifacts:
     paths:
-      - ${OUTPUT_DIR}/leaf_*.h
+      - ${HEADERS_DIR}/leaf_*.h
+
+deploy_jumbo_kernel_header:
+  stage: deploy
+  script:
+    - apt-get -y install gcc python3-poetry
+    - poetry install
+    - poetry run cpuidgen --kheaders > ${KERNEL_C_HEADER}
+  artifacts:
+    paths:
+      - ${KERNEL_C_HEADER}
 
 #
 # Create a GitLab release when an annotated tag is pushed
