@@ -13,19 +13,21 @@
     <xsl:template name="xsl:initial-template">
         <xsl:param           name="generatedFilesLicense" />
         <xsl:param           name="generator" />
-        <xsl:variable        name="leafID"  select="/leaf/@id" />
 
         <xsl:value-of        select="lx:c-generate-blurb($generatedFilesLicense, $generator)" />
+        <xsl:apply-templates select="leaf" />
+    </xsl:template>
 
+    <xsl:template match="leaf">
         <xsl:value-of        select="concat(
-                                     '#ifndef _ASM_X86_CPUID_LEAF_', lx:sanitize-hex-id($leafID),          $nl,
-                                     '#define _ASM_X86_CPUID_LEAF_', lx:sanitize-hex-id($leafID),          $nl, $nl,
-                                     '#include &lt;linux/types.h&gt;',                                     $nl, $nl)" />
+                                     '#ifndef _ASM_X86_CPUID_LEAF_', lx:sanitize-hex-id(@id),          $nl,
+                                     '#define _ASM_X86_CPUID_LEAF_', lx:sanitize-hex-id(@id),          $nl, $nl,
+                                     '#include &lt;linux/types.h&gt;',                                 $nl, $nl)" />
 
-        <xsl:value-of        select="lx:c-describe-leaf($leafID)" />
-        <xsl:apply-templates select="//subleaf" />
+        <xsl:value-of        select="lx:c-describe-leaf(@id)" />
+        <xsl:apply-templates select="subleaf" />
 
-        <xsl:value-of        select="concat(                                                               $nl,
-                                     '#endif /* _ASM_X86_CPUID_LEAF_', lx:sanitize-hex-id($leafID), ' */', $nl)" />
+        <xsl:value-of        select="concat(                                                           $nl,
+                                     '#endif /* _ASM_X86_CPUID_LEAF_', lx:sanitize-hex-id(@id), ' */', $nl)" />
     </xsl:template>
 </xsl:stylesheet>
