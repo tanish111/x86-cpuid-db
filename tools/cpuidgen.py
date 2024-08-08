@@ -35,14 +35,16 @@ KHEADERS_XSLT           = XSLT_DIRECTORY / 'kheaders.xslt'
 # Help strings
 #
 
-DESCRIPTION  = 'Generate CPUID data structures in different output formats'
-KCPUID_HELP  = 'Generate a linux-kernel "kcpuid" CSV file'
-KHEADER_HELP = 'Generate a linux-kernel C header for the given CPUID_LEAF'
+DESCRIPTION   = 'Generate CPUID data structures in different output formats'
+KCPUID_HELP   = 'Generate a linux-kernel "kcpuid" CSV file'
+KHEADER_HELP  = 'Generate a C linux-kernel header for CPUID_LEAF'
+KHEADERS_HELP = 'Generate one large C linux-kernel header for all leaves'
 EPILOG  =   f'''example invocations:
   {TOOL_NAME} --kcpuid
   {TOOL_NAME} --kheader 7
   {TOOL_NAME} --kheader 0x12
   {TOOL_NAME} --kheader 0x80000001
+  {TOOL_NAME} --kheaders
 '''
 
 class CPUIDError(RuntimeError):
@@ -184,7 +186,7 @@ def parse_script_arguments() -> argparse.Namespace:
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
     parser.add_argument('--kcpuid',   '-k', action='store_true', help=KCPUID_HELP)
-    parser.add_argument('--kheaders', '-s', action='store_true', help=KCPUID_HELP)
+    parser.add_argument('--kheaders', '-s', action='store_true', help=KHEADERS_HELP)
     parser.add_argument('--kheader',  '-l', type=parse_kheader_argument, metavar='CPUID_LEAF', help=KHEADER_HELP)
     return parser.parse_args()
 

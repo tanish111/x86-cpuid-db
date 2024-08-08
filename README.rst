@@ -173,15 +173,16 @@ Then, you can use this project's available tooling:
 .. code-block:: shell
 
     cpuidgen -h
-    usage: cpuidgen.py [-h] [--kcpuid] [--kheader CPUID_LEAF]
+    usage: cpuidgen [-h] [--kcpuid] [--kheaders] [--kheader CPUID_LEAF]
 
     CPUID leaves bitfield generator
 
     options:
       -h, --help            show this help message and exit
       --kcpuid, -k          Generate a linux-kernel "kcpuid" CSV file
+      --kheaders, -s        Generate one large C linux-kernel header for all leaves
       --kheader CPUID_LEAF, -l CPUID_LEAF
-                            Generate a linux-kernel C header for the given CPUID LEAF
+                            Generate a C linux-kernel header for CPUID_LEAF
 
     Generate CPUID data structures in different output formats
 
