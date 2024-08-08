@@ -10,7 +10,7 @@ set -o nounset
 set -o pipefail
 set -o errexit
 
-OUTPUT_DIR=output/
+OUTPUT_DIR=${OUTPUT_DIR:-output}
 
 mkdir -p $OUTPUT_DIR
 
