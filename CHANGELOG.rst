@@ -4,6 +4,19 @@
 Changelog
 =========
 
+Release v2.0
+------------
+
+- Introduce the new transformer ``kheaders.xslt``.  It generates one C
+  header file with all the 52 cpuid leaves' C99 bitfields.
+
+  Such a single header should simplify Linux's x86 subsystem
+  maintenance; e.g. by having one ``git describe`` version tag on top of
+  one file, instead of different headers all with their own tags.
+
+- Introduce the cpuidgen ``--kheaders`` option to invoke the new
+  transformer.
+
 Release v1.0
 ------------
 
