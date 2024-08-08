@@ -20,12 +20,13 @@ A mailing list development workflow is chosen because:
    daily usage is ideal for keeping them in the loop regarding CPUID bit
    changes — especially the security relevant bits.
 
-*Note:* Please adhere to the Contributor Covenant's `code of conduct`_
-during all facets of project development, including mailing list
-discussions.
+Please adhere to the Contributor Covenant's `code of conduct`_ during
+all facets of project development, including mailing list discussions.
 
 Contributions
 -------------
+
+All development must occur on top of the `tip`_ branch.
 
 All patches must have a line in the commit log saying::
 
@@ -108,4 +109,5 @@ By making a contribution to this project, I certify that:
 .. _`x86-cpuid@lists.linux.dev`: mailto:x86-cpuid@lists.linux.dev
 .. _developercertificate.org: https://developercertificate.org
 .. _here: https://lore.kernel.org/x86-cpuid
+.. _tip: https://gitlab.com/x86-cpuid.org/x86-cpuid-db/-/tree/tip
 .. _pipeline: .gitlab-ci.yml
