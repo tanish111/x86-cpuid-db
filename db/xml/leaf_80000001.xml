@@ -6,18 +6,40 @@
   <desc>Extended CPU feature identifiers</desc>
   <subleaf id="0">
     <eax>
-      <desc>AMD-specific FMS (Family/Mode/Stepping)</desc>
-      <text>
-        This is AMD's replica of leaf 0x1's EAX;  AMD-supported fields only.
-      </text>
-      <vendors>
-        <vendor>AMD</vendor>
-      </vendors>
-      <bit0  len="4"  id="e_stepping_id"           desc="Stepping ID" />
-      <bit4  len="4"  id="e_base_model"            desc="Base processor model" />
-      <bit8  len="4"  id="e_base_family"           desc="Base processor family" />
-      <bit16 len="4"  id="e_ext_model"             desc="Extended processor model" />
-      <bit20 len="8"  id="e_ext_family"            desc="Extended processor family" />
+      <desc>AMD/Transmeta-specific FMS (Family/Mode/Stepping)</desc>
+      <bit0  len="4"  id="e_stepping_id"           desc="Stepping ID">
+        <vendors>
+          <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
+        </vendors>
+      </bit0>
+      <bit4  len="4"  id="e_base_model"            desc="Base processor model">
+        <vendors>
+          <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
+        </vendors>
+      </bit4>
+      <bit8  len="4"  id="e_base_family"           desc="Base processor family">
+        <vendors>
+          <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
+        </vendors>
+      </bit8>
+      <bit12 len="2"  id="e_base_type"             desc="Base processor type (Transmeta)">
+        <vendors>
+          <vendor>Transmeta</vendor>
+        </vendors>
+      </bit12>
+      <bit16 len="4"  id="e_ext_model"             desc="Extended processor model">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit16>
+      <bit20 len="8"  id="e_ext_family"            desc="Extended processor family">
+        <vendors>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit20>
     </eax>
     <ebx>
       <vendors>
@@ -229,38 +251,49 @@
     </ecx>
     <edx>
       <text>
-        Bits[0:9] are an AMD replica of leaf 1's EDX[0:9] bits.  Similarly, bits[12:17]
-        are also a redundant copy of leaf's 1 EDX[12:17] bits.  Same for bit 24.  Linux,
-        for example, just uses the Intel-compatible feature bits by default.
+        For AMD CPUs, bits[0:9] are a replica of leaf 1's EDX[0:9] bits.  Similarly,
+        bits[12:17] are a replica of leaf1's EDX[12:17] bits.  Same for bit 24.
+
+        For Transmeta CPUs, it's not an exact replica: feature bit11 (SEP) and
+        feature bit18 (PSN) are only reported at leaf1's EDX, while FCMOV feature
+        bit16 is only reported here at this extended leaf's EDX.
+
+        In case of redundancy, Linux just uses the Intel-compatible bits by default.
       </text>
       <bit0  len="1"  id="e_fpu"                   desc="Floating-Point Unit on-chip (x87)">
         <vendors>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit0>
       <bit1  len="1"  id="e_vme"                   desc="Virtual-8086 Mode Extensions">
         <vendors>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit1>
       <bit2  len="1"  id="e_de"                    desc="Debugging Extensions">
         <vendors>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit2>
       <bit3  len="1"  id="e_pse"                   desc="Page Size Extension">
         <vendors>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit3>
       <bit4  len="1"  id="e_tsc"                   desc="Time Stamp Counter">
         <vendors>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit4>
       <bit5  len="1"  id="e_msr"                   desc="Model-Specific Registers (RDMSR and WRMSR support)">
         <vendors>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit5>
       <bit6  len="1"  id="pae"                     desc="Physical Address Extensions">
@@ -276,6 +309,7 @@
       <bit8  len="1"  id="cx8"                     desc="CMPXCHG8B instruction">
         <vendors>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit8>
       <bit9  len="1"  id="apic"                    desc="APIC on-chip">
@@ -309,8 +343,13 @@
       <bit15 len="1"  id="cmov"                    desc="Conditional Move Instruction">
         <vendors>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit15>
+      <!--
+        ** TODO: For Transmeta, bit16 is for "FCMOV, FP Conditional Move Instructions".
+        ** (x86-cpuid-db's model does not yet support vendor conflicts.)
+      -->
       <bit16 len="1"  id="pat"                     desc="Page Attribute Table">
         <vendors>
           <vendor>AMD</vendor>
@@ -342,6 +381,11 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit22>
+      <bit23 len="1"  id="e_mmx"                   desc="MMX instructions (Transmeta)">
+        <vendors>
+          <vendor>Transmeta</vendor>
+        </vendors>
+      </bit23>
       <bit24 len="1"  id="e_fxsr"                  desc="FXSAVE and FXRSTOR instructions">
         <vendors>
           <vendor>AMD</vendor>
