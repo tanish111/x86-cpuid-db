@@ -1,5 +1,5 @@
 <!--
-*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-FileCopyrightText: 2023-2024 Linutronix GmbH
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0">
@@ -10,6 +10,7 @@
   <vendors>
     <vendor>Intel</vendor>
     <vendor>AMD</vendor>
+    <vendor>Transmeta</vendor>
   </vendors>
   <subleaf id="0">
     <eax>
