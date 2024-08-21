@@ -1,5 +1,5 @@
 <!--
-*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
+*** SPDX-FileCopyrightText: 2023-2024 Linutronix GmbH
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="1">
@@ -10,35 +10,41 @@
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit0>
       <bit4  len="4"  id="base_model"              desc="Base CPU model ID">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit4>
       <bit8  len="4"  id="base_family_id"          desc="Base CPU family ID">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit8>
       <bit12 len="2"  id="cpu_type"                desc="CPU type">
         <vendors>
           <vendor>Intel</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit12>
       <bit16 len="4"  id="ext_model"               desc="Extended CPU model ID">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit16>
       <bit20 len="8"  id="ext_family"              desc="Extended CPU family ID">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit20>
     </eax>
