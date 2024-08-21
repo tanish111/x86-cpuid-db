@@ -56,23 +56,27 @@
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit0>
       <bit8  len="8"  id="clflush_size"            desc="CLFLUSH instruction cache line size">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit8>
       <bit16 len="8"  id="n_logical_cpu"           desc="Logical CPU (HW threads) count">
         <vendors>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit16>
       <bit24 len="8"  id="local_apic_id"           desc="Initial local APIC physical ID">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit24>
     </ebx>
