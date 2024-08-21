@@ -415,6 +415,12 @@ AMD manuals:
   - Open-Source Register Reference For AMD Family 17h Processors Models
     00h-2Fh
 
+Transmeta manuals:
+
+  - `Processor Recognition
+    <https://datasheets.chipdb.org/Transmeta/Crusoe/Crusoe_CPUID_5-7-02.pdf>`_,
+    Transmeta Corporation (2002/05/07)
+
 XML ecosystem specifications and manuals:
 
   - `XSLT 3.0 Specification <https://www.w3.org/TR/xslt-30/>`_
