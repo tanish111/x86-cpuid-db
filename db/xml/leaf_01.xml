@@ -330,6 +330,7 @@
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
@@ -338,6 +339,7 @@
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="S" />
@@ -346,6 +348,7 @@
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
@@ -354,6 +357,7 @@
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="S" />
@@ -362,6 +366,7 @@
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
@@ -370,6 +375,7 @@
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
@@ -394,6 +400,7 @@
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
@@ -410,6 +417,7 @@
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
@@ -442,6 +450,7 @@
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
@@ -465,6 +474,7 @@
       <bit18 len="1"  id="psn"                     desc="Processor Serial Number">
         <vendors>
           <vendor>Intel</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
         <linux        feature="true"               proc="true"            altid="pn" />
       </bit18>
@@ -494,6 +504,7 @@
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
