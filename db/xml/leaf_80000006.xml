@@ -36,23 +36,27 @@
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit0>
       <bit8  len="4"  id="l2_nlines"               desc="L2 cache number of lines per tag">
         <vendors>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit8>
       <bit12 len="4"  id="l2_assoc"                desc="L2 cache associativity">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit12>
       <bit16 len="16" id="l2_size_kb"              desc="L2 cache size, in KB">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
+          <vendor>Transmeta</vendor>
         </vendors>
       </bit16>
     </ecx>
