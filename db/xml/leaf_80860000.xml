@@ -1,0 +1,25 @@
+<!--
+  *** SPDX-FileCopyrightText: 2024 Linutronix GmbH
+  *** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x80860000">
+  <desc>Maximum Transmeta leaf number + CPU vendor ID string</desc>
+  <text>The vendor ID string should be "TransmetaCPU".</text>
+  <vendors>
+    <vendor>Transmeta</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="32" id="max_tra_leaf"            desc="Maximum supported Transmeta leaf number" />
+    </eax>
+    <ebx>
+      <bit0  len="32" id="cpu_vendorid_0"          desc="Transmeta Vendor ID string bytes 0 - 3" />
+    </ebx>
+    <ecx>
+      <bit0  len="32" id="cpu_vendorid_2"          desc="Transmeta Vendor ID string bytes 8 - 11" />
+    </ecx>
+    <edx>
+      <bit0  len="32" id="cpu_vendorid_1"          desc="Transmeta Vendor ID string bytes 4 - 7" />
+    </edx>
+  </subleaf>
+</leaf>
