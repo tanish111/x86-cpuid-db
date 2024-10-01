@@ -1,0 +1,35 @@
+<!--
+  *** SPDX-FileCopyrightText: 2024 Linutronix GmbH
+  *** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x80860002">
+  <desc>Transmeta Code Morphing Software (CMS) enumeration</desc>
+  <text>
+     If leaf 0x80860001 @cpu_rev_major = 2 while all the other revision
+     ID bitfields are zero, then the CMS information at this leaf must
+     be used instead.
+  </text>
+  <vendors>
+    <vendor>Transmeta</vendor>
+  </vendors>
+  <subleaf id="0">
+    <text>
+      @cpu_rev_id should be displayed whole, in hexadecimal upper case.
+
+      The CMS revision ID should be displayed as:
+        @cms_rev_major.@cms_rev_minor-@cms_rev_mask_1-@cms_rev_mask_2-@cms_rev_mask_3
+    </text>
+    <eax>
+      <bit0  len="32" id="cpu_rev_id"              desc="CPU revision ID" />
+    </eax>
+    <ebx>
+      <bit0  len="8"  id="cms_rev_mask_2"          desc="CMS revision ID, mask component 2" />
+      <bit8  len="8"  id="cms_rev_mask_1"          desc="CMS revision ID, mask component 1" />
+      <bit16 len="8"  id="cms_rev_minor"           desc="CMS revision ID, minor" />
+      <bit24 len="8"  id="cms_rev_major"           desc="CMS revision ID, major" />
+    </ebx>
+    <ecx>
+      <bit0  len="32" id="cms_rev_mask_3"          desc="CMS revision ID, mask component 3" />
+    </ecx>
+  </subleaf>
+</leaf>
