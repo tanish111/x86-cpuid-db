@@ -1,0 +1,46 @@
+<!--
+  *** SPDX-FileCopyrightText: 2024 Linutronix GmbH
+  *** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x80860001">
+  <desc>Transmeta extended CPU information</desc>
+  <vendors>
+    <vendor>Transmeta</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="4"  id="stepping"                desc="Stepping ID" />
+      <bit4  len="4"  id="base_model"              desc="Base CPU model ID" />
+      <bit8  len="4"  id="base_family_id"          desc="Base CPU family ID" />
+      <bit12 len="2"  id="cpu_type"                desc="CPU type" />
+    </eax>
+    <ebx>
+      <text>
+        CPU revision ID.  It should be displayed as:
+        @cpu_rev_major.@cpu_rev_minor-@cpu_rev_mask_major.@cpu_rev_mask_minor
+
+        If @cpu_rev_major = 2 while all the other fields are zero, then
+        the Code Morphing Software (CMS) information at leaf 0x80860002
+        must be used instead.
+      </text>
+      <bit0  len="8"  id="cpu_rev_mask_minor"      desc="CPU revision ID, mask minor" />
+      <bit8  len="8"  id="cpu_rev_mask_major"      desc="CPU revision ID, mask major" />
+      <bit16 len="8"  id="cpu_rev_minor"           desc="CPU revision ID, minor" />
+      <bit24 len="8"  id="cpu_rev_major"           desc="CPU revision ID, major" />
+    </ebx>
+    <ecx>
+      <bit0  len="32" id="cpu_base_mhz"            desc="CPU nominal frequency, in MHz" />
+    </ecx>
+    <edx>
+      <bit0  len="1"  id="recovery"                desc="Recovery CMS is active (after bad flush)">
+        <linux        feature="true"               proc="true" />
+      </bit0>
+      <bit1  len="1"  id="longrun"                 desc="LongRun power management capabilities">
+        <linux        feature="true"               proc="true" />
+      </bit1>
+      <bit3  len="1"  id="lrti"                    desc="LongRun Table Interface">
+        <linux        feature="true"               proc="true" />
+      </bit3>
+    </edx>
+  </subleaf>
+</leaf>
