@@ -1,0 +1,32 @@
+<!--
+  *** SPDX-FileCopyrightText: 2024 Linutronix GmbH
+  *** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x80860007">
+  <desc>Transmeta live CPU information</desc>
+  <vendors>
+    <vendor>Transmeta</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="32" id="cpu_cur_mhz"             desc="Current CPU frequency, in MHz" />
+    </eax>
+    <ebx>
+      <bit0  len="32" id="cpu_cur_voltage"         desc="Current CPU voltage, in millivolts" />
+    </ebx>
+    <ecx>
+      <bit0  len="32" id="cpu_cur_perf_pctg"       desc="Current CPU performance percentage, 0 - 100d">
+        <values>
+          <value      id="0"                       desc="LongRun is not supported" />
+        </values>
+      </bit0>
+    </ecx>
+    <edx>
+      <bit0  len="32" id="cpu_cur_gate_delay"      desc="Current CPU gate delay, in femtoseconds">
+        <values>
+          <value      id="0"                       desc="Gate delay is not applicable (CMS v4.1)" />
+        </values>
+      </bit0>
+    </edx>
+  </subleaf>
+</leaf>
