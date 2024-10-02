@@ -1,0 +1,24 @@
+<!--
+  *** SPDX-FileCopyrightText: 2024 Linutronix GmbH
+  *** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x80860006">
+  <desc>Transmeta CPU information string, bytes 48 - 63</desc>
+  <vendors>
+    <vendor>Transmeta</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="32" id="cpu_info_12"             desc="CPU info string bytes 48 - 51" />
+    </eax>
+    <ebx>
+      <bit0  len="32" id="cpu_info_13"             desc="CPU info string bytes 52 - 55" />
+    </ebx>
+    <ecx>
+      <bit0  len="32" id="cpu_info_14"             desc="CPU info string bytes 56 - 59" />
+    </ecx>
+    <edx>
+      <bit0  len="32" id="cpu_info_15"             desc="CPU info string bytes 60 - 63" />
+    </edx>
+  </subleaf>
+</leaf>
