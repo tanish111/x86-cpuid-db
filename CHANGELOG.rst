@@ -7,15 +7,70 @@ Changelog
 Release v2.0
 ------------
 
-- Introduce the new transformer ``kheaders.xslt``.  It generates one C
-  header file with all the 52 cpuid leaves' C99 bitfields.
+- Introduce a new transformer, ``kheaders.xslt``, which generates one
+  Linux kernel C header file for all the 63 cpuid leaves' bitfields.
 
-  Such a single header should simplify Linux's x86 subsystem
-  maintenance; e.g. by having one ``git describe`` version tag on top of
-  one file, instead of different headers all with their own tags.
-
-- Introduce the cpuidgen ``--kheaders`` option to invoke the new
+  Introduce the cpuidgen ``--kheaders`` option to invoke that new
   transformer.
+
+- Extend cpuid database bitfields coverage:
+
+  - Add Transmeta vendor tags to the appropriate bitfields at leaves
+    ``0x0``, ``0x01``, and from ``0x80000000`` to ``0x80000006``.
+
+  - Add Transmeta's CPUID leaves ``0x03``, ``0x80860000`` to
+    ``0x80860007``.
+
+  - Add Centaur/Zhaoxin leaves ``0xc0000000`` and ``0xc0000001``, along
+    with Zhoaxin's exclusive feature bits.
+
+- Add some documentation for the ``<linux>`` tag, due to earlier related
+  questions on the x86-cpuid mailing list.
+
+Changes to generated files styling
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Beside the aforementioned extra cpuid leaves and bitfields, the
+generated Linux kernel C structures has changed from:
+
+.. code-block:: c
+
+      /*
+       * CPUID leaf 0
+       */
+
+      struct leaf0_sl0 {
+          ...;
+      };
+
+to:
+
+.. code-block:: c
+
+      /*
+       * Leaf 0x0
+       * Maximum standard leaf number + CPU vendor string
+       */
+
+      struct leaf_0x0_0 {
+          ...;
+      };
+
+For consistency, the generated CSVs now also always prints a ``0x``
+prefix for the leaf ID.  Thus, for the leaves ``0x0 => 0x9``, the CSV
+output has changed from:
+
+.. code-block:: shell
+
+   0,       0,  eax,    31:0,  max_std_leaf  , Highest cpuid standard leaf supported
+
+to:
+
+.. code-block:: shell
+
+   0x0,     0,  eax,    31:0,  max_std_leaf  , Highest cpuid standard leaf supported
+
+This also matches, in spirit, the C structure naming changes.
 
 Release v1.0
 ------------
