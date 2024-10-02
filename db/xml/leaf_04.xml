@@ -2,7 +2,7 @@
 *** SPDX-FileCopyrightText: 2023 Linutronix GmbH
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
-<leaf id="4">
+<leaf id="0x4">
   <desc>Intel deterministic cache parameters</desc>
   <text>
     If one of the leaf 2 output descriptors is "0xff", then leaf 2 does not report any

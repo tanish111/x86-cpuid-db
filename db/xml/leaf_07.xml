@@ -2,7 +2,7 @@
 *** SPDX-FileCopyrightText: 2023 Linutronix GmbH
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
-<leaf id="7">
+<leaf id="0x7">
   <desc>Extended CPU features enumeration</desc>
   <subleaf id="0">
     <eax>

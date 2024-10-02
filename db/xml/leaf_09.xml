@@ -2,7 +2,7 @@
 *** SPDX-FileCopyrightText: 2023 Linutronix GmbH
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
-<leaf id="9">
+<leaf id="0x9">
   <desc>Intel DCA (Direct Cache Access) enumeration</desc>
   <text>
     This leaf is available iff cpuid leaf 0x1 ECX[18] @dca bit is set.

@@ -2,7 +2,7 @@
 *** SPDX-FileCopyrightText: 2023-2024 Linutronix GmbH
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
-<leaf id="1">
+<leaf id="0x1">
   <desc>CPU FMS (Family/Model/Stepping) + standard feature flags</desc>
   <subleaf id="0">
     <eax>
