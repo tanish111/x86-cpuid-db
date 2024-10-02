@@ -406,6 +406,7 @@ Intel manuals:
   - Intel® Architecture Memory Encryption Technologies Specification
   - Intel® Trust Domain CPU Architectural Extensions
   - Intel® Architecture Specification: Intel® Trust Domain Extensions (TDX)
+  - Intel® Flexible Return and Event Delivery (FRED) Specification
 
 AMD manuals:
 
