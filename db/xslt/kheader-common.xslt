@@ -144,7 +144,7 @@
         <xsl:variable name="leafID"             select="ancestor::leaf/@id" />
         <xsl:variable name="subleafNode"        select="." />
 
-        <xsl:value-of                           select="concat('struct leaf', lx:sanitize-hex-id($leafID), '_sl', @id, ' {', $nl)" />
+        <xsl:value-of                           select="concat('struct leaf_0x', lx:sanitize-hex-id($leafID), '_', @id, ' {', $nl)" />
         <xsl:for-each                           select="tokenize('eax ebx ecx edx')">
             <xsl:variable name="registerName"   select="."/>
             <xsl:variable name="registerNode"   select="$subleafNode/*[local-name() = $registerName]"/>
