@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-*** SPDX-FileCopyrightText: 2023 Linutronix GmbH
-*** SPDX-License-Identifier: GPL-2.0-only
+  *** SPDX-FileCopyrightText: 2023-2024 Linutronix GmbH
+  *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" >
 
@@ -29,6 +29,21 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <!--
+    ** The existence of a <linux> tag means that the cpuid bit in
+    ** question is also specified in the Linux kernel x86 subsystem
+    ** either as an X86_FEATURE bit, a /proc/cpuinfo bit, or both.
+    **
+    ** feature=true => cpuid bit is also an X86_FEATURE_* flag.
+    ** altid=NAME   => The X86_FEATURE flag name is different from the XML
+    **                 database's canonical bitfield id name.
+    ** proc=true    => cpuid bit is also a /proc/cpuinfo flag.
+    ** procid=NAME  => The /proc/cpuinfo flag name is different from the
+    **                 XML database's canonical bitfield id name.
+    **
+    ** These annotations are completely specified in the XML database
+    ** but are not utilized by any of the existing generators.
+  -->
   <xs:complexType name="linuxType">
     <xs:attribute type="xs:boolean"      name="feature"     use="required" />
     <xs:attribute type="xs:boolean"      name="proc"        use="required" />
