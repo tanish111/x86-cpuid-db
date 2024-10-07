@@ -30,7 +30,7 @@
                                      '#define _ASM_X86_CPUID_LEAF_', lx:sanitize-hex-id(@id),          $nl, $nl,
                                      '#include &lt;linux/types.h&gt;',                                 $nl, $nl)" />
 
-        <xsl:value-of        select="lx:c-describe-leaf(@id)" />
+        <xsl:value-of        select="lx:c-describe-leaf(@id, desc)" />
         <xsl:apply-templates select="subleaf">
             <xsl:with-param  name="bitfield-name-padding"   select="$bitfield-name-padding" />
         </xsl:apply-templates>

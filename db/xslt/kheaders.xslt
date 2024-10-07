@@ -52,7 +52,7 @@
     <xsl:template                 match="leaf"                       mode="dump-leaf-bitfields">
         <xsl:param                name="bitfield-name-padding"       as="xs:integer" />
 
-        <xsl:value-of             select="lx:c-describe-leaf(@id)" />
+        <xsl:value-of             select="lx:c-describe-leaf(@id, desc)" />
         <xsl:apply-templates      select="subleaf">
             <xsl:with-param       name="bitfield-name-padding"       select="$bitfield-name-padding"/>
         </xsl:apply-templates>
