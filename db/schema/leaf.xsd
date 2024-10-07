@@ -183,12 +183,11 @@
 
   <xs:complexType name="leafType">
     <xs:sequence>
-      <!-- TODO: Make short description mandatory after full conversion -->
-      <xs:element type="shortStringType" name="desc"        minOccurs="0" />
+      <xs:element type="shortStringType" name="desc"        minOccurs="1" />
       <xs:element type="xs:string"       name="text"        minOccurs="0" />
       <xs:element type="vendorsType"     name="vendors"     minOccurs="0" />
       <xs:element type="hypervisorsType" name="hypervisors" minOccurs="0" />
-      <xs:element type="subleafType"     name="subleaf"     maxOccurs="unbounded" />
+      <xs:element type="subleafType"     name="subleaf"     minOccurs="1"    maxOccurs="unbounded" />
     </xs:sequence>
     <xs:attribute type="hexadecimalStrict" name="id"        use="required" />
     <xs:attribute type="xs:unsignedByte" name="subleaves"   use="optional" />
