@@ -1,0 +1,145 @@
+<!--
+  *** SPDX-FileCopyrightText: 2024 Linutronix GmbH
+  *** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0xc0000001">
+  <desc>Centaur/Zhaoxin extended CPU features</desc>
+  <subleaf id="0">
+    <!--
+      Zhaoxin bits, including CCS (Chinese Cipher Security) ones, were extracted from:
+      https://lkml.kernel.org/r/20230530025922.4801-1-TonyWWang-oc@zhaoxin.com
+    -->
+    <edx>
+      <bit0  len="1"  id="ccs_sm2"                 desc="CCS SM2 instructions">
+        <vendors>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+      </bit0>
+      <bit1  len="1"  id="ccs_sm2_en"              desc="CCS SM2 enabled">
+        <vendors>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+      </bit1>
+      <bit2  len="1"  id="rng"                     desc="Random Number Generator">
+        <vendors>
+          <vendor>Centaur</vendor>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="xstore" />
+      </bit2>
+      <bit3  len="1"  id="rng_en"                  desc="RNG enabled">
+        <vendors>
+          <vendor>Centaur</vendor>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="xstore_en" />
+      </bit3>
+      <bit4  len="1"  id="ccs_sm3_sm4"             desc="CCS SM3 and SM4 instructions">
+        <vendors>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+      </bit4>
+      <bit5  len="1"  id="ccs_sm3_sm4_en"          desc="CCS SM3/SM4 enabled">
+        <vendors>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+      </bit5>
+      <bit6  len="1"  id="ace"                     desc="Advanced Cryptography Engine">
+        <vendors>
+          <vendor>Centaur</vendor>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="xcrypt"     procid="ace" />
+      </bit6>
+      <bit7  len="1"  id="ace_en"                  desc="ACE enabled">
+        <vendors>
+          <vendor>Centaur</vendor>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true"            altid="ace"        procid="ace_en" />
+      </bit7>
+      <bit8  len="1"  id="ace2"                    desc="Advanced Cryptography Engine v2">
+        <vendors>
+          <vendor>Centaur</vendor>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit8>
+      <bit9  len="1"  id="ace2_en"                 desc="ACE v2 enabled">
+        <vendors>
+          <vendor>Centaur</vendor>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit9>
+      <bit10 len="1"  id="phe"                     desc="PadLock Hash Engine">
+        <vendors>
+          <vendor>Centaur</vendor>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit10>
+      <bit11 len="1"  id="phe_en"                  desc="PHE enabled">
+        <vendors>
+          <vendor>Centaur</vendor>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit11>
+      <bit12 len="1"  id="pmm"                     desc="PadLock Montgomery Multiplier">
+        <vendors>
+          <vendor>Centaur</vendor>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit12>
+      <bit13 len="1"  id="pmm_en"                  desc="PMM enabled">
+        <vendors>
+          <vendor>Centaur</vendor>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+        <linux        feature="true"               proc="true" />
+      </bit13>
+      <bit16 len="1"  id="parallax"                desc="Parallax auto adjust processor voltage">
+        <vendors>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+      </bit16>
+      <bit17 len="1"  id="parallax_en"             desc="Parallax enabled">
+        <vendors>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+      </bit17>
+      <bit20 len="1"  id="tm3"                     desc="Thermal Monitor v3">
+        <vendors>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+      </bit20>
+      <bit21 len="1"  id="tm3_en"                  desc="TM v3 enabled">
+        <vendors>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+      </bit21>
+      <bit25 len="1"  id="phe2"                    desc="PadLock Hash Engine v2 (SHA384/SHA512)">
+        <vendors>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+      </bit25>
+      <bit26 len="1"  id="phe2_en"                 desc="PHE v2 enabled">
+        <vendors>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+      </bit26>
+      <bit27 len="1"  id="rsa"                     desc="RSA instructions (XMODEXP/MONTMUL2)">
+        <vendors>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+      </bit27>
+      <bit28 len="1"  id="rsa_en"                  desc="RSA instructions enabled">
+        <vendors>
+          <vendor>Zhaoxin</vendor>
+        </vendors>
+      </bit28>
+    </edx>
+  </subleaf>
+</leaf>
