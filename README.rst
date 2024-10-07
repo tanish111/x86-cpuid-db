@@ -18,7 +18,7 @@ ECX, and EDX registers.
 
 Due to the extensiveness and long history of the x86 architecture, the
 amount of information that can be queried through CPUID is huge: now up
-to *800+* bitfields, scattered over *15+* CPU manuals and *52* CPUID
+to *900+* bitfields, scattered over *16+* CPU manuals and *63* CPUID
 leaves.  The returned bitfields can differ according to the x86 CPU
 vendor and include multiple flags related to *CPU vulnerabilities*.
 
@@ -193,7 +193,7 @@ For example, to generate a Linux-kernel kcpuid CSV file, do:
     $ cpuidgen --kcpuid
 
     # SPDX-License-Identifier: CC0-1.0
-    # Generator: x86-cpuid-db v1.0
+    # Generator: x86-cpuid-db v2.0
 
     # The basic row format is:
     #     LEAF, SUBLEAVES,  reg,    bits,    short_name             , long_description
@@ -201,30 +201,30 @@ For example, to generate a Linux-kernel kcpuid CSV file, do:
     # Leaf 0H
     # Maximum standard leaf number + CPU vendor string
 
-             0,         0,  eax,    31:0,    max_std_leaf           , Highest cpuid standard leaf supported
-             0,         0,  ebx,    31:0,    cpu_vendorid_0         , CPU vendor ID string bytes 0 - 3
-             0,         0,  ecx,    31:0,    cpu_vendorid_2         , CPU vendor ID string bytes 8 - 11
-             0,         0,  edx,    31:0,    cpu_vendorid_1         , CPU vendor ID string bytes 4 - 7
+           0x0,         0,  eax,    31:0,    max_std_leaf           , Highest cpuid standard leaf supported
+           0x0,         0,  ebx,    31:0,    cpu_vendorid_0         , CPU vendor ID string bytes 0 - 3
+           0x0,         0,  ecx,    31:0,    cpu_vendorid_2         , CPU vendor ID string bytes 8 - 11
+           0x0,         0,  edx,    31:0,    cpu_vendorid_1         , CPU vendor ID string bytes 4 - 7
 
     # Leaf 1H
     # CPU FMS (Family/Model/Stepping) + standard feature flags
 
-             1,         0,  eax,     3:0,    stepping               , Stepping ID
-             1,         0,  eax,     7:4,    base_model             , Base CPU model ID
-             1,         0,  eax,    11:8,    base_family_id         , Base CPU family ID
-             1,         0,  eax,   13:12,    cpu_type               , CPU type
-             1,         0,  eax,   19:16,    ext_model              , Extended CPU model ID
-             …
+           0x1,         0,  eax,     3:0,    stepping               , Stepping ID
+           0x1,         0,  eax,     7:4,    base_model             , Base CPU model ID
+           0x1,         0,  eax,    11:8,    base_family_id         , Base CPU family ID
+           0x1,         0,  eax,   13:12,    cpu_type               , CPU type
+           0x1,         0,  eax,   19:16,    ext_model              , Extended CPU model ID
+           …
 
     # Leaf 4H
     # Intel deterministic cache parameters
 
-             4,      31:0,  eax,     4:0,    cache_type             , Cache type field
-             4,      31:0,  eax,     7:5,    cache_level            , Cache level (1-based)
-             4,      31:0,  eax,       8,    cache_self_init        , Self-initializing cache level
-             4,      31:0,  eax,       9,    fully_associative      , Fully-associative cache
-             4,      31:0,  eax,   25:14,    num_threads_sharing    , Number logical CPUs sharing this cache
-             …
+           0x4,      31:0,  eax,     4:0,    cache_type             , Cache type field
+           0x4,      31:0,  eax,     7:5,    cache_level            , Cache level (1-based)
+           0x4,      31:0,  eax,       8,    cache_self_init        , Self-initialializing cache level
+           0x4,      31:0,  eax,       9,    fully_associative      , Fully-associative cache
+           0x4,      31:0,  eax,   25:14,    num_threads_sharing    , Number logical CPUs sharing this cache
+           …
     …
 
 To generate C structures describing a certain CPUID leaf, through C99
@@ -235,9 +235,9 @@ bitfield listings, do:
     $ cpuidgen --kheader 7
 
     /* SPDX-License-Identifier: CC0-1.0 */
-    /* Generator: x86-cpuid-db v1.0 */
+    /* Generator: x86-cpuid-db v2.0 */
 
-    struct {
+    struct leaf_0x7_0 {
      	// eax
      	u32	leaf7_n_subleaves	: 32; // Number of cpuid 0x7 subleaves
      	// ebx
@@ -263,9 +263,9 @@ bitfield listings, do:
      		uintr			:  1, // CPU supports user interrupts
      					:  2, // Reserved
 		…;
-    } leaf7_sl0;
+    };
 
-    struct {
+    struct leaf_0x7_1 {
      	// eax
      	u32				:  4, // Reserved
      		avx_vnni		:  1, // AVX-VNNI instructions
@@ -284,9 +284,9 @@ bitfield listings, do:
      		avx_ne_convert		:  1, // AVX-NE-CONVERT instructions
      					:  2, // Reserved
 		…;
-    } leaf7_sl1;
+    };
 
-    struct {
+    struct leaf_0x7_2 {
      	// eax
      	u32				: 32; // Reserved
      	// ebx
@@ -302,12 +302,13 @@ bitfield listings, do:
      		mcdt_no			:  1, // MCDT mitigation not needed
      		uclock_disable		:  1, // UC-lock disable is supported
      					: 25; // Reserved
-    } leaf7_sl2;
+    };
 
 Similarly:
 
 .. code-block:: shell
 
+    cpuidgen --headers
     cpuidgen --kheader 0x12
     cpuidgen --kheader 0x80000001
 
@@ -382,9 +383,9 @@ Further statistics can be queried through:
 
     Project statistics
     ------------------
-    CPUID leaves:        52 leaves
-    CPUID bitfields:     835 entries
-    Linux feature flags: 274 entries
+    CPUID leaves:        63 leaves
+    CPUID bitfields:     907 entries
+    Linux feature flags: 287 entries
     Xen feature flags:   198 entries
 
 References
