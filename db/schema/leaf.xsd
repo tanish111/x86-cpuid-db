@@ -18,6 +18,17 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <!--
+    ** Hexadecimal numbers with an enforced '0x' prefix.
+    ** This format is typically mandated for consistency,
+    ** ensuring no subtle bugs on the generators' side.
+  -->
+  <xs:simpleType name="hexadecimalStrict">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="0x[0-9a-f]+" />
+    </xs:restriction>
+  </xs:simpleType>
+
   <xs:complexType name="linuxType">
     <xs:attribute type="xs:boolean"      name="feature"     use="required" />
     <xs:attribute type="xs:boolean"      name="proc"        use="required" />
@@ -164,7 +175,7 @@
       <xs:element type="hypervisorsType" name="hypervisors" minOccurs="0" />
       <xs:element type="subleafType"     name="subleaf"     maxOccurs="unbounded" />
     </xs:sequence>
-    <xs:attribute type="hexadecimal"     name="id"          use="required" />
+    <xs:attribute type="hexadecimalStrict" name="id"        use="required" />
     <xs:attribute type="xs:unsignedByte" name="subleaves"   use="optional" />
   </xs:complexType>
 
