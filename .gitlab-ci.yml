@@ -8,6 +8,7 @@ default:
 # https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
 #
 variables:
+  GIT_DEPTH: 50
   OUTPUT_DIR: output
   HEADERS_DIR: ${OUTPUT_DIR}/individual-headers
   KCPUID_CSV_FILE: ${OUTPUT_DIR}/kcpuid.csv
