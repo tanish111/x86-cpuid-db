@@ -1,0 +1,16 @@
+<!--
+  *** SPDX-FileCopyrightText: 2024 Linutronix GmbH
+  *** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0xc0000000">
+  <desc>Maximum Centaur/Zhaoxin leaf number</desc>
+  <vendors>
+    <vendor>Centaur</vendor>
+    <vendor>Zhaoxin</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <bit0  len="32" id="max_cntr_leaf"           desc="Maximum Centaur/Zhaoxin leaf number" />
+    </eax>
+  </subleaf>
+</leaf>
