@@ -60,13 +60,15 @@
 	  <vendor>AMD</vendor>
 	</vendors>
       </bit9>
-      <bit11 len="1"  id="xcr0_cet_u"              desc="AMD XCR0.CET_U (bit 11) supported (CET supervisor state)">
+      <bit11 len="1"  id="xcr0_cet_u"              desc="XCR0.CET_U (bit 11) supported (CET user state)">
 	<vendors>
+	  <vendor>Intel</vendor>
 	  <vendor>AMD</vendor>
 	</vendors>
       </bit11>
-      <bit12 len="1"  id="xcr0_cet_s"              desc="AMD XCR0.CET_S (bit 12) support (CET user state)">
+      <bit12 len="1"  id="xcr0_cet_s"              desc="XCR0.CET_S (bit 12) supported (CET supervisor state)">
 	<vendors>
+	  <vendor>Intel</vendor>
 	  <vendor>AMD</vendor>
 	</vendors>
       </bit12>
