@@ -56,7 +56,7 @@
           <vendor>Centaur</vendor>
           <vendor>Zhaoxin</vendor>
         </vendors>
-        <linux        feature="true"               proc="true"            altid="ace"        procid="ace_en" />
+        <linux        feature="true"               proc="true"            altid="xcrypt_en"  procid="ace_en" />
       </bit7>
       <bit8  len="1"  id="ace2"                    desc="Advanced Cryptography Engine v2">
         <vendors>
