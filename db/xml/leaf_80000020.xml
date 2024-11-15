@@ -27,6 +27,12 @@
         <linux        feature="true"               proc="false" />
       </bit3>
       <bit4  len="1"  id="l3rr"                    desc="L3 Range Reservation support" />
+      <bit5  len="1"  id="abmc"                    desc="Assignable Bandwidth Monitoring Counters">
+        <linux        feature="true"               proc="false" />
+      </bit5>
+      <bit6  len="1"  id="sdciae"                  desc="Smart Data Cache Injection (SDCI) Allocation Enforcement">
+        <linux        feature="true"               proc="false" />
+      </bit6>
     </ebx>
   </subleaf>
   <subleaf id="1">
