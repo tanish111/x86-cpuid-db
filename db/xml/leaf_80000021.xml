@@ -73,11 +73,17 @@
       </bit31>
     </eax>
     <ebx>
-      <bit0  len="12" id="microcode_patch_size"    desc="Size of microcode patch, in 16-byte units">
+      <bit0  len="16" id="microcode_patch_size"    desc="Size of microcode patch, in 16-byte units">
         <text>
           If 0 is returned, then the size of the microcode patch is ≤ 5568 (0x15c0) bytes.
         </text>
       </bit0>
+      <bit16  len="8" id="rap_size"                desc="Return Address Predictor size">
+        <text>
+          RapSize x 8 is the minimum number of CALL instructions software needs to execute
+          to flush the RAP.
+        </text>
+      </bit16>
     </ebx>
   </subleaf>
 </leaf>
