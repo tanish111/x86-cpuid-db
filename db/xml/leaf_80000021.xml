@@ -37,8 +37,40 @@
       <bit10 len="1"  id="fsrs_supported"          desc="Fast Short Rep Stosb (FSRS) is supported" />
       <bit11 len="1"  id="fsrc_supported"          desc="Fast Short Repe Cmpsb (FSRC) is supported" />
       <bit13 len="1"  id="prefetch_ctl_msr"        desc="Prefetch control MSR is supported" />
+      <bit16 len="1"  id="opcode_reclaim"          desc="Reserves opcode space">
+        <text>
+          Reserves opcode space 0F 01/7 for AMD use, returns illegal instruction for opcodes
+          in this space.
+        </text>
+        <linux        feature="true"               proc="false" />
+      </bit16>
       <bit17 len="1"  id="user_cpuid_disable"      desc="#GP when executing CPUID at CPL > 0 is supported" />
       <bit18 len="1"  id="epsf_supported"          desc="Enhanced Predictive Store Forwarding (EPSF) is supported" />
+      <bit22 len="1"  id="wl_feedback"             desc="Workload-based heuristic feedback to OS">
+        <linux        feature="true"               proc="false" />
+      </bit22>
+      <bit24 len="1"  id="eraps_support"           desc="Enhanced Return Address Predictor Security">
+        <linux        feature="true"               proc="false" />
+      </bit24>
+      <bit27 len="1"  id="sbpb"                    desc="Support for the Selective Branch Predictor Barrier">
+        <linux        feature="true"               proc="false" />
+      </bit27>
+      <bit28 len="1"  id="ibpb_brtype"             desc="Branch predictions flushed from CPU branch predictor">
+        <text>
+          Indicates that MSR 49h (PRED_CMD) bit 0 (IBPB) flushes all branch type predictions
+          from the CPU branch predictor.
+        </text>
+        <linux        feature="true"               proc="false" />
+      </bit28>
+      <bit29 len="1"  id="srso_no"                 desc="CPU is not subject to the SRSO vulnerability">
+        <linux        feature="true"               proc="false" />
+      </bit29>
+      <bit30 len="1"  id="srso_uk_no"              desc="CPU is not vulnerable to SRSO at user-kernel boundary">
+        <linux        feature="true"               proc="false" />
+      </bit30>
+      <bit31 len="1"  id="srso_msr_fix"            desc="Software may use MSR BP_CFG[BpSpecReduce] to mitigate SRSO">
+        <linux        feature="true"               proc="false" />
+      </bit31>
     </eax>
     <ebx>
       <bit0  len="12" id="microcode_patch_size"    desc="Size of microcode patch, in 16-byte units">
