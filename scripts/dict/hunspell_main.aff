@@ -10,6 +10,7 @@
 # Check:
 #   - hunspell(5)
 #   - scripts/dict/*.dic
+#   - scripts/spellcheck_xml.sh
 
 SET UTF-8
 
