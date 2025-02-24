@@ -13,7 +13,7 @@
       <bit0  len="1"  id="mca_overflow_recovery"   desc="MCA overflow conditions not fatal">
         <linux        feature="true"               proc="true"            altid="overflow_recov" />
       </bit0>
-      <bit1  len="1"  id="succor"                  desc="Software containment of UnCORRectable errors">
+      <bit1  len="1"  id="succor"                  desc="Software containment of uncorrectable errors">
         <linux        feature="true"               proc="true" />
       </bit1>
       <bit2  len="1"  id="hw_assert"               desc="Hardware assert MSRs" />
@@ -35,7 +35,7 @@
     </ecx>
     <edx>
       <desc>Advanced power management features</desc>
-      <bit0  len="1"  id="digital_temp"            desc="Digital temprature sensor">
+      <bit0  len="1"  id="digital_temp"            desc="Digital temperature sensor">
         <vendors>
           <vendor>AMD</vendor>
         </vendors>

@@ -161,7 +161,7 @@
 
                     Create a synthetic child register element for the missing
                     registers so that the "eax | ebx |ecx | edx" template
-                    matching rules can be DRY-ed (re-used) instead of open
+                    matching rules can be DRY-ed (reused) instead of open
                     coding the generate-full-register-padding mode again here.
 
                     This can be done by chaining the XSLT transformations: the

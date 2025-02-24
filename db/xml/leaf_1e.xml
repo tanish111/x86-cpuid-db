@@ -20,7 +20,7 @@
         ]]>
       </text>
       <bit0  len="8"  id="tmul_maxk"               desc="TMUL unit maximum height, K (rows or columns)" />
-      <bit8  len="16" id="tmul_maxn"               desc="TMUL unit maxiumum SIMD dimension, N (column bytes)" />
+      <bit8  len="16" id="tmul_maxn"               desc="TMUL unit maximum SIMD dimension, N (column bytes)" />
     </ebx>
   </subleaf>
 </leaf>

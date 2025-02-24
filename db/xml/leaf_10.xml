@@ -5,7 +5,7 @@
 <leaf id="0x10">
   <desc>Intel RDT / AMD PQoS allocation enumeration</desc>
   <text>
-    AMD compatability: as of July 2023, latest version of the AMD64 Architecture
+    AMD compatibility: as of July 2023, latest version of the AMD64 Architecture
     Programmer's Manual declare this leaf 0x10 as reserved.  Nonetheless, AMD's Processor
     Programming Reference for the relevant AMD CPU families detail this leaf's fields in a
     compatible way with Intel RDT, but only for CAT L2/L3; i.e. no MBA.  MBA enumeration

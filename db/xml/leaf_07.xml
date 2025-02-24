@@ -127,7 +127,7 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="s" />
       </bit14>
-      <bit15 len="1"  id="rdt_a"                   desc="Intel RDT / AMD Platform-QoS Enforcemeent">
+      <bit15 len="1"  id="rdt_a"                   desc="Intel RDT / AMD Platform-QoS Enforcement">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
@@ -335,7 +335,7 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit11>
-      <bit12 len="1"  id="avx512_bitalg"           desc="AVX-512 bit count/shiffle">
+      <bit12 len="1"  id="avx512_bitalg"           desc="AVX-512 bitwise algorithms">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
@@ -355,7 +355,7 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit14>
-      <bit16 len="1"  id="la57"                    desc="57-bit linear addreses (five-level paging)">
+      <bit16 len="1"  id="la57"                    desc="57-bit linear addresses (five-level paging)">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>

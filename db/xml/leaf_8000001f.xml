@@ -33,7 +33,7 @@
         </text>
       </bit5>
       <bit6  len="1"  id="rpmquery"                desc="RPMQUERY instruction supported" />
-      <bit7  len="1"  id="vmpl_sss"                desc="VMPL supervisor shadwo stack supported">
+      <bit7  len="1"  id="vmpl_sss"                desc="VMPL supervisor shadow stack supported">
         <text>
           The Supervisor Shadow Stack bit is supported in the VMPL permission set.
         </text>
@@ -87,7 +87,7 @@
       </bit0>
     </ecx>
     <edx>
-      <bit0  len="32" id="min_sev_asid_no_sev_es"  desc="Mininum ASID for SEV-enabled SEV-ES-disabled guest" />
+      <bit0  len="32" id="min_sev_asid_no_sev_es"  desc="Minimum ASID for SEV-enabled SEV-ES-disabled guest" />
     </edx>
   </subleaf>
 </leaf>

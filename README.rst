@@ -364,7 +364,7 @@ CPUID Data Coverage
 
 To the best of our knowledge, we've specified *all publicly-known*
 CPUID register bitfields in the included XML database. The covered
-data was collected from multiple x86 CPU vendors programming mauals —
+data was collected from multiple x86 CPU vendors programming manuals —
 representing both current CPUs and possible future instruction set
 extensions and future features.
 

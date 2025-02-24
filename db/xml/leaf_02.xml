@@ -24,7 +24,7 @@
       On all standard Intel CPUs, @iteration_count is always set to 1.
     </text>
     <eax>
-      <bit0  len="8"  id="iteration_count"         desc="Number of times this CPUD leaf must be queried" />
+      <bit0  len="8"  id="iteration_count"         desc="Number of times this leaf must be queried" />
       <bit8  len="8"  id="desc1"                   desc="Descriptor #1" />
       <bit16 len="8"  id="desc2"                   desc="Descriptor #2" />
       <bit24 len="7"  id="desc3"                   desc="Descriptor #3" />

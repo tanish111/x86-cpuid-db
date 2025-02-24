@@ -49,7 +49,7 @@
       </bit16>
       <bit24 len="4"  id="core_native_model_id"    desc="This core's native model ID">
         <text>
-          Thid field is valid iff @domain_type = 1 (Core domain).
+          This field is valid iff @domain_type = 1 (Core domain).
         </text>
         <values>
           <value      id="0"                       desc="Zen4 Core" />
@@ -57,7 +57,7 @@
       </bit24>
       <bit28 len="4"  id="core_type"               desc="This core's type">
         <text>
-          Thid field is valid iff @domain_type = 1 (Core domain).
+          This field is valid iff @domain_type = 1 (Core domain).
         </text>
         <values>
           <value      id="0"                       desc="Performance (P) core" />

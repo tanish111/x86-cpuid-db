@@ -42,7 +42,7 @@
           <value      id="1"                       desc="L3 cache" />
         </values>
       </bit5>
-      <bit8  len="1"  id="cache_self_init"         desc="Self-initialializing cache level" />
+      <bit8  len="1"  id="cache_self_init"         desc="Self-initializing cache level" />
       <bit9  len="1"  id="fully_associative"       desc="Fully-associative cache" />
       <bit14 len="12" id="num_threads_sharing"     desc="Number logical CPUs sharing this cache" />
       <bit26 len="6"  id="num_cores_on_die"        desc="Number of cores in the physical package" />

@@ -13,7 +13,7 @@
     </eax>
     <ebx>
       <bit0  len="16" id="soc_vendor_id"           desc="SoC vendor ID" />
-      <bit16 len="1"  id="is_vendor_scheme"        desc="Assigned by industry enumaeratoion scheme (not Intel)" />
+      <bit16 len="1"  id="is_vendor_scheme"        desc="Assigned by industry enumeration scheme (not Intel)" />
     </ebx>
     <ecx>
       <bit0  len="32" id="soc_proj_id"             desc="SoC project ID, assigned by vendor" />

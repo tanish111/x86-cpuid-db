@@ -5,7 +5,7 @@
 <leaf id="0xf">
   <desc>Intel RDT / AMD PQoS resource monitoring</desc>
   <text>
-    AMD compatability note: as of July 2023, latest version of the AMD64 Architecture
+    AMD compatibility note: as of July 2023, latest version of the AMD64 Architecture
     Programmer's Manual declare this leaf 0xf as reserved.  Nonetheless, AMD's Processor
     Programming Reference for the relevant AMD CPU families detail all of this leaf's
     fields in a fully bit-compatible way with Intel's RDT monitoring.

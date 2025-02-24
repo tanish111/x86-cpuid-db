@@ -161,7 +161,7 @@
         </vendors>
         <linux        feature="true"               proc="true"            altid="cid" />
       </bit10>
-      <bit11 len="1"  id="sdbg"                    desc="Sillicon Debug">
+      <bit11 len="1"  id="sdbg"                    desc="Silicon Debug">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
@@ -310,7 +310,7 @@
         <text>
           Note: for a guest running within an Intel Trusted-Domain run-time environment,
           this bit is also set. If cpuid leaf 0 @max_std_leaf ≥ 0x21, then cpuid 0x21 can
-          be used by such a guest to further enumerate the trusted-dom runtime envionment.
+          be used by such a guest to further enumerate the trusted-dom runtime environment.
           Reference: Architecture Specification: Intel Trust Domain Extensions (Intel TDX)
           Module, February 2023.
         </text>
@@ -555,7 +555,7 @@
         <linux        feature="true"               proc="true"            altid="acc"        procid="tm" />
         <xen          feature="true"               attrs=""               altid="tm1" />
       </bit29>
-      <bit30 len="1"  id="ia64"                    desc="Legacy IA-64 (Itanium) support bit, now resreved">
+      <bit30 len="1"  id="ia64"                    desc="Legacy IA-64 (Itanium) support bit, now reserved">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>

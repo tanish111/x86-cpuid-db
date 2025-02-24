@@ -10,9 +10,9 @@
       <vendors>
         <vendor>AMD</vendor>
       </vendors>
-      <bit0  len="8"  id="l1_itlb_2m_4m_nentries"  desc="L1 ITLB #entires, 2M and 4M pages" />
+      <bit0  len="8"  id="l1_itlb_2m_4m_nentries"  desc="L1 ITLB #entries, 2M and 4M pages" />
       <bit8  len="8"  id="l1_itlb_2m_4m_assoc"     desc="L1 ITLB associativity, 2M and 4M pages" />
-      <bit16 len="8"  id="l1_dtlb_2m_4m_nentries"  desc="L1 DTLB #entires, 2M and 4M pages" />
+      <bit16 len="8"  id="l1_dtlb_2m_4m_nentries"  desc="L1 DTLB #entries, 2M and 4M pages" />
       <bit24 len="8"  id="l1_dtlb_2m_4m_assoc"     desc="L1 DTLB associativity, 2M and 4M pages" />
     </eax>
     <ebx>

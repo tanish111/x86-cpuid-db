@@ -34,10 +34,10 @@
 
               Thus, PCONFIG leaf function EAX=0x0, MKTME_KEY_PROGRAM, is supported and
               will not result in a #GP(0) iff one of this CPUID 0x1b leaf "Target
-              Identier" subleaves marks PCONFIG target ID 1 (MKTME engine) as supported.
+              Identifier" subleaves marks PCONFIG target ID 1 (MKTME engine) as supported.
 
               Reference: Intel Architecture Memory Encryption Technologies Specification,
-              Revision 1.4 (Auguest 2022), Section 6.2.1 "PCONFIG Description".
+              Revision 1.4 (August 2022), Section 6.2.1 "PCONFIG Description".
             </text>
           </value>
         </values>

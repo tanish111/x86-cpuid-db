@@ -120,7 +120,7 @@ Prepare for project's first release
 
 - Introduce internal XML validation and coding style checks
 
-  - ``scripts/validate_xml.sh``: Valide all XML files against their schema
+  - ``scripts/validate_xml.sh``: Validate all XML files against their schema
   - ``scripts/check_xml_style.awk``: Ensure consistent coding style for all XMLs
 
 - Add standard project files

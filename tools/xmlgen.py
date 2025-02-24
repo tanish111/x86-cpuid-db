@@ -25,7 +25,7 @@
 #                                                                +–––––––––––––––––––+  +––––––––––––––––-+
 #
 # Beside the object relationships above, the Cpuid objects link to each
-# other in an AST tree form that mirros the XML schema. That is, the
+# other in an AST tree form that mirrors the XML schema. That is, the
 # object tree can be initialized in the form:
 #
 #     objtree = \

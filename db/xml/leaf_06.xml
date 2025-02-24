@@ -7,7 +7,7 @@
   <subleaf id="0">
     <eax>
       <desc>Thermal and Power Management feature flags</desc>
-      <bit0  len="1"  id="digital_temp"            desc="Digital temprature sensor">
+      <bit0  len="1"  id="digital_temp"            desc="Digital temperature sensor">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
@@ -125,7 +125,7 @@
       </bit24>
     </eax>
     <ebx>
-      <desc>Intel-specific digital temprature sensor flags</desc>
+      <desc>Intel-specific digital temperature sensor flags</desc>
       <vendors>
         <vendor>Intel</vendor>
       </vendors>

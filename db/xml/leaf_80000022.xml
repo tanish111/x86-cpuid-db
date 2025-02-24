@@ -18,7 +18,7 @@
       <bit2  len="1"  id="lbr_pmc_freeze"          desc="Freezing core performance counters / LBR Stack supported" />
     </eax>
     <ebx>
-      <bit0  len="4"  id="n_pmc_core"              desc="Number of core perfomance counters" />
+      <bit0  len="4"  id="n_pmc_core"              desc="Number of core performance counters" />
       <bit4  len="6"  id="lbr_v2_stack_size"       desc="Number of available LBR stack entries" />
       <bit10 len="6"  id="n_pmc_northbridge"       desc="Number of available northbridge (data fabric) performance counters" />
       <bit16 len="6"  id="n_pmc_umc"               desc="Number of available UMC performance counters" />
