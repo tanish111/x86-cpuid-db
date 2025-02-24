@@ -121,6 +121,7 @@ HUNSPELL_DICTS="${__EN_US_DICT},${__CUST_DICT}"
 DICT_FILES_DIR=${SCRIPT_DIR}/dict/
 DICT_FILES="			\
 	expression-suffixes.dic	\
+	x86-opcodes.dic		\
 "
 
 # hunspell does not support comments or empty lines in its *.dic files.
