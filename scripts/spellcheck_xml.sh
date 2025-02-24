@@ -124,6 +124,7 @@ DICT_FILES="			\
 	x86-opcodes.dic		\
 	x86-registers.dic	\
 	x86-terms.dic		\
+	x86-trademarks.dic	\
 "
 
 # hunspell does not support comments or empty lines in its *.dic files.

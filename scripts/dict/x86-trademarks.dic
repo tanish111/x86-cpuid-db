@@ -1,0 +1,33 @@
+#
+# x86-trademarks.dic — Hunspell dictionary of x86 trademarks
+#
+# SPDX-FileCopyrightText: 2025 Linutronix GmbH
+# SPDX-License-Identifier: CC0-1.0
+#
+# Non-exhaustive list; just the terms used at the XML database.
+
+#
+# Vendors
+#
+
+AMD
+Centaur
+Cyrix
+Hygon
+Intel
+NSC
+Transmeta
+Vortex
+Zhaoxin
+
+#
+# Products and microarchitectures
+#
+
+Itanium
+Xeon
+Broadwell
+Skylake
+Sandybridge
+Zen4
+Bulldozer
