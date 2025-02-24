@@ -121,6 +121,7 @@ HUNSPELL_DICTS="${__EN_US_DICT},${__CUST_DICT}"
 DICT_FILES_DIR=${SCRIPT_DIR}/dict/
 DICT_FILES="			\
 	expression-suffixes.dic	\
+	tech-terms.dic		\
 	x86-opcodes.dic		\
 	x86-registers.dic	\
 	x86-terms.dic		\

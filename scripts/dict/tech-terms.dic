@@ -1,0 +1,23 @@
+#
+# tech-terms.dic — Hunspell dictionary of some technical terms
+#
+# SPDX-FileCopyrightText: 2025 Linutronix GmbH
+# SPDX-License-Identifier: CC0-1.0
+#
+# Valid technical terms used in the XML database's cpuid bitfields
+# descriptions, but which are not recognized by hunspell.
+
+backend/S
+bitmask/S
+bitwidth/S
+bitwise
+breakpoint/S
+CPU/S
+encoding/S
+frontend/S
+interruptible
+mispredict
+misprediction
+prefetch/S
+userspace
+virtualize/DS
