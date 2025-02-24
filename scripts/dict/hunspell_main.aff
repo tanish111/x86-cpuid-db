@@ -1,0 +1,52 @@
+#
+# hunspell_main.aff — Main hunspell affix file
+#
+# SPDX-FileCopyrightText: 2025 Linutronix GmbH
+# SPDX-License-Identifier: GPL-2.0-only
+#
+# All of the project's hunspell dictionary files depend on having this
+# affix file defined.
+#
+# Check:
+#   - hunspell(5)
+#   - scripts/dict/*.dic
+
+SET UTF-8
+
+#
+# Suffixes to be used in hunspell dictionary files
+# They can be used in all *.dic files, in the form:
+#
+#	bitmask/S
+#	breakpoint/S
+#	virtualize/DS
+#
+
+# S suffixes (plural, verbs)
+SFX S Y 2
+SFX S   0     es         [sxzh]
+SFX S   0     s          [^sxzhy]
+
+# D suffixes (past verbs)
+SFX D Y 2
+SFX D   0     d          e
+SFX D   0     ed         [^e]
+
+#
+# Expressions for:
+#
+#	Hex digits	0x[0-9]+
+#	Version tags	v[0-9]+
+#	Byte units	[0-9]+
+#
+# Definitions for vxHDU flags is at:
+#
+#	expression-flags.dic
+#
+
+COMPOUNDMIN 1
+
+COMPOUNDRULE 3
+COMPOUNDRULE xHH*
+COMPOUNDRULE vDD*
+COMPOUNDRULE DD*U

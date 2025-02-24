@@ -1,0 +1,35 @@
+#
+# expression-suffixes.dic — Hunspell expression suffixes definition
+#
+# SPDX-FileCopyrightText: 2025 Linutronix GmbH
+# SPDX-License-Identifier: GPL-2.0-only
+#
+# Define the hunspell(5) dictionary suffixes /xHDvU.
+# Check hunspell_main.aff for more info.
+
+0x/x
+0/HD
+1/HD
+2/HD
+3/HD
+4/HD
+5/HD
+6/HD
+7/HD
+8/HD
+9/HD
+a/H
+b/H
+c/H
+d/H
+e/H
+f/H
+v/v
+K/U
+KB/U
+M/U
+MB/U
+G/U
+GB/U
+T/U
+TB/U
