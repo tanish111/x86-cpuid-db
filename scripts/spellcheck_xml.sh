@@ -123,6 +123,7 @@ DICT_FILES="			\
 	expression-suffixes.dic	\
 	x86-opcodes.dic		\
 	x86-registers.dic	\
+	x86-terms.dic		\
 "
 
 # hunspell does not support comments or empty lines in its *.dic files.
