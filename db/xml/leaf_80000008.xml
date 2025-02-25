@@ -167,7 +167,7 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="!" />
       </bit25>
-      <bit26 len="1"  id="amd_ssb_no"              desc="SSBD not needed (fixed in HW)">
+      <bit26 len="1"  id="amd_ssb_no"              desc="SSBD is not needed (fixed in hardware)">
         <vendors>
           <vendor>AMD</vendor>
         </vendors>

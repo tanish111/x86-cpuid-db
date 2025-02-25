@@ -9,7 +9,7 @@
     system-wide.
 
     Modern Intel CPUs also provide leaf 0x23, which provides a "true-view" enumeration of
-    PMU resources per logical CPU, where such resources can thus differ across HW threads.
+    PMU resources per logical CPU, where such resources can thus differ.
   </text>
   <vendors>
     <vendor>Intel</vendor>

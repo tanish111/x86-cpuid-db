@@ -47,16 +47,16 @@
       <bit31 len="1"  id="lwp_cache_latency"       desc="Cache-related events can be filtered by latency" />
     </ecx>
     <edx>
-      <bit0  len="1"  id="hw_lwp_avail"            desc="LWP is available in Hardware" />
-      <bit1  len="1"  id="hw_lpwval"               desc="LWPVAL instruction (EventId=1) is available in HW" />
-      <bit2  len="1"  id="hw_lwp_ire"              desc="Instructions Retired Event (EventId=2) is available in HW" />
-      <bit3  len="1"  id="hw_lwp_bre"              desc="Branch Retired Event (EventId=3) is available in HW" />
-      <bit4  len="1"  id="hw_lwp_dme"              desc="DCache Miss Event (EventId=4) is available in HW" />
-      <bit5  len="1"  id="hw_lwp_cnh"              desc="CPU Clocks Not Halted event (EventId=5) is available in HW" />
-      <bit6  len="1"  id="hw_lwp_rnh"              desc="CPU Reference clocks Not Halted event (EventId=6) is available in HW" />
-      <bit29 len="1"  id="hw_lwp_cont"             desc="LWP sampling in continuous mode is available in HW" />
-      <bit30 len="1"  id="hw_lwp_ptsc"             desc="Performance Time Stamp Counter in event records is available in HW" />
-      <bit31 len="1"  id="hw_lwp_int"              desc="Interrupt on threshold overflow is available in HW" />
+      <bit0  len="1"  id="hw_lwp_avail"            desc="LWP is available in hardware" />
+      <bit1  len="1"  id="hw_lpwval"               desc="LWPVAL instruction is available in hardware" />
+      <bit2  len="1"  id="hw_lwp_ire"              desc="Instructions Retired Event is available in hardware" />
+      <bit3  len="1"  id="hw_lwp_bre"              desc="Branch Retired Event is available in hardware" />
+      <bit4  len="1"  id="hw_lwp_dme"              desc="DCache Miss Event is available in hardware" />
+      <bit5  len="1"  id="hw_lwp_cnh"              desc="Clocks Not Halted event is available in hardware" />
+      <bit6  len="1"  id="hw_lwp_rnh"              desc="Reference clocks Not Halted event is available in hardware" />
+      <bit29 len="1"  id="hw_lwp_cont"             desc="LWP sampling in continuous mode is available in hardware" />
+      <bit30 len="1"  id="hw_lwp_ptsc"             desc="Performance Time Stamp Counter in event records is available in hardware" />
+      <bit31 len="1"  id="hw_lwp_int"              desc="Interrupt on threshold overflow is available in hardware" />
     </edx>
   </subleaf>
 </leaf>

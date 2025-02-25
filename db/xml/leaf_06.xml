@@ -158,8 +158,8 @@
       </vendors>
       <bit0  len="1"  id="perfcap_reporting"       desc="Performance capability reporting" />
       <bit1  len="1"  id="encap_reporting"         desc="Energy efficiency capability reporting" />
-      <bit8  len="4"  id="feedback_sz"             desc="HW feedback interface struct size, in 4K pages" />
-      <bit16 len="16" id="this_lcpu_hwfdbk_idx"    desc="This logical CPU index @ HW feedback struct, 0-based" />
+      <bit8  len="4"  id="feedback_sz"             desc="Feedback interface structure size, in 4K pages" />
+      <bit16 len="16" id="this_lcpu_hwfdbk_idx"    desc="This logical CPU hardware feedback interface index" />
     </edx>
   </subleaf>
 </leaf>

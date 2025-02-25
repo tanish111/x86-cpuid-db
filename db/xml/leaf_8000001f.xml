@@ -42,7 +42,7 @@
       <bit9  len="1"  id="virt_tsc_aux"            desc="Hardware virtualizes TSC_AUX">
         <linux        feature="true"               proc="false"           altid="v_tsc_aux" />
       </bit9>
-      <bit10 len="1"  id="sme_coherent"            desc="HW enforces cache coherency across encryption domains">
+      <bit10 len="1"  id="sme_coherent"            desc="Cache coherency is enforced across encryption domains">
         <linux        feature="true"               proc="false" />
       </bit10>
       <bit11 len="1"  id="req_64bit_hypervisor"    desc="SEV guest mandates 64-bit hypervisor" />
