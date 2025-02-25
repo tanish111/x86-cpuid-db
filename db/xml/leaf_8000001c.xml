@@ -36,7 +36,7 @@
       <bit24 len="8"  id="lwp_event_offset"        desc="LWP events area offset in the LWP Control Block" />
     </ebx>
     <ecx>
-      <bit0  len="5"  id="lwp_latency_max"         desc="Num of bits in cache latency counters (10 to 31)" />
+      <bit0  len="5"  id="lwp_latency_max"         desc="Number of bits in cache latency counters (10 to 31)" />
       <bit5  len="1"  id="lwp_data_adddr"          desc="Cache miss events report the data address of the reference" />
       <bit6  len="3"  id="lwp_latency_rnd"         desc="Amount by which cache latency is rounded" />
       <bit9  len="7"  id="lwp_version"             desc="LWP implementation version" />

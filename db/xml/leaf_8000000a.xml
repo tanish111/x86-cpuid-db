@@ -49,7 +49,7 @@
       <bit13 len="1"  id="avic"                    desc="Advanced virtual interrupt controller">
         <linux        feature="true"               proc="true" />
       </bit13>
-      <bit15 len="1"  id="v_vmsave_vmload"         desc="Virtual VMSAVE/VMLOAD (nested virt)">
+      <bit15 len="1"  id="v_vmsave_vmload"         desc="Virtual VMSAVE/VMLOAD (nested virtualization)">
         <linux        feature="true"               proc="true" />
       </bit15>
       <bit16 len="1"  id="v_gif"                   desc="Virtualize the Global Interrupt Flag">
@@ -71,7 +71,7 @@
       </bit25>
       <bit26 len="1"  id="ibs_virt"                desc="IBS Virtualization" />
       <bit27 len="1"  id="ext_lvt_off_chg"         desc="Extended LVT offset fault change" />
-      <bit28 len="1"  id="svme_addr_chk"           desc="Guest SVME addr check">
+      <bit28 len="1"  id="svme_addr_chk"           desc="Guest SVME address check">
         <linux        feature="true"               proc="false" />
       </bit28>
     </edx>

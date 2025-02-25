@@ -210,14 +210,14 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit26>
-      <bit27 len="1"  id="avx512er"                desc="AVX-512 exponent/reciprocal instrs">
+      <bit27 len="1"  id="avx512er"                desc="AVX-512 exponent/reciprocal instructions">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit27>
-      <bit28 len="1"  id="avx512cd"                desc="AVX-512 conflict detection instrs">
+      <bit28 len="1"  id="avx512cd"                desc="AVX-512 conflict detection instructions">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
@@ -254,7 +254,7 @@
         </vendors>
         <xen          feature="true"               attrs="A" />
       </bit0>
-      <bit1  len="1"  id="avx512vbmi"              desc="AVX-512 Vector byte manipulation instrs">
+      <bit1  len="1"  id="avx512vbmi"              desc="AVX-512 Vector byte manipulation instructions">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
@@ -291,7 +291,7 @@
         </vendors>
         <linux        feature="true"               proc="true" />
       </bit5>
-      <bit6  len="1"  id="avx512_vbmi2"            desc="AVX-512 vector byte manipulation instrs group 2">
+      <bit6  len="1"  id="avx512_vbmi2"            desc="AVX-512 vector byte manipulation instructions group 2">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
@@ -312,7 +312,7 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit8>
-      <bit9  len="1"  id="vaes"                    desc="Vector AES instrs">
+      <bit9  len="1"  id="vaes"                    desc="Vector AES instructions">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
@@ -563,7 +563,7 @@
       <bit18 len="1"  id="lkgs"                    desc="LKGS: Load 'kernel' (userspace) GS">
         <linux        feature="true"               proc="false" />
       </bit18>
-      <bit19 len="1"  id="wrmsrns"                 desc="WRMSRNS instr (WRMSR-non-serializing)">
+      <bit19 len="1"  id="wrmsrns"                 desc="WRMSRNS instruction (WRMSR-non-serializing)">
         <xen          feature="true"               attrs="S" />
       </bit19>
       <bit20 len="1"  id="nmi_src"                 desc="NMI-source reporting with FRED event data" />

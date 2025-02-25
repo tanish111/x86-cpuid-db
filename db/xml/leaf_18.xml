@@ -46,7 +46,7 @@
       </bit0>
       <bit5  len="3"  id="tlb_cache_level"         desc="Translation cache level (1-based)" />
       <bit8  len="1"  id="is_fully_associative"    desc="Fully-associative structure" />
-      <bit14 len="12" id="tlb_max_addressible_ids" desc="Max num of addressable IDs for logical CPUs sharing this TLB - 1" />
+      <bit14 len="12" id="tlb_max_addressible_ids" desc="Max number of addressable IDs for logical CPUs sharing this TLB - 1" />
     </edx>
   </subleaf>
 </leaf>

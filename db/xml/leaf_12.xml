@@ -69,12 +69,12 @@
       <bit0  len="1"  id="xfrm_x87"                desc="Enclave XFRM.X87 (bit 0) supported" />
       <bit1  len="1"  id="xfrm_sse"                desc="Enclave XFRM.SEE (bit 1) supported" />
       <bit2  len="1"  id="xfrm_avx"                desc="Enclave XFRM.AVX (bit 2) supported" />
-      <bit3  len="1"  id="xfrm_mpx_bndregs"        desc="Enclave XFRM.BNDREGS (bit 3) supported (MPX BND0-BND3 regs)" />
-      <bit4  len="1"  id="xfrm_mpx_bndcsr"         desc="Enclave XFRM.BNDCSR (bit 4) supported (MPX BNDCFGU/BNDSTATUS regs)" />
-      <bit5  len="1"  id="xfrm_avx512_opmask"      desc="Enclave XFRM.OPMASK (bit 5) supported (AVX-512 k0-k7 regs)" />
-      <bit6  len="1"  id="xfrm_avx512_zmm_hi256"   desc="Enclave XFRM.ZMM_Hi256 (bit 6) supported (AVX-512 ZMM0->ZMM7/15 regs)" />
-      <bit7  len="1"  id="xfrm_avx512_hi16_zmm"    desc="Enclave XFRM.HI16_ZMM (bit 7) supported (AVX-512 ZMM16->ZMM31 regs)" />
-      <bit9  len="1"  id="xfrm_pkru"               desc="Enclave XFRM.PKRU (bit 9) supported (XSAVE PKRU reg)" />
+      <bit3  len="1"  id="xfrm_mpx_bndregs"        desc="Enclave XFRM.BNDREGS (bit 3) supported (MPX BND0-BND3 registers)" />
+      <bit4  len="1"  id="xfrm_mpx_bndcsr"         desc="Enclave XFRM.BNDCSR (bit 4) supported (MPX BNDCFGU/BNDSTATUS registers)" />
+      <bit5  len="1"  id="xfrm_avx512_opmask"      desc="Enclave XFRM.OPMASK (bit 5) supported (AVX-512 k0-k7 registers)" />
+      <bit6  len="1"  id="xfrm_avx512_zmm_hi256"   desc="Enclave XFRM.ZMM_Hi256 (bit 6) supported (AVX-512 ZMM0->ZMM7/15 registers)" />
+      <bit7  len="1"  id="xfrm_avx512_hi16_zmm"    desc="Enclave XFRM.HI16_ZMM (bit 7) supported (AVX-512 ZMM16->ZMM31 registers)" />
+      <bit9  len="1"  id="xfrm_pkru"               desc="Enclave XFRM.PKRU (bit 9) supported (XSAVE PKRU registers)" />
       <bit17 len="1"  id="xfrm_tileconfig"         desc="Enclave XFRM.TILECONFIG (bit 17) supported (AMX can manage TILECONFIG)" />
       <bit18 len="1"  id="xfrm_tiledata"           desc="Enclave XFRM.TILEDATA (bit 18) supported (AMX can manage TILEDATA)" />
     </ecx>
@@ -106,10 +106,10 @@
           <value      id="1"                       desc="EPC (Enclave Page Cache) section" />
         </values>
       </bit0>
-      <bit12 len="20" id="epc_sec_base_addr_0"     desc="EPC section base addr, bits[12:31]" />
+      <bit12 len="20" id="epc_sec_base_addr_0"     desc="EPC section base address, bits[12:31]" />
     </eax>
     <ebx>
-      <bit0  len="20" id="epc_sec_base_addr_1"     desc="EPC section base addr, bits[32:51]" />
+      <bit0  len="20" id="epc_sec_base_addr_1"     desc="EPC section base address, bits[32:51]" />
     </ebx>
     <ecx>
       <bit0  len="4"  id="epc_sec_type"            desc="EPC section type / property encoding">

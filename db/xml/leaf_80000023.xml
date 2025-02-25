@@ -12,7 +12,7 @@
       <bit0  len="1"  id="mem_hmk_mode"            desc="MEM-HMK encryption mode is supported" />
     </eax>
     <ebx>
-      <bit0  len="16" id="mem_hmk_avail_keys"      desc="MEM-HMK mode: total num of available encryption keys" />
+      <bit0  len="16" id="mem_hmk_avail_keys"      desc="MEM-HMK mode: total number of available encryption keys" />
     </ebx>
   </subleaf>
 </leaf>

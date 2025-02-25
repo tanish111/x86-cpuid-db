@@ -29,32 +29,32 @@
 	  <vendor>AMD</vendor>
 	</vendors>
       </bit2>
-      <bit3  len="1"  id="xcr0_mpx_bndregs"        desc="XCR0.BNDREGS (bit 3) supported (MPX BND0-BND3 regs)">
+      <bit3  len="1"  id="xcr0_mpx_bndregs"        desc="XCR0.BNDREGS (bit 3) supported (MPX BND0-BND3 registers)">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
       </bit3>
-      <bit4  len="1"  id="xcr0_mpx_bndcsr"         desc="XCR0.BNDCSR (bit 4) supported (MPX BNDCFGU/BNDSTATUS regs)">
+      <bit4  len="1"  id="xcr0_mpx_bndcsr"         desc="XCR0.BNDCSR (bit 4) supported (MPX BNDCFGU/BNDSTATUS registers)">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
       </bit4>
-      <bit5  len="1"  id="xcr0_avx512_opmask"      desc="XCR0.OPMASK (bit 5) supported (AVX-512 k0-k7 regs)">
+      <bit5  len="1"  id="xcr0_avx512_opmask"      desc="XCR0.OPMASK (bit 5) supported (AVX-512 k0-k7 registers)">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
       </bit5>
-      <bit6  len="1"  id="xcr0_avx512_zmm_hi256"   desc="XCR0.ZMM_Hi256 (bit 6) supported (AVX-512 ZMM0->ZMM7/15 regs)">
+      <bit6  len="1"  id="xcr0_avx512_zmm_hi256"   desc="XCR0.ZMM_Hi256 (bit 6) supported (AVX-512 ZMM0->ZMM7/15 registers)">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
       </bit6>
-      <bit7  len="1"  id="xcr0_avx512_hi16_zmm"    desc="XCR0.HI16_ZMM (bit 7) supported (AVX-512 ZMM16->ZMM31 regs)">
+      <bit7  len="1"  id="xcr0_avx512_hi16_zmm"    desc="XCR0.HI16_ZMM (bit 7) supported (AVX-512 ZMM16->ZMM31 registers)">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
       </bit7>
-      <bit9  len="1"  id="xcr0_pkru"               desc="XCR0.PKRU (bit 9) supported (XSAVE PKRU reg)">
+      <bit9  len="1"  id="xcr0_pkru"               desc="XCR0.PKRU (bit 9) supported (XSAVE PKRU registers)">
 	<vendors>
 	  <vendor>Intel</vendor>
 	  <vendor>AMD</vendor>
