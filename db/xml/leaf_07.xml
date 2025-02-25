@@ -232,7 +232,7 @@
         <linux        feature="true"               proc="true"            altid="sha_ni" />
         <xen          feature="true"               attrs="A" />
       </bit29>
-      <bit30 len="1"  id="avx512bw"                desc="AVX-512 BW (byte/word granular) instructions">
+      <bit30 len="1"  id="avx512bw"                desc="AVX-512 byte/word instructions">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
@@ -348,7 +348,7 @@
         </vendors>
         <linux        feature="true"               proc="true" />
       </bit13>
-      <bit14 len="1"  id="avx512_vpopcntdq"        desc="AVX-512: POPCNT for vectors of DW/QW">
+      <bit14 len="1"  id="avx512_vpopcntdq"        desc="AVX-512: POPCNT for vectors of DWORD/QWORD">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
@@ -536,7 +536,7 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit4>
-      <bit5  len="1"  id="avx512_bf16"             desc="AVX-512 bFloat16 instructions">
+      <bit5  len="1"  id="avx512_bf16"             desc="AVX-512 bfloat16 instructions">
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit5>

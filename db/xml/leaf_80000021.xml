@@ -34,8 +34,8 @@
       <bit9  len="1"  id="no_smm_ctl_msr"          desc="SMM_CTL MSR (0xc0010116) is not present">
         <linux        feature="true"               proc="false" />
       </bit9>
-      <bit10 len="1"  id="fsrs_supported"          desc="Fast Short Rep Stosb (FSRS) is supported" />
-      <bit11 len="1"  id="fsrc_supported"          desc="Fast Short Repe Cmpsb (FSRC) is supported" />
+      <bit10 len="1"  id="fsrs_supported"          desc="Fast Short Rep STOSB (FSRS) is supported" />
+      <bit11 len="1"  id="fsrc_supported"          desc="Fast Short Rep CMPSB (FSRC) is supported" />
       <bit13 len="1"  id="prefetch_ctl_msr"        desc="Prefetch control MSR is supported" />
       <bit16 len="1"  id="opcode_reclaim"          desc="Reserves opcode space">
         <text>

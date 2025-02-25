@@ -6,7 +6,7 @@
   <desc>Processor extended state enumeration</desc>
   <subleaf id="0">
     <eax>
-      <desc>XSAVE/XRSTR XCR0 supported bits, lower dword (0:31)</desc>
+      <desc>XSAVE/XRSTOR XCR0 supported bits, lower dword (0:31)</desc>
       <text>
          Development note: if new Intel bits are to be added, please update SGX
          leaf_12.xml ECX.1 as well.
@@ -85,7 +85,7 @@
     </eax>
     <ebx>
       <desc>XSAVE area size calculations</desc>
-      <bit0  len="32" id="xsave_sz_xcr0_enabled"   desc="XSAVE/XRSTR area byte size, for XCR0 enabled features">
+      <bit0  len="32" id="xsave_sz_xcr0_enabled"   desc="XSAVE/XRSTOR area byte size, for XCR0 enabled features">
 	<vendors>
 	  <vendor>Intel</vendor>
 	  <vendor>AMD</vendor>
@@ -94,7 +94,7 @@
     </ebx>
     <ecx>
       <desc>XSAVE area size calculations</desc>
-      <bit0  len="32" id="xsave_sz_max"            desc="XSAVE/XRSTR area max byte size, all CPU features">
+      <bit0  len="32" id="xsave_sz_max"            desc="XSAVE/XRSTOR area max byte size, all CPU features">
 	<vendors>
 	  <vendor>Intel</vendor>
 	  <vendor>AMD</vendor>
@@ -102,7 +102,7 @@
       </bit0>
     </ecx>
     <edx>
-      <desc>XSAVE/XRSTR XCR0 supported bits, upper dword (32:63)</desc>
+      <desc>XSAVE/XRSTOR XCR0 supported bits, upper dword (32:63)</desc>
       <text>
 	Development note: if new Intel bits are to be added, please update SGX leaf_12.xml
 	ECX.1 as well.
@@ -116,7 +116,7 @@
   </subleaf>
   <subleaf id="1">
     <eax>
-      <desc>XSAVE/XRSTR feature flags</desc>
+      <desc>XSAVE/XRSTOR feature flags</desc>
       <bit0  len="1"  id="xsaveopt"                desc="XSAVEOPT instruction">
 	<vendors>
 	  <vendor>Intel</vendor>
@@ -246,7 +246,7 @@
       </vendors>
       <bit0  len="1"  id="is_xss_bit"              desc="Subleaf N describes an XSS bit, otherwise XCR0 bit" />
       <bit1  len="1"  id="compacted_xsave_64byte_aligned"
-                                                   desc="When compacted, subleaf-N feature xsave area is 64-byte aligned" />
+                                                   desc="When compacted, subleaf-N feature XSAVE area is 64-byte aligned" />
     </ecx>
   </subleaf>
 </leaf>

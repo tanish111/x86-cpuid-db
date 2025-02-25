@@ -15,7 +15,7 @@
       <bit0  len="32" id="cpu_cur_voltage"         desc="Current CPU voltage, in millivolts" />
     </ebx>
     <ecx>
-      <bit0  len="32" id="cpu_cur_perf_pctg"       desc="Current CPU performance percentage, 0 - 100d">
+      <bit0  len="32" id="cpu_cur_perf_pctg"       desc="Current CPU performance percentage, 0 - 100">
         <values>
           <value      id="0"                       desc="LongRun is not supported" />
         </values>

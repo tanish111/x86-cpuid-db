@@ -69,7 +69,7 @@
       <bit19 len="1"  id="virt_ibs"                desc="IBS state virtualization is supported for SEV-ES guests" />
       <bit24 len="1"  id="vmsa_reg_protection"     desc="VMSA register protection is supported" />
       <bit25 len="1"  id="smt_protection"          desc="SMT protection is supported" />
-      <bit28 len="1"  id="svsm_page_msr"           desc="SVSM communication page MSR (0xc001f000h) is supported" />
+      <bit28 len="1"  id="svsm_page_msr"           desc="SVSM communication page MSR (0xc001f000) is supported" />
       <bit29 len="1"  id="nested_virt_snp_msr"     desc="VIRT_RMPUPDATE/VIRT_PSMASH MSRs are supported" />
     </eax>
     <ebx>
