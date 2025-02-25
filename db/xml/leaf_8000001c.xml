@@ -19,12 +19,12 @@
   <subleaf id="0">
     <eax>
       <bit0  len="1"  id="os_lwp_avail"            desc="LWP is available to application programs (supported by OS)" />
-      <bit1  len="1"  id="os_lpwval"               desc="LWPVAL instruction (EventId=1) is supported by OS" />
-      <bit2  len="1"  id="os_lwp_ire"              desc="Instructions Retired Event (EventId=2) is supported by OS" />
-      <bit3  len="1"  id="os_lwp_bre"              desc="Branch Retired Event (EventId=3) is supported by OS" />
-      <bit4  len="1"  id="os_lwp_dme"              desc="DCache Miss Event (EventId=4) is supported by OS" />
-      <bit5  len="1"  id="os_lwp_cnh"              desc="CPU Clocks Not Halted event (EventId=5) is supported by OS" />
-      <bit6  len="1"  id="os_lwp_rnh"              desc="CPU Reference clocks Not Halted event (EventId=6) is supported by OS" />
+      <bit1  len="1"  id="os_lpwval"               desc="LWPVAL instruction is supported by OS" />
+      <bit2  len="1"  id="os_lwp_ire"              desc="Instructions Retired Event is supported by OS" />
+      <bit3  len="1"  id="os_lwp_bre"              desc="Branch Retired Event is supported by OS" />
+      <bit4  len="1"  id="os_lwp_dme"              desc="Dcache Miss Event is supported by OS" />
+      <bit5  len="1"  id="os_lwp_cnh"              desc="CPU Clocks Not Halted event is supported by OS" />
+      <bit6  len="1"  id="os_lwp_rnh"              desc="CPU Reference clocks Not Halted event is supported by OS" />
       <bit29 len="1"  id="os_lwp_cont"             desc="LWP sampling in continuous mode is supported by OS" />
       <bit30 len="1"  id="os_lwp_ptsc"             desc="Performance Time Stamp Counter in event records is supported by OS" />
       <bit31 len="1"  id="os_lwp_int"              desc="Interrupt on threshold overflow is supported by OS" />
@@ -32,7 +32,7 @@
     <ebx>
       <bit0  len="8"  id="lwp_lwpcb_sz"            desc="LWP Control Block size, in quadwords" />
       <bit8  len="8"  id="lwp_event_sz"            desc="LWP event record size, in bytes" />
-      <bit16 len="8"  id="lwp_max_events"          desc="LWP max supported EventId value (EventID 255 not included)" />
+      <bit16 len="8"  id="lwp_max_events"          desc="LWP max supported EventID value (EventID 255 not included)" />
       <bit24 len="8"  id="lwp_event_offset"        desc="LWP events area offset in the LWP Control Block" />
     </ebx>
     <ecx>
