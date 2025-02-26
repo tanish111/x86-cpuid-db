@@ -48,6 +48,16 @@ check_xml_codingstyle:
     - apt-get -y install gawk
     - ./scripts/check_xml_style.awk
 
+#
+# Spellcheck and enforce a consistent x86 terminology style for
+# all of the XML database's cpuid bitfield descriptions.
+#
+spellcheck_xml_attributes:
+  stage: .pre
+  script:
+    - apt-get -y install libxml2-utils hunspell hunspell-en-us
+    - ./scripts/spellcheck_xml.sh --hunspell
+
 # pyproject.toml already sets 'tool.mypy.strict'
 run_mypy_strict_typing_checks:
   stage: test
