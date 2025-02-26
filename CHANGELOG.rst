@@ -4,6 +4,39 @@
 Changelog
 =========
 
+
+Release v2.1
+------------
+
+- Add spellchecking and x86 terminology style enforcement for all CPUID
+  bitfield descriptions in the XML database.  Build multiple
+  x86-specific ``hunspell(5)`` dictionary and affix files for such
+  enforcement.
+
+- Use such logic to standardize the style for x86 trademarks, registers,
+  opcodes, byte units, hexadecimal digits, and x86 abbreviated and
+  non-abbreviated technical terms.
+
+- Similarly, refuse abbreviated terms that might be OK in code but not
+  in official listings (e.g., "addr", "instr", "reg", "virt", etc.)
+
+- Introduce ``scripts/spellcheck_xml.sh`` to automate the hunspell
+  invocation, and add it to the project's CI pipeline.
+
+- Update the CPUID database:
+
+  - Leaf ``0xd``: Apply vendor fixes from Andrew Cooper (Xen / Citrix)
+
+  - Leaf ``0x80000020/0x80000021``: Add new Zen5 SoC bits.  Thanks to
+    Avadhut Naik (AMD).
+
+  - Leaf ``0x7``: Add new NMI source reporting bit.  Thanks to Sohil
+    Mehta (Intel).
+
+  - All leaves: Fix all issues identified by the new ``hunspell(5)``
+    pipeline.
+
+
 Release v2.0
 ------------
 
@@ -72,6 +105,7 @@ to:
 
 This also matches, in spirit, the C structure naming changes.
 
+
 Release v1.0
 ------------
 
@@ -91,6 +125,7 @@ Release v1.0
   - Compile-tests all generated kernel headers
   - Runs ``mypy`` strict static typing checks on all Python code
   - Deploys the project's generated files into GitLab's "downloads" area
+
 
 PRE-Release v1.0-rc1
 --------------------
