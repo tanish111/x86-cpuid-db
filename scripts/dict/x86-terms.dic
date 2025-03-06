@@ -22,7 +22,6 @@ QWORD/S
 # CPUID terms
 #
 
-cpuid
 leaf
 subleaf
 subleaves

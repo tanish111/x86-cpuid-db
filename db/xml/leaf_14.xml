@@ -9,7 +9,7 @@
   </vendors>
   <subleaf id="0">
     <eax>
-      <bit0  len="32" id="pt_max_subleaf"          desc="Max cpuid 0x14 subleaf" />
+      <bit0  len="32" id="pt_max_subleaf"          desc="Maximum leaf 0x14 subleaf" />
     </eax>
     <ebx>
       <bit0  len="1"  id="cr3_filtering"           desc="IA32_RTIT_CR3_MATCH is accessible" />

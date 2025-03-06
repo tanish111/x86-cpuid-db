@@ -19,7 +19,7 @@
       <bit0  len="8"  id="pmu_version"             desc="Performance monitoring unit version ID" />
       <bit8  len="8"  id="pmu_n_gcounters"         desc="Number of general PMU counters per logical CPU" />
       <bit16 len="8"  id="pmu_gcounters_nbits"     desc="Bitwidth of PMU general counters" />
-      <bit24 len="8"  id="pmu_cpuid_ebx_bits"      desc="Length of cpuid leaf 0xa EBX bit vector" />
+      <bit24 len="8"  id="pmu_cpuid_ebx_bits"      desc="Length of leaf 0xa EBX bit vector" />
     </eax>
     <ebx>
       <desc>Supported PMU events, negative bitmap</desc>

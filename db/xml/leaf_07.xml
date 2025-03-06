@@ -6,7 +6,7 @@
   <desc>Extended CPU features enumeration</desc>
   <subleaf id="0">
     <eax>
-      <bit0  len="32" id="leaf7_n_subleaves"       desc="Number of cpuid 0x7 subleaves">
+      <bit0  len="32" id="leaf7_n_subleaves"       desc="Number of leaf 0x7 subleaves">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
@@ -544,7 +544,7 @@
       <bit7  len="1"  id="cmpccxadd"               desc="CMPccXADD instructions">
         <linux        feature="true"               proc="false" />
       </bit7>
-      <bit8  len="1"  id="arch_perfmon_ext"        desc="ArchPerfmonExt: CPUID leaf 0x23 is supported">
+      <bit8  len="1"  id="arch_perfmon_ext"        desc="ArchPerfmonExt: leaf 0x23 is supported">
         <linux        feature="true"               proc="false" />
       </bit8>
       <bit10 len="1"  id="fzrm"                    desc="Fast zero-length REP MOVSB">

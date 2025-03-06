@@ -15,7 +15,7 @@
 	<vendor>AMD</vendor>
         <vendor>Transmeta</vendor>
       </vendors>
-      <bit0  len="32" id="max_ext_leaf"            desc="Maximum extended cpuid leaf supported" />
+      <bit0  len="32" id="max_ext_leaf"            desc="Maximum extended CPUID leaf supported" />
     </eax>
     <ebx>
       <vendors>

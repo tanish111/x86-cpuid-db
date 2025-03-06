@@ -198,7 +198,7 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit21>
-      <bit22 len="1"  id="topoext"                 desc="Topology Extensions (cpuid leaf 0x8000001d)">
+      <bit22 len="1"  id="topoext"                 desc="Topology Extensions (leaf 0x8000001d)">
         <vendors>
           <vendor>AMD</vendor>
         </vendors>
