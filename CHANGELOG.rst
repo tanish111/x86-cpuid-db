@@ -5,6 +5,18 @@ Changelog
 =========
 
 
+Release v2.2
+------------
+
+*Minor bugfix*: Per Ingo Molnar's feedback on a related Linux kernel
+patch queue, it is desired to always use CPUID in its capitalized form.
+
+- Fix all instances at the XML database's CPUID bitfield descriptions.
+
+- Remove small case "cpuid" from the project's ``hunspell(5)``
+  dictionary, thus preventing its usage in future commits via CI.
+
+
 Release v2.1
 ------------
 
