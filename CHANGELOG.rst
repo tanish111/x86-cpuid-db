@@ -5,6 +5,27 @@ Changelog
 =========
 
 
+Release v2.3
+------------
+
+*Minor bugfix*: Remove leaf ``0x3`` (Processor Serial Number) from the
+XML database.  Per H. Peter Anvin's feedback on a related Linux kernel
+patch queue, leaf ``0x3`` is not unique to Transmeta as the project
+claimed.
+
+Since leaf ``0x3``'s format differs between Intel and Transmeta, and the
+project does not yet support having the same CPUID bitfield with varying
+interpretations across vendors, removal was necessary.  Given that Intel
+discontinued support for PSN from Pentium 4 onward and Linux force
+disables it on early boot for privacy concerns, this should have minimal
+impact.
+
+Updates to the CPUID database:
+
+- Leaf ``0x80000021``: Improve bitfield descriptions for consistency and
+  CSV output readability.
+
+
 Release v2.2
 ------------
 
