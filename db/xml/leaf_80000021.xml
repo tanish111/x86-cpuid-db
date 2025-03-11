@@ -16,27 +16,27 @@
       <bit2  len="1"  id="lfence_serializing"      desc="LFENCE always serializing / synchronizes RDTSC">
         <linux        feature="true"               proc="false"           altid="lfence_rdtsc" />
       </bit2>
-      <bit3  len="1"  id="smm_page_cfg_lock"       desc="SMM paging configuration lock is supported" />
+      <bit3  len="1"  id="smm_page_cfg_lock"       desc="SMM paging configuration lock" />
       <bit6  len="1"  id="null_sel_clr_base"       desc="Null selector clears base">
         <text>
           A null segment load clears the segment base.
         </text>
         <linux        feature="true"               proc="false" />
       </bit6>
-      <bit7  len="1"  id="upper_addr_ignore"       desc="EFER MSR Upper Address Ignore Enable bit supported" />
-      <bit8  len="1"  id="auto_ibrs"               desc="EFER MSR Automatic IBRS enable bit supported">
+      <bit7  len="1"  id="upper_addr_ignore"       desc="EFER MSR Upper Address Ignore" />
+      <bit8  len="1"  id="auto_ibrs"               desc="EFER MSR Automatic IBRS">
         <text>
           EFER[AutomaticIBRSEn] bit can be set to automatically toggle IBRS protection
           when CPL changes.
         </text>
         <linux        feature="true"               proc="false"           altid="autoibrs" />
       </bit8>
-      <bit9  len="1"  id="no_smm_ctl_msr"          desc="SMM_CTL MSR (0xc0010116) is not present">
+      <bit9  len="1"  id="no_smm_ctl_msr"          desc="SMM_CTL MSR (0xc0010116) is not available">
         <linux        feature="true"               proc="false" />
       </bit9>
-      <bit10 len="1"  id="fsrs_supported"          desc="Fast Short Rep STOSB (FSRS) is supported" />
-      <bit11 len="1"  id="fsrc_supported"          desc="Fast Short Rep CMPSB (FSRC) is supported" />
-      <bit13 len="1"  id="prefetch_ctl_msr"        desc="Prefetch control MSR is supported" />
+      <bit10 len="1"  id="fsrs"                    desc="Fast Short Rep STOSB" />
+      <bit11 len="1"  id="fsrc"                    desc="Fast Short Rep CMPSB" />
+      <bit13 len="1"  id="prefetch_ctl_msr"        desc="Prefetch control MSR is available" />
       <bit16 len="1"  id="opcode_reclaim"          desc="Reserves opcode space">
         <text>
           Reserves opcode space 0F 01/7 for AMD use, returns illegal instruction for opcodes
@@ -45,14 +45,14 @@
         <linux        feature="true"               proc="false" />
       </bit16>
       <bit17 len="1"  id="user_cpuid_disable"      desc="#GP when executing CPUID at CPL > 0 is supported" />
-      <bit18 len="1"  id="epsf_supported"          desc="Enhanced Predictive Store Forwarding (EPSF) is supported" />
+      <bit18 len="1"  id="epsf"                    desc="Enhanced Predictive Store Forwarding" />
       <bit22 len="1"  id="wl_feedback"             desc="Workload-based heuristic feedback to OS">
         <linux        feature="true"               proc="false" />
       </bit22>
-      <bit24 len="1"  id="eraps_support"           desc="Enhanced Return Address Predictor Security">
+      <bit24 len="1"  id="eraps"                   desc="Enhanced Return Address Predictor Security">
         <linux        feature="true"               proc="false" />
       </bit24>
-      <bit27 len="1"  id="sbpb"                    desc="Support for the Selective Branch Predictor Barrier">
+      <bit27 len="1"  id="sbpb"                    desc="Selective Branch Predictor Barrier">
         <linux        feature="true"               proc="false" />
       </bit27>
       <bit28 len="1"  id="ibpb_brtype"             desc="Branch predictions flushed from CPU branch predictor">
