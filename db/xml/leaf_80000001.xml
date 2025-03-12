@@ -381,8 +381,9 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit22>
-      <bit23 len="1"  id="e_mmx"                   desc="MMX instructions (Transmeta)">
+      <bit23 len="1"  id="e_mmx"                   desc="MMX instructions">
         <vendors>
+          <vendor>AMD</vendor>
           <vendor>Transmeta</vendor>
         </vendors>
       </bit23>
