@@ -4,6 +4,19 @@
 Changelog
 =========
 
+Release v2.4
+------------
+
+Switch the license for generated *code* artifacts (e.g., Linux kernel
+headers) from the Creative Commons Zero 1.0 Universal license, SPDX
+``CC0-1.0``, to the MIT license (SPDX ``MIT``).  This aligns with the
+Linux Kernel, since the generated header files are code, and ``MIT`` is
+one of the "preferred" licenses for kernel code while ``CC0-1.0`` is not.
+
+Updates to the CPUID database:
+
+- Leaf ``0x80000001``: Mark the ``e_mmx`` bitfield as valid for AMD.
+
 
 Release v2.3
 ------------
