@@ -17,8 +17,6 @@ from typing      import NoReturn, Optional, Union
 # Project configuration globals
 #
 
-GENERATED_FILES_LICENSE = 'CC0-1.0'
-
 RELEASE_TAGS_GLOB       = 'v[[:digit:]].[[:digit:]]*'
 PROJECT_NAME            = 'x86-cpuid-db'
 TOOL_NAME: str          = Path(__file__).stem
@@ -30,6 +28,9 @@ XML_DIRECTORY           = PROJECT_DIRECTORY / 'db' / 'xml'
 KCPUID_XSLT: Path       = XSLT_DIRECTORY / 'kcpuid.xslt'
 KHEADER_XSLT            = XSLT_DIRECTORY / 'kheader.xslt'
 KHEADERS_XSLT           = XSLT_DIRECTORY / 'kheaders.xslt'
+
+KCPUID_CSV_LICENSE      = 'CC0-1.0'
+KHEADER_LICENSE         = 'MIT'
 
 #
 # Help strings
@@ -111,10 +112,10 @@ class SaxonCTransformer:
         indented_lines = ['    ' + line for line in lines]
         return '\n'.join(indented_lines)
 
-    def transform(self, xslt_path: Path, xml_file: Optional[Path] = None) -> str:
+    def transform(self, xslt_path: Path, license: str, xml_file: Optional[Path] = None) -> str:
         xslt_file: str = xslt_path.as_posix()
         generator: str = self.project_name + ' ' + self.project_version
-        xslt_params = { 'generatedFilesLicense': self.saxonproc.make_string_value(GENERATED_FILES_LICENSE),
+        xslt_params = { 'generatedFilesLicense': self.saxonproc.make_string_value(license),
                         'generator': self.saxonproc.make_string_value(generator) }
 
         try:
@@ -145,17 +146,17 @@ class CPUIDGen:
                                              self.tool_name, self.tool_version)
 
     def generate_kcpuid_csv(self) -> str:
-        return self.transformer.transform(KCPUID_XSLT)
+        return self.transformer.transform(KCPUID_XSLT, KCPUID_CSV_LICENSE)
 
     def generate_leaves_kheaders(self) -> str:
-        return self.transformer.transform(KHEADERS_XSLT)
+        return self.transformer.transform(KHEADERS_XSLT, KHEADER_LICENSE)
 
     def generate_leaf_kheader(self, leaf: int) -> str:
         xml_file_name = f'leaf_{leaf:02x}.xml'
         xml_file_path = self.xml_dir / xml_file_name
         if not xml_file_path.exists():
             raise CPUIDError(f'CPUID leaf "{leaf:#x}" is not described in the XML database')
-        return self.transformer.transform(KHEADER_XSLT, xml_file_path)
+        return self.transformer.transform(KHEADER_XSLT, KHEADER_LICENSE, xml_file_path)
 
 def run_cpuid_generation(parsed_args: argparse.Namespace) -> str:
     gitrepo = GitRepository(PROJECT_DIRECTORY, RELEASE_TAGS_GLOB, TOOL_NAME)
