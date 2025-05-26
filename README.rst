@@ -234,7 +234,7 @@ bitfield listings, do:
 
     $ cpuidgen --kheader 7
 
-    /* SPDX-License-Identifier: CC0-1.0 */
+    /* SPDX-License-Identifier: MIT */
     /* Generator: x86-cpuid-db v2.0 */
 
     struct leaf_0x7_0 {
@@ -349,7 +349,7 @@ and with local uncommitted changes to the git tree:
 
    $ cpuidgen --kheader 7 | head -2
 
-   /* SPDX-License-Identifier: CC0-1.0 */
+   /* SPDX-License-Identifier: MIT */
    /* Generator: x86-cpuid-db v1.0-rc1-12-3b40afa2-dirty */
 
 For more information on the license tag, refer to the `LICENSE`_ file.
