@@ -8,18 +8,21 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:lx="http://x86-cpuid.org/XSL/local">
 
-    <xsl:import   href="kheader-common.xslt"/>
+    <xsl:import                   href="kheader-common.xslt" />
+
+    <xsl:variable                 name="lx:header-guard"
+                                  select="'_ASM_X86_CPUID_LEAF_TYPES'" />
 
     <xsl:function                 name="lx:c-header-top">
         <xsl:value-of             select="concat(
-                                          '#ifndef _ASM_X86_CPUID_LEAVES',      $nl,
-                                          '#define _ASM_X86_CPUID_LEAVES',      $nl, $nl,
-                                          '#include &lt;linux/types.h&gt;',     $nl, $nl)" />
+                                          '#ifndef ', $lx:header-guard,     $nl,
+                                          '#define ', $lx:header-guard,     $nl, $nl,
+                                          '#include &lt;linux/types.h&gt;', $nl, $nl)" />
     </xsl:function>
 
     <xsl:function                 name="lx:c-header-bottom">
         <xsl:value-of             select="concat(
-                                          '#endif /* _ASM_X86_CPUID_LEAVES */', $nl)" />
+                                          '#endif /* ', $lx:header-guard, ' */', $nl)" />
     </xsl:function>
 
     <xsl:template                 name="xsl:initial-template">
