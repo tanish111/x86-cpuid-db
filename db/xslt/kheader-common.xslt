@@ -143,10 +143,12 @@
     <xsl:template match="subleaf">
         <xsl:param                              name="bitfield-name-padding"  as="xs:integer" />
 
+        <xsl:variable name="is-dynamic"         select="exists(@last)"/>
         <xsl:variable name="leafID"             select="ancestor::leaf/@id" />
+        <xsl:variable name="subleafID"          select="if ($is-dynamic) then 'n' else @id" />
         <xsl:variable name="subleafNode"        select="." />
 
-        <xsl:value-of                           select="concat('struct leaf_0x', lx:sanitize-hex-id($leafID), '_', @id, ' {', $nl)" />
+        <xsl:value-of                           select="concat('struct leaf_0x', lx:sanitize-hex-id($leafID), '_', $subleafID, ' {', $nl)" />
         <xsl:for-each                           select="tokenize('eax ebx ecx edx')">
             <xsl:variable name="registerName"   select="."/>
             <xsl:variable name="registerNode"   select="$subleafNode/*[local-name() = $registerName]"/>

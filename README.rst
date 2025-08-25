@@ -286,7 +286,7 @@ bitfield listings, do:
 		…;
     };
 
-    struct leaf_0x7_2 {
+    struct leaf_0x7_n {
      	// eax
      	u32				: 32; // Reserved
      	// ebx
