@@ -136,6 +136,25 @@
                               ' // ', $short-description, $nl)" />
     </xsl:function>
 
+    <!-- Generate CPP symbols for dynamic subleaf ranges: LEAF_0xM_SUBLEAF_N_{FIRST,LAST} -->
+    <xsl:function name="lx:define-cpp-symbols"  as="xs:string">
+        <xsl:param name="leafID"                as="xs:string" />
+        <xsl:param name="firstSubleafID"        as="xs:string" />
+        <xsl:param name="lastSubleafID"         as="xs:string" />
+        <xsl:param name="maxPadding"            as="xs:integer" />
+
+        <xsl:variable name="symbol1"            select="concat('#define LEAF_', $leafID, '_SUBLEAF_N_FIRST')" />
+        <xsl:variable name="symbol2"            select="concat('#define LEAF_', $leafID, '_SUBLEAF_N_LAST')" />
+        <xsl:variable name="pad1"
+                      select="lx:repeat($tab, 2 + lx:bitfield-colon-padding-ntabs($maxPadding, $symbol1))" />
+        <xsl:variable name="pad2"
+                      select="lx:repeat($tab, 2 + lx:bitfield-colon-padding-ntabs($maxPadding, $symbol2))" />
+
+        <xsl:value-of select="concat($nl,
+                                     $symbol1, $pad1, $firstSubleafID, $nl,
+                                     $symbol2, $pad2, $lastSubleafID, $nl)" />
+    </xsl:function>
+
     <!--
         *** Template matches
     -->
@@ -183,6 +202,12 @@
             </xsl:choose>
         </xsl:for-each>
         <xsl:value-of                           select="concat('};', $nl)" />
+        <xsl:if test="$is-dynamic">
+            <xsl:variable name="firstSubleafID" select="@id" />
+            <xsl:variable name="lastSubleafID"  select="@last" />
+            <xsl:value-of
+                select="lx:define-cpp-symbols($leafID, $firstSubleafID, $lastSubleafID, $bitfield-name-padding)" />
+        </xsl:if>
         <xsl:value-of                           select="if (following-sibling::*) then $nl else ''" />
     </xsl:template>
 
