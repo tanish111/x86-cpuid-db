@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x80000019">
-  <desc>AMD TLB 1G-pages enumeration</desc>
+  <desc>AMD TLB characteristics for 1GB pages</desc>
   <vendors>
     <vendor>AMD</vendor>
   </vendors>

@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0xa">
-  <desc>Intel PMU (Performance Monitoring Unit) enumeration</desc>
+  <desc>Intel PMU (Performance Monitoring Unit)</desc>
   <text>
     This leaf is valid if @pmu_version > 0. It only enumerates the PMU resources available
     system-wide.

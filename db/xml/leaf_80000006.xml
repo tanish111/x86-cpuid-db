@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x80000006">
-  <desc>(Mostly AMD) L2 TLB, L2 cache, and L3 cache enumeration</desc>
+  <desc>(Mostly AMD) L2/L3 cache and TLB</desc>
   <text>
     This leaf is almost AMD-exclusive, except some of the L2 cache enumeration bits at
     subleaf 0 ECX register.  For Intel CPUs though, clients code should favor leaf 0x4

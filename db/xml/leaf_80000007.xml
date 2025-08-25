@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x80000007">
-  <desc>CPU power management (mostly AMD) and AMD RAS enumeration</desc>
+  <desc>CPU power management (mostly AMD) and AMD RAS</desc>
   <subleaf id="0">
     <ebx>
       <desc>AMD RAS (Reliability, Availability, and Serviceability) enumeration</desc>

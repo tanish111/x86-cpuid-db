@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x8000001a">
-  <desc>AMD instruction optimizations enumeration</desc>
+  <desc>AMD instruction optimizations</desc>
   <vendors>
     <vendor>AMD</vendor>
   </vendors>

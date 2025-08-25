@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x1b">
-  <desc>Intel PCONFIG (Platform configuration) enumeration</desc>
+  <desc>Intel PCONFIG (Platform configuration)</desc>
   <vendors>
     <vendor>Intel</vendor>
   </vendors>

@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x10">
-  <desc>Intel RDT / AMD PQoS allocation enumeration</desc>
+  <desc>Intel RDT / AMD PQoS allocation</desc>
   <text>
     AMD compatibility: as of July 2023, latest version of the AMD64 Architecture
     Programmer's Manual declare this leaf 0x10 as reserved.  Nonetheless, AMD's Processor

@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x40000000">
-  <desc>Maximum hypervisor standard leaf + hypervisor vendor string</desc>
+  <desc>Maximum hypervisor leaf + hypervisor vendor string</desc>
   <subleaf id="0">
     <text>
       Both Intel and AMD guarantees that the cpuid leaves range 0x40000000 => 0x400000ff
@@ -18,7 +18,7 @@
       <hypervisor>ACRN</hypervisor>
     </hypervisors>
     <eax>
-      <bit0  len="32" id="max_hyp_leaf"            desc="Maximum hypervisor standard leaf number" />
+      <bit0  len="32" id="max_hyp_leaf"            desc="Maximum hypervisor leaf" />
     </eax>
     <ebx>
       <bit0  len="32" id="hypervisor_id_0"         desc="Hypervisor ID string bytes 0 - 3" />

@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x19">
-  <desc>Intel Key Locker enumeration</desc>
+  <desc>Intel key locker</desc>
   <vendors>
     <vendor>Intel</vendor>
   </vendors>

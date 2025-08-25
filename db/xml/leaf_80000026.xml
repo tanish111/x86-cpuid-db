@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x80000026">
-  <desc>AMD extended topology enumeration v2</desc>
+  <desc>AMD extended CPU topology</desc>
   <text>
     This leaf is valid if subleaf 0's @domain_lcpus_count > 0.
 

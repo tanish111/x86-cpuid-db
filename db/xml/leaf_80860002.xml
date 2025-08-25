@@ -3,7 +3,7 @@
   *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x80860002">
-  <desc>Transmeta Code Morphing Software (CMS) enumeration</desc>
+  <desc>Transmeta CMS (Code Morphing Software)</desc>
   <text>
      If leaf 0x80860001 @cpu_rev_major = 2 while all the other revision
      ID bitfields are zero, then the CMS information at this leaf must

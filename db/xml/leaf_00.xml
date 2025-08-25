@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x0">
-  <desc>Maximum standard leaf number + CPU vendor string</desc>
+  <desc>Maximum standard leaf + CPU vendor string</desc>
   <text>
     For the maximum extended leaf number, check leaf 0x80000000.
   </text>

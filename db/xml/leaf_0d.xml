@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0xd">
-  <desc>Processor extended state enumeration</desc>
+  <desc>CPU extended state</desc>
   <subleaf id="0">
     <eax>
       <desc>XSAVE/XRSTOR XCR0 supported bits, lower dword (0:31)</desc>

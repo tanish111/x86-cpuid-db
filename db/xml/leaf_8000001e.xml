@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x8000001e">
-  <desc>AMD CPU topology enumeration</desc>
+  <desc>AMD CPU topology</desc>
   <vendors>
     <vendor>AMD</vendor>
   </vendors>

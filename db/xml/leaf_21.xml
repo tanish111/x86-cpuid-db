@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x21">
-  <desc>Intel TD (Trust Domain) guest execution environment enumeration</desc>
+  <desc>Intel TD (Trust Domain)</desc>
   <text>
     Intel TDX (Trust Domain Extensions) provides a new kind of virtual machine guest
     called a Trust Domain (TD).  A TD runs in a CPU mode that is designed to protect the

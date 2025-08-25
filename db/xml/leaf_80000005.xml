@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x80000005">
-  <desc>AMD/Transmeta L1 cache and L1 TLB enumeration</desc>
+  <desc>AMD/Transmeta L1 cache and TLB</desc>
   <subleaf id="0">
     <eax>
       <desc>L1 TLB 2M/4M pages enumeration</desc>

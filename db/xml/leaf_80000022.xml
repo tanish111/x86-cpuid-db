@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x80000022">
-  <desc>AMD Performance Monitoring v2 enumeration</desc>
+  <desc>AMD extended performance monitoring</desc>
   <vendors>
     <vendor>AMD</vendor>
   </vendors>

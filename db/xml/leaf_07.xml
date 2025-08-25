@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x7">
-  <desc>Extended CPU features enumeration</desc>
+  <desc>Extended CPU features</desc>
   <subleaf id="0">
     <eax>
       <bit0  len="32" id="leaf7_n_subleaves"       desc="Number of leaf 0x7 subleaves">

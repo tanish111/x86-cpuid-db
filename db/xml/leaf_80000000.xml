@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x80000000">
-  <desc>Maximum extended leaf number + AMD/Transmeta CPU vendor string</desc>
+  <desc>Maximum extended leaf + CPU vendor string</desc>
   <subleaf id="0">
     <text>
       For AMD CPUs, the vendor ID string is a redundant copy of leaf 0's ID.

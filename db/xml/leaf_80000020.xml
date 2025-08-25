@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x80000020">
-  <desc>AMD Platform QoS extended feature IDs</desc>
+  <desc>AMD PQoS (Platform QoS) extended features</desc>
   <text>
     AMD's Platform QoS (PQoS) is equivalent to Intel's Resource Director Technology (RDT).
     For CAT L2/L3, AMD maintains enumeration compatibility with Intel through CPUID 0x10.

@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x8000001b">
-  <desc>AMD IBS (Instruction-Based Sampling) enumeration</desc>
+  <desc>AMD IBS (Instruction-Based Sampling)</desc>
   <text>
     This leaf is valid if cpuid leaf 0x80000001's @ibs field is set.
   </text>

@@ -3,14 +3,14 @@
   *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x80860000">
-  <desc>Maximum Transmeta leaf number + CPU vendor ID string</desc>
+  <desc>Maximum Transmeta leaf + CPU vendor string</desc>
   <text>The vendor ID string should be "TransmetaCPU".</text>
   <vendors>
     <vendor>Transmeta</vendor>
   </vendors>
   <subleaf id="0">
     <eax>
-      <bit0  len="32" id="max_tra_leaf"            desc="Maximum supported Transmeta leaf number" />
+      <bit0  len="32" id="max_tra_leaf"            desc="Maximum Transmeta leaf" />
     </eax>
     <ebx>
       <bit0  len="32" id="cpu_vendorid_0"          desc="Transmeta Vendor ID string bytes 0 - 3" />

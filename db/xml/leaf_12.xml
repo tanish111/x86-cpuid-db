@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x12">
-  <desc>Intel Software Guard Extensions (SGX) enumeration</desc>
+  <desc>Intel SGX (Software Guard Extensions)</desc>
   <vendors>
     <vendor>Intel</vendor>
   </vendors>

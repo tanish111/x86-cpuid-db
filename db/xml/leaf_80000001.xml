@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x80000001">
-  <desc>Extended CPU feature identifiers</desc>
+  <desc>Extended CPU features</desc>
   <subleaf id="0">
     <eax>
       <desc>AMD/Transmeta-specific FMS (Family/Mode/Stepping)</desc>

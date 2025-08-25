@@ -3,7 +3,7 @@
   *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x80860001">
-  <desc>Transmeta extended CPU information</desc>
+  <desc>Transmeta extended CPU features</desc>
   <vendors>
     <vendor>Transmeta</vendor>
   </vendors>

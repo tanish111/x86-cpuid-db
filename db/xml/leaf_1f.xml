@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x1f">
-  <desc>Intel extended topology enumeration v2</desc>
+  <desc>Intel extended topology v2</desc>
   <text>
     This is a superset of leaf 0xb, with more topology levels and domain types.  For Intel
     CPUs, always use this leaf if available.  That is, if leaf 0's @max_std_leaf ≥ 0x1f.

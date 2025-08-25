@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x80000023">
-  <desc>AMD Secure Multi-key Encryption enumeration</desc>
+  <desc>AMD multi-key encrypted memory</desc>
   <vendors>
     <vendor>AMD</vendor>
   </vendors>

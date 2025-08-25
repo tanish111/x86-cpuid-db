@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x15">
-  <desc>Intel TSC (Time Stamp Counter) enumeration</desc>
+  <desc>Intel TSC (Time Stamp Counter)</desc>
   <vendors>
     <vendor>Intel</vendor>
   </vendors>

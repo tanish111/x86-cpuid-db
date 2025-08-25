@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0xb">
-  <desc>CPUs v1 extended topology enumeration</desc>
+  <desc>CPU extended topology v1</desc>
   <text>
     This leaf is valid iff subleaf 0's @domain_lcpus_count > 0.
 

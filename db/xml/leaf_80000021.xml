@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x80000021">
-  <desc>AMD extended features enumeration 2</desc>
+  <desc>AMD extended CPU features 2</desc>
   <vendors>
     <vendor>AMD</vendor>
   </vendors>

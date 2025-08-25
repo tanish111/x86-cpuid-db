@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x20">
-  <desc>Intel HRESET (History Reset) enumeration</desc>
+  <desc>Intel HRESET (History Reset)</desc>
   <text>
     HRESET selectively resets the prediction history of current logical CPU. This CPUID
     leaf enumerates the hardware components which supports selective prediction history
