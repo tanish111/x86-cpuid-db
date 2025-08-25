@@ -31,12 +31,12 @@
         </text>
         <linux        feature="true"               proc="false"           altid="autoibrs" />
       </bit8>
-      <bit9  len="1"  id="no_smm_ctl_msr"          desc="SMM_CTL MSR (0xc0010116) is not available">
+      <bit9  len="1"  id="no_smm_ctl_msr"          desc="SMM_CTL MSR not available">
         <linux        feature="true"               proc="false" />
       </bit9>
       <bit10 len="1"  id="fsrs"                    desc="Fast Short Rep STOSB" />
       <bit11 len="1"  id="fsrc"                    desc="Fast Short Rep CMPSB" />
-      <bit13 len="1"  id="prefetch_ctl_msr"        desc="Prefetch control MSR is available" />
+      <bit13 len="1"  id="prefetch_ctl_msr"        desc="Prefetch control MSR" />
       <bit16 len="1"  id="opcode_reclaim"          desc="Reserves opcode space">
         <text>
           Reserves opcode space 0F 01/7 for AMD use, returns illegal instruction for opcodes
@@ -44,7 +44,7 @@
         </text>
         <linux        feature="true"               proc="false" />
       </bit16>
-      <bit17 len="1"  id="user_cpuid_disable"      desc="#GP when executing CPUID at CPL > 0 is supported" />
+      <bit17 len="1"  id="user_cpuid_disable"      desc="#GP when executing CPUID at CPL > 0" />
       <bit18 len="1"  id="epsf"                    desc="Enhanced Predictive Store Forwarding" />
       <bit22 len="1"  id="wl_feedback"             desc="Workload-based heuristic feedback to OS">
         <linux        feature="true"               proc="false" />
@@ -62,23 +62,23 @@
         </text>
         <linux        feature="true"               proc="false" />
       </bit28>
-      <bit29 len="1"  id="srso_no"                 desc="CPU is not subject to the SRSO vulnerability">
+      <bit29 len="1"  id="srso_no"                 desc="No SRSO vulnerability">
         <linux        feature="true"               proc="false" />
       </bit29>
-      <bit30 len="1"  id="srso_uk_no"              desc="CPU is not vulnerable to SRSO at user-kernel boundary">
+      <bit30 len="1"  id="srso_uk_no"              desc="No SRSO at user-kernel boundary">
         <linux        feature="true"               proc="false" />
       </bit30>
-      <bit31 len="1"  id="srso_msr_fix"            desc="Software may use MSR BP_CFG[BpSpecReduce] to mitigate SRSO">
+      <bit31 len="1"  id="srso_msr_fix"            desc="MSR BP_CFG[BpSpecReduce] SRSO mitigation">
         <linux        feature="true"               proc="false" />
       </bit31>
     </eax>
     <ebx>
-      <bit0  len="16" id="microcode_patch_size"    desc="Size of microcode patch, in 16-byte units">
+      <bit0  len="16" id="microcode_patch_size"    desc="Microcode patch size, in 16-byte units">
         <text>
           If 0 is returned, then the size of the microcode patch is ≤ 5568 (0x15c0) bytes.
         </text>
       </bit0>
-      <bit16  len="8" id="rap_size"                desc="Return Address Predictor size">
+      <bit16 len="8"  id="rap_size"                desc="Return Address Predictor size">
         <text>
           RapSize x 8 is the minimum number of CALL instructions software needs to execute
           to flush the RAP.

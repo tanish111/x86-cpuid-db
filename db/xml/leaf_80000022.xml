@@ -9,19 +9,19 @@
   </vendors>
   <subleaf id="0">
     <eax>
-      <bit0  len="1"  id="perfmon_v2"              desc="Performance monitoring v2 supported">
+      <bit0  len="1"  id="perfmon_v2"              desc="Performance monitoring v2">
         <linux        feature="true"               proc="true" />
       </bit0>
       <bit1  len="1"  id="lbr_v2"                  desc="Last Branch Record v2 extensions (LBR Stack)">
         <linux        feature="true"               proc="true" />
       </bit1>
-      <bit2  len="1"  id="lbr_pmc_freeze"          desc="Freezing core performance counters / LBR Stack supported" />
+      <bit2  len="1"  id="lbr_pmc_freeze"          desc="Freezing core performance counters / LBR Stack" />
     </eax>
     <ebx>
       <bit0  len="4"  id="n_pmc_core"              desc="Number of core performance counters" />
-      <bit4  len="6"  id="lbr_v2_stack_size"       desc="Number of available LBR stack entries" />
-      <bit10 len="6"  id="n_pmc_northbridge"       desc="Number of available northbridge (data fabric) performance counters" />
-      <bit16 len="6"  id="n_pmc_umc"               desc="Number of available UMC performance counters" />
+      <bit4  len="6"  id="lbr_v2_stack_size"       desc="Number of LBR stack entries" />
+      <bit10 len="6"  id="n_pmc_northbridge"       desc="Number of northbridge performance counters" />
+      <bit16 len="6"  id="n_pmc_umc"               desc="Number of UMC performance counters" />
     </ebx>
     <ecx>
       <bit0  len="32" id="active_umc_bitmask"      desc="Active UMCs bitmask">

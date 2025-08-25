@@ -17,21 +17,21 @@
       <text>
         If bit n is set, then both ResID n and subleaf n are valid.
       </text>
-      <bit1  len="1"  id="cat_l3"                  desc="L3 Cache Allocation Technology supported">
+      <bit1  len="1"  id="cat_l3"                  desc="L3 Cache Allocation Technology">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
         </vendors>
         <linux        feature="true"               proc="true" />
       </bit1>
-      <bit2  len="1"  id="cat_l2"                  desc="L2 Cache Allocation Technology supported">
+      <bit2  len="1"  id="cat_l2"                  desc="L2 Cache Allocation Technology">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
         </vendors>
         <linux        feature="true"               proc="true" />
       </bit2>
-      <bit3  len="1"  id="mba"                     desc="Memory Bandwidth Allocation supported">
+      <bit3  len="1"  id="mba"                     desc="Memory Bandwidth Allocation">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
@@ -54,7 +54,7 @@
       </bit0>
     </eax>
     <ebx>
-      <bit0  len="32" id="cat_units_bitmap"        desc="L3/L2_CAT bitmap of allocation units">
+      <bit0  len="32" id="cat_units_bitmap"        desc="L3/L2_CAT allocation units bitmap">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
@@ -68,7 +68,7 @@
           <vendor>Intel</vendor>
         </vendors>
       </bit1>
-      <bit2  len="1"  id="cat_cdp_supported"       desc="L3/L2_CAT CDP (Code and Data Prioritization)">
+      <bit2  len="1"  id="cat_cdp_supported"       desc="L3/L2_CAT Code and Data Prioritization">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
@@ -76,14 +76,14 @@
         <!-- TODO: X86_FEATURE_CDP_L2: either extend the schema or unroll "array=2" -->
         <linux        feature="true"               proc="true"            altid="cdp_l3" />
       </bit2>
-      <bit3  len="1"  id="cat_sparse_1s"           desc="L3/L2_CAT non-contiguous 1s value supported">
+      <bit3  len="1"  id="cat_sparse_1s"           desc="L3/L2_CAT non-contiguous 1s value">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
       </bit3>
     </ecx>
     <edx>
-      <bit0  len="16" id="cat_cos_max"             desc="L3/L2_CAT max COS (Class of Service) supported">
+      <bit0  len="16" id="cat_cos_max"             desc="L3/L2_CAT max Class of Service">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
@@ -100,13 +100,13 @@
       <bit0  len="12" id="mba_max_delay"           desc="Max MBA throttling value; minus-one notation" />
     </eax>
     <ecx>
-      <bit0  len="1"  id="mba_per_thread"          desc="Per-thread MBA controls are supported">
+      <bit0  len="1"  id="mba_per_thread"          desc="Per-thread MBA controls">
         <linux        feature="true"               proc="false"           altid="per_thread_mba" />
       </bit0>
       <bit2  len="1"  id="mba_delay_linear"        desc="Delay values are linear" />
     </ecx>
     <edx>
-      <bit0  len="16" id="mba_cos_max"             desc="MBA max Class of Service supported" />
+      <bit0  len="16" id="mba_cos_max"             desc="MBA max Class of Service" />
     </edx>
   </subleaf>
 </leaf>

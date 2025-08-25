@@ -9,10 +9,10 @@
   </vendors>
   <subleaf id="0">
     <eax>
-      <bit0  len="1"  id="mem_hmk_mode"            desc="MEM-HMK encryption mode is supported" />
+      <bit0  len="1"  id="mem_hmk_mode"            desc="MEM-HMK encryption mode" />
     </eax>
     <ebx>
-      <bit0  len="16" id="mem_hmk_avail_keys"      desc="MEM-HMK mode: total number of available encryption keys" />
+      <bit0  len="16" id="mem_hmk_avail_keys"      desc="Total number of available encryption keys" />
     </ebx>
   </subleaf>
 </leaf>

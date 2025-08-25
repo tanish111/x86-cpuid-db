@@ -15,18 +15,18 @@
       <text>
         If @ibs_flags_valid is clear, this register is reserved.
       </text>
-      <bit0  len="1"  id="ibs_flags_valid"         desc="IBS feature flags valid" />
-      <bit1  len="1"  id="ibs_fetch_sampling"      desc="IBS fetch sampling supported" />
-      <bit2  len="1"  id="ibs_op_sampling"         desc="IBS execution sampling supported" />
-      <bit3  len="1"  id="ibs_rdwr_op_counter"     desc="IBS read/write of op counter supported" />
-      <bit4  len="1"  id="ibs_op_count"            desc="IBS OP counting mode supported" />
-      <bit5  len="1"  id="ibs_branch_target"       desc="IBS branch target address reporting supported" />
+      <bit0  len="1"  id="ibs_flags"               desc="IBS feature flags" />
+      <bit1  len="1"  id="ibs_fetch_sampling"      desc="IBS fetch sampling" />
+      <bit2  len="1"  id="ibs_op_sampling"         desc="IBS execution sampling" />
+      <bit3  len="1"  id="ibs_rdwr_op_counter"     desc="IBS read/write of op counter" />
+      <bit4  len="1"  id="ibs_op_count"            desc="IBS OP counting mode" />
+      <bit5  len="1"  id="ibs_branch_target"       desc="IBS branch target address reporting" />
       <bit6  len="1"  id="ibs_op_counters_ext"     desc="IBS IbsOpCurCnt/IbsOpMaxCnt extend by 7 bits" />
-      <bit7  len="1"  id="ibs_rip_invalid_chk"     desc="IBS invalid RIP indication supported" />
-      <bit8  len="1"  id="ibs_op_branch_fuse"      desc="IBS fused branch micro-op indication supported" />
-      <bit9  len="1"  id="ibs_fetch_ctl_ext"       desc="IBS Fetch Control Extended MSR (0xc001103c) supported" />
-      <bit10 len="1"  id="ibs_op_data_4"           desc="IBS op data 4 MSR supported" />
-      <bit11 len="1"  id="ibs_l3_miss_filter"      desc="IBS L3-miss filtering supported (Zen4+)" />
+      <bit7  len="1"  id="ibs_rip_invalid_chk"     desc="IBS invalid RIP indication" />
+      <bit8  len="1"  id="ibs_op_branch_fuse"      desc="IBS fused branch micro-op indication" />
+      <bit9  len="1"  id="ibs_fetch_ctl_ext"       desc="IBS Fetch Control Extended MSR" />
+      <bit10 len="1"  id="ibs_op_data_4"           desc="IBS op data 4 MSR" />
+      <bit11 len="1"  id="ibs_l3_miss_filter"      desc="IBS L3-miss filtering (Zen4+)" />
     </eax>
   </subleaf>
 </leaf>

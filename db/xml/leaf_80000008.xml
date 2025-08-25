@@ -30,7 +30,7 @@
     </eax>
     <ebx>
       <desc>Extended feature flags</desc>
-      <bit0  len="1"  id="clzero"                  desc="CLZERO supported">
+      <bit0  len="1"  id="clzero"                  desc="CLZERO instruction">
         <vendors>
           <vendor>AMD</vendor>
         </vendors>
@@ -50,12 +50,12 @@
         <linux        feature="true"               proc="true"            altid="xsaveerptr" />
         <xen          feature="true"               attrs="A"              altid="rstr_fp_err_ptrs" />
       </bit2>
-      <bit3  len="1"  id="invlpgb"                 desc="INVLPGB broadcasts a TLB invalidate to all threads">
+      <bit3  len="1"  id="invlpgb"                 desc="INVLPGB broadcasts a TLB invalidate">
         <vendors>
           <vendor>AMD</vendor>
         </vendors>
       </bit3>
-      <bit4  len="1"  id="rdpru"                   desc="RDPRU (Read Processor Register at User level) supported">
+      <bit4  len="1"  id="rdpru"                   desc="RDPRU (Read Processor Register at User level)">
         <vendors>
           <vendor>AMD</vendor>
         </vendors>
@@ -67,12 +67,12 @@
         </vendors>
         <linux        feature="true"               proc="true" />
       </bit6>
-      <bit8  len="1"  id="mcommit"                 desc="MCOMMIT (Memory commit) supported">
+      <bit8  len="1"  id="mcommit"                 desc="MCOMMIT instruction">
         <vendors>
           <vendor>AMD</vendor>
         </vendors>
       </bit8>
-      <bit9  len="1"  id="wbnoinvd"                desc="WBNOINVD supported">
+      <bit9  len="1"  id="wbnoinvd"                desc="WBNOINVD instruction">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
@@ -131,13 +131,13 @@
         </vendors>
         <xen          feature="true"               attrs="S" />
       </bit19>
-      <bit20 len="1"  id="no_efer_lmsle"           desc="EFER[LMSLE] bit (Long-Mode Segment Limit Enable) unsupported">
+      <bit20 len="1"  id="no_efer_lmsle"           desc="Long-Mode Segment Limit Enable unsupported">
         <vendors>
           <vendor>AMD</vendor>
         </vendors>
         <xen          feature="true"               attrs="S"              altid="no_lmsl" />
       </bit20>
-      <bit21 len="1"  id="tlb_flush_nested"        desc="INVLPGB RAX[5] bit can be set (nested translations)">
+      <bit21 len="1"  id="tlb_flush_nested"        desc="INVLPGB RAX[5] bit can be set">
         <text>
           When INVLPGB RAX[5] is set, TLB flushing includes all the nested translations
           for guest translations.
@@ -203,7 +203,7 @@
         </vendors>
         <xen          feature="true"               attrs="A" />
       </bit30>
-      <bit31 len="1"  id="branch_sampling"         desc="Branch Sampling supported">
+      <bit31 len="1"  id="branch_sampling"         desc="Branch Sampling">
         <vendors>
           <vendor>AMD</vendor>
         </vendors>

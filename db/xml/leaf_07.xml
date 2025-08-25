@@ -14,7 +14,7 @@
       </bit0>
     </eax>
     <ebx>
-      <bit0  len="1"  id="fsgsbase"                desc="FSBASE/GSBASE read/write support">
+      <bit0  len="1"  id="fsgsbase"                desc="FSBASE/GSBASE read/write">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
@@ -22,7 +22,7 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit0>
-      <bit1  len="1"  id="tsc_adjust"              desc="IA32_TSC_ADJUST MSR supported">
+      <bit1  len="1"  id="tsc_adjust"              desc="IA32_TSC_ADJUST MSR">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
@@ -320,7 +320,7 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit9>
-      <bit10 len="1"  id="vpclmulqdq"              desc="VPCLMULQDQ 256-bit instruction support">
+      <bit10 len="1"  id="vpclmulqdq"              desc="VPCLMULQDQ 256-bit instruction">
         <vendors>
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
@@ -374,7 +374,7 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit22>
-      <bit23 len="1"  id="key_locker"              desc="Intel key locker support">
+      <bit23 len="1"  id="key_locker"              desc="Intel key locker">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
@@ -406,7 +406,7 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="a" />
       </bit28>
-      <bit29 len="1"  id="enqcmd"                  desc="Enqueue stores supported (ENQCMD{,S})">
+      <bit29 len="1"  id="enqcmd"                  desc="Enqueue stores (ENQCMD{,S})">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
@@ -444,16 +444,16 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit4>
-      <bit5  len="1"  id="uintr"                   desc="CPU supports user interrupts" />
+      <bit5  len="1"  id="uintr"                   desc="User interrupts" />
       <bit8  len="1"  id="avx512_vp2intersect"     desc="VP2INTERSECT{D,Q} instructions">
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="a" />
       </bit8>
-      <bit9  len="1"  id="srdbs_ctrl"              desc="SRBDS mitigation MSR available">
+      <bit9  len="1"  id="srdbs_ctrl"              desc="SRBDS mitigation MSR">
         <linux        feature="true"               proc="false" />
         <xen          feature="true"               attrs="" />
       </bit9>
-      <bit10 len="1"  id="md_clear"                desc="VERW MD_CLEAR microcode support">
+      <bit10 len="1"  id="md_clear"                desc="VERW MD_CLEAR microcode">
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit10>
@@ -461,7 +461,7 @@
         <linux        feature="true"               proc="false" />
         <xen          feature="true"               attrs="!" />
       </bit11>
-      <bit13 len="1"  id="tsx_force_abort"         desc="MSR TSX_FORCE_ABORT, RTM_ABORT bit, supported">
+      <bit13 len="1"  id="tsx_force_abort"         desc="MSR TSX_FORCE_ABORT, RTM_ABORT bit">
         <linux        feature="true"               proc="false" />
         <xen          feature="true"               attrs="" />
       </bit13>
@@ -486,17 +486,17 @@
         <linux        feature="true"               proc="true"            altid="ibt" />
         <xen          feature="true"               attrs="" />
       </bit20>
-      <bit22 len="1"  id="amx_bf16"                desc="AMX-BF16: tile bfloat16 support">
+      <bit22 len="1"  id="amx_bf16"                desc="AMX-BF16: tile bfloat16">
         <linux        feature="true"               proc="true" />
       </bit22>
       <bit23 len="1"  id="avx512_fp16"             desc="AVX-512 FP16 instructions">
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit23>
-      <bit24 len="1"  id="amx_tile"                desc="AMX-TILE: tile architecture support">
+      <bit24 len="1"  id="amx_tile"                desc="AMX-TILE: tile architecture">
         <linux        feature="true"               proc="true" />
       </bit24>
-      <bit25 len="1"  id="amx_int8"                desc="AMX-INT8: tile 8-bit integer support">
+      <bit25 len="1"  id="amx_int8"                desc="AMX-INT8: tile 8-bit integer">
         <linux        feature="true"               proc="true" />
       </bit25>
       <bit26 len="1"  id="spec_ctrl"               desc="Speculation Control (IBRS/IBPB: indirect branch restrictions)">
@@ -544,7 +544,7 @@
       <bit7  len="1"  id="cmpccxadd"               desc="CMPccXADD instructions">
         <linux        feature="true"               proc="false" />
       </bit7>
-      <bit8  len="1"  id="arch_perfmon_ext"        desc="ArchPerfmonExt: leaf 0x23 is supported">
+      <bit8  len="1"  id="arch_perfmon_ext"        desc="ArchPerfmonExt: leaf 0x23">
         <linux        feature="true"               proc="false" />
       </bit8>
       <bit10 len="1"  id="fzrm"                    desc="Fast zero-length REP MOVSB">
@@ -570,7 +570,7 @@
       <bit21 len="1"  id="amx_fp16"                desc="AMX-FP16: FP16 tile operations">
         <linux        feature="true"               proc="false" />
       </bit21>
-      <bit22 len="1"  id="hreset "                 desc="History reset support" />
+      <bit22 len="1"  id="hreset "                 desc="HRESET (Thread director history reset)" />
       <bit23 len="1"  id="avx_ifma"                desc="Integer fused multiply add">
         <linux        feature="true"               proc="false" />
         <xen          feature="true"               attrs="A" />
@@ -626,7 +626,7 @@
       <bit5  len="1"  id="mcdt_no"                 desc="MCDT mitigation not needed">
         <xen          feature="true"               attrs="A" />
       </bit5>
-      <bit6  len="1"  id="uclock_disable"          desc="UC-lock disable is supported" />
+      <bit6  len="1"  id="uclock_disable"          desc="UC-lock disable" />
     </edx>
   </subleaf>
 </leaf>

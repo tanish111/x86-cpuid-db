@@ -18,45 +18,45 @@
   </vendors>
   <subleaf id="0">
     <eax>
-      <bit0  len="1"  id="os_lwp_avail"            desc="LWP is available to application programs (supported by OS)" />
-      <bit1  len="1"  id="os_lpwval"               desc="LWPVAL instruction is supported by OS" />
-      <bit2  len="1"  id="os_lwp_ire"              desc="Instructions Retired Event is supported by OS" />
-      <bit3  len="1"  id="os_lwp_bre"              desc="Branch Retired Event is supported by OS" />
-      <bit4  len="1"  id="os_lwp_dme"              desc="Dcache Miss Event is supported by OS" />
-      <bit5  len="1"  id="os_lwp_cnh"              desc="CPU Clocks Not Halted event is supported by OS" />
-      <bit6  len="1"  id="os_lwp_rnh"              desc="CPU Reference clocks Not Halted event is supported by OS" />
-      <bit29 len="1"  id="os_lwp_cont"             desc="LWP sampling in continuous mode is supported by OS" />
-      <bit30 len="1"  id="os_lwp_ptsc"             desc="Performance Time Stamp Counter in event records is supported by OS" />
-      <bit31 len="1"  id="os_lwp_int"              desc="Interrupt on threshold overflow is supported by OS" />
+      <bit0  len="1"  id="os_lwp_avail"            desc="OS: LWP is available to application programs" />
+      <bit1  len="1"  id="os_lpwval"               desc="OS: LWPVAL instruction" />
+      <bit2  len="1"  id="os_lwp_ire"              desc="OS: Instructions Retired Event" />
+      <bit3  len="1"  id="os_lwp_bre"              desc="OS: Branch Retired Event" />
+      <bit4  len="1"  id="os_lwp_dme"              desc="OS: Dcache Miss Event" />
+      <bit5  len="1"  id="os_lwp_cnh"              desc="OS: CPU Clocks Not Halted event" />
+      <bit6  len="1"  id="os_lwp_rnh"              desc="OS: CPU Reference clocks Not Halted event" />
+      <bit29 len="1"  id="os_lwp_cont"             desc="OS: LWP sampling in continuous mode" />
+      <bit30 len="1"  id="os_lwp_ptsc"             desc="OS: Performance Time Stamp Counter in event records" />
+      <bit31 len="1"  id="os_lwp_int"              desc="OS: Interrupt on threshold overflow" />
     </eax>
     <ebx>
-      <bit0  len="8"  id="lwp_lwpcb_sz"            desc="LWP Control Block size, in quadwords" />
-      <bit8  len="8"  id="lwp_event_sz"            desc="LWP event record size, in bytes" />
-      <bit16 len="8"  id="lwp_max_events"          desc="LWP max supported EventID value (EventID 255 not included)" />
-      <bit24 len="8"  id="lwp_event_offset"        desc="LWP events area offset in the LWP Control Block" />
+      <bit0  len="8"  id="lwp_lwpcb_sz"            desc="Control Block size, in quadwords" />
+      <bit8  len="8"  id="lwp_event_sz"            desc="Event record size, in bytes" />
+      <bit16 len="8"  id="lwp_max_events"          desc="Max EventID supported" />
+      <bit24 len="8"  id="lwp_event_offset"        desc="Control Block events area offset" />
     </ebx>
     <ecx>
-      <bit0  len="5"  id="lwp_latency_max"         desc="Number of bits in cache latency counters (10 to 31)" />
-      <bit5  len="1"  id="lwp_data_adddr"          desc="Cache miss events report the data address of the reference" />
-      <bit6  len="3"  id="lwp_latency_rnd"         desc="Amount by which cache latency is rounded" />
-      <bit9  len="7"  id="lwp_version"             desc="LWP implementation version" />
-      <bit16 len="8"  id="lwp_buf_min_sz"          desc="LWP event ring buffer min size, in units of 32 event records" />
+      <bit0  len="5"  id="lwp_latency_max"         desc="Cache latency counters number of bits" />
+      <bit5  len="1"  id="lwp_data_addr"           desc="Cache miss events report data cache address" />
+      <bit6  len="3"  id="lwp_latency_rnd"         desc="Cache latency rounding amount" />
+      <bit9  len="7"  id="lwp_version"             desc="LWP version" />
+      <bit16 len="8"  id="lwp_buf_min_sz"          desc="LWP event ring buffer min size, 32 event records units" />
       <bit28 len="1"  id="lwp_branch_predict"      desc="Branches Retired events can be filtered" />
-      <bit29 len="1"  id="lwp_ip_filtering"        desc="IP filtering (IPI, IPF, BaseIP, and LimitIP @ LWPCP) supported" />
-      <bit30 len="1"  id="lwp_cache_levels"        desc="Cache-related events can be filtered by cache level" />
-      <bit31 len="1"  id="lwp_cache_latency"       desc="Cache-related events can be filtered by latency" />
+      <bit29 len="1"  id="lwp_ip_filtering"        desc="IP filtering (IPI, IPF, BaseIP, and LimitIP @ LWPCP)" />
+      <bit30 len="1"  id="lwp_cache_levels"        desc="Cache-related events: filter by cache level" />
+      <bit31 len="1"  id="lwp_cache_latency"       desc="Cache-related events: filter by latency" />
     </ecx>
     <edx>
-      <bit0  len="1"  id="hw_lwp_avail"            desc="LWP is available in hardware" />
-      <bit1  len="1"  id="hw_lpwval"               desc="LWPVAL instruction is available in hardware" />
-      <bit2  len="1"  id="hw_lwp_ire"              desc="Instructions Retired Event is available in hardware" />
-      <bit3  len="1"  id="hw_lwp_bre"              desc="Branch Retired Event is available in hardware" />
-      <bit4  len="1"  id="hw_lwp_dme"              desc="Dcache Miss Event is available in hardware" />
-      <bit5  len="1"  id="hw_lwp_cnh"              desc="Clocks Not Halted event is available in hardware" />
-      <bit6  len="1"  id="hw_lwp_rnh"              desc="Reference clocks Not Halted event is available in hardware" />
-      <bit29 len="1"  id="hw_lwp_cont"             desc="LWP sampling in continuous mode is available in hardware" />
-      <bit30 len="1"  id="hw_lwp_ptsc"             desc="Performance Time Stamp Counter in event records is available in hardware" />
-      <bit31 len="1"  id="hw_lwp_int"              desc="Interrupt on threshold overflow is available in hardware" />
+      <bit0  len="1"  id="hw_lwp_avail"            desc="HW: LWP available" />
+      <bit1  len="1"  id="hw_lpwval"               desc="HW: LWPVAL available" />
+      <bit2  len="1"  id="hw_lwp_ire"              desc="HW: Instructions Retired Event" />
+      <bit3  len="1"  id="hw_lwp_bre"              desc="HW: Branch Retired Event" />
+      <bit4  len="1"  id="hw_lwp_dme"              desc="HW: Dcache Miss Event" />
+      <bit5  len="1"  id="hw_lwp_cnh"              desc="HW: Clocks Not Halted event" />
+      <bit6  len="1"  id="hw_lwp_rnh"              desc="HW: Reference clocks Not Halted event" />
+      <bit29 len="1"  id="hw_lwp_cont"             desc="HW: LWP sampling in continuous mode" />
+      <bit30 len="1"  id="hw_lwp_ptsc"             desc="HW: Performance Time Stamp Counter in event records" />
+      <bit31 len="1"  id="hw_lwp_int"              desc="HW: Interrupt on threshold overflow" />
     </edx>
   </subleaf>
 </leaf>

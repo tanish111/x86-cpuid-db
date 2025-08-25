@@ -42,7 +42,7 @@
         </vendors>
         <linux        feature="true"               proc="true"            altid="pts" />
       </bit6>
-      <bit7  len="1"  id="hwp_base_regs"           desc="HWP (Hardware P-states) base registers are supported">
+      <bit7  len="1"  id="hwp_base_regs"           desc="HWP (Hardware P-states) base registers">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
@@ -54,7 +54,7 @@
         </vendors>
         <linux        feature="true"               proc="true" />
       </bit8>
-      <bit9  len="1"  id="hwp_activity_window"     desc="HWP activity window (IA32_HWP_REQUEST[bits 41:32]) supported">
+      <bit9  len="1"  id="hwp_activity_window"     desc="HWP activity window (IA32_HWP_REQUEST[bits 41:32])">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
@@ -72,7 +72,7 @@
         </vendors>
         <linux        feature="true"               proc="true"            altid="hwp_pkg_req" />
       </bit11>
-      <bit13 len="1"  id="hdc_base_regs"           desc="HDC base registers are supported">
+      <bit13 len="1"  id="hdc_base_regs"           desc="HDC base registers">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
@@ -102,23 +102,23 @@
           <vendor>Intel</vendor>
         </vendors>
       </bit18>
-      <bit19 len="1"  id="hw_feedback"             desc="HW_FEEDBACK MSRs supported">
+      <bit19 len="1"  id="hw_feedback"             desc="HW_FEEDBACK MSRs">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
         <linux        feature="true"               proc="true"            altid="hfi" />
       </bit19>
-      <bit20 len="1"  id="hwp_ignore_idle"         desc="Ignoring idle logical CPU HWP req is supported">
+      <bit20 len="1"  id="hwp_ignore_idle"         desc="Ignoring idle logical CPU HWP request is supported">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
       </bit20>
-      <bit23 len="1"  id="thread_director"         desc="Intel thread director support">
+      <bit23 len="1"  id="thread_director"         desc="Intel thread director">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
       </bit23>
-      <bit24 len="1"  id="therm_interrupt_bit25"   desc="IA32_THERM_INTERRUPT MSR bit 25 is supported">
+      <bit24 len="1"  id="therm_interrupt_bit25"   desc="IA32_THERM_INTERRUPT MSR bit 25">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>
@@ -139,7 +139,7 @@
         </vendors>
         <linux        feature="true"               proc="true"            altid="aperfmperf" />
       </bit0>
-      <bit3  len="1"  id="energy_perf_bias"        desc="IA32_ENERGY_PERF_BIAS MSR support">
+      <bit3  len="1"  id="energy_perf_bias"        desc="IA32_ENERGY_PERF_BIAS MSR">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>

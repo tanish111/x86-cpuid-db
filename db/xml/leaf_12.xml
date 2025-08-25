@@ -11,23 +11,23 @@
     <desc>SGX capability enumeration</desc>
     <eax>
       <desc>SGX enclaves instruction opcode support</desc>
-      <bit0  len="1"  id="sgx1"                    desc="SGX1 leaf functions supported">
+      <bit0  len="1"  id="sgx1"                    desc="SGX1 leaf functions">
         <linux        feature="true"               proc="false" />
       </bit0>
-      <bit1  len="1"  id="sgx2"                    desc="SGX2 leaf functions supported">
+      <bit1  len="1"  id="sgx2"                    desc="SGX2 leaf functions">
         <linux        feature="true"               proc="false" />
       </bit1>
-      <bit5  len="1"  id="enclv_leaves"            desc="ENCLV leaves (E{INC,DEC}VIRTCHILD, ESETCONTEXT) supported" />
-      <bit6  len="1"  id="encls_leaves"            desc="ENCLS leaves (ENCLS ETRACKC, ERDINFO, ELDBC, ELDUC) supported" />
-      <bit7  len="1"  id="enclu_everifyreport2"    desc="ENCLU leaf EVERIFYREPORT2 supported" />
-      <bit10 len="1"  id="encls_eupdatesvn"        desc="ENCLS leaf EUPDATESVN supported" />
-      <bit11 len="1"  id="enclu_edeccssa"          desc="ENCLU leaf EDECCSSA supported">
+      <bit5  len="1"  id="enclv_leaves"            desc="ENCLV leaves" />
+      <bit6  len="1"  id="encls_leaves"            desc="ENCLS leaves" />
+      <bit7  len="1"  id="enclu_everifyreport2"    desc="ENCLU leaf EVERIFYREPORT2" />
+      <bit10 len="1"  id="encls_eupdatesvn"        desc="ENCLS leaf EUPDATESVN" />
+      <bit11 len="1"  id="enclu_edeccssa"          desc="ENCLU leaf EDECCSSA">
         <linux        feature="true"               proc="false"           altid="sgx_edeccssa" />
       </bit11>
     </eax>
     <ebx>
-      <bit0  len="1"  id="miscselect_exinfo"       desc="SSA.MISC frame: reporting #PF and #GP exceptions inside enclave supported" />
-      <bit1  len="1"  id="miscselect_cpinfo"       desc="SSA.MISC frame: reporting #CP exceptions inside enclave supported" />
+      <bit0  len="1"  id="miscselect_exinfo"       desc="SSA.MISC frame: Enclave #PF and #GP reporting" />
+      <bit1  len="1"  id="miscselect_cpinfo"       desc="SSA.MISC frame: Enclave #CP reporting" />
     </ebx>
     <edx>
       <bit0  len="8"  id="max_enclave_sz_not64"    desc="Maximum enclave size in non-64-bit mode (log2)" />
@@ -39,15 +39,15 @@
     <text>Processor state configuration and secure enclave configuration</text>
     <eax>
       <desc>Valid SECS.ATTRIBUTES[31:0] bits which can be set with ECREATE</desc>
-      <bit0  len="1"  id="secs_attr_init"          desc="ATTRIBUTES.INIT supported (enclave initialized by EINIT)" />
-      <bit1  len="1"  id="secs_attr_debug"         desc="ATTRIBUTES.DEBUG supported (enclave permits debugger read/write)" />
-      <bit2  len="1"  id="secs_attr_mode64bit"     desc="ATTRIBUTES.MODE64BIT supported (enclave runs in 64-bit mode)" />
-      <bit4  len="1"  id="secs_attr_provisionkey"  desc="ATTRIBUTES.PROVISIONKEY supported (provisioning key available)" />
+      <bit0  len="1"  id="secs_attr_init"          desc="Enclave initialized by EINIT" />
+      <bit1  len="1"  id="secs_attr_debug"         desc="Enclave permits debugger read/write" />
+      <bit2  len="1"  id="secs_attr_mode64bit"     desc="Enclave runs in 64-bit mode" />
+      <bit4  len="1"  id="secs_attr_provisionkey"  desc="Provisioning key" />
       <bit5  len="1"  id="secs_attr_einittoken_key"
-                                                   desc="ATTRIBUTES.EINITTOKEN_KEY supported (EINIT token key available)" />
-      <bit6  len="1"  id="secs_attr_cet"           desc="ATTRIBUTES.CET supported (enable CET attributes)" />
-      <bit7  len="1"  id="secs_attr_kss"           desc="ATTRIBUTES.KSS supported (Key Separation and Sharing enabled)" />
-      <bit10 len="1"  id="secs_attr_aexnotify"     desc="ATTRIBUTES.AEXNOTIFY supported (enclave threads may get AEX notifications" />
+                                                   desc="EINIT token key" />
+      <bit6  len="1"  id="secs_attr_cet"           desc="CET attributes" />
+      <bit7  len="1"  id="secs_attr_kss"           desc="Key Separation and Sharing" />
+      <bit10 len="1"  id="secs_attr_aexnotify"     desc="Enclave threads: AEX notifications" />
     </eax>
     <ebx>
       <desc>Valid SECS.ATTRIBUTES[63:32] bits which can be set with ECREATE</desc>
@@ -66,17 +66,17 @@
         Thus, SECS.ATTRIBUTES[95:64] ⇆ XFRM[0:31] ⇆ XCR0[0:31] ⇆ CPUID leaf 0xd EAX.0
         bits (Intel-defined bits only!), where "⇆" denotes a bit matching relationship.
       </text>
-      <bit0  len="1"  id="xfrm_x87"                desc="Enclave XFRM.X87 (bit 0) supported" />
-      <bit1  len="1"  id="xfrm_sse"                desc="Enclave XFRM.SEE (bit 1) supported" />
-      <bit2  len="1"  id="xfrm_avx"                desc="Enclave XFRM.AVX (bit 2) supported" />
-      <bit3  len="1"  id="xfrm_mpx_bndregs"        desc="Enclave XFRM.BNDREGS (bit 3) supported (MPX BND0-BND3 registers)" />
-      <bit4  len="1"  id="xfrm_mpx_bndcsr"         desc="Enclave XFRM.BNDCSR (bit 4) supported (MPX BNDCFGU/BNDSTATUS registers)" />
-      <bit5  len="1"  id="xfrm_avx512_opmask"      desc="Enclave XFRM.OPMASK (bit 5) supported (AVX-512 k0-k7 registers)" />
-      <bit6  len="1"  id="xfrm_avx512_zmm_hi256"   desc="Enclave XFRM.ZMM_Hi256 (bit 6) supported (AVX-512 ZMM0->ZMM7/15 registers)" />
-      <bit7  len="1"  id="xfrm_avx512_hi16_zmm"    desc="Enclave XFRM.HI16_ZMM (bit 7) supported (AVX-512 ZMM16->ZMM31 registers)" />
-      <bit9  len="1"  id="xfrm_pkru"               desc="Enclave XFRM.PKRU (bit 9) supported (XSAVE PKRU registers)" />
-      <bit17 len="1"  id="xfrm_tileconfig"         desc="Enclave XFRM.TILECONFIG (bit 17) supported (AMX can manage TILECONFIG)" />
-      <bit18 len="1"  id="xfrm_tiledata"           desc="Enclave XFRM.TILEDATA (bit 18) supported (AMX can manage TILEDATA)" />
+      <bit0  len="1"  id="xfrm_x87"                desc="Enclave XFRM.X87" />
+      <bit1  len="1"  id="xfrm_sse"                desc="Enclave XFRM.SEE" />
+      <bit2  len="1"  id="xfrm_avx"                desc="Enclave XFRM.AVX" />
+      <bit3  len="1"  id="xfrm_mpx_bndregs"        desc="Enclave XFRM.BNDREGS (MPX BND0-BND3 registers)" />
+      <bit4  len="1"  id="xfrm_mpx_bndcsr"         desc="Enclave XFRM.BNDCSR (MPX BNDCFGU/BNDSTATUS registers)" />
+      <bit5  len="1"  id="xfrm_avx512_opmask"      desc="Enclave XFRM.OPMASK (AVX-512 k0-k7 registers)" />
+      <bit6  len="1"  id="xfrm_avx512_zmm_hi256"   desc="Enclave XFRM.ZMM_Hi256 (AVX-512 ZMM0->ZMM7/15 registers)" />
+      <bit7  len="1"  id="xfrm_avx512_hi16_zmm"    desc="Enclave XFRM.HI16_ZMM (AVX-512 ZMM16->ZMM31 registers)" />
+      <bit9  len="1"  id="xfrm_pkru"               desc="Enclave XFRM.PKRU (XSAVE PKRU registers)" />
+      <bit17 len="1"  id="xfrm_tileconfig"         desc="Enclave XFRM.TILECONFIG (AMX can manage TILECONFIG)" />
+      <bit18 len="1"  id="xfrm_tiledata"           desc="Enclave XFRM.TILEDATA (AMX can manage TILEDATA)" />
     </ecx>
     <edx>
       <desc>Valid SECS.ATTRIBUTES[127:96] bits which can be set with ECREATE (XFRM[32:61])</desc>
@@ -100,7 +100,7 @@
       sections.
     </text>
     <eax>
-      <bit0  len="4"  id="subleaf_type"            desc="Subleaf type (dictates output layout)">
+      <bit0  len="4"  id="subleaf_type"            desc="Subleaf type">
         <values>
           <value      id="0"                       desc="Invalid" />
           <value      id="1"                       desc="EPC (Enclave Page Cache) section" />

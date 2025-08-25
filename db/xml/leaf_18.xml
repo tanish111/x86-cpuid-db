@@ -23,11 +23,11 @@
       <bit0  len="32" id="tlb_max_subleaf"         desc="Maximum leaf 0x18 subleaf" />
     </eax>
     <ebx>
-      <bit0  len="1"  id="tlb_4k_page"             desc="TLB 4KB-page entries supported" />
-      <bit1  len="1"  id="tlb_2m_page"             desc="TLB 2MB-page entries supported" />
-      <bit2  len="1"  id="tlb_4m_page"             desc="TLB 4MB-page entries supported" />
-      <bit3  len="1"  id="tlb_1g_page"             desc="TLB 1GB-page entries supported" />
-      <bit8  len="3"  id="hard_partitioning"       desc="(Hard/Soft) partitioning between logical CPUs sharing this structure" />
+      <bit0  len="1"  id="tlb_4k_page"             desc="TLB supports 4KB-page entries" />
+      <bit1  len="1"  id="tlb_2m_page"             desc="TLB supports 2MB-page entries" />
+      <bit2  len="1"  id="tlb_4m_page"             desc="TLB supports 4MB-page entries" />
+      <bit3  len="1"  id="tlb_1g_page"             desc="TLB supports 1GB-page entries" />
+      <bit8  len="3"  id="hard_partitioning"       desc="Partitioning between logical CPUs" />
       <bit16 len="16" id="n_way_associative"       desc="Ways of associativity" />
     </ebx>
     <ecx>
@@ -45,8 +45,8 @@
         </values>
       </bit0>
       <bit5  len="3"  id="tlb_cache_level"         desc="Translation cache level (1-based)" />
-      <bit8  len="1"  id="is_fully_associative"    desc="Fully-associative structure" />
-      <bit14 len="12" id="tlb_max_addressible_ids" desc="Max number of addressable IDs for logical CPUs sharing this TLB - 1" />
+      <bit8  len="1"  id="is_fully_associative"    desc="Fully-associative" />
+      <bit14 len="12" id="tlb_max_addressible_ids" desc="Max number of addressable IDs - 1" />
     </edx>
   </subleaf>
 </leaf>

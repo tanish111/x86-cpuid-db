@@ -11,73 +11,73 @@
          Development note: if new Intel bits are to be added, please update SGX
          leaf_12.xml ECX.1 as well.
       </text>
-      <bit0  len="1"  id="xcr0_x87"                desc="XCR0.X87 (bit 0) supported">
+      <bit0  len="1"  id="xcr0_x87"                desc="XCR0.X87">
 	<vendors>
 	  <vendor>Intel</vendor>
 	  <vendor>AMD</vendor>
 	</vendors>
       </bit0>
-      <bit1  len="1"  id="xcr0_sse"                desc="XCR0.SEE (bit 1) supported">
+      <bit1  len="1"  id="xcr0_sse"                desc="XCR0.SSE">
 	<vendors>
 	  <vendor>Intel</vendor>
 	  <vendor>AMD</vendor>
 	</vendors>
       </bit1>
-      <bit2  len="1"  id="xcr0_avx"                desc="XCR0.AVX (bit 2) supported">
+      <bit2  len="1"  id="xcr0_avx"                desc="XCR0.AVX">
 	<vendors>
 	  <vendor>Intel</vendor>
 	  <vendor>AMD</vendor>
 	</vendors>
       </bit2>
-      <bit3  len="1"  id="xcr0_mpx_bndregs"        desc="XCR0.BNDREGS (bit 3) supported (MPX BND0-BND3 registers)">
+      <bit3  len="1"  id="xcr0_mpx_bndregs"        desc="XCR0.BNDREGS: MPX BND0-BND3 registers">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
       </bit3>
-      <bit4  len="1"  id="xcr0_mpx_bndcsr"         desc="XCR0.BNDCSR (bit 4) supported (MPX BNDCFGU/BNDSTATUS registers)">
+      <bit4  len="1"  id="xcr0_mpx_bndcsr"         desc="XCR0.BNDCSR: MPX BNDCFGU/BNDSTATUS registers">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
       </bit4>
-      <bit5  len="1"  id="xcr0_avx512_opmask"      desc="XCR0.OPMASK (bit 5) supported (AVX-512 k0-k7 registers)">
+      <bit5  len="1"  id="xcr0_avx512_opmask"      desc="XCR0.OPMASK: AVX-512 k0-k7 registers">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
       </bit5>
-      <bit6  len="1"  id="xcr0_avx512_zmm_hi256"   desc="XCR0.ZMM_Hi256 (bit 6) supported (AVX-512 ZMM0->ZMM7/15 registers)">
+      <bit6  len="1"  id="xcr0_avx512_zmm_hi256"   desc="XCR0.ZMM_Hi256: AVX-512 ZMM0->ZMM7/15 registers">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
       </bit6>
-      <bit7  len="1"  id="xcr0_avx512_hi16_zmm"    desc="XCR0.HI16_ZMM (bit 7) supported (AVX-512 ZMM16->ZMM31 registers)">
+      <bit7  len="1"  id="xcr0_avx512_hi16_zmm"    desc="XCR0.HI16_ZMM: AVX-512 ZMM16->ZMM31 registers">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
       </bit7>
-      <bit9  len="1"  id="xcr0_pkru"               desc="XCR0.PKRU (bit 9) supported (XSAVE PKRU registers)">
+      <bit9  len="1"  id="xcr0_pkru"               desc="XCR0.PKRU: XSAVE PKRU registers">
 	<vendors>
 	  <vendor>Intel</vendor>
 	  <vendor>AMD</vendor>
 	</vendors>
       </bit9>
-      <bit11 len="1"  id="xcr0_cet_u"              desc="XCR0.CET_U (bit 11) supported (CET user state)">
+      <bit11 len="1"  id="xcr0_cet_u"              desc="XCR0.CET_U: CET user state">
 	<vendors>
 	  <vendor>Intel</vendor>
 	  <vendor>AMD</vendor>
 	</vendors>
       </bit11>
-      <bit12 len="1"  id="xcr0_cet_s"              desc="XCR0.CET_S (bit 12) supported (CET supervisor state)">
+      <bit12 len="1"  id="xcr0_cet_s"              desc="XCR0.CET_S: CET supervisor state">
 	<vendors>
 	  <vendor>Intel</vendor>
 	  <vendor>AMD</vendor>
 	</vendors>
       </bit12>
-      <bit17 len="1"  id="xcr0_tileconfig"         desc="XCR0.TILECONFIG (bit 17) supported (AMX can manage TILECONFIG)">
+      <bit17 len="1"  id="xcr0_tileconfig"         desc="XCR0.TILECONFIG: AMX can manage TILECONFIG">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
       </bit17>
-      <bit18 len="1"  id="xcr0_tiledata"           desc="XCR0.TILEDATA (bit 18) supported (AMX can manage TILEDATA)">
+      <bit18 len="1"  id="xcr0_tiledata"           desc="XCR0.TILEDATA: AMX can manage TILEDATA">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
@@ -107,7 +107,7 @@
 	Development note: if new Intel bits are to be added, please update SGX leaf_12.xml
 	ECX.1 as well.
       </text>
-      <bit30 len="1"  id="xcr0_lwp"                desc="AMD XCR0.LWP (bit 62) supported (Light-weight Profiling)">
+      <bit30 len="1"  id="xcr0_lwp"                desc="AMD XCR0.LWP: Light-weight Profiling">
 	<vendors>
 	  <vendor>AMD</vendor>
 	</vendors>
@@ -149,7 +149,7 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="S" />
       </bit3>
-      <bit4  len="1"  id="xfd"                     desc="Extended feature disable support">
+      <bit4  len="1"  id="xfd"                     desc="Extended feature disable">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
@@ -168,44 +168,44 @@
     </ebx>
     <ecx>
       <desc>XSS supported bits, lower dword (0:31)</desc>
-      <bit8  len="1"  id="xss_pt"                  desc="PT state, supported">
+      <bit8  len="1"  id="xss_pt"                  desc="PT state">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
       </bit8>
-      <bit10 len="1"  id="xss_pasid"               desc="PASID state, supported">
+      <bit10 len="1"  id="xss_pasid"               desc="PASID state">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
       </bit10>
-      <bit11 len="1"  id="xss_cet_u"               desc="CET user state, supported">
+      <bit11 len="1"  id="xss_cet_u"               desc="CET user state">
 	<vendors>
 	  <vendor>Intel</vendor>
 	  <vendor>AMD</vendor>
 	</vendors>
       </bit11>
-      <bit12 len="1"  id="xss_cet_p"               desc="CET supervisor state, supported">
+      <bit12 len="1"  id="xss_cet_p"               desc="CET supervisor state">
 	<vendors>
 	  <vendor>Intel</vendor>
 	  <vendor>AMD</vendor>
 	</vendors>
       </bit12>
-      <bit13 len="1"  id="xss_hdc"                 desc="HDC state, supported">
+      <bit13 len="1"  id="xss_hdc"                 desc="HDC state">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
       </bit13>
-      <bit14 len="1"  id="xss_uintr"               desc="UINTR state, supported">
+      <bit14 len="1"  id="xss_uintr"               desc="UINTR state">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
       </bit14>
-      <bit15 len="1"  id="xss_lbr"                 desc="LBR state, supported">
+      <bit15 len="1"  id="xss_lbr"                 desc="LBR state">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
       </bit15>
-      <bit16 len="1"  id="xss_hwp"                 desc="HWP state, supported">
+      <bit16 len="1"  id="xss_hwp"                 desc="HWP state">
 	<vendors>
 	  <vendor>Intel</vendor>
 	</vendors>
@@ -231,22 +231,22 @@
 	<vendor>Intel</vendor>
 	<vendor>AMD</vendor>
       </vendors>
-      <bit0  len="32" id="xsave_sz"                desc="Size of save area for subleaf-N feature, in bytes" />
+      <bit0  len="32" id="xsave_sz"                desc="Subleaf-N feature save area size, in bytes" />
     </eax>
     <ebx>
       <vendors>
 	<vendor>Intel</vendor>
 	<vendor>AMD</vendor>
       </vendors>
-      <bit0  len="32" id="xsave_offset"            desc="Offset of save area for subleaf-N feature, in bytes" />
+      <bit0  len="32" id="xsave_offset"            desc="Subleaf-N feature save area offset, in bytes" />
     </ebx>
     <ecx>
       <vendors>
 	<vendor>Intel</vendor>
       </vendors>
-      <bit0  len="1"  id="is_xss_bit"              desc="Subleaf N describes an XSS bit, otherwise XCR0 bit" />
+      <bit0  len="1"  id="is_xss_bit"              desc="Subleaf N describes an XSS bit (otherwise XCR0)" />
       <bit1  len="1"  id="compacted_xsave_64byte_aligned"
-                                                   desc="When compacted, subleaf-N feature XSAVE area is 64-byte aligned" />
+                                                   desc="When compacted, subleaf-N XSAVE area is 64-byte aligned" />
     </ecx>
   </subleaf>
 </leaf>

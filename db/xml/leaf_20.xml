@@ -27,7 +27,7 @@
         since HRESET emits a #GP if that register has any set bit that is not also set at
         the IA32_HRESET_ENABLE MSR.
       </text>
-      <bit0  len="1"  id="hreset_thread_director"  desc="HRESET of Intel thread director is supported">
+      <bit0  len="1"  id="hreset_thread_director"  desc="Intel thread director HRESET">
         <text>
           Intel thread director was originally called EHFI, Enhanced Hardware Feedback
           Interface; e.g., at the Intel Architecture Instruction Set Extensions and Future
