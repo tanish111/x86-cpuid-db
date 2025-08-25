@@ -88,12 +88,13 @@
     </xsl:function>
 
     <!-- Calculate the required padding, in tabs, before a C99 bitfield's colon ":" -->
-    <xsl:function name="lx:calc-bitfield-colon-padding-tabs" as="xs:decimal">
+    <xsl:function name="lx:bitfield-colon-padding-ntabs" as="xs:integer">
         <xsl:param name="leafBiggestNameLen"    as="xs:decimal" />
         <xsl:param name="bitfield-name"         as="xs:string" />
 
         <xsl:variable name="required-padding"   select="lx:round-up($leafBiggestNameLen, 8)" />
-        <xsl:sequence                           select="ceiling(($required-padding - string-length($bitfield-name)) div 8)" />
+        <xsl:sequence                           select="xs:integer(ceiling(
+                                                        ($required-padding - string-length($bitfield-name)) div 8))" />
     </xsl:function>
 
     <!-- Generate a single C99 'reserved' bitfield entry (padding).
@@ -121,15 +122,15 @@
         <xsl:variable name="u32-prefix"
                       select="if ($u32) then concat($tab, 'u32', $tab) else concat($tab, $tab)" />
 
-        <xsl:variable name="colon-padding-tabs"
-                      select="lx:calc-bitfield-colon-padding-tabs($bitfield-name-padding, $bitfield-name)" />
+        <xsl:variable name="colon-padding-ntabs"
+                      select="lx:bitfield-colon-padding-ntabs($bitfield-name-padding, $bitfield-name)" />
 
         <xsl:variable name="bitfield-len-padding"
                       select="if (string-length(xs:string($bitfield-len)) = 1) then ' ' else ''"/>
 
         <xsl:sequence select="concat($u32-prefix,
                               lx:sanitize-bitfield-name($bitfield-name),
-                              lx:repeat($tab, xs:integer($colon-padding-tabs)), ': ',
+                              lx:repeat($tab, $colon-padding-ntabs), ': ',
                               $bitfield-len-padding, $bitfield-len,
                               $comma-or-semicolon,
                               ' // ', $short-description, $nl)" />
