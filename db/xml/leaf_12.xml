@@ -86,7 +86,7 @@
       </text>
     </edx>
   </subleaf>
-  <subleaf id="2" array="30">
+  <subleaf id="2" last="31">
     <desc>Subleaf n, n ≥ 2, EPC (Enclave Page Cache) sections enumeration</desc>
     <text>
       Intel SDM does not describe the number of subleaf indices >=2 rigorously. It just

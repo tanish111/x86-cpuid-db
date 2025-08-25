@@ -74,7 +74,7 @@
 
     <xsl:template match="subleaf">
         <xsl:variable name="subleafStart"       select="xs:integer(@id)" />
-        <xsl:variable name="subleafEnd"         select="xs:integer(if (@array) then @id + @array - 1 else @id)" />
+        <xsl:variable name="subleafEnd"         select="xs:integer(if (@last) then @last else @id)" />
 
         <xsl:apply-templates select="eax | ebx | ecx | edx">
             <xsl:with-param name="subleafRange" select="lx:intel-notation-range($subleafStart, $subleafEnd)" />

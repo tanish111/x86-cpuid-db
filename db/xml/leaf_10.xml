@@ -39,7 +39,7 @@
       </bit3>
     </ebx>
   </subleaf>
-  <subleaf id="1" array="2">
+  <subleaf id="1" last="2">
     <desc>RDT enumeration for ResID 1 and 2 (L3 and L2 CAT)</desc>
     <text>
       Subleaf n is valid iff EBX bit n is set.
@@ -73,7 +73,7 @@
           <vendor>Intel</vendor>
           <vendor>AMD</vendor>
         </vendors>
-        <!-- TODO: X86_FEATURE_CDP_L2: either extend the schema or unroll "array=2" -->
+        <!-- TODO: X86_FEATURE_CDP_L2: either extend the schema or unroll "last=2" above -->
         <linux        feature="true"               proc="true"            altid="cdp_l3" />
       </bit2>
       <bit3  len="1"  id="cat_sparse_1s"           desc="L3/L2_CAT non-contiguous 1s value">

@@ -13,7 +13,7 @@
   <vendors>
     <vendor>Intel</vendor>
   </vendors>
-  <subleaf id="0" array="6">
+  <subleaf id="0" last="5">
     <text>
       Subleaf ID acts as the domain level specifier.  Clients should keep iterating on all
       subleaves until hitting @domain_type = 0 (invalid).

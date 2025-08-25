@@ -20,7 +20,7 @@
     <vendor>Intel</vendor>
     <vendor>AMD</vendor>
   </vendors>
-  <subleaf id="0" array="2">
+  <subleaf id="0" last="1">
     <text>
       Subleaf ID acts as the topology-level domain specifier.  Clients should iterate on
       all available subleaves until hitting a @domain_type = 0 (invalid).

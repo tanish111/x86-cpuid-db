@@ -7,7 +7,7 @@
   <vendors>
     <vendor>Intel</vendor>
   </vendors>
-  <subleaf id="0" array="32">
+  <subleaf id="0" last="31">
     <text>
       Client code should query subleaf IDs until reaching the first invalid subleaf,
       @pconfig_subleaf_type = 0. A specific subleaf type can appear multiple times and

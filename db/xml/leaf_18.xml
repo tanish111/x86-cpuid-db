@@ -12,7 +12,7 @@
   <vendors>
     <vendor>Intel</vendor>
   </vendors>
-  <subleaf id="0" array="32">
+  <subleaf id="0" last="31">
     <desc>Deterministic address translation parameters info structure #n, n = subleaf index</desc>
     <text>
       Client code should iterate from subleaf 0 until @tlb_max_subleaf is reached. One or

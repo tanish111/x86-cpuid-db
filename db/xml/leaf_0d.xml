@@ -225,7 +225,7 @@
       <text>All bits are reserved</text>
     </edx>
   </subleaf>
-  <subleaf id="2" array="62">
+  <subleaf id="2" last="63">
     <text>
       Iterate over the remaining subleaves with the following condition:
 

@@ -22,7 +22,7 @@
       <bit0  len="32" id="soc_stepping_id"         desc="Soc project stepping ID, assigned by vendor" />
     </edx>
   </subleaf>
-  <subleaf id="1" array="3">
+  <subleaf id="1" last="3">
     <text>Vendor Brand String = EAX.n:EBX.n:ECX.n:EDX.n, subleaves n, 1 ≤ n ≤ 3</text>
     <eax>
       <bit0  len="32" id="vendor_brand_a"          desc="Vendor Brand ID string, bytes subleaf_nr * (0 -> 3)" />

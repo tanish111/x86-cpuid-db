@@ -14,7 +14,7 @@
   <vendors>
     <vendor>AMD</vendor>
   </vendors>
-  <subleaf id="0" array="32">
+  <subleaf id="0" last="31">
     <text>
       Enumerate the subleaves, starting from subleaf 0, until @cache_type is Null.
 

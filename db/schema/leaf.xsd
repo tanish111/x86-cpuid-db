@@ -178,7 +178,7 @@
       <xs:element type="regType"         name="edx"         minOccurs="0" />
     </xs:sequence>
     <xs:attribute type="xs:nonNegativeInteger" name="id"    use="required" />
-    <xs:attribute type="xs:positiveInteger"    name="array" use="optional" />
+    <xs:attribute type="xs:positiveInteger"    name="last"  use="optional" />
   </xs:complexType>
 
   <xs:complexType name="leafType">
