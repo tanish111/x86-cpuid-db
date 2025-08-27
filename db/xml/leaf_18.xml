@@ -3,7 +3,7 @@
 *** SPDX-License-Identifier: GPL-2.0-only
 -->
 <leaf id="0x18">
-  <desc>Intel determenestic address translation (TLB) parameters</desc>
+  <desc>Intel deterministic address translation (TLB) parameters</desc>
   <text>
     If one of the leaf 2 output descriptors is "0xfe", then leaf 2 does not report any TLB
     data and this leaf should be used for enumerating TLB and other address translation

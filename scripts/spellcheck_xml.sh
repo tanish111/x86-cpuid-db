@@ -173,7 +173,6 @@ function spellcheck_xml()
 {
     local xml_dir=${SCRIPT_DIR}/../db/xml
     local typos_file=`$MKTEMP`
-    local desc_attr="//@desc"
     local spell_cmd
 
     case "$SPELLCHECK_TOOL" in
@@ -191,11 +190,11 @@ function spellcheck_xml()
     esac
 
     for leaf in ${xml_dir}/leaf*.xml; do
-	errors=$(xmllint --xpath ${desc_attr} ${leaf}	\
-		| cut -d= -f2				\
-		| sed "s/'//g"				\
-		| ${spell_cmd}				\
-		|| : )
+	errors=$(xmllint --xpath '//@desc' ${leaf}		\
+		| cut -d= -f2 | sed "s/'//g"			\
+		| ${spell_cmd} || : )
+	errors+=$(xmllint --xpath '/leaf/desc/text()' ${leaf}	\
+		| ${spell_cmd} || : )
 	errors=$(echo "$errors" | sort -u)
 
 	if [[ -n "$errors" ]]; then
