@@ -4,6 +4,59 @@
 Changelog
 =========
 
+Release v2.5
+------------
+
+Modify the generated Linux Kernel C structures for leaves with dynamic
+subleaf ranges, per `LKML discussions`_ with Sean Christopherson, to be
+in the form:
+
+.. code-block:: c
+
+  struct leaf_0x4_n { ... };
+  struct leaf_0xb_n { ... };
+  struct leaf_0xd_n { ... };
+  ...
+
+instead of:
+
+.. code-block:: c
+
+  struct leaf_0x4_0 { ... };
+  struct leaf_0xb_0 { ... };
+  struct leaf_0xd_2 { ... };
+  ...
+
+so that it's clear that such data types cover a dynamic subleaf range,
+not just the first subleaf number of that range.
+
+For each CPUID leaf with dynamic subleaf ranges, also generate the CPP
+symbols:
+
+.. code-block:: c
+
+  #define LEAF_0x4_SUBLEAF_N_FIRST		0
+  #define LEAF_0x4_SUBLEAF_N_LAST		31
+
+  #define LEAF_0xb_SUBLEAF_N_FIRST		0
+  #define LEAF_0xb_SUBLEAF_N_LAST		1
+
+  #define LEAF_0xd_SUBLEAF_N_FIRST		2
+  #define LEAF_0xd_SUBLEAF_N_LAST		63
+  ...
+
+so that the Linux Kernel CPUID parser can know each range's start and
+end.
+
+Per Borislav Petkov's feedback, reduce verbosity of the CPUID leaf and
+bitleaf descriptions.  Also spellcheck the former, not just the latter.
+
+Updates to the CPUID database:
+
+- Leaf ``0x8000000a``: Add Page Modification Logging (PML) bit.  Thanks
+  to Nikunj A Dadhania (AMD).
+
+
 Release v2.4
 ------------
 
@@ -210,3 +263,5 @@ Prepare for project's first release
   - ``LICENSE``: Notes on GPLv2, generated files license, and REUSE v3.0
   - ``README``: Preamble, usage, statistics, and references
   - ``CHANGELOG``: This file
+
+.. _`LKML discussions`: https://lore.kernel.org/x86-cpuid/aKR3zjxsM7xQZ_g8@lx-t490
