@@ -85,7 +85,11 @@
     </eax>
     <ebx>
       <desc>XSAVE area size calculations</desc>
-      <bit0  len="32" id="xsave_sz_xcr0_enabled"   desc="XSAVE/XRSTOR area byte size, for XCR0 enabled features">
+      <text>
+        Enumerate the size, in bytes, required by the XSAVE instruction for an XSAVE area
+        containing all user state components corresponding to bits currently set in XCR0.
+      </text>
+      <bit0  len="32" id="xsave_sz_xcr0"           desc="XSAVE/XRSTOR area byte size, for XCR0 enabled features">
 	<vendors>
 	  <vendor>Intel</vendor>
 	  <vendor>AMD</vendor>
@@ -158,8 +162,13 @@
     </eax>
     <ebx>
       <desc>XSAVE area size calculations</desc>
-      <bit0  len="32" id="xsave_sz_xcr0_xmms_enabled"
-                                                   desc="XSAVE area size, all XCR0 and XMMS features enabled">
+      <text>
+        Enumerate the size, in bytes, required by the XSAVES instruction for an XSAVE area
+        containing all state components corresponding to bits currently set in XCR0 | XSS.
+
+        Returns zero If both XSAVES and XSAVEC are unsupported.
+      </text>
+      <bit0  len="32" id="xsave_sz_xcr0_xss"       desc="XSAVES/XSAVEC area byte size, for XCR0|XSS enabled features">
 	<vendors>
 	  <vendor>Intel</vendor>
 	  <vendor>AMD</vendor>
