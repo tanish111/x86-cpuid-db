@@ -1,0 +1,118 @@
+<!--
+*** SPDX-FileCopyrightText: 2026 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x4c780001">
+  <desc>Linux-defined synthetic feature flags</desc>
+  <text>
+    This is a Linux-defined synthetic CPUID leaf, where "Linux" is a virtual vendor
+    mirroring hardware vendors like AMD and Intel.  The leaf ID prefix 0x4c78 is
+    for Linux, in its shorthand ASCII form "Lx".
+
+    The bit listing mirrors what Linux defines in its synthetic X86_FEATURE words.
+    The listed feature bits are expected to be set in stone, and new bits must be
+    filled in that order: subleaf 0 (EAX->EDX), subleaf 1 (EAX->EDX), and so on.
+  </text>
+  <vendors>
+    <vendor>Linux</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <desc>X86_FEATURE word 3: Miscellaneous flags</desc>
+      <bit0  len="1"  id="cxmmx"                   desc="Cyrix MMX extensions">
+        <linux        feature="true"               proc="true" />
+      </bit0>
+      <bit1  len="1"  id="k6_mtrr"                 desc="AMD K6 nonstandard MTRRs">
+        <linux        feature="true"               proc="true" />
+      </bit1>
+      <bit2  len="1"  id="cyrix_arr"               desc="Cyrix ARRs (= MTRRs)">
+        <linux        feature="true"               proc="true" />
+      </bit2>
+      <bit3  len="1"  id="centaur_mcr"             desc="Centaur MCRs (= MTRRs)">
+        <linux        feature="true"               proc="true" />
+      </bit3>
+      <bit4  len="1"  id="k8"                      desc="Opteron, Athlon64">
+        <linux        feature="true"               proc="false" />
+      </bit4>
+      <bit5  len="1"  id="zen5"                    desc="CPU based on Zen5 micro-architecture">
+        <linux        feature="true"               proc="false" />
+      </bit5>
+      <bit6  len="1"  id="zen6"                    desc="CPU based on Zen6 micro-architecture">
+        <linux        feature="true"               proc="false" />
+      </bit6>
+      <!-- Bit 7: Reserved -->
+      <bit8  len="1"  id="constant_tsc"            desc="TSC ticks at a constant rate">
+        <linux        feature="true"               proc="true" />
+      </bit8>
+      <bit9  len="1"  id="up"                      desc="SMP kernel running on UP">
+        <linux        feature="true"               proc="true" />
+      </bit9>
+      <bit10 len="1"  id="art"                     desc="Always running timer (ART)">
+        <linux        feature="true"               proc="true" />
+      </bit10>
+      <bit11 len="1"  id="arch_perfmon"            desc="Intel Architectural PerfMon">
+        <linux        feature="true"               proc="true" />
+      </bit11>
+      <bit12 len="1"  id="pebs"                    desc="Precise-Event Based Sampling">
+        <linux        feature="true"               proc="true" />
+      </bit12>
+      <bit13 len="1"  id="bts"                     desc="Branch Trace Store">
+        <linux        feature="true"               proc="true" />
+      </bit13>
+      <bit14 len="1"  id="syscall32"               desc="SYSCALL in IA32 userspace">
+        <linux        feature="true"               proc="false" />
+      </bit14>
+      <bit15 len="1"  id="sysenter32"              desc="SYSENTER in IA32 userspace">
+        <linux        feature="true"               proc="false" />
+      </bit15>
+      <bit16 len="1"  id="rep_good"                desc="REP microcode works well">
+        <linux        feature="true"               proc="true" />
+      </bit16>
+      <bit17 len="1"  id="amd_lbr_v2"              desc="AMD Last Branch Record Extension version 2">
+        <linux        feature="true"               proc="true" />
+      </bit17>
+      <bit18 len="1"  id="clear_cpu_buf"           desc="Clear CPU buffers using VERW">
+        <linux        feature="true"               proc="false" />
+      </bit18>
+      <bit19 len="1"  id="acc_power"               desc="AMD Accumulated Power Mechanism">
+        <linux        feature="true"               proc="true" />
+      </bit19>
+      <bit20 len="1"  id="nopl"                    desc="The NOPL instructions">
+        <linux        feature="true"               proc="true" />
+      </bit20>
+      <bit21 len="1"  id="always"                  desc="Always-present feature">
+        <linux        feature="true"               proc="false" />
+      </bit21>
+      <bit22 len="1"  id="xtopology"               desc="CPU topology enumeration extensions">
+        <linux        feature="true"               proc="true" />
+      </bit22>
+      <bit23 len="1"  id="tsc_reliable"            desc="TSC is known to be reliable">
+        <linux        feature="true"               proc="true" />
+      </bit23>
+      <bit24 len="1"  id="nonstop_tsc"             desc="TSC does not stop in C states">
+        <linux        feature="true"               proc="true" />
+      </bit24>
+      <bit25 len="1"  id="cpuid"                   desc="CPU has the CPUID instruction">
+        <linux        feature="true"               proc="true" />
+      </bit25>
+      <bit26 len="1"  id="extd_apicid"             desc="Extended APIC ID (8 bits)">
+        <linux        feature="true"               proc="true" />
+      </bit26>
+      <bit27 len="1"  id="amd_dcm"                 desc="AMD multi-node processor">
+        <linux        feature="true"               proc="true" />
+      </bit27>
+      <bit28 len="1"  id="aperfmperf"              desc="APERF/MPERF MSRs: P-State hardware coordination feedback">
+        <linux        feature="true"               proc="true" />
+      </bit28>
+      <bit29 len="1"  id="rapl"                    desc="AMD/Hygon RAPL interface">
+        <linux        feature="true"               proc="true" />
+      </bit29>
+      <bit30 len="1"  id="nonstop_tsc_s3"          desc="TSC does not stop in S3 state">
+        <linux        feature="true"               proc="true" />
+      </bit30>
+      <bit31 len="1"  id="tsc_known_freq"          desc="TSC has known frequency">
+        <linux        feature="true"               proc="true" />
+      </bit31>
+    </eax>
+  </subleaf>
+</leaf>

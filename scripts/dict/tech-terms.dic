@@ -19,6 +19,7 @@ interruptible
 mispredict
 misprediction
 prefetch/S
+SMP
 SHA
 userspace
 virtualize/DS

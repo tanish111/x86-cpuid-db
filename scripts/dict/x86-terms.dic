@@ -110,6 +110,12 @@ C6
 C7
 
 #
+# S states
+#
+
+S3
+
+#
 # Performance Monitoring / Profiling
 #
 
@@ -136,6 +142,7 @@ PDIST
 PEBS
 PERF
 Perfmon
+PerfMon
 PERFEVTSELx
 PMI
 PMU
@@ -288,6 +295,7 @@ VIRT
 #
 
 AMX
+ARR/S
 AnyThread
 APIC
 BMEC
@@ -316,10 +324,13 @@ LVT
 MAWAU
 MCDT
 MCE
+MCR/S
 MOVH
 MOVL
 MOVU
+MTRR/S
 NMI
+NOPL
 northbridge
 PECI
 PHE
@@ -333,6 +344,7 @@ PREFETCHWT1
 PSB
 QoS
 RAS
+RAPL
 RRSBA
 RSB
 RTM
