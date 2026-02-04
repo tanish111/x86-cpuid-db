@@ -255,5 +255,104 @@
       </bit22>
       <!-- Bits 23-31: Reserved -->
     </ecx>
+    <edx>
+      <desc>X86_FEATURE word 11: Extended auxiliary flags</desc>
+      <bit0  len="1"  id="cqm_llc"                 desc="LLC QoS">
+        <linux        feature="true"               proc="true" />
+      </bit0>
+      <bit1  len="1"  id="cqm_occup_llc"           desc="LLC occupancy monitoring">
+        <linux        feature="true"               proc="true" />
+      </bit1>
+      <bit2  len="1"  id="cqm_mbm_total"           desc="LLC Total MBM monitoring">
+        <linux        feature="true"               proc="true" />
+      </bit2>
+      <bit3  len="1"  id="cqm_mbm_local"           desc="LLC Local MBM monitoring">
+        <linux        feature="true"               proc="true" />
+      </bit3>
+      <bit4  len="1"  id="fence_swapgs_user"       desc="LFENCE in user entry SWAPGS path">
+        <linux        feature="true"               proc="false" />
+      </bit4>
+      <bit5  len="1"  id="fence_swapgs_kernel"     desc="LFENCE in kernel entry SWAPGS path">
+        <linux        feature="true"               proc="false" />
+      </bit5>
+      <bit6  len="1"  id="split_lock_detect"       desc="#AC for split lock">
+        <linux        feature="true"               proc="true" />
+      </bit6>
+      <bit7  len="1"  id="per_thread_mba"          desc="Per-thread Memory Bandwidth Allocation">
+        <linux        feature="true"               proc="false" />
+      </bit7>
+      <bit8  len="1"  id="sgx1"                    desc="SGX Basic">
+        <linux        feature="true"               proc="false" />
+      </bit8>
+      <bit9  len="1"  id="sgx2"                    desc="SGX Enclave Dynamic Memory Management (EDMM)">
+        <linux        feature="true"               proc="false" />
+      </bit9>
+      <bit10 len="1"  id="entry_ibpb"              desc="Issue an IBPB on kernel entry">
+        <linux        feature="true"               proc="false" />
+      </bit10>
+      <bit11 len="1"  id="rrsba_ctrl"              desc="RET prediction control">
+        <linux        feature="true"               proc="false" />
+      </bit11>
+      <bit12 len="1"  id="retpoline"               desc="Generic Retpoline mitigation for Spectre variant 2">
+        <linux        feature="true"               proc="false" />
+      </bit12>
+      <bit13 len="1"  id="retpoline_lfence"        desc="Use LFENCE for Spectre variant 2">
+        <linux        feature="true"               proc="false" />
+      </bit13>
+      <bit14 len="1"  id="rethunk"                 desc="Use Return THUNK">
+        <linux        feature="true"               proc="false" />
+      </bit14>
+      <bit15 len="1"  id="unret"                   desc="AMD BTB untrain return">
+        <linux        feature="true"               proc="false" />
+      </bit15>
+      <bit16 len="1"  id="use_ibpb_fw"             desc="Use IBPB during runtime firmware calls">
+        <linux        feature="true"               proc="false" />
+      </bit16>
+      <bit17 len="1"  id="rsb_vmexit_lite"         desc="Fill RSB on VM exit when EIBRS is enabled">
+        <linux        feature="true"               proc="false" />
+      </bit17>
+      <bit18 len="1"  id="sgx_edeccssa"            desc="SGX EDECCSSA user leaf function">
+        <linux        feature="true"               proc="false" />
+      </bit18>
+      <bit19 len="1"  id="call_depth"              desc="Call depth tracking for RSB stuffing">
+        <linux        feature="true"               proc="false" />
+      </bit19>
+      <bit20 len="1"  id="msr_tsx_ctrl"            desc="MSR IA32_TSX_CTRL (Intel) implemented">
+        <linux        feature="true"               proc="false" />
+      </bit20>
+      <bit21 len="1"  id="smba"                    desc="Slow Memory Bandwidth Allocation">
+        <linux        feature="true"               proc="false" />
+      </bit21>
+      <bit22 len="1"  id="bmec"                    desc="Bandwidth Monitoring Event Configuration">
+        <linux        feature="true"               proc="false" />
+      </bit22>
+      <bit23 len="1"  id="user_shstk"              desc="Shadow stack support for user mode applications">
+        <linux        feature="true"               proc="true" />
+      </bit23>
+      <bit24 len="1"  id="srso"                    desc="AMD BTB untrain RETs">
+        <linux        feature="true"               proc="false" />
+      </bit24>
+      <bit25 len="1"  id="srso_alias"              desc="AMD BTB untrain RETs through aliasing">
+        <linux        feature="true"               proc="false" />
+      </bit25>
+      <bit26 len="1"  id="ibpb_on_vmexit"          desc="Issue an IBPB only on VMEXIT">
+        <linux        feature="true"               proc="false" />
+      </bit26>
+      <bit27 len="1"  id="apic_msrs_fence"         desc="IA32_TSC_DEADLINE and X2APIC MSRs need fencing">
+        <linux        feature="true"               proc="false" />
+      </bit27>
+      <bit28 len="1"  id="zen2"                    desc="CPU based on Zen2 microarchitecture">
+        <linux        feature="true"               proc="false" />
+      </bit28>
+      <bit29 len="1"  id="zen3"                    desc="CPU based on Zen3 microarchitecture">
+        <linux        feature="true"               proc="false" />
+      </bit29>
+      <bit30 len="1"  id="zen4"                    desc="CPU based on Zen4 microarchitecture">
+        <linux        feature="true"               proc="false" />
+      </bit30>
+      <bit31 len="1"  id="zen1"                    desc="CPU based on Zen1 microarchitecture">
+        <linux        feature="true"               proc="false" />
+      </bit31>
+    </edx>
   </subleaf>
 </leaf>

@@ -86,6 +86,7 @@ PTE
 NodeId
 RDT
 RMID
+MBM
 MTRR
 PCID
 PQoS
@@ -197,6 +198,8 @@ NoBackup
 PadLock
 PKRU
 PROVISIONKEY
+RET/S
+Retpoline
 RNG
 RSA
 SEV
@@ -210,6 +213,7 @@ SM4
 SMT
 SMBA
 SMM
+Spectre
 SRBDS
 SSBD
 STIBP
@@ -365,6 +369,7 @@ STGI
 THERMTRIP
 TMUL
 Topdown
+untrain
 TSC
 TSX
 uncorrectable

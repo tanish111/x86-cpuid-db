@@ -16,6 +16,7 @@ CPU/S
 encoding/S
 frontend/S
 interruptible
+microarchitecture
 mispredict
 misprediction
 prefetch/S
