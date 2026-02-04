@@ -114,5 +114,102 @@
         <linux        feature="true"               proc="true" />
       </bit31>
     </eax>
+    <ebx>
+      <desc>X86_FEATURE word 7: Auxiliary flags</desc>
+      <bit0  len="1"  id="ring3mwait"              desc="Ring 3 MONITOR/MWAIT instructions">
+        <linux        feature="true"               proc="true" />
+      </bit0>
+      <bit1  len="1"  id="cpuid_fault"             desc="Intel CPUID faulting">
+        <linux        feature="true"               proc="true" />
+      </bit1>
+      <bit2  len="1"  id="cpb"                     desc="AMD Core Performance Boost">
+        <linux        feature="true"               proc="true" />
+      </bit2>
+      <bit3  len="1"  id="epb"                     desc="IA32_ENERGY_PERF_BIAS support">
+        <linux        feature="true"               proc="true" />
+      </bit3>
+      <bit4  len="1"  id="cat_l3"                  desc="Cache Allocation Technology L3">
+        <linux        feature="true"               proc="true" />
+      </bit4>
+      <bit5  len="1"  id="cat_l2"                  desc="Cache Allocation Technology L2">
+        <linux        feature="true"               proc="true" />
+      </bit5>
+      <bit6  len="1"  id="cdp_l3"                  desc="Code and Data Prioritization L3">
+        <linux        feature="true"               proc="true" />
+      </bit6>
+      <bit7  len="1"  id="tdx_host_platform"       desc="Platform supports being a TDX host">
+        <linux        feature="true"               proc="true" />
+      </bit7>
+      <bit8  len="1"  id="hw_pstate"               desc="AMD Hardware P-state control">
+        <linux        feature="true"               proc="true" />
+      </bit8>
+      <bit9  len="1"  id="proc_feedback"           desc="AMD Processor Feedback Interface">
+        <linux        feature="true"               proc="true" />
+      </bit9>
+      <bit10 len="1"  id="xcompacted"              desc="Use compacted XSTATE (XSAVES or XSAVEC)">
+        <linux        feature="true"               proc="false" />
+      </bit10>
+      <bit11 len="1"  id="pti"                     desc="Kernel Page Table Isolation enabled">
+        <linux        feature="true"               proc="true" />
+      </bit11>
+      <bit12 len="1"  id="kernel_ibrs"             desc="Set/clear IBRS on kernel entry/exit">
+        <linux        feature="true"               proc="false" />
+      </bit12>
+      <bit13 len="1"  id="rsb_vmexit"              desc="Fill RSB on VM-Exit">
+        <linux        feature="true"               proc="false" />
+      </bit13>
+      <bit14 len="1"  id="intel_ppin"              desc="Intel Processor Inventory Number">
+        <linux        feature="true"               proc="true" />
+      </bit14>
+      <bit15 len="1"  id="cdp_l2"                  desc="Code and Data Prioritization L2">
+        <linux        feature="true"               proc="true" />
+      </bit15>
+      <bit16 len="1"  id="msr_spec_ctrl"           desc="MSR SPEC_CTRL is implemented">
+        <linux        feature="true"               proc="false" />
+      </bit16>
+      <bit17 len="1"  id="ssbd"                    desc="Speculative Store Bypass Disable">
+        <linux        feature="true"               proc="true" />
+      </bit17>
+      <bit18 len="1"  id="mba"                     desc="Memory Bandwidth Allocation">
+        <linux        feature="true"               proc="true" />
+      </bit18>
+      <bit19 len="1"  id="rsb_ctxsw"               desc="Fill RSB on context switches">
+        <linux        feature="true"               proc="false" />
+      </bit19>
+      <bit20 len="1"  id="perfmon_v2"              desc="AMD Performance Monitoring Version 2">
+        <linux        feature="true"               proc="true" />
+      </bit20>
+      <!-- Bit 21: Reserved -->
+      <bit22 len="1"  id="use_ibrs_fw"             desc="Use IBRS during runtime firmware calls">
+        <linux        feature="true"               proc="false" />
+      </bit22>
+      <bit23 len="1"  id="ss_bypass_disable"       desc="Disable Speculative Store Bypass">
+        <linux        feature="true"               proc="false"           altid="spec_store_bypass_disable" />
+      </bit23>
+      <bit24 len="1"  id="ls_cfg_ssbd"             desc="AMD SSBD implementation via LS_CFG MSR">
+        <linux        feature="true"               proc="false" />
+      </bit24>
+      <bit25 len="1"  id="ibrs"                    desc="Indirect Branch Restricted Speculation">
+        <linux        feature="true"               proc="true" />
+      </bit25>
+      <bit26 len="1"  id="ibpb"                    desc="Indirect Branch Prediction Barrier (without RSB flush guarantee)">
+        <linux        feature="true"               proc="true" />
+      </bit26>
+      <bit27 len="1"  id="stibp"                   desc="Single Thread Indirect Branch Predictors">
+        <linux        feature="true"               proc="true" />
+      </bit27>
+      <bit28 len="1"  id="zen"                     desc="Generic flag for all Zen and newer">
+        <linux        feature="true"               proc="false" />
+      </bit28>
+      <bit29 len="1"  id="l1tf_pteinv"             desc="L1TF workaround PTE inversion">
+        <linux        feature="true"               proc="false" />
+      </bit29>
+      <bit30 len="1"  id="ibrs_enhanced"           desc="Enhanced IBRS">
+        <linux        feature="true"               proc="true" />
+      </bit30>
+      <bit31 len="1"  id="msr_ia32_feat_ctl"       desc="MSR IA32_FEAT_CTL configured">
+        <linux        feature="true"               proc="false" />
+      </bit31>
+    </ebx>
   </subleaf>
 </leaf>
