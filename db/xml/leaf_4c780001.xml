@@ -211,5 +211,49 @@
         <linux        feature="true"               proc="false" />
       </bit31>
     </ebx>
+    <ecx>
+      <desc>X86_FEATURE word 8: Virtualization flags</desc>
+      <bit0  len="1"  id="tpr_shadow"              desc="Intel TPR Shadow">
+        <linux        feature="true"               proc="true" />
+      </bit0>
+      <bit1  len="1"  id="flexpriority"            desc="Intel FlexPriority">
+        <linux        feature="true"               proc="true" />
+      </bit1>
+      <bit2  len="1"  id="ept"                     desc="Intel Extended Page Table">
+        <linux        feature="true"               proc="true" />
+      </bit2>
+      <bit3  len="1"  id="vpid"                    desc="Intel Virtual Processor ID">
+        <linux        feature="true"               proc="true" />
+      </bit3>
+      <bit4  len="1"  id="coherency_sfw_no"        desc="SNP cache coherency software work around not needed">
+        <linux        feature="true"               proc="false" />
+      </bit4>
+      <!-- Bits 5-14: Reserved -->
+      <bit15 len="1"  id="vmmcall"                 desc="Prefer VMMCALL to VMCALL">
+        <linux        feature="true"               proc="true" />
+      </bit15>
+      <bit16 len="1"  id="xenpv"                   desc="Xen paravirtual guest">
+        <linux        feature="true"               proc="false" />
+      </bit16>
+      <bit17 len="1"  id="ept_ad"                  desc="Intel Extended Page Table access-dirty bit">
+        <linux        feature="true"               proc="true" />
+      </bit17>
+      <bit18 len="1"  id="VMCALL"                  desc="Hypervisor supports the VMCALL instruction">
+        <linux        feature="true"               proc="false" />
+      </bit18>
+      <bit19 len="1"  id="vmw_vmmcall"             desc="VMware prefers the VMMCALL instruction">
+        <linux        feature="true"               proc="false" />
+      </bit19>
+      <bit20 len="1"  id="pvunlock"                desc="PV unlock function">
+        <linux        feature="true"               proc="false" />
+      </bit20>
+      <bit21 len="1"  id="vcpupreempt"             desc="PV vcpu_is_preempted function">
+        <linux        feature="true"               proc="false" />
+      </bit21>
+      <bit22 len="1"  id="tdx_guest"               desc="Intel Trust Domain Extensions Guest">
+        <linux        feature="true"               proc="true" />
+      </bit22>
+      <!-- Bits 23-31: Reserved -->
+    </ecx>
   </subleaf>
 </leaf>
