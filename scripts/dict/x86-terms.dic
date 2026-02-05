@@ -182,14 +182,20 @@ VMSCAPE
 VmgexitParameter
 VMPL
 VMSA
+VMX
 
 #
 # Security related
 #
 
+11AP
+6x86
+AAI65
 AES
 CCS
 CET
+DIV0
+F00F
 EIBRS
 HMK
 IBPB
@@ -197,13 +203,16 @@ IBRS
 IWKEY
 KeySource
 L1TF
+Microarchitectural
 MPX
 MONTMUL2
+MSDBS
 NoBackup
 PadLock
 PKRU
 PROVISIONKEY
 RET/S
+Retbleed
 Retpoline
 RNG
 RSA
@@ -317,6 +326,7 @@ AMX
 ARR/S
 AnyThread
 APIC
+Async
 BMEC
 BTB
 BpSpecReduce
@@ -329,6 +339,7 @@ DF
 FP
 EFER
 EPSF
+FIP
 FlexPriority
 FMS
 FPU
@@ -346,6 +357,7 @@ MAWAU
 MCDT
 MCE
 MCR/S
+MMIO
 MOVH
 MOVL
 MOVU
@@ -375,6 +387,7 @@ SoC
 SpeedStep
 SRSO
 STGI
+TAA
 THERMTRIP
 TMUL
 Topdown

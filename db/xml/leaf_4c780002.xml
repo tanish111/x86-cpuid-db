@@ -1,0 +1,154 @@
+<!--
+*** SPDX-FileCopyrightText: 2026 Linutronix GmbH
+*** SPDX-License-Identifier: GPL-2.0-only
+-->
+<leaf id="0x4c780002">
+  <desc>Linux-defined synthetic CPU bug flags</desc>
+  <text>
+    This is a Linux-defined synthetic CPUID leaf, where "Linux" is a virtual vendor
+    mirroring hardware vendors like AMD and Intel.  The leaf ID prefix 0x4c78 is
+    for Linux, in its shorthand ASCII form "Lx".
+
+    The bit listing mirrors what Linux defines in its synthetic X86_BUG words.
+    The listed CPU bug bits are expected to be set in stone, and new bits must be
+    filled in that order: subleaf 0 (EAX->EDX), subleaf 1 (EAX->EDX), and so on.
+  </text>
+  <vendors>
+    <vendor>Linux</vendor>
+  </vendors>
+  <subleaf id="0">
+    <eax>
+      <desc>Linux X86_BUG word 0</desc>
+      <bit0  len="1"  id="f00f"                    desc="Intel F00F">
+        <linux        feature="true"               proc="true" />
+      </bit0>
+      <bit1  len="1"  id="fdiv"                    desc="FPU FDIV">
+        <linux        feature="true"               proc="true" />
+      </bit1>
+      <bit2  len="1"  id="coma"                    desc="Cyrix 6x86 coma">
+        <linux        feature="true"               proc="true" />
+      </bit2>
+      <bit3  len="1"  id="amd_tlb_mmatch"          desc="AMD Erratum 383">
+        <linux        feature="true"               proc="true"            procid="tlb_mmatch" />
+      </bit3>
+      <bit4  len="1"  id="amd_apic_c1e"            desc="AMD Erratum 400">
+        <linux        feature="true"               proc="true"            procid="apic_c1e" />
+      </bit4>
+      <bit5  len="1"  id="bug_11ap"                desc="Bad local APIC aka 11AP">
+        <linux        feature="true"               proc="true"            altid="11ap"       procid="11ap" />
+      </bit5>
+      <bit6  len="1"  id="fxsave_leak"             desc="FXSAVE leaks FOP/FIP/FOP">
+        <linux        feature="true"               proc="true" />
+      </bit6>
+      <bit7  len="1"  id="clflush_monitor"         desc="AAI65, CLFLUSH required before MONITOR">
+        <linux        feature="true"               proc="true" />
+      </bit7>
+      <bit8  len="1"  id="sysret_ss_attrs"         desc="SYSRET does not fix up SS attributes">
+        <linux        feature="true"               proc="true" />
+      </bit8>
+      <bit9  len="1"  id="espfix"                  desc="IRET to 16-bit SS corrupts ESP/RSP high bits (x86-32)">
+        <linux        feature="true"               proc="false" />
+      </bit9>
+      <bit10 len="1"  id="null_seg"                desc="Setting a selector to NULL preserves the base">
+        <linux        feature="true"               proc="true" />
+      </bit10>
+      <bit11 len="1"  id="swapgs_fence"            desc="SWAPGS without input dep on GS">
+        <linux        feature="true"               proc="true" />
+      </bit11>
+      <bit12 len="1"  id="monitor"                 desc="IPI required to wake up remote CPU">
+        <linux        feature="true"               proc="true" />
+      </bit12>
+      <bit13 len="1"  id="amd_e400"                desc="CPU is among the affected by Erratum 400">
+        <linux        feature="true"               proc="true" />
+      </bit13>
+      <bit14 len="1"  id="cpu_meltdown"            desc="CPU affected by meltdown; needs kernel page table isolation">
+        <linux        feature="true"               proc="true" />
+      </bit14>
+      <bit15 len="1"  id="spectre_v1"              desc="CPU affected by Spectre variant 1 with conditional branches">
+        <linux        feature="true"               proc="true" />
+      </bit15>
+      <bit16 len="1"  id="specture_v2"             desc="CPU affected by Spectre variant 2 with indirect branches">
+        <linux        feature="true"               proc="true" />
+      </bit16>
+      <bit17 len="1"  id="spec_store_bypass"       desc="CPU affected by speculative store bypass attack">
+        <linux        feature="true"               proc="true" />
+      </bit17>
+      <bit18 len="1"  id="l1tf"                    desc="CPU affected by L1 Terminal Fault">
+        <linux        feature="true"               proc="true" />
+      </bit18>
+      <bit19 len="1"  id="mds"                     desc="CPU affected by Microarchitectural data sampling">
+        <linux        feature="true"               proc="true" />
+      </bit19>
+      <bit20 len="1"  id="msbds_only"              desc="Microarchitectural data sampling: CPU only affected by the MSDBS variant">
+        <linux        feature="true"               proc="true" />
+      </bit20>
+      <bit21 len="1"  id="swapgs"                  desc="CPU affected by speculation through SWAPGS">
+        <linux        feature="true"               proc="true" />
+      </bit21>
+      <bit22 len="1"  id="taa"                     desc="CPU is affected by TSX Async Abort (TAA)">
+        <linux        feature="true"               proc="true" />
+      </bit22>
+      <bit23 len="1"  id="itlb_multihit"           desc="CPU may incur MCE during certain page attribute changes">
+        <linux        feature="true"               proc="true" />
+      </bit23>
+      <bit24 len="1"  id="srbds"                   desc="CPU may leak RNG bits if not mitigated">
+        <linux        feature="true"               proc="true" />
+      </bit24>
+      <bit25 len="1"  id="mmio_stale_data"         desc="CPU affected by Processor MMIO Stale Data vulnerabilities">
+        <linux        feature="true"               proc="true" />
+      </bit25>
+      <!-- Bit 26: Reserved -->
+      <bit27 len="1"  id="retbleed"                desc="CPU affected by Retbleed">
+        <linux        feature="true"               proc="true" />
+      </bit27>
+      <bit28 len="1"  id="eibrs_pbrsb"             desc="EIBRS is vulnerable to Post Barrier RSB Predictions">
+        <linux        feature="true"               proc="true" />
+      </bit28>
+      <bit29 len="1"  id="smt_rsb"                 desc="CPU vulnerable to Cross-Thread Return Address Predictions">
+        <linux        feature="true"               proc="true" />
+      </bit29>
+      <bit30 len="1"  id="gds"                     desc="CPU affected by Gather Data Sampling">
+        <linux        feature="true"               proc="true" />
+      </bit30>
+      <bit31 len="1"  id="tdx_pw_mce"              desc="CPU may incur #MC if non-TD software does partial write to TDX private memory">
+        <linux        feature="true"               proc="true" />
+      </bit31>
+    </eax>
+    <ebx>
+      <desc>Linux X86_BUG word 1</desc>
+      <bit0  len="1"  id="srso"                    desc="AMD SRSO bug">
+        <linux        feature="true"               proc="true" />
+      </bit0>
+      <bit1  len="1"  id="div0"                    desc="AMD DIV0 speculation bug">
+        <linux        feature="true"               proc="true" />
+      </bit1>
+      <bit2  len="1"  id="rfds"                    desc="CPU vulnerable to Register File Data Sampling">
+        <linux        feature="true"               proc="true" />
+      </bit2>
+      <bit3  len="1"  id="bhi"                     desc="CPU affected by Branch History Injection">
+        <linux        feature="true"               proc="true" />
+      </bit3>
+      <bit4  len="1"  id="ibpb_no_ret"             desc="IBPB omits return target predictions">
+        <linux        feature="true"               proc="true" />
+      </bit4>
+      <bit5  len="1"  id="spectre_v2_user"         desc="CPU affected by Spectre variant 2 between user processes">
+        <linux        feature="true"               proc="true" />
+      </bit5>
+      <bit6  len="1"  id="old_microcode"           desc="CPU has old microcode; it must be vulnerable to something">
+        <linux        feature="true"               proc="true" />
+      </bit6>
+      <bit7  len="1"  id="its"                     desc="CPU affected by Indirect Target Selection">
+        <linux        feature="true"               proc="true" />
+      </bit7>
+      <bit8  len="1"  id="its_native_only"         desc="CPU affected by ITS; VMX is not affected">
+        <linux        feature="true"               proc="true" />
+      </bit8>
+      <bit9  len="1"  id="tsa"                     desc="CPU affected by Transient Scheduler Attacks">
+        <linux        feature="true"               proc="true" />
+      </bit9>
+      <bit10 len="1"  id="vmscape"                 desc="CPU affected by VMSCAPE attacks from guests">
+        <linux        feature="true"               proc="true" />
+      </bit10>
+    </ebx>
+  </subleaf>
+</leaf>
