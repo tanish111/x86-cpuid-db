@@ -33,6 +33,11 @@ SFX D Y 2
 SFX D   0     d          e
 SFX D   0     ed         [^e]
 
+# G suffixes (present participle / gerund)
+SFX G Y 2
+SFX G   e     ing        e
+SFX G   0     ing        [^e]
+
 #
 # Expressions for:
 #

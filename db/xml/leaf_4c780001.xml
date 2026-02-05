@@ -355,4 +355,67 @@
       </bit31>
     </edx>
   </subleaf>
+  <subleaf id="1">
+    <eax>
+      <!-- commit ddde4abaa0ec ("x86/cpufeatures: Make X86_FEATURE leaf 17 Linux-specific") -->
+      <desc>X86_FEATURE word 17: Extended auxiliary flags</desc>
+      <bit0  len="1"  id="overflow_recov"          desc="MCA overflow recovery support">
+        <linux        feature="true"               proc="true" />
+      </bit0>
+      <bit1  len="1"  id="succor"                  desc="Uncorrectable error containment and recovery">
+        <linux        feature="true"               proc="true" />
+      </bit1>
+      <bit3  len="1"  id="smca"                    desc="Scalable MCA">
+        <linux        feature="true"               proc="true" />
+      </bit3>
+    </eax>
+    <ebx>
+      <desc>X86_FEATURE word 21: Extended auxiliary flags</desc>
+      <bit0  len="1"  id="amd_lbr_pmc_freeze"      desc="AMD LBR and PMC Freeze">
+        <linux        feature="true"               proc="true" />
+      </bit0>
+      <bit1  len="1"  id="clear_bhb_loop"          desc="Clear branch history at SYSCALL entry using SW loop">
+        <linux        feature="true"               proc="false" />
+      </bit1>
+      <bit2  len="1"  id="bhi_ctrl"                desc="BHI_DIS_S HW control available">
+        <linux        feature="true"               proc="false" />
+      </bit2>
+      <bit3  len="1"  id="clear_bhb_hw"            desc="BHI_DIS_S HW control enabled">
+        <linux        feature="true"               proc="false" />
+      </bit3>
+      <bit4  len="1"  id="clear_bhb_vmexit"        desc="Clear branch history at VMEXIT using SW loop">
+        <linux        feature="true"               proc="false" />
+      </bit4>
+      <bit5  len="1"  id="amd_fast_cppc"           desc="AMD fast Collaborative Processor Performance Control">
+        <linux        feature="true"               proc="false" />
+      </bit5>
+      <bit6  len="1"  id="amd_htr_cores"           desc="Heterogeneous Core Topology">
+        <linux        feature="true"               proc="false" />
+      </bit6>
+      <bit7  len="1"  id="amd_workload_class"      desc="Workload Classification">
+        <linux        feature="true"               proc="false" />
+      </bit7>
+      <bit8  len="1"  id="prefer_ymm"              desc="Avoid ZMM registers due to downclocking">
+        <linux        feature="true"               proc="false" />
+      </bit8>
+      <bit9  len="1"  id="apx"                     desc="Advanced Performance Extensions">
+        <linux        feature="true"               proc="false" />
+      </bit9>
+      <bit10 len="1"  id="indirect_thunk_its"      desc="Use thunk for indirect branches in lower half of cache line">
+        <linux        feature="true"               proc="false" />
+      </bit10>
+      <bit11 len="1"  id="tsa_sq_no"               desc="AMD CPU not vulnerable to TSA-SQ">
+        <linux        feature="true"               proc="false" />
+      </bit11>
+      <bit12 len="1"  id="tsa_l1_no"               desc="AMD CPU not vulnerable to TSA-L1">
+        <linux        feature="true"               proc="false" />
+      </bit12>
+      <bit13 len="1"  id="clear_cpu_buf_vm"        desc="Clear CPU buffers using VERW before VMRUN">
+        <linux        feature="true"               proc="false" />
+      </bit13>
+      <bit14 len="1"  id="ibpb_exit_to_user"       desc="Use IBPB on exit-to-userspace, see VMSCAPE bug">
+        <linux        feature="true"               proc="false" />
+      </bit14>
+    </ebx>
+  </subleaf>
 </leaf>

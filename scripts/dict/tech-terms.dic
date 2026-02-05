@@ -13,12 +13,14 @@ bitwidth/S
 bitwise
 breakpoint/S
 CPU/S
+downclock/G
 encoding/S
 frontend/S
 interruptible
 microarchitecture
 mispredict
 misprediction
+paravirtual
 prefetch/S
 SMP
 SHA
