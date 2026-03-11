@@ -20,22 +20,41 @@
   </vendors>
   <subleaf id="0">
     <eax>
-      <desc>Bitmap of valid cpuid leaf 0x23 subleaves</desc>
-      <bit1  len="1"  id="subleaf_1_counters"      desc="Subleaf 1, PMU counters bitmaps, is valid" />
-      <bit3  len="1"  id="subleaf_3_events"        desc="Subleaf 3, PMU events bitmaps, is valid" />
+      <desc>Bitmap of valid CPUID(0x23) subleaves</desc>
+      <bit0  len="1"  id="subleaf_0"               desc="Subleaf 0, this subleaf" />
+      <bit1  len="1"  id="counters_subleaf"        desc="Subleaf 1, PMU counter bitmaps" />
+      <bit2  len="1"  id="acr_subleaf"             desc="Subleaf 2, Auto Counter Reload bitmaps" />
+      <bit3  len="1"  id="events_subleaf"          desc="Subleaf 3, PMU event bitmaps" />
+      <bit4  len="1"  id="pebs_caps_subleaf"       desc="Subleaf 4, PEBS capabilities" />
+      <bit5  len="1"  id="pebs_subleaf"            desc="Subleaf 5, Arch PEBS bitmaps" />
     </eax>
     <ebx>
-      <bit0  len="1"  id="unitmask2"               desc="IA32_PERFEVTSELx MSRs UnitMask2" />
-      <bit1  len="1"  id="zbit"                    desc="IA32_PERFEVTSELx MSRs Z-bit" />
+      <bit0  len="1"  id="unitmask2"               desc="IA32_PERFEVTSELx MSRs UnitMask2 bit" />
+      <bit1  len="1"  id="eq"                      desc="IA32_PERFEVTSELx MSRs EQ bit" />
     </ebx>
   </subleaf>
   <subleaf id="1">
     <eax>
-      <bit0  len="32" id="pmu_gp_counters_bitmap"  desc="General-purpose PMU counters bitmap" />
+      <bit0  len="32" id="gp_counters"             desc="Bitmap of general-purpose PMU counters" />
     </eax>
     <ebx>
-      <bit0  len="32" id="pmu_f_counters_bitmap"   desc="Fixed PMU counters bitmap" />
+      <bit0  len="32" id="fixed_counters"          desc="Bitmap of fixed PMU counters" />
     </ebx>
+  </subleaf>
+  <subleaf id="2">
+    <desc>Auto Counter Reload (ACR)</desc>
+    <eax>
+      <bit0  len="32" id="acr_gp_reload"           desc="Bitmap of general-purpose counters that can be reloaded" />
+    </eax>
+    <ebx>
+      <bit0  len="32" id="acr_fixed_reload"        desc="Bitmap of fixed counters that can be reloaded" />
+    </ebx>
+    <ecx>
+      <bit0  len="32" id="acr_gp_trigger"          desc="Bitmap of general-purpose counters that can trigger reloads" />
+    </ecx>
+    <edx>
+      <bit0  len="32" id="acr_fixed_trigger"       desc="Bitmap of fixed counters that can trigger reloads" />
+    </edx>
   </subleaf>
   <subleaf id="3">
     <eax>
