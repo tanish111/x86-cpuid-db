@@ -11,16 +11,9 @@
     <eax>
       <desc>Supported LBR stack depth values</desc>
       <text>
-        For EAX bits n, 0 ≤ n ≤ 7, max stack depth = 8 * (n + 1).
+        Max LBR stack depth = 8 * (fls(lbr_depth_mask) + 1).
       </text>
-      <bit0  len="1"  id="lbr_depth_8"             desc="Max stack depth = 8" />
-      <bit1  len="1"  id="lbr_depth_16"            desc="Max stack depth = 16" />
-      <bit2  len="1"  id="lbr_depth_24"            desc="Max stack depth = 24" />
-      <bit3  len="1"  id="lbr_depth_32"            desc="Max stack depth = 32" />
-      <bit4  len="1"  id="lbr_depth_40"            desc="Max stack depth = 40" />
-      <bit5  len="1"  id="lbr_depth_48"            desc="Max stack depth = 48" />
-      <bit6  len="1"  id="lbr_depth_56"            desc="Max stack depth = 56" />
-      <bit7  len="1"  id="lbr_depth_64"            desc="Max stack depth = 64" />
+      <bit0  len="8"  id="lbr_depth_mask"          desc="Max LBR stack depth bitmask" />
       <bit30 len="1"  id="lbr_deep_c_reset"        desc="LBRs maybe cleared on MWAIT C-state > C1" />
       <bit31 len="1"  id="lbr_ip_is_lip"           desc="LBR IP contain Last IP (otherwise effective IP)" />
     </eax>
