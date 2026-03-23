@@ -64,6 +64,9 @@
                                      function($doc) { tokenize(base-uri($doc), '/')[last()] })" />
     </xsl:template>
 
+    <!-- Ignore Linux synthetic leaves as they have no hardware backing -->
+    <xsl:template match="leaf[starts-with(lower-case(@id), '0x4c78')]" />
+
     <xsl:template match="leaf">
         <xsl:value-of select="concat($nl,
                                      '# Leaf ', lx:intel-notation-hex(@id), $nl,
