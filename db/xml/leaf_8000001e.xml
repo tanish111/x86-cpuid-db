@@ -19,7 +19,7 @@
     <ebx>
       <desc>Core identifiers</desc>
       <bit0  len="8"  id="core_id"                 desc="Unique per-socket logical core unit ID" />
-      <bit8  len="8"  id="core_nthreas"            desc="#Threads per core (zero-based)" />
+      <bit8  len="8"  id="core_nthreads"           desc="#Threads per core (zero-based)" />
     </ebx>
     <ecx>
       <desc>Node identifiers</desc>

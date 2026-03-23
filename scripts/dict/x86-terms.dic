@@ -293,6 +293,7 @@ CMS
 CPL0
 DDPD
 DF
+FP
 EFER
 EPSF
 FMS
@@ -340,6 +341,7 @@ TMUL
 Topdown
 TSC
 TSX
+uncorrectable
 UINTR
 UMC/S
 VNNI

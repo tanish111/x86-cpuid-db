@@ -64,7 +64,7 @@
           key is supported.
         </text>
       </bit16>
-      <bit17 len="1"  id="vmgexit_paremeter"       desc="SEV_FEATURES: VmgexitParameter" />
+      <bit17 len="1"  id="vmgexit_parameter"       desc="SEV_FEATURES: VmgexitParameter" />
       <bit18 len="1"  id="virt_tom_msr"            desc="Virtual TOM MSR" />
       <bit19 len="1"  id="virt_ibs"                desc="SEV-ES guests: IBS state virtualization" />
       <bit24 len="1"  id="vmsa_reg_protection"     desc="VMSA register protection" />
