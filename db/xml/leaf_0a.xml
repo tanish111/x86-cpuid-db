@@ -34,6 +34,11 @@
       <bit5  len="1"  id="no_br_insn_retired"      desc="Branch instruction retired event not available" />
       <bit6  len="1"  id="no_br_misses_retired"    desc="Branch mispredict retired event not available" />
       <bit7  len="1"  id="no_topdown_slots"        desc="Topdown slots event not available" />
+      <bit8  len="1"  id="no_backend_bound"        desc="Topdown backend bound not available" />
+      <bit9  len="1"  id="no_bad_speculation"      desc="Topdown bad speculation not available" />
+      <bit10 len="1"  id="no_frontend_bound"       desc="Topdown frontend bound not available" />
+      <bit11 len="1"  id="no_retiring"             desc="Topdown retiring not available" />
+      <bit12 len="1"  id="no_lbr_inserts"          desc="LBR inserts not available" />
     </ebx>
     <ecx>
       <desc>Supported PMU fixed-function counters, bitmap</desc>
