@@ -4,19 +4,14 @@
 -->
 <leaf id="0xf">
   <desc>Intel RDT / AMD PQoS resource monitoring</desc>
-  <text>
-    AMD compatibility note: as of July 2023, latest version of the AMD64 Architecture
-    Programmer's Manual declare this leaf 0xf as reserved.  Nonetheless, AMD's Processor
-    Programming Reference for the relevant AMD CPU families detail all of this leaf's
-    fields in a fully bit-compatible way with Intel's RDT monitoring.
-  </text>
-  <vendors>
-    <vendor>Intel</vendor>
-    <vendor>AMD</vendor>
-  </vendors>
   <subleaf id="0">
     <ebx>
-      <bit0  len="32" id="core_rmid_max"           desc="RMID max within this core (0-based)" />
+      <bit0  len="32" id="core_rmid_max"           desc="RMID max within this core (0-based)">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit0>
     </ebx>
     <edx>
       <desc>ResIDs that can be monitored</desc>
@@ -24,6 +19,10 @@
         Subleaf n, ResID n monitoring enumeration, is valid iff bit n is set (n ≥ 1).
       </text>
       <bit1  len="1"  id="llc_qos_mon"             desc="LLC QoS-monitoring">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
         <linux        feature="true"               proc="true"            altid="cqm_llc" />
       </bit1>
     </edx>
@@ -35,23 +34,65 @@
         For AMD CPUs, if @llc_qm_bitwidth is zero, FMS (Family/Model/Stepping) filtering
         must be used to determine the actual monitoring counter bitwidth (also 24-based).
       </text>
-      <bit0  len="8"  id="l3c_qm_bitwidth"         desc="L3 QoS-monitoring counter bitwidth (24-based)" />
-      <bit8  len="1"  id="l3c_qm_overflow_bit"     desc="QM_CTR MSR bit 61 is an overflow bit" />
+      <bit0  len="8"  id="l3c_qm_bitwidth"         desc="L3 QoS-monitoring counter bitwidth (24-based)">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit0>
+      <bit8  len="1"  id="l3c_qm_overflow_bit"     desc="QM_CTR MSR bit 61 is an overflow bit">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit8>
+      <bit9  len="1"  id="io_rdt_cmt"              desc="non-CPU agent supporting Intel RDT CMT present">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit9>
+      <bit10 len="1"  id="io_rdt_mbm"              desc="non-CPU agent supporting Intel RDT MBM present">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit10>
     </eax>
     <ebx>
-      <bit0  len="32" id="l3c_qm_conver_factor"    desc="QM_CTR MSR conversion factor to bytes" />
+      <bit0  len="32" id="l3c_qm_conver_factor"    desc="QM_CTR MSR conversion factor to bytes">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit0>
     </ebx>
     <ecx>
-      <bit0  len="32" id="l3c_qm_rmid_max"         desc="L3 QoS-monitoring max RMID" />
+      <bit0  len="32" id="l3c_qm_rmid_max"         desc="L3 QoS-monitoring max RMID">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
+      </bit0>
     </ecx>
     <edx>
       <bit0  len="1"  id="l3c_qm_occupancy"        desc="L3 QoS occupancy monitoring">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
         <linux        feature="true"               proc="true"            altid="cqm_occup_llc" />
       </bit0>
       <bit1  len="1"  id="l3c_qm_mbm_total"        desc="L3 QoS total bandwidth monitoring">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
         <linux        feature="true"               proc="true"            altid="cqm_mbm_total" />
       </bit1>
       <bit2  len="1"  id="l3c_qm_mbm_local"        desc="L3 QoS local bandwidth monitoring">
+        <vendors>
+          <vendor>Intel</vendor>
+          <vendor>AMD</vendor>
+        </vendors>
         <linux        feature="true"               proc="true"            altid="cqm_mbm_local" />
       </bit2>
     </edx>
