@@ -113,6 +113,11 @@
           <vendor>Intel</vendor>
         </vendors>
       </bit20>
+      <bit22 len="1"  id="hwp_ctl"                 desc="IA32_HWP_CTL MSR">
+        <vendors>
+          <vendor>Intel</vendor>
+        </vendors>
+      </bit22>
       <bit23 len="1"  id="thread_director"         desc="Intel thread director">
         <vendors>
           <vendor>Intel</vendor>
