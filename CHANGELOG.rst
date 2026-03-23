@@ -4,6 +4,38 @@
 Changelog
 =========
 
+Release v3.0
+------------
+
+Introduce the Linux-defined synthetic CPUID leaves ``0x4c780001`` and
+``0x4c780002``.  The range ID prefix ``0x4c78`` is for Linux in its
+shorthand ASCII form "Lx", where Linux becomes a virtual vendor akin to
+hardware vendors like AMD or Intel.
+
+In these leaves, provide a 1:1 bitfield mapping for what Linux defines in
+its synthetic ``X86_FEATURE`` words at ``<asm/cpufeatures.h>``.  Designate
+leaf ``0x4c780001`` for feature words in a linear order; i.e., subleaf 0
+registers ``EAX`` to ``EDX``, then subleaf 1 registers, and so on.
+Similarly, designate leaf ``0x4c780001`` for the ``X86_BUG`` words.
+
+With that, the Linux kernel x86 feature query code can have zero special
+cases.  The synthetic CPUID leaves and X86_FEATURE words are collected,
+parsed, modified, and queried just like their hardware-backed counterparts.
+
+Update the CPUID database:
+
+- Leaf ``0x23``: Introduce subleaf 2, Auto Counter Reload (ACR)
+- Leaf ``0x23``: Introduce subleaf 4/5, PEBS capabilities and counters
+- Leaf ``0x1c``: Return LBR depth as a bitmask instead of individual bits
+- Leaf ``0x0a``: Define more descriptive PMU bitfield names
+
+Thanks to Dave Hansen (Intel), also add the bits:
+
+- Leaf ``0x0a``: Various missing PMU events
+- Leaf ``0x06``: Missing ``IA32_HWP_CTL`` flag
+- Leaf ``0x0f``: Missing non-CPU (IO) Intel RDT bits
+
+
 Release v2.5
 ------------
 
