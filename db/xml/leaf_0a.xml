@@ -17,23 +17,23 @@
   <subleaf id="0">
     <eax>
       <bit0  len="8"  id="pmu_version"             desc="Performance monitoring unit version ID" />
-      <bit8  len="8"  id="pmu_n_gcounters"         desc="Number of general PMU counters per logical CPU" />
-      <bit16 len="8"  id="pmu_gcounters_nbits"     desc="Bitwidth of PMU general counters" />
-      <bit24 len="8"  id="pmu_cpuid_ebx_bits"      desc="Length of leaf 0xa EBX bit vector" />
+      <bit8  len="8"  id="num_counters_gp"         desc="Number of general-purpose PMU counters per logical CPU" />
+      <bit16 len="8"  id="bit_width_gp"            desc="Bitwidth of PMU general-purpose counters" />
+      <bit24 len="8"  id="events_mask_len"         desc="Length of CPUID(0xa).EBX bit vector" />
     </eax>
     <ebx>
       <desc>Supported PMU events, negative bitmap</desc>
       <text>
-        PMU event #x is supported if EBX bit x is 0 and @pmu_cpuid_ebx_bits > x.
+        PMU event #x is supported if EBX bit x is 0 and @events_mask_len > x.
       </text>
-      <bit0  len="1"  id="no_core_cycle_evt"       desc="Core cycle event not available" />
-      <bit1  len="1"  id="no_insn_retired_evt"     desc="Instruction retired event not available" />
-      <bit2  len="1"  id="no_refcycle_evt"         desc="Reference cycles event not available" />
-      <bit3  len="1"  id="no_llc_ref_evt"          desc="LLC-reference event not available" />
-      <bit4  len="1"  id="no_llc_miss_evt"         desc="LLC-misses event not available" />
-      <bit5  len="1"  id="no_br_insn_ret_evt"      desc="Branch instruction retired event not available" />
-      <bit6  len="1"  id="no_br_mispredict_evt"    desc="Branch mispredict retired event not available" />
-      <bit7  len="1"  id="no_td_slots_evt"         desc="Topdown slots event not available" />
+      <bit0  len="1"  id="no_core_cycle"           desc="Core cycle event not available" />
+      <bit1  len="1"  id="no_instruction_retired"  desc="Instruction retired event not available" />
+      <bit2  len="1"  id="no_reference_cycles"     desc="Reference cycles event not available" />
+      <bit3  len="1"  id="no_llc_reference"        desc="LLC-reference event not available" />
+      <bit4  len="1"  id="no_llc_misses"           desc="LLC-misses event not available" />
+      <bit5  len="1"  id="no_br_insn_retired"      desc="Branch instruction retired event not available" />
+      <bit6  len="1"  id="no_br_misses_retired"    desc="Branch mispredict retired event not available" />
+      <bit7  len="1"  id="no_topdown_slots"        desc="Topdown slots event not available" />
     </ebx>
     <ecx>
       <desc>Supported PMU fixed-function counters, bitmap</desc>
@@ -44,9 +44,9 @@
       <bit0  len="32" id="pmu_fcounters_bitmap"    desc="Fixed-function PMU counters support bitmap" />
     </ecx>
     <edx>
-      <bit0  len="5"  id="pmu_n_fcounters"         desc="Number of fixed PMU counters" />
-      <bit5  len="8"  id="pmu_fcounters_nbits"     desc="Bitwidth of PMU fixed counters" />
-      <bit15 len="1"  id="anythread_depr"          desc="AnyThread deprecation" />
+      <bit0  len="5"  id="num_counters_fixed"      desc="Number of fixed PMU counters" />
+      <bit5  len="8"  id="bitwidth_fixed"          desc="Bitwidth of PMU fixed counters" />
+      <bit15 len="1"  id="anythread_deprecation"   desc="AnyThread mode deprecation" />
     </edx>
   </subleaf>
 </leaf>
