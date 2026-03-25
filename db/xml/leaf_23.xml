@@ -31,6 +31,7 @@
     <ebx>
       <bit0  len="1"  id="unitmask2"               desc="IA32_PERFEVTSELx MSRs UnitMask2 bit" />
       <bit1  len="1"  id="eq"                      desc="IA32_PERFEVTSELx MSRs EQ bit" />
+      <bit2  len="1"  id="rdpmc_user_disable"      desc="RDPMC userspace disable" />
     </ebx>
   </subleaf>
   <subleaf id="1">
