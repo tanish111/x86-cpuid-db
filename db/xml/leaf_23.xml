@@ -77,4 +77,30 @@
       <bit11 len="1"  id="td_retiring_evt"         desc="Topdown retiring event" />
     </eax>
   </subleaf>
+  <subleaf id="4">
+    <ebx>
+      <bit3  len="1"  id="allow_in_record"         desc="ALLOW_IN_RECORD bit in MSRs" />
+      <bit4  len="1"  id="counters_gp"             desc="Counters group sub-group general-purpose counters" />
+      <bit5  len="1"  id="counters_fixed"          desc="Counters group sub-group fixed-function counters" />
+      <bit6  len="1"  id="counters_metrics"        desc="Counters group sub-group performance metrics" />
+      <bit8  len="2"  id="lbr"                     desc="LBR group" />
+      <bit16 len="8"  id="xer"                     desc="XER group" />
+      <bit29 len="1"  id="gpr"                     desc="GPR group" />
+      <bit30 len="1"  id="aux"                     desc="AUX group" />
+    </ebx>
+  </subleaf>
+  <subleaf id="5">
+    <eax>
+      <bit0  len="32" id="pebs_gp"                 desc="Architectural PEBS general-purpose counters" />
+    </eax>
+    <ebx>
+      <bit0  len="32" id="pebs_pdist_gp"           desc="Architectural PEBS PDIST general-purpose counters" />
+    </ebx>
+    <ecx>
+      <bit0  len="32" id="pebs_fixed"              desc="Architectural PEBS fixed counters" />
+    </ecx>
+    <edx>
+      <bit0  len="32" id="pebs_pdist_fixed"        desc="Architectural PEBS PDIST fixed counters" />
+    </edx>
+  </subleaf>
 </leaf>

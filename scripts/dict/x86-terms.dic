@@ -119,6 +119,7 @@ COFI
 DisTNT
 EventEn
 EventID
+GPR
 IBS
 IbsOpCurCnt
 IbsOpMaxCnt
@@ -130,6 +131,7 @@ LWPCP
 LWPVAL
 MPERF
 MTC
+PDIST
 PEBS
 PERF
 Perfmon
@@ -139,6 +141,7 @@ PMU
 RTIT
 ToPA
 TraceStop
+XER
 
 #
 # Virtualization
