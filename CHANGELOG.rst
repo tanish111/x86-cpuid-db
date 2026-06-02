@@ -4,6 +4,13 @@
 Changelog
 =========
 
+Release v3.1
+------------
+
+Fix bitfield names and comment typos reported by Maciej Wieczor-Retman
+(Intel).  Fix additional similar typos found using an LLM agent review.
+
+
 Release v3.0
 ------------
 
