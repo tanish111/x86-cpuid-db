@@ -12,7 +12,7 @@ homepage = "https://x86-cpuid.org"
 repository = "https://gitlab.com/x86-cpuid.org/x86-cpuid-db"
 documentation = "https://x86-cpuid.org"
 description = "CPUID data generator"
-version = "3.0"
+version = "3.1"
 readme = "README.rst"
 authors = [
     "Ahmed S. Darwish <darwi@linutronix.de>",
