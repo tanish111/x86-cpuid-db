@@ -67,7 +67,7 @@
       <bit15 len="1"  id="spectre_v1"              desc="CPU affected by Spectre variant 1 with conditional branches">
         <linux        feature="true"               proc="true" />
       </bit15>
-      <bit16 len="1"  id="specture_v2"             desc="CPU affected by Spectre variant 2 with indirect branches">
+      <bit16 len="1"  id="spectre_v2"              desc="CPU affected by Spectre variant 2 with indirect branches">
         <linux        feature="true"               proc="true" />
       </bit16>
       <bit17 len="1"  id="spec_store_bypass"       desc="CPU affected by speculative store bypass attack">

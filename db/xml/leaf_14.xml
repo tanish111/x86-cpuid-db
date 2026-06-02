@@ -26,7 +26,7 @@
       <bit0  len="1"  id="topa_output"             desc="ToPA output scheme" />
       <bit1  len="1"  id="topa_multiple_entries"   desc="ToPA tables can hold multiple entries" />
       <bit2  len="1"  id="single_range_output"     desc="Single-range output" />
-      <bit3  len="1"  id="trance_transport_output" desc="Trace Transport subsystem output" />
+      <bit3  len="1"  id="trace_transport_output"  desc="Trace Transport subsystem output" />
       <bit31 len="1"  id="ip_payloads_lip"         desc="IP payloads have LIP values (CS base included)" />
     </ecx>
   </subleaf>

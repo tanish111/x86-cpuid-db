@@ -67,7 +67,7 @@
         bits (Intel-defined bits only!), where "⇆" denotes a bit matching relationship.
       </text>
       <bit0  len="1"  id="xfrm_x87"                desc="Enclave XFRM.X87" />
-      <bit1  len="1"  id="xfrm_sse"                desc="Enclave XFRM.SEE" />
+      <bit1  len="1"  id="xfrm_sse"                desc="Enclave XFRM.SSE" />
       <bit2  len="1"  id="xfrm_avx"                desc="Enclave XFRM.AVX" />
       <bit3  len="1"  id="xfrm_mpx_bndregs"        desc="Enclave XFRM.BNDREGS (MPX BND0-BND3 registers)" />
       <bit4  len="1"  id="xfrm_mpx_bndcsr"         desc="Enclave XFRM.BNDCSR (MPX BNDCFGU/BNDSTATUS registers)" />
