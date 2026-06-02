@@ -32,7 +32,7 @@
   </subleaf>
   <subleaf id="1">
     <eax>
-      <bit0  len="3"  id="num_address_ranges"      desc="Number of configurable Address Ranges" />
+      <bit0  len="3"  id="num_address_ranges"      desc="Number of configurable address ranges" />
       <bit16 len="16" id="mtc_periods_bmp"         desc="MTC period encodings bitmap" />
     </eax>
     <ebx>

@@ -19,7 +19,7 @@
   <subleaf id="0">
     <eax>
       <bit0  len="1"  id="os_lwp_avail"            desc="OS: LWP is available to application programs" />
-      <bit1  len="1"  id="os_lpwval"               desc="OS: LWPVAL instruction" />
+      <bit1  len="1"  id="os_lwpval"               desc="OS: LWPVAL instruction" />
       <bit2  len="1"  id="os_lwp_ire"              desc="OS: Instructions Retired Event" />
       <bit3  len="1"  id="os_lwp_bre"              desc="OS: Branch Retired Event" />
       <bit4  len="1"  id="os_lwp_dme"              desc="OS: Dcache Miss Event" />
@@ -40,7 +40,7 @@
       <bit5  len="1"  id="lwp_data_addr"           desc="Cache miss events report data cache address" />
       <bit6  len="3"  id="lwp_latency_rnd"         desc="Cache latency rounding amount" />
       <bit9  len="7"  id="lwp_version"             desc="LWP version" />
-      <bit16 len="8"  id="lwp_buf_min_sz"          desc="LWP event ring buffer min size, 32 event records units" />
+      <bit16 len="8"  id="lwp_buf_min_sz"          desc="LWP event ring buffer min size, 32 event record units" />
       <bit28 len="1"  id="lwp_branch_predict"      desc="Branches Retired events can be filtered" />
       <bit29 len="1"  id="lwp_ip_filtering"        desc="IP filtering (IPI, IPF, BaseIP, and LimitIP @ LWPCP)" />
       <bit30 len="1"  id="lwp_cache_levels"        desc="Cache-related events: filter by cache level" />
@@ -48,7 +48,7 @@
     </ecx>
     <edx>
       <bit0  len="1"  id="hw_lwp_avail"            desc="HW: LWP available" />
-      <bit1  len="1"  id="hw_lpwval"               desc="HW: LWPVAL available" />
+      <bit1  len="1"  id="hw_lwpval"               desc="HW: LWPVAL available" />
       <bit2  len="1"  id="hw_lwp_ire"              desc="HW: Instructions Retired Event" />
       <bit3  len="1"  id="hw_lwp_bre"              desc="HW: Branch Retired Event" />
       <bit4  len="1"  id="hw_lwp_dme"              desc="HW: Dcache Miss Event" />

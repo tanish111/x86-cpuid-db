@@ -33,7 +33,7 @@
       <bit3  len="1"  id="nrip_save"               desc="NRIP save support on #VMEXIT">
         <linux        feature="true"               proc="true"            altid="nrips"      procid="nrip_save" />
       </bit3>
-      <bit4  len="1"  id="tsc_rate_msr"            desc="MSR based TSC rate control">
+      <bit4  len="1"  id="tsc_rate_msr"            desc="MSR-based TSC rate control">
         <linux        feature="true"               proc="true"            altid="tscratemsr" procid="tsc_scale" />
       </bit4>
       <bit5  len="1"  id="vmcb_clean"              desc="VMCB clean bits support">

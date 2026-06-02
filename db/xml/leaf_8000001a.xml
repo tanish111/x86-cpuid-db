@@ -12,7 +12,7 @@
       <desc>Performance optimizations</desc>
       <bit0  len="1"  id="fp_128"                  desc="Internal FP/SIMD exec data path is 128-bits wide" />
       <bit1  len="1"  id="movu_preferred"          desc="SSE: MOVU* better than MOVL*/MOVH*" />
-      <bit2  len="1"  id="fp_256"                  desc="internal FP/SSE exec data path is 256-bits wide" />
+      <bit2  len="1"  id="fp_256"                  desc="Internal FP/SSE exec data path is 256-bits wide" />
     </eax>
   </subleaf>
 </leaf>

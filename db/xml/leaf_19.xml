@@ -10,7 +10,7 @@
   <subleaf id="0">
     <eax>
       <desc>Key Locker restrictions</desc>
-      <bit0  len="1"  id="kl_cpl0_only"            desc="CPL0-only key Locker restriction" />
+      <bit0  len="1"  id="kl_cpl0_only"            desc="CPL0-only key locker restriction" />
       <bit1  len="1"  id="kl_no_encrypt"           desc="No-encrypt key locker restriction" />
       <bit2  len="1"  id="kl_no_decrypt"           desc="No-decrypt key locker restriction" />
     </eax>

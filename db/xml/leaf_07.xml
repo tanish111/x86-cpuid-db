@@ -440,7 +440,7 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit3>
-      <bit4  len="1"  id="fsrm"                    desc="Fast short REP MOV">
+      <bit4  len="1"  id="fsrm"                    desc="Fast short REP MOVSB">
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="A" />
       </bit4>
@@ -449,7 +449,7 @@
         <linux        feature="true"               proc="true" />
         <xen          feature="true"               attrs="a" />
       </bit8>
-      <bit9  len="1"  id="srdbs_ctrl"              desc="SRBDS mitigation MSR">
+      <bit9  len="1"  id="srbds_ctrl"              desc="SRBDS mitigation MSR">
         <linux        feature="true"               proc="false" />
         <xen          feature="true"               attrs="" />
       </bit9>
@@ -570,7 +570,7 @@
       <bit21 len="1"  id="amx_fp16"                desc="AMX-FP16: FP16 tile operations">
         <linux        feature="true"               proc="false" />
       </bit21>
-      <bit22 len="1"  id="hreset "                 desc="HRESET (Thread director history reset)" />
+      <bit22 len="1"  id="hreset"                  desc="HRESET (Thread director history reset)" />
       <bit23 len="1"  id="avx_ifma"                desc="Integer fused multiply add">
         <linux        feature="true"               proc="false" />
         <xen          feature="true"               attrs="A" />
@@ -617,10 +617,10 @@
         <linux        feature="true"               proc="false" />
         <xen          feature="true"               attrs="" />
       </bit2>
-      <bit3  len="1"  id="ddp_ctrl"                desc="MSR bit  IA32_SPEC_CTRL.DDPD_U">
+      <bit3  len="1"  id="ddp_ctrl"                desc="MSR bit IA32_SPEC_CTRL.DDPD_U">
         <xen          feature="true"               attrs="" />
       </bit3>
-      <bit4  len="1"  id="bhi_ctrl"                desc="MSR bit  IA32_SPEC_CTRL.BHI_DIS_S">
+      <bit4  len="1"  id="bhi_ctrl"                desc="MSR bit IA32_SPEC_CTRL.BHI_DIS_S">
         <xen          feature="true"               attrs="" />
       </bit4>
       <bit5  len="1"  id="mcdt_no"                 desc="MCDT mitigation not needed">

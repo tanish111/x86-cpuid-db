@@ -14,7 +14,7 @@
         Max LBR stack depth = 8 * (fls(lbr_depth_mask) + 1).
       </text>
       <bit0  len="8"  id="lbr_depth_mask"          desc="Max LBR stack depth bitmask" />
-      <bit30 len="1"  id="lbr_deep_c_reset"        desc="LBRs maybe cleared on MWAIT C-state > C1" />
+      <bit30 len="1"  id="lbr_deep_c_reset"        desc="LBRs may be cleared on MWAIT C-state > C1" />
       <bit31 len="1"  id="lbr_ip_is_lip"           desc="LBR IP contain Last IP (otherwise effective IP)" />
     </eax>
     <ebx>

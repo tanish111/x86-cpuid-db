@@ -79,7 +79,7 @@
       <bit19 len="1"  id="mds"                     desc="CPU affected by Microarchitectural data sampling">
         <linux        feature="true"               proc="true" />
       </bit19>
-      <bit20 len="1"  id="msbds_only"              desc="Microarchitectural data sampling: CPU only affected by the MSDBS variant">
+      <bit20 len="1"  id="msbds_only"              desc="Microarchitectural data sampling: CPU only affected by the MSBDS variant">
         <linux        feature="true"               proc="true" />
       </bit20>
       <bit21 len="1"  id="swapgs"                  desc="CPU affected by speculation through SWAPGS">

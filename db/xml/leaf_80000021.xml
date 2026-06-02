@@ -34,8 +34,8 @@
       <bit9  len="1"  id="no_smm_ctl_msr"          desc="SMM_CTL MSR not available">
         <linux        feature="true"               proc="false" />
       </bit9>
-      <bit10 len="1"  id="fsrs"                    desc="Fast Short Rep STOSB" />
-      <bit11 len="1"  id="fsrc"                    desc="Fast Short Rep CMPSB" />
+      <bit10 len="1"  id="fsrs"                    desc="Fast Short REP STOSB" />
+      <bit11 len="1"  id="fsrc"                    desc="Fast Short REP CMPSB" />
       <bit13 len="1"  id="prefetch_ctl_msr"        desc="Prefetch control MSR" />
       <bit16 len="1"  id="opcode_reclaim"          desc="Reserves opcode space">
         <text>

@@ -150,7 +150,7 @@
         </vendors>
         <linux        feature="true"               proc="true"            altid="epb" />
       </bit3>
-      <bit8  len="8"  id="thrd_director_nclasses"  desc="Number of classes, Intel thread director">
+      <bit8  len="8"  id="hw_feedback_nclasses"    desc="Number of Intel Thread Director classes">
         <vendors>
           <vendor>Intel</vendor>
         </vendors>

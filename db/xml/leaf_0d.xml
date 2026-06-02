@@ -193,7 +193,7 @@
 	  <vendor>AMD</vendor>
 	</vendors>
       </bit11>
-      <bit12 len="1"  id="xss_cet_p"               desc="CET supervisor state">
+      <bit12 len="1"  id="xss_cet_s"               desc="CET supervisor state">
 	<vendors>
 	  <vendor>Intel</vendor>
 	  <vendor>AMD</vendor>

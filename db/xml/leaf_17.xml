@@ -19,7 +19,7 @@
       <bit0  len="32" id="soc_proj_id"             desc="SoC project ID, assigned by vendor" />
     </ecx>
     <edx>
-      <bit0  len="32" id="soc_stepping_id"         desc="Soc project stepping ID, assigned by vendor" />
+      <bit0  len="32" id="soc_stepping_id"         desc="SoC project stepping ID, assigned by vendor" />
     </edx>
   </subleaf>
   <subleaf id="1" last="3">

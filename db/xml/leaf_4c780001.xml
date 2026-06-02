@@ -225,7 +225,7 @@
       <bit3  len="1"  id="vpid"                    desc="Intel Virtual Processor ID">
         <linux        feature="true"               proc="true" />
       </bit3>
-      <bit4  len="1"  id="coherency_sfw_no"        desc="SNP cache coherency software work around not needed">
+      <bit4  len="1"  id="coherency_sfw_no"        desc="SNP cache coherency software workaround not needed">
         <linux        feature="true"               proc="false" />
       </bit4>
       <!-- Bits 5-14: Reserved -->
@@ -238,7 +238,7 @@
       <bit17 len="1"  id="ept_ad"                  desc="Intel Extended Page Table access-dirty bit">
         <linux        feature="true"               proc="true" />
       </bit17>
-      <bit18 len="1"  id="VMCALL"                  desc="Hypervisor supports the VMCALL instruction">
+      <bit18 len="1"  id="vmcall"                  desc="Hypervisor supports the VMCALL instruction">
         <linux        feature="true"               proc="false" />
       </bit18>
       <bit19 len="1"  id="vmw_vmmcall"             desc="VMware prefers the VMMCALL instruction">
