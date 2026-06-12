@@ -173,7 +173,7 @@ Then, you can use this project's available tooling:
 .. code-block:: shell
 
     cpuidgen -h
-    usage: cpuidgen [-h] [--kcpuid] [--kheaders] [--kheader CPUID_LEAF]
+    usage: cpuidgen [-h] [--kcpuid] [--kheaders] [--kheader CPUID_LEAF] [--rustleaf CPUID_LEAF]
 
     CPUID leaves bitfield generator
 
@@ -183,6 +183,8 @@ Then, you can use this project's available tooling:
       --kheaders, -s        Generate one large C linux-kernel header for all leaves
       --kheader CPUID_LEAF, -l CPUID_LEAF
                             Generate a C linux-kernel header for CPUID_LEAF
+      --rustleaf CPUID_LEAF, -r CPUID_LEAF
+                            Generate a Rust module for CPUID_LEAF
 
     Generate CPUID data structures in different output formats
 
@@ -265,6 +267,7 @@ bitfield listings, do:
 		…;
     };
 
+
     struct leaf_0x7_1 {
      	// eax
      	u32				:  4, // Reserved
@@ -303,6 +306,34 @@ bitfield listings, do:
      		uclock_disable		:  1, // UC-lock disable is supported
      					: 25; // Reserved
     };
+
+The same leaf can be emitted as a Rust module, with masks and shifts for
+each bitfield, via:
+
+.. code-block:: shell
+
+    $ cpuidgen --rustleaf 7
+
+    // SPDX-License-Identifier: MIT
+    // Generator: x86-cpuid-db v2.0
+
+    #![allow(dead_code)]
+
+    pub mod leaf_0x7 {
+        // Leaf 0x7
+        // Extended CPU features
+
+        pub mod subleaf_0 {
+            pub const SUBLEAF_ID: u32 = 0;
+
+            pub mod ebx {
+                // fsgsbase: FSBASE/GSBASE read/write
+                pub const CPUID_7_0_EBX_FSGSBASE_SHIFT: u32 = 0;
+                pub const CPUID_7_0_EBX_FSGSBASE_WIDTH: u32 = 1;
+                pub const CPUID_7_0_EBX_FSGSBASE_MASK: u32 = 1u32 << 0;
+            }
+        }
+    }
 
 Similarly:
 

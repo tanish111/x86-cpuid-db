@@ -28,6 +28,7 @@ XML_DIRECTORY           = PROJECT_DIRECTORY / 'db' / 'xml'
 KCPUID_XSLT: Path       = XSLT_DIRECTORY / 'kcpuid.xslt'
 KHEADER_XSLT            = XSLT_DIRECTORY / 'kheader.xslt'
 KHEADERS_XSLT           = XSLT_DIRECTORY / 'kheaders.xslt'
+RUSTLEAF_XSLT           = XSLT_DIRECTORY / 'rustleaf.xslt'
 
 KCPUID_CSV_LICENSE      = 'CC0-1.0'
 KHEADER_LICENSE         = 'MIT'
@@ -40,11 +41,13 @@ DESCRIPTION   = 'Generate CPUID data structures in different output formats'
 KCPUID_HELP   = 'Generate a linux-kernel "kcpuid" CSV file'
 KHEADER_HELP  = 'Generate a C linux-kernel header for CPUID_LEAF'
 KHEADERS_HELP = 'Generate one large C linux-kernel header for all leaves'
+RUSTLEAF_HELP = 'Generate a Rust module for CPUID_LEAF'
 EPILOG  =   f'''example invocations:
   {TOOL_NAME} --kcpuid
   {TOOL_NAME} --kheader 7
   {TOOL_NAME} --kheader 0x12
   {TOOL_NAME} --kheader 0x80000001
+    {TOOL_NAME} --rustleaf 7
   {TOOL_NAME} --kheaders
 '''
 
@@ -158,6 +161,13 @@ class CPUIDGen:
             raise CPUIDError(f'CPUID leaf "{leaf:#x}" is not described in the XML database')
         return self.transformer.transform(KHEADER_XSLT, KHEADER_LICENSE, xml_file_path)
 
+    def generate_leaf_rust(self, leaf: int) -> str:
+        xml_file_name = f'leaf_{leaf:02x}.xml'
+        xml_file_path = self.xml_dir / xml_file_name
+        if not xml_file_path.exists():
+            raise CPUIDError(f'CPUID leaf "{leaf:#x}" is not described in the XML database')
+        return self.transformer.transform(RUSTLEAF_XSLT, KHEADER_LICENSE, xml_file_path)
+
 def run_cpuid_generation(parsed_args: argparse.Namespace) -> str:
     gitrepo = GitRepository(PROJECT_DIRECTORY, RELEASE_TAGS_GLOB, TOOL_NAME)
     version = gitrepo.describe_working_tree()
@@ -170,11 +180,13 @@ def run_cpuid_generation(parsed_args: argparse.Namespace) -> str:
         return generator.generate_leaves_kheaders()
     elif parsed_args.kheader is not None:
         return generator.generate_leaf_kheader(parsed_args.kheader)
+    elif parsed_args.rustleaf is not None:
+        return generator.generate_leaf_rust(parsed_args.rustleaf)
     else:
-        raise CPUIDError('No action specified.  Please use --kcpuid or --kheader.')
+        raise CPUIDError('No action specified.  Please use --kcpuid, --kheader, --rustleaf, or --kheaders.')
 
 def parse_script_arguments() -> argparse.Namespace:
-    def parse_kheader_argument(arg: str) -> int:
+    def parse_leaf_argument(arg: str) -> int:
         try:
             return int(arg, 16)
         except ValueError:
@@ -188,7 +200,8 @@ def parse_script_arguments() -> argparse.Namespace:
     )
     parser.add_argument('--kcpuid',   '-k', action='store_true', help=KCPUID_HELP)
     parser.add_argument('--kheaders', '-s', action='store_true', help=KHEADERS_HELP)
-    parser.add_argument('--kheader',  '-l', type=parse_kheader_argument, metavar='CPUID_LEAF', help=KHEADER_HELP)
+    parser.add_argument('--kheader',  '-l', type=parse_leaf_argument, metavar='CPUID_LEAF', help=KHEADER_HELP)
+    parser.add_argument('--rustleaf', '-r', type=parse_leaf_argument, metavar='CPUID_LEAF', help=RUSTLEAF_HELP)
     return parser.parse_args()
 
 def main() -> None:
@@ -208,3 +221,6 @@ def main() -> None:
         print(f'Unexpected error: {unexpected_error}', file=sys.stderr)
         traceback.print_exc()
         sys.exit(2)
+
+if __name__ == '__main__':
+    main()
