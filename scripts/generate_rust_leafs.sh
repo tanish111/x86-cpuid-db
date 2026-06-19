@@ -14,6 +14,9 @@ OUTPUT_DIR=${OUTPUT_DIR:-output}
 
 mkdir -p "$OUTPUT_DIR"
 
+echo "Generating Rust common module"
+poetry run cpuidgen --rustcommon > "${OUTPUT_DIR}/common.rs"
+
 for file in db/xml/leaf_*.xml; do
     num=${file#db/xml/leaf_}
     num=${num%.xml}
