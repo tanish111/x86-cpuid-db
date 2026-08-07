@@ -17,10 +17,5 @@ mkdir -p "$OUTPUT_DIR"
 echo "Generating Rust common module"
 poetry run cpuidgen --rustcommon > "${OUTPUT_DIR}/common.rs"
 
-for file in db/xml/leaf_*.xml; do
-    num=${file#db/xml/leaf_}
-    num=${num%.xml}
-
-    echo "Generating Rust source for CPUID leaf 0x${num}"
-    poetry run cpuidgen --rustleaf "$num" > "${OUTPUT_DIR}/leaf_${num}.rs"
-done
+echo "Generating Rust module for all CPUID leaves"
+poetry run cpuidgen --rustleaves > "${OUTPUT_DIR}/leaves.rs"

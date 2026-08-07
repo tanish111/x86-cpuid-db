@@ -35,18 +35,33 @@
         </xsl:choose>
     </xsl:function>
 
+    <xsl:function name="lx:rust-common-module-docs" as="xs:string">
+        <xsl:sequence select="concat(
+                              '//! Shared types for generated CPUID leaf modules.', $nl,
+                              '//!', $nl,
+                              '//! [`CpuidFeature`] describes the location of a bitfield within a CPUID', $nl,
+                              '//! leaf/subleaf result.  [`CpuidRegister`] identifies which result register', $nl,
+                              '//! contains the field.' )" />
+    </xsl:function>
+
     <xsl:function name="lx:rust-common-module" as="xs:string">
         <xsl:sequence select="concat(
-                              '#[derive(Clone, Copy, Debug, PartialEq, Eq)]', $nl,
+                              '/// CPUID result register (`eax`, `ebx`, `ecx`, or `edx`).', $nl,
+                              '#[derive(Clone, Copy, Debug)]', $nl,
                               '#[repr(u8)]', $nl,
                               'pub enum CpuidRegister {', $nl,
+                              $tab, '/// Result register `eax`.', $nl,
                               $tab, 'Eax = 0,', $nl,
+                              $tab, '/// Result register `ebx`.', $nl,
                               $tab, 'Ebx = 1,', $nl,
+                              $tab, '/// Result register `ecx`.', $nl,
                               $tab, 'Ecx = 2,', $nl,
+                              $tab, '/// Result register `edx`.', $nl,
                               $tab, 'Edx = 3,', $nl,
                               '}', $nl, $nl,
 
                               'impl CpuidRegister {', $nl,
+                              $tab, '/// Return the value of the register selected by `self`.', $nl,
                               $tab, '#[must_use]', $nl,
                               $tab, 'pub const fn select(self, eax: u32, ebx: u32, ecx: u32, edx: u32) -> u32 {', $nl,
                               $tab, $tab, 'match self {', $nl,
@@ -58,55 +73,29 @@
                               $tab, '}', $nl,
                               '}', $nl, $nl,
 
-                              '#[derive(Clone, Copy, Debug, PartialEq, Eq)]', $nl,
-                              'pub struct CpuidRegs {', $nl,
-                              $tab, 'pub eax: u32,', $nl,
-                              $tab, 'pub ebx: u32,', $nl,
-                              $tab, 'pub ecx: u32,', $nl,
-                              $tab, 'pub edx: u32,', $nl,
-                              '}', $nl, $nl,
-
-                              '#[derive(Clone, Copy, Debug, PartialEq, Eq)]', $nl,
+                              '/// Location of a CPUID bitfield within a leaf/subleaf result.', $nl,
+                              '#[derive(Clone, Copy, Debug)]', $nl,
                               'pub struct CpuidFeature {', $nl,
+                              $tab, '/// CPUID leaf number (input `eax`, including `0x80000000` leaves).', $nl,
                               $tab, 'pub leaf: u32,', $nl,
+                              $tab, '/// CPUID subleaf (input `ecx` when applicable, otherwise `0`).', $nl,
                               $tab, 'pub subleaf: u32,', $nl,
+                              $tab, '/// Register containing the bitfield.', $nl,
                               $tab, 'pub register: CpuidRegister,', $nl,
+                              $tab, '/// Least significant bit index of the field within the register.', $nl,
                               $tab, 'pub shift: u8,', $nl,
+                              $tab, '/// Width of the field in bits.', $nl,
                               $tab, 'pub width: u8,', $nl,
-                              '}', $nl, $nl,
-
-                              'impl CpuidFeature {', $nl,
-                              $tab, '#[must_use]', $nl,
-                              $tab, 'pub const fn field_mask(self) -> u32 {', $nl,
-                              $tab, $tab, 'if self.width == 32 {', $nl,
-                              $tab, $tab, $tab, 'u32::MAX', $nl,
-                              $tab, $tab, '} else {', $nl,
-                              $tab, $tab, $tab, '(1u32 &lt;&lt; self.width) - 1', $nl,
-                              $tab, $tab, '}', $nl,
-                              $tab, '}', $nl, $nl,
-
-                              $tab, '#[must_use]', $nl,
-                              $tab, 'pub const fn mask(self) -> u32 {', $nl,
-                              $tab, $tab, 'self.field_mask() &lt;&lt; self.shift', $nl,
-                              $tab, '}', $nl, $nl,
-
-                              $tab, '#[must_use]', $nl,
-                              $tab, 'pub const fn extract(self, regs: CpuidRegs) -> u32 {', $nl,
-                              $tab, $tab, '(self.register.select(regs.eax, regs.ebx, regs.ecx, regs.edx) &gt;&gt; self.shift)', $nl,
-                              $tab, $tab, '&amp; self.field_mask()', $nl,
-                              $tab, '}', $nl, $nl,
-
-                              $tab, '#[must_use]', $nl,
-                              $tab, 'pub const fn enabled(self, regs: CpuidRegs) -> bool {', $nl,
-                              $tab, $tab, 'self.extract(regs) != 0', $nl,
-                              $tab, '}', $nl,
                               '}' )" />
     </xsl:function>
 
     <xsl:function name="lx:rust-ident" as="xs:string">
         <xsl:param name="name" as="xs:string" />
 
-        <xsl:sequence select="replace(replace(upper-case($name), '[^A-Z0-9_]', '_'), '_+', '_')" />
+        <xsl:variable name="normalized"
+                      select="replace(replace(upper-case($name), '[^A-Z0-9_]', '_'), '_+', '_')" />
+
+        <xsl:sequence select="replace($normalized, '^(\d)', '_$1')" />
     </xsl:function>
 
     <xsl:function name="lx:rust-feature-name" as="xs:string">
@@ -118,17 +107,17 @@
     </xsl:function>
 
     <xsl:function name="lx:rust-cpuid-const-name" as="xs:string">
-        <xsl:param name="leaf-id" as="xs:string" />
-        <xsl:param name="subleaf-id" as="xs:string" />
-        <xsl:param name="register-name" as="xs:string" />
         <xsl:param name="bitfield" as="element()" />
 
-        <xsl:sequence select="concat(
-                              'CPUID_',
-                              upper-case(lx:sanitize-hex-id($leaf-id)), '_',
-                              upper-case($subleaf-id), '_',
-                              upper-case($register-name), '_',
-                              lx:rust-ident($bitfield/@id))" />
+        <xsl:sequence select="lx:rust-ident($bitfield/@id)" />
+    </xsl:function>
+
+    <xsl:function name="lx:rust-const-name" as="xs:string">
+        <xsl:param name="bitfield" as="element()" />
+
+        <xsl:sequence select="if (exists($bitfield/linux[@feature = 'true']))
+                              then lx:rust-feature-name($bitfield)
+                              else lx:rust-cpuid-const-name($bitfield)" />
     </xsl:function>
 
     <xsl:function name="lx:rust-cpuid-feature-expr" as="xs:string">
@@ -137,15 +126,34 @@
         <xsl:param name="register-name" as="xs:string" />
         <xsl:param name="start-bit" as="xs:integer" />
         <xsl:param name="width" as="xs:integer" />
+        <xsl:param name="indent" as="xs:string" />
+
+        <xsl:variable name="field-indent" select="concat($indent, $tab)" />
 
         <xsl:sequence select="concat(
                               'CpuidFeature {', $nl,
-                              $tab, 'leaf: ', $leaf-id, ',', $nl,
-                              $tab, 'subleaf: ', $subleaf-id, ',', $nl,
-                              $tab, 'register: ', lx:rust-register-variant($register-name), ',', $nl,
-                              $tab, 'shift: ', $start-bit, ',', $nl,
-                              $tab, 'width: ', $width, ',', $nl,
-                              '}' )" />
+                              $field-indent, 'leaf: ', $leaf-id, ',', $nl,
+                              $field-indent, 'subleaf: ', $subleaf-id, ',', $nl,
+                              $field-indent, 'register: ', lx:rust-register-variant($register-name), ',', $nl,
+                              $field-indent, 'shift: ', $start-bit, ',', $nl,
+                              $field-indent, 'width: ', $width, ',', $nl,
+                              $indent, '}' )" />
     </xsl:function>
+
+    <xsl:template match="*[starts-with(local-name(), 'bit')]" mode="rust-dump-bitfield">
+        <xsl:param name="indent" as="xs:string" />
+
+        <xsl:variable name="leaf-id" select="ancestor::leaf/@id" />
+        <xsl:variable name="subleaf-id" select="xs:integer(ancestor::subleaf/@id)" />
+        <xsl:variable name="register-name" select="parent::node()/name()" />
+        <xsl:variable name="start-bit" select="lx:get-bitfield-startbit(.)" />
+        <xsl:variable name="width" select="xs:integer(@len)" />
+        <xsl:variable name="const-name" select="lx:rust-const-name(.)" />
+
+        <xsl:value-of select="concat($indent, '/// ', if (@desc) then @desc else @id, $nl)" />
+        <xsl:value-of select="concat($indent, 'pub const ', $const-name, ': CpuidFeature = ',
+                              lx:rust-cpuid-feature-expr($leaf-id, $subleaf-id, $register-name, $start-bit, $width, $indent),
+                              ';', $nl, $nl)" />
+    </xsl:template>
 
 </xsl:stylesheet>

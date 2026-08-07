@@ -15,6 +15,7 @@
         <xsl:param name="generator" />
 
         <xsl:value-of select="lx:rust-generate-blurb($generatedFilesLicense, $generator)" />
+        <xsl:value-of select="concat(lx:rust-common-module-docs(), $nl, $nl)" />
         <xsl:value-of select="concat('#![allow(dead_code)]', $nl, $nl)" />
         <xsl:value-of select="concat(lx:rust-common-module(), $nl)" />
     </xsl:template>
